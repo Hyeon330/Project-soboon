@@ -1,4 +1,4 @@
-package com.semiproject.soboon.controller;
+package com.semiproject.soboon;
 
 import java.util.Arrays;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.semiproject.soboon.controller;
+package com.semiproject.soboon;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -8,25 +8,24 @@ import org.springframework.web.servlet.HandlerInterceptor;
 
 public class LoginInterceptor implements HandlerInterceptor {
 
-	/// ÄÁÆ®·Ñ·¯°¡ È£ÃâµÇ±â Àü¿¡ ½ÇÇàµÉ ¸Ş¼­µå
+	// ì»¨íŠ¸ë¡¤ëŸ¬ê°€ í˜¸ì¶œë˜ê¸° ì „ì— ì‹¤í–‰ë  ë©”ì†Œë“œ
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 
-		// false : ÇØ´ç ÄÁÆ®·Ñ·¯·Î ÀÌµ¿ÇÑ´Ù.(´Ù¸¥ ÁÖ¼Ò¸¦ response.sendRedirect·Î ÇÒ´ç)
-		// true : ÇØ´ç ÄÁÆ®·Ñ·¯·Î ÀÌµ¿ÇÑ´Ù.(¿ø·¡ Á¢¼ÓÇß´ø ÁÖ¼Ò·Î ÀÌµ¿)
-
-		// request °´Ã¼¿¡¼­ session°´Ã¼¸¦ ¾ò¾î¿À±â
+		// false: ë¡œê·¸ì¸ìœ¼ë¡œ ë³´ë‚´ê¸°
+		// true: ì •ìƒ ì‘ë™
+		
+		// Requestê°ì²´ì—ì„œ sessionê°ì²´ ì–»ì–´ì˜¤ê¸°
 		HttpSession session = request.getSession();
 
-		// ·Î±×ÀÎ »óÅÂ±¸ÇÏ±â
+		// ë¡œê·¸ì¸ ìƒíƒœêµ¬í•˜ê¸°
 		String logStatus = (String) session.getAttribute("logStatus");
 
-		if (logStatus != null && logStatus.equals("Y")) { // ·Î±×ÀÎ µÇ¾úÀ» ¶§
-			return true; // °¡´ø ±æ °¡±â
-		} else { // ·Î±×ÀÎ ¾ÈµÈ°æ¿ì ·Î±×ÀÎ Æû(È¨ÆäÀÌÁö)À¸·Î ÀÌµ¿
-			// ·Î±×ÀÎ ÆûÀ¸·Î ÀÌµ¿
-			response.sendRedirect("/member/login"); // request.getContextPath()´Â ¾ø¾îµµµÈ´Ù.
+		if (logStatus != null && logStatus.equals("Y")) { // ë¡œê·¸ì¸ë˜ì—ˆì„ë•Œ
+			return true;
+		} else { // ë¡œê·¸ì¸ ì•ˆëœê²½ìš°
+			response.sendRedirect("/member/login");
 			return false;
 		}
 	}
