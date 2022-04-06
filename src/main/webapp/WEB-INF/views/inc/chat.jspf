@@ -1,0 +1,75 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<style>
+#msgBtn{
+	width: 50px;
+	height: 50px;
+	position: fixed;
+	right: 30px;
+	bottom: 40px;
+	border-radius: 100px;
+	background-color: #F29661
+}
+.bi-chat-square-text {
+	font-size: 25px;
+}
+#messagePopup{
+	position: absolute;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	display: none;
+	align-items: center;
+	justify-content: center;
+	background-color: rgba(0,0,0,0.3);
+}
+#messagePage{
+	position: relative;
+	width: 95%;
+	height: 95%;
+	background-color: #EFFCE6;
+	border-radius: 10px;
+	box-shadow: 0px 0px 10px #666;
+	overflow: hidden;
+}
+#messagePage > div {
+	float: left;
+}
+.bi-x{
+	position: absolute;
+	top: 0px;
+	right: 1px;
+	font-size: 25px;
+	padding: 0 4px;
+}
+.bi-x:hover{
+	cursor: pointer;
+}
+#side {
+	height: 100%;
+	width: 30%;
+	background-color: gray;
+}
+</style>
+<script>
+	$(() => {
+		$('#msgBtn').click(function() {
+			$('#messagePopup').css('display','flex');
+		});
+		$('.bi-x').click(function() {
+			$('#messagePopup').css('display','none');
+		});
+	});
+</script>
+<c:if test="${logStatus!='Y'}">
+	<button id="msgBtn" class="btn"><i class="bi bi-chat-square-text"></i></button>
+	<div id="messagePopup">
+	<div id="messagePage">
+		<i class="bi bi-x"></i>
+		<div id="side">
+		</div>
+		
+		<div id="chat">
+		</div>
+	</div>
+</div>
+</c:if>
