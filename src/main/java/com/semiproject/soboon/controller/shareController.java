@@ -7,9 +7,10 @@ import org.springframework.web.servlet.ModelAndView;
 @RestController
 public class shareController {
 
-	@GetMapping("/shareboard/shareList")
+	@GetMapping("/shareBoard/shareList")
 	public ModelAndView shareForm(ModelAndView mav) {
-		mav.setViewName("shareboard/shareList");
+		mav.setViewName("shareBoard/shareList");
 		return  mav;
 	}
+	
 }
