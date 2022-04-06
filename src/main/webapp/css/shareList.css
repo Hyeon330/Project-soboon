@@ -1,8 +1,17 @@
 @charset "UTF-8";
-.card-footer>ul>li{
+.card-body>ul>li{
 	margin-bottom:10px;
 }
-.card-footer>ul>li>span{
+
+.col-sm-4{
+	margin-bottom:50px;
+}
+h1{
+	text-align:center;
+	font-weight:bold;
+}
+
+span{
 	float:right;
 }
 li:nth-child(2){

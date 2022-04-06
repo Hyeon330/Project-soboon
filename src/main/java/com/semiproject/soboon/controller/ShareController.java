@@ -5,12 +5,18 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 @RestController
-public class shareController {
+public class ShareController {
 
 	@GetMapping("/shareBoard/shareList")
 	public ModelAndView shareForm(ModelAndView mav) {
 		mav.setViewName("shareBoard/shareList");
 		return  mav;
+	}
+	
+	@GetMapping("/shareBoard/shareView")
+	public ModelAndView shareView(ModelAndView mav) {
+		mav.setViewName("shareBoard/shareView");
+		return mav;
 	}
 	
 }
