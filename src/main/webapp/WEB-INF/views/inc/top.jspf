@@ -20,13 +20,20 @@
 
 </head>
 <body>
-<ul class="topMenu">
-	<li>로고 뭐시기</li>
-	<li></li>
-	<li></li>
-	<li></li>
-	<li>나눔</li>
-	<li>대여</li>
-	<li>판매</li>
-	<li>요청</li>
-</ul>
+<nav>
+	<div class="topMenu">
+		<ul>
+			<li>로고</li>
+			<li><form class="form-inline" action="/action_page.php">
+    <input class="form-control mr-sm-2" type="text" placeholder="Search">
+    <button class="btn btn-success" type="submit">Search</button>
+  </form></li>
+			<li></li>
+			<li></li>
+			<li>나눔</li>
+			<li>대여</li>
+			<li>판매</li>
+			<li>요청</li>
+		</ul>
+	</div>
+</nav>

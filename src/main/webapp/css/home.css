@@ -1,0 +1,51 @@
+@charset "UTF-8";
+.indexContainer{
+	width:1200px;
+	margin:0 auto;
+}
+.indexContainer img{
+	width:1200px;
+	height:717px;
+}
+#functionIntroduce{
+	width:1200px;
+	height:850px;
+	margin:0 auto;
+	background: linear-gradient(rgb(250, 246, 243), white);
+}
+#functionIntroduce img{
+	width:240px;
+	margin:30px;
+	padding:0px;
+	display:block;
+	float:left;
+	filter : drop-shadow(5px 5px 5px rgb(192, 188, 177));
+}
+.functionImage{
+	width:25%;
+}
+#recentItem{
+	width:1200px;
+	height:850px;
+	margin:0 auto;
+	background-color:white;
+}
+.card-body>ul>li{
+	margin-bottom:10px;
+}
+
+.col-sm-4{
+	margin-bottom:50px;
+}
+h1{
+	text-align:center;
+	font-weight:bold;
+}
+
+span{
+	float:right;
+}
+li:nth-child(2){
+	font-size:1.6em;
+	font-weight:bold;
+}
