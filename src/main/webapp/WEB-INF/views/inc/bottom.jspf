@@ -37,7 +37,7 @@
 <script>
 	$(() => {
 		$('#msgBtn').click(function() {
-			
+			$('#messagePopup').css('display','flex');
 		});
 	});
 </script>
@@ -45,8 +45,7 @@
 	<button id="msgBtn" class="btn"><i class="bi bi-chat-square-text"></i></button>
 	<div id="messagePopup">
 		<div id="messagePage">
-			
-		
+			<div></div>
 		</div>
 	</div>
 </c:if>
