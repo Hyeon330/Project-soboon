@@ -4,14 +4,14 @@ nav{
 }
 .topMenu{
 	width:1200px;
-	height:100px;
+	height:50px;
 	margin:0 auto;
 }
 .topMenu li{
 	float:left;
 	width:12.5%;
-	height:100px;
-	line-height:100px;
+	height:50px;
+	line-height:50px;
 	font-size:1.4em;
 	text-align:center;
 	font-weight:500;
