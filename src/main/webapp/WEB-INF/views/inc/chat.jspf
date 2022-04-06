@@ -1,75 +1,54 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <style>
-#msgBtn{
-	width: 50px;
-	height: 50px;
-	position: fixed;
-	right: 30px;
-	bottom: 40px;
-	border-radius: 100px;
-	background-color: #F29661
+#msgBlock{
+	position: absolute;
+	right: 20px;
+	bottom: 0;
+	width: 230px;
+}
+#msgBtn {
+	float: right;
+	width: 40px;
+	height: 40px;
+	background-color: #F29661;
+	border: 0;
 }
 .bi-chat-square-text {
-	font-size: 25px;
+	font-size: 20px;
 }
-#messagePopup{
-	position: absolute;
-	top: 0;
-	width: 100%;
-	height: 100%;
-	display: none;
-	align-items: center;
-	justify-content: center;
-	background-color: rgba(0,0,0,0.3);
-}
-#messagePage{
-	position: relative;
-	width: 95%;
-	height: 95%;
-	background-color: #EFFCE6;
-	border-radius: 10px;
-	box-shadow: 0px 0px 10px #666;
+#msgPopup {
+	width: 230px;
+	height: 0;
 	overflow: hidden;
-}
-#messagePage > div {
-	float: left;
-}
-.bi-x{
-	position: absolute;
-	top: 0px;
-	right: 1px;
-	font-size: 25px;
-	padding: 0 4px;
-}
-.bi-x:hover{
-	cursor: pointer;
-}
-#side {
-	height: 100%;
-	width: 30%;
-	background-color: gray;
+	background-color: yellowgreen;
 }
 </style>
 <script>
 	$(() => {
+		var msgPopupHeight = 1;
 		$('#msgBtn').click(function() {
-			$('#messagePopup').css('display','flex');
+			msgPopupHeight = $('#msgPopup').css('height').substring(0,$('#msgPopup').css('height').length-2);
+			if(msgPopupHeight>0){
+				$('#msgPopup').animate({
+					height: '0'
+				}, 150);
+			}else {
+				$('#msgPopup').animate({
+					height: window.innerHeight*2/3+'px'
+				}, 150);
+			}
 		});
-		$('.bi-x').click(function() {
-			$('#messagePopup').css('display','none');
+		$(window).resize(() => {
+			if(msgPopupHeight==0){
+				$('#msgPopup').css('height', window.innerHeight*2/3+'px');
+			}
 		});
 	});
 </script>
 <c:if test="${logStatus!='Y'}">
-	<button id="msgBtn" class="btn"><i class="bi bi-chat-square-text"></i></button>
-	<div id="messagePopup">
-	<div id="messagePage">
-		<i class="bi bi-x"></i>
-		<div id="side">
-		</div>
-		
-		<div id="chat">
+	<div id="msgBlock">
+		<button id="msgBtn"><i class="bi bi-chat-square-text"></i></button>
+		<div id="msgPopup">
 		</div>
 	</div>
-</div>
 </c:if>
