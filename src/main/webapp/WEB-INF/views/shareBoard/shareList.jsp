@@ -16,16 +16,16 @@
       				<div class="embed-responsive embed-responsive-4by3">
        					<a href="/shareBoard/shareView"><img src="/img/books.jpg" class="card-img-top embed-responsive-item"  class="card-img-top" ></a>
       					<div class="card-img-overlay">
-      							<span><i class="fa fa-heart"></i>pick</span>
+      							<span><i class="fa fa-heart fa-lg"></i> 30</span>
       					</div>
       				</div>
 					<div class="card-body">
 							<ul>
 									<li>닉네임</li>
 									<li><a href="/shareBoard/shareView">제목</a></li>
-									<li><i class="fa fa-user"></i> 참여인원</li>
-									<li><i class="fa fa-location-arrow"></i> 주소</li>
-									<li>등록시간<span>조회수</span></li>
+									<li><i class="fa fa-user fa-lg"></i> 참여인원</li>
+									<li><i class="fa fa-location-arrow fa-lg"></i> 주소</li>
+									<li>등록시간<span><i class="fa fa-eye fa-lg"></i>  30</span></li>
 							</ul>
 						</div>
 					</div>
