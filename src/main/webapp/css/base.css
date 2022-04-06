@@ -1,0 +1,22 @@
+@charset "UTF-8";
+body,
+div,
+ul,
+li{
+	margin:0;
+	padding:0;
+}
+ul,
+li{
+	list-style-type:none;
+}
+a,
+a:visited,
+a:hover,
+a:active {
+	text-decoration: none;
+	color: black;
+}
+a:hover {
+	font-weight: 500;
+}
