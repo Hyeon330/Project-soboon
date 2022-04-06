@@ -45,7 +45,7 @@
 	<button id="msgBtn" class="btn"><i class="bi bi-chat-square-text"></i></button>
 	<div id="messagePopup">
 		<div id="messagePage">
-			<div></div>
+			<i class="bi bi-x"></i>
 		</div>
 	</div>
 </c:if>
