@@ -8,10 +8,30 @@
 	width: 50px;
 	height: 50px;
 	position: fixed;
-	
+	right: 30px;
+	bottom: 40px;
+	border-radius: 100px;
+}
+.bi {
+	font-size: 25px;
+}
+.btn {
+	background-color: #F29661
+}
+#messagePopup{
+	position: absolute;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	display: none;
+	align-items: center;
+	justify-content: center;
+	background-color: rgba(0,0,0,0.3);
 }
 #messagePage{
-	display: none;
+	width: 95%;
+	height: 95%;
+	background-color: yellowgreen;
 }
 </style>
 <script>
@@ -21,10 +41,15 @@
 		});
 	});
 </script>
-<button id="msgBtn"></button>
-<div id="messagePage">
-
-</div>
+<c:if test="${logStatus!='Y'}">
+	<button id="msgBtn" class="btn"><i class="bi bi-chat-square-text"></i></button>
+	<div id="messagePopup">
+		<div id="messagePage">
+			
+		
+		</div>
+	</div>
+</c:if>
 
 </body>
 </html>
