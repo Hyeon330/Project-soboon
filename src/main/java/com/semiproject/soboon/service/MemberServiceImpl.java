@@ -17,5 +17,15 @@ public class MemberServiceImpl implements MemberService{
 	public int memberInsert(MemberVO vo) {
 		return dao.memberInsert(vo);
 	}
+
+	@Override
+	public int idCheck(String userid) {
+		return dao.idCheck(userid);
+	}
+
+	@Override
+	public int nicknameCheck(String nickname) {
+		return dao.nicknameCheck(nickname);
+	}
 	
 }

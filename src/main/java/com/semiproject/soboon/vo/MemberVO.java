@@ -11,7 +11,7 @@ public class MemberVO {
 	private String tel3;
 	
 	private String nickname;
-	private String writedate;
+	private String email;
 	private String address;
 	private int warn;
 	
@@ -68,11 +68,11 @@ public class MemberVO {
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
 	}
-	public String getWritedate() {
-		return writedate;
+	public String getEmail() {
+		return email;
 	}
-	public void setWritedate(String writedate) {
-		this.writedate = writedate;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	public String getAddress() {
 		return address;

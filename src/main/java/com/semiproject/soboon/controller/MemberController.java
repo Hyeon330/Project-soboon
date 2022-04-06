@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.semiproject.soboon.service.MemberService;
 import com.semiproject.soboon.vo.MemberVO;
@@ -32,4 +33,19 @@ public class MemberController {
 		
 		return "member/signup_success";
 	}
+	
+	
+	/*@PostMapping("memberIdCheck")
+	@ResponseBody
+	public int idCheck(String userid) {
+		int cnt = service.idCheck(userid);
+		return cnt;
+	}
+	
+	@PostMapping("memberNicknameCheck")
+	@ResponseBody
+	public int nicknameCheck(String nickname) {
+		int cnt = service.nicknameCheck(nickname);
+		return cnt;
+	}*/
 }
