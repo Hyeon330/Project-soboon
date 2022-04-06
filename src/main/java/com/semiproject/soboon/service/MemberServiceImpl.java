@@ -17,5 +17,5 @@ public class MemberServiceImpl implements MemberService{
 	public int memberInsert(MemberVO vo) {
 		return dao.memberInsert(vo);
 	}
-
+	
 }

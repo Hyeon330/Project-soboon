@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <link rel="stylesheet" href="/css/signup.css" type="text/css"/>
+<script src="/js/member.js"></script>
 <div class="container" style="min-height:717px">
 	<h2>회원가입</h2>
 	<hr/>
-	<form method="post" action="/member/signup" id="memberFrm">
+	<form method="post" action="/member/signup" id="memberFrm" onsubmit="return memberCheck()">
 		<ul>
 			<li>아이디</li>
 			<li>
