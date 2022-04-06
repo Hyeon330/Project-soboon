@@ -21,7 +21,7 @@
 	<li></li>
 	<li></li>
 	<li></li>
-	<li>나눔</li>
+	<li><a href="/shareboard/shareList">나눔</a></li>
 	<li>대여</li>
 	<li>판매</li>
 	<li>요청</li>
