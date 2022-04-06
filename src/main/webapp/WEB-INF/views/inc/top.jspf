@@ -18,7 +18,7 @@
 <body>
 <ul class="topMenu">
 	<li>로고 뭐시기</li>
-	<li></li>
+	<li><a href="/mypage">mypage</a></li>
 	<li></li>
 	<li></li>
 	<li>나눔</li>
