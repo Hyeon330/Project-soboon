@@ -1,0 +1,54 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<style>
+#msgBlock{
+	position: absolute;
+	right: 20px;
+	bottom: 0;
+	width: 230px;
+}
+#msgBtn {
+	float: right;
+	width: 40px;
+	height: 40px;
+	background-color: #F29661;
+	border: 0;
+}
+.bi-chat-square-text {
+	font-size: 20px;
+}
+#msgPopup {
+	width: 230px;
+	height: 0;
+	overflow: hidden;
+	background-color: yellowgreen;
+}
+</style>
+<script>
+	$(() => {
+		var msgPopupHeight = 1;
+		$('#msgBtn').click(function() {
+			msgPopupHeight = $('#msgPopup').css('height').substring(0,$('#msgPopup').css('height').length-2);
+			if(msgPopupHeight>0){
+				$('#msgPopup').animate({
+					height: '0'
+				}, 150);
+			}else {
+				$('#msgPopup').animate({
+					height: window.innerHeight*2/3+'px'
+				}, 150);
+			}
+		});
+		$(window).resize(() => {
+			if(msgPopupHeight==0){
+				$('#msgPopup').css('height', window.innerHeight*2/3+'px');
+			}
+		});
+	});
+</script>
+<c:if test="${logStatus!='Y'}">
+	<div id="msgBlock">
+		<button id="msgBtn"><i class="bi bi-chat-square-text"></i></button>
+		<div id="msgPopup">
+		</div>
+	</div>
+</c:if>
