@@ -130,7 +130,6 @@
 					$("#resultView").text(result);
 				}
 			});
-						
 		});
 	});
 </script>
