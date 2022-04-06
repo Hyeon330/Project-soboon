@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <style>
 #msgBlock{
-	position: absolute;
+	position: fixed;
 	right: 20px;
 	bottom: 0;
 	width: 230px;
@@ -20,7 +20,8 @@
 	width: 230px;
 	height: 0;
 	overflow: hidden;
-	background-color: yellowgreen;
+	background-color: #fff;
+	border-radius: 5px;
 }
 </style>
 <script>
