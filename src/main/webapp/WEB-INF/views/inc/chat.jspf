@@ -22,7 +22,36 @@
 	overflow: hidden;
 	background-color: #fff;
 	border-radius: 5px;
+	box-shadow: 0px 3px 5px #888;
 }
+#chatLists p {
+	margin: 0;
+}
+.chat-list {
+	padding: 5px;
+	border-bottom: 1px solid #ddd;
+}
+.chat-list:hover {
+	background-color: #eee;
+}
+.chat-list > div{
+	overflow: auto;
+}
+.chat-info {
+	float: left;
+	width: 130px;
+}
+.last-chat {
+	font-size: 14px;
+	color: gray;
+}
+.chat-date {
+	float: right;
+	font-size: 12px;
+	color: gray;
+	margin: 4px 0 !important;
+}
+
 </style>
 <script>
 	$(() => {
@@ -50,6 +79,40 @@
 	<div id="msgBlock">
 		<button id="msgBtn"><i class="bi bi-chat-square-text"></i></button>
 		<div id="msgPopup">
+			<div id="search">
+				<input type="text" placeholder="검색">
+			</div>
+			<ul id="chatLists">
+				<li class="chat-list">
+					<div>
+						<div class="chat-info">
+							<p class="chat-name">HyeonSu Lee</p>
+							<p class="last-chat">안녕하세요~~</p>
+						</div>
+						<p class="chat-date">12월 31일</p>
+					</div>
+				</li>
+				<li class="chat-list">
+					<div>
+						<div class="chat-info">
+							<p class="chat-name">HyeonSu Lee</p>
+							<p class="last-chat">안녕하세요~~</p>
+						</div>
+						<p class="chat-date">12월 31일</p>
+					</div>
+				</li>
+				<li class="chat-list">
+					<div>
+						<div class="chat-info">
+							<p class="chat-name">HyeonSu Lee</p>
+							<p class="last-chat">안녕하세요~~</p>
+						</div>
+						<p class="chat-date">12월 31일</p>
+					</div>
+				</li>
+			</ul>
 		</div>
+	</div>
+	<div id="chat">
 	</div>
 </c:if>
