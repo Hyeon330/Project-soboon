@@ -1,0 +1,59 @@
+@charset "UTF-8";
+
+#memberFrm li{
+	float:left;
+	height:50px;
+	line-height:30px;
+	width:20%;
+	text-align:center;
+	
+}
+#memberFrm li:nth-child(2n+1){
+	text-align:left;
+	font-weight:bold;
+	margin-left:30px;
+	padding:5px;
+}
+#memberFrm li:nth-child(2n){
+	width:70%;
+}
+#memberFrm li:last-of-type{
+	text-align:center;
+	width:100%;
+	margin-top:50px;
+}
+h2{
+	margin:50px;
+	text-align:center;
+}
+#userid,
+#userpwd,
+#userpwd2,
+#username,
+#email,
+#nickname,
+#tel1,#tel2,#tel3,
+#addr{
+	width:40%;
+	border:none;
+	border-bottom:2px solid #adadad;
+	outline:none;
+	color:#636e72;
+	font-size:16px;
+	height:25px;
+	background:none;
+}
+#userid, #nickname{
+	width:24%;
+	margin-right:20px;
+}
+#tel1,#tel2,#tel3{
+	width:49px;
+}
+#tbtn{
+	margin-left:20px;
+	width:60px;
+}
+.btn{
+	background-color:rgb(254, 224, 180);
+}
