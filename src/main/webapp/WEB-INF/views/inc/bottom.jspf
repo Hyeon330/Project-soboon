@@ -2,5 +2,29 @@
 <div class="bottom">
 	bottom.jspf
 </div>
+
+<style>
+#msgBtn{
+	width: 50px;
+	height: 50px;
+	position: fixed;
+	
+}
+#messagePage{
+	display: none;
+}
+</style>
+<script>
+	$(() => {
+		$('#msgBtn').click(function() {
+			
+		});
+	});
+</script>
+<button id="msgBtn"></button>
+<div id="messagePage">
+
+</div>
+
 </body>
 </html>
