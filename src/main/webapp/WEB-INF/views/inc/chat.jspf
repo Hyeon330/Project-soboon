@@ -1,33 +1,45 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <style>
-#msgBlock{
+/* 채팅 리스트 위치 */
+#chatBlock{
 	position: fixed;
 	right: 20px;
 	bottom: 0;
 	width: 230px;
 }
-#msgBtn {
+#chatBtn {
 	position: relative;
 	right: 5px;
 	float: right;
-	width: 40px;
-	height: 40px;
-	background-color: #F29661;
-	border: 0;
+	width: 35px;
+	height: 35px;
+	background-color: #FEE0B4;
+	border-width: 1px 1px 0px 1px;
+	border-style: solid;
+	border-color: #888;
 }
 .chat-icon {
 	font-size: 20px;
 }
-#msgPopup {
+#chatPopup {
 	width: 240px;
 	height: 0;
 	overflow: hidden;
 	background-color: #fff;
-	border-radius: 5px;
+	border-radius: 10px;
 	box-shadow: 0px 3px 5px #888;
 }
 
+/* 채팅창 헤드 */
+.chat-head{
+	height: 30px;
+	line-height: 25px;
+	font-size: 16px;
+	border-bottom: 1px solid #bbb;
+	padding: 0 10px;
+}
 
+/* 채팅 검색 */
 .chat-search{
 	width: inherit;
 	text-align: center;
@@ -51,7 +63,17 @@
 	outline: none;
 }
 
-
+/* 채팅 리스트 */
+#chatLists{
+	overflow-y: scroll;
+}
+#chatLists::-webkit-scrollbar{
+	width: 3px;
+}
+#chatLists::-webkit-scrollbar-thumb{
+	background-color: #888;
+	border-radius: 10px;
+}
 #chatLists p {
 	margin: 0;
 }
@@ -61,6 +83,7 @@
 }
 .chat-list:hover {
 	background-color: #eee;
+	cursor: pointer;
 }
 .chat-list > div{
 	overflow: auto;
@@ -80,27 +103,75 @@
 	margin: 4px 0 !important;
 }
 
+/* 메시지 창 */
+#msgPopup{
+	height: 450px;
+	width: 300px;
+	position: fixed;
+	right: 260px;
+	bottom: 0px;
+	background-color: #fff;
+	box-shadow: 0px 3px 5px #888;
+	border-radius: 10px;
+	border: 1px solid #ddd;
+	overflow: hidden;
+}
+/* 메시지창 헤더 */
+.msg-head{
+	height: 40px;
+	line-height: 35px;
+	font-size: 20px;
+	border-bottom: 1px solid #bbb;
+	padding: 0 10px;
+}
+.msg-close{
+	float: right;
+}
+
+
+.msg-close:hover{
+	cursor: pointer;
+}
+.msg-list.left{
+	color: blue;
+}
+.msg-list.right{
+	color: red;
+}
 </style>
 <script>
 	$(() => {
-		var msgPopupHeight = 1;
-		$('#msgBtn').click(function() {
-			msgPopupHeight = $('#msgPopup').css('height').substring(0,$('#msgPopup').css('height').length-2);
-			if(msgPopupHeight>0){
-				$('#msgPopup').animate({
+		// 채팅 리스트 나타내고 없어지는 애니메이션
+		$('#chatBtn').click(function() {
+			if($('#chatPopup').css('height').substring(0,$('#chatPopup').css('height').length-2)>0){
+				$('#chatBtn').html('<i class="bi bi-chat-square-text chat-icon"></i>');
+				$('#chatPopup').animate({
 					height: '0'
 				}, 150);
 			}else {
-				$('#msgPopup').animate({
+				$('#chatBtn').html('<i class="bi bi-x-lg chat-icon"></i>');
+				$('#chatPopup').animate({
 					height: window.innerHeight-120+'px'
 				}, 150);
 			}
 		});
+		
+		// 화면크기에 따라 채팅 리스트 일정한 크기 유지
+		const resizeChatLists = () => {
+			var chatHeadHeight = Number($('.chat-head').css('height').substring(0,$('.chat-head').css('height').length-2));
+			var chatSearchHeight = Number($('.chat-search').css('height').substring(0,$('.chat-search').css('height').length-2));
+			$('#chatLists').css('height', (window.innerHeight-120-chatHeadHeight-chatSearchHeight-10)+'px');
+		};
+		resizeChatLists();
 		$(window).resize(() => {
-			if(msgPopupHeight == 0){
-				$('#msgPopup').css('height', window.innerHeight-120+'px');
+			var chatPopupHeight = $('#chatPopup').css('height').substring(0,$('#chatPopup').css('height').length-2);
+			if(chatPopupHeight != 0){
+				$('#chatPopup').css('height', window.innerHeight-120+'px');
+				resizeChatLists();
 			}
 		});
+		
+		// 채팅 검색창 자연스러운 테두리 나타내기
 		$('.chat-search-text').focus(function(){
 			$('.chat-search-box').css('border','2px solid #666');
 		});
@@ -110,9 +181,13 @@
 	});
 </script>
 <c:if test="${logStatus!='Y'}">
-	<div id="msgBlock">
-		<button id="msgBtn"><i class="bi bi-chat-square-text chat-icon"></i></button>
-		<div id="msgPopup">
+	<div id="chatBlock">
+		<button id="chatBtn"><i class="bi bi-chat-square-text chat-icon"></i></button>
+		<div id="chatPopup">
+			
+			<div class="chat-head">
+				<span id="username">HyeonSu Lee</span>
+			</div>
 		
 			<div class="chat-search">
 				<div class="chat-search-box">
@@ -149,9 +224,41 @@
 						<p class="chat-date">12월 31일</p>
 					</div>
 				</li>
+				
 			</ul>
+			
 		</div>
 	</div>
-	<div id="chat">
+	
+	<div id="msgPopup">
+		<div class="msg-head">
+			<span id="username">HyeonSu Lee</span>
+			<i class="bi bi-x-lg msg-close"></i>
+		</div>
+		
+		<style>
+			.msg-lists{
+			
+			}
+		</style>
+		<ul class="msg-lists">
+			<li class="msg-list left">안녕</li>
+			<li class="msg-list right">으아아</li>
+			<li class="msg-list left">안녕하세요~~</li>
+		</ul>
+		<style>
+			/* textarea{
+				border: none;
+				resize: none;
+			}
+			textarea:focus{
+				outline: none;
+			} */
+		</style>
+		<textarea></textarea>
+		
+		<div>
+			<button class="btn btn-info btn-sm">보내기</button>
+		</div>
 	</div>
 </c:if>
