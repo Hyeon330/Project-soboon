@@ -7,23 +7,51 @@
 	width: 230px;
 }
 #msgBtn {
+	position: relative;
+	right: 5px;
 	float: right;
 	width: 40px;
 	height: 40px;
 	background-color: #F29661;
 	border: 0;
 }
-.bi-chat-square-text {
+.chat-icon {
 	font-size: 20px;
 }
 #msgPopup {
-	width: 230px;
+	width: 240px;
 	height: 0;
 	overflow: hidden;
 	background-color: #fff;
 	border-radius: 5px;
 	box-shadow: 0px 3px 5px #888;
 }
+
+
+.chat-search{
+	width: inherit;
+	text-align: center;
+}
+.chat-search-box{
+	padding: 2px;
+	margin: 5px;
+	background-color: #eee;
+	border-radius: 5px;
+	border: 2px solid rgba(0,0,0,0);
+	transition: 0.3s;
+}
+.chat-search-text{
+	background-color: rgba(0,0,0,0);
+	height: 23px;
+	width: 200px;
+	border: none;
+	font-size: 14px;
+}
+.chat-search-text:focus{
+	outline: none;
+}
+
+
 #chatLists p {
 	margin: 0;
 }
@@ -64,24 +92,35 @@
 				}, 150);
 			}else {
 				$('#msgPopup').animate({
-					height: window.innerHeight*2/3+'px'
+					height: window.innerHeight-120+'px'
 				}, 150);
 			}
 		});
 		$(window).resize(() => {
-			if(msgPopupHeight==0){
-				$('#msgPopup').css('height', window.innerHeight*2/3+'px');
+			if(msgPopupHeight == 0){
+				$('#msgPopup').css('height', window.innerHeight-120+'px');
 			}
+		});
+		$('.chat-search-text').focus(function(){
+			$('.chat-search-box').css('border','2px solid #666');
+		});
+		$('.chat-search-text').blur(function(){
+			$('.chat-search-box').css('border','2px solid rgba(0,0,0,0)');
 		});
 	});
 </script>
 <c:if test="${logStatus!='Y'}">
 	<div id="msgBlock">
-		<button id="msgBtn"><i class="bi bi-chat-square-text"></i></button>
+		<button id="msgBtn"><i class="bi bi-chat-square-text chat-icon"></i></button>
 		<div id="msgPopup">
-			<div id="search">
-				<input type="text" placeholder="검색">
+		
+			<div class="chat-search">
+				<div class="chat-search-box">
+					<i class="bi bi-search chat-search-icon"></i>
+					<input class="chat-search-text" type="text" placeholder="검색">
+				</div>
 			</div>
+			
 			<ul id="chatLists">
 				<li class="chat-list">
 					<div>
