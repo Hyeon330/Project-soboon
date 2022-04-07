@@ -1,5 +1,5 @@
 $(function(){
-		$(".col-sm-4").click(function(){
+		$(".sl").click(function(){
 				location.href="/shareBoard/shareView";
 		})
 });

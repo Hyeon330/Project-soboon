@@ -1,12 +1,12 @@
 @charset "UTF-8";
-.carousel-inner img{
+.sv img{
 	width:100%;
 	height:100%;
 	width:500px;
 	height:500px;
 }
 
-.col-6{
+.sv{
 	margin-top:100px;	
 }
 
@@ -63,7 +63,7 @@
 	padding:10px 30px;
 }
 
-#coment, #coment {
+#coment{
 	padding: 12px;
 	border: 2px solid gray;
 	border-radius:10px;

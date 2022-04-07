@@ -1,20 +1,28 @@
 @charset "UTF-8";
-.card-body>ul>li{
+.cb>ul>li{
 	margin-bottom:10px;
 }
 
-.col-sm-4{
-	margin-bottom:50px;
+.sl{
+	margin-bottom:40px;
 }
-h1{
+#nanum{
 	text-align:center;
 	font-weight:bold;
 }
 
-span{
+#shareWrite{
+	background-color: rgb(239, 136, 105) ;
+	color:white;
+	padding:10px 30px;
+	margin-bottom:20px;
+}
+
+#views, #heart{
 	float:right;
 }
-li:nth-child(2){
+
+#title{
 	font-size:1.6em;
 	font-weight:bold;
 }
