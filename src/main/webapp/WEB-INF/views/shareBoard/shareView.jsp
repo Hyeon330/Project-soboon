@@ -68,16 +68,16 @@
 					</div>
 					<hr/>
 				<textarea name="content" id="content" rows="5" cols="70" placeholder="내용을 입력하세요"></textarea>
-				<div class="col-12 text-lg-start text-center">
-						<button type="button" class="btn" id="joinPlus" name="joinPlus">참여</button>
+				<div class="col-12 text-center">
+						<input type="submit" class="btn" id="joinPlus" name="joinPlus" value="참여">
 				</div>
-				<div class="col-12 text-lg-start text-center">
-						<button type="button" class="btn" id="joinMinus" name="joinMinus">참여취소</button>
-						<button type="button" class="btn" id="joinChat" name="joinChat">채팅방 입장</button>
+				<div class="col-12 text-center">
+						<input type="submit" class="btn" id="joinMinus" name="joinMinus" value="참여취소">
+						<input type="submit" class="btn" id="joinChat" name="joinChat" value="채팅방 입장">
 				</div>
-				<div class="col-12 text-lg-start text-center">
-						<button type="button" class="btn" id="shareEdit" name="shareEdit"> 수정</button>
-						<button type="button" class="btn" id="shareDel">삭제</button>
+				<div class="col-12 text-center">
+						<input type="submit" class="btn" id="shareEdit" name="shareEdit" value="수정">
+						<input type="submit" class="btn" id="shareDel" value="삭제">
 				</div>
 			</form>
 		</div>
@@ -87,7 +87,7 @@
 			<div><i class="fa fa-comment fa-lg"></i>   댓글</div>
 			<textarea name="coment" id="coment" rows="4" cols="110" placeholder="내용을 입력하세요"></textarea>
 			<div>
-					<button type="button" class="btn" id="replyInsert" name="replyInsert ">등록</button>
+				<input type="submit" class="btn" id="replyInsert" name="replyInsert" value="댓글 등록">
 			</div>
 		</div>
 	</div>

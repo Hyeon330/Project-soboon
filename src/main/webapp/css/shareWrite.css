@@ -1,1 +1,25 @@
 @charset "UTF-8";
+
+
+#writeBtn, #uploadBtn{
+	background-color: rgb(239, 136, 105) ;
+	color:white;
+	padding:10px 30px;
+}
+
+#resetBtn{
+	background-color: gray;
+	color:white;
+	padding:10px 30px;
+}
+
+#innerFiles{
+	display:flex;
+	flex:left;
+	margin:30px;
+	display:none;
+}
+
+#innerFiles input[type=file]{
+	width:250px;
+}
