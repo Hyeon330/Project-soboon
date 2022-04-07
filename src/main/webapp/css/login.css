@@ -1,0 +1,53 @@
+@charset "UTF-8";
+#login {
+	width: 700px;
+	margin: 0 auto;
+}
+
+#login>h1 {
+	text-align: center;
+	margin:50px;
+}
+
+#loginFrm>ul>li {
+	text-align:center;
+	width:100%;
+}
+
+#userid,
+#userpwd{
+	width:40%;
+	border:none;
+	border-bottom:2px solid #adadad;
+	outline:none;
+	color:#636e72;
+	font-size:16px;
+	height:25px;
+	background:none;
+	margin-top:40px;
+}
+
+.btn{
+	margin:10px;
+}
+
+.log{
+	margin-top:30px;
+	margin-bottom:20px;
+	background-color:rgb(246, 236, 223);
+}
+
+.kakao{
+	width:200px;
+}
+
+.btn1, .btn2{
+	background-color:#ddd;
+	margin-top:20px;
+	margin-bottom:130px;
+}
+
+#kakaobtn{
+	background-color:#F7E600;
+	padding:15px;
+}

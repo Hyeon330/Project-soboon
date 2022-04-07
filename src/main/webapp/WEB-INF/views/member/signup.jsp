@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="/css/signup.css" type="text/css"/>
 <script src="/js/member.js"></script>
 <script>
-	/* $(function(){
+	$(function(){
 		$("#userid").keyup(function(){
 			var userid = $("#userid").val();
 			if(userid!='' && userid.length>=6){
@@ -56,7 +56,7 @@
 				$("#nchk").css("color","red");
 			}
 		});
-	}); */
+	});
 </script>
 <div class="container" style="min-height:717px">
 	<h2>회원가입</h2>
@@ -94,7 +94,7 @@
 			<li><input type="text" name="email" id="email" placeholder="example@naver.com"/></li>
 			<li>주소</li>
 			<li><input type="text" name="address" id="address" placeholder="ex) 서울시 광진구" /></li>
-			<li><input type="submit" class="btn" value="가입하기" /></li>
+			<li><input type="submit" class="btn" id="signSub" value="가입하기" /></li>
 		</ul>
 	</form>
 </div>

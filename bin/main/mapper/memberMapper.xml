@@ -7,4 +7,14 @@
 		insert into member(username, userid, userpwd, nickname, tel, address, email)
 		values (#{username},#{userid},#{userpwd},#{nickname},#{tel},#{address},#{email})
 	</insert>
+	<select id="loginCheck" resultType="MemberVO">
+		select userid, username from member
+		where userid=#{userid} and userpwd=#{userpwd}
+	</select>
+	<select id="idCheck" resultType="int">
+		select count(userid) cnt from member where userid=#{param1}
+	</select>
+	<select id="nicknameCheck" resultType="int">
+		select count(nickname) cnt from member where nickname=#{parma1}
+	</select>
 </mapper>		

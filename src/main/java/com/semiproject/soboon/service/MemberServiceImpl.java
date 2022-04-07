@@ -27,5 +27,11 @@ public class MemberServiceImpl implements MemberService{
 	public int nicknameCheck(String nickname) {
 		return dao.nicknameCheck(nickname);
 	}
+
+	@Override
+	public MemberVO loginCheck(MemberVO vo) {
+		return dao.loginCheck(vo);
+	}
+	
 	
 }
