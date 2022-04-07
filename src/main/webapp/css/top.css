@@ -1,20 +1,48 @@
 @charset "utf-8";
 nav{
-	background-color:rgb(245, 199, 173);
+	background-color:rgba(154, 97, 66, 40%);
+}
+nav>hr{
+	margin:0 auto; padding:0px; width:1200px;
+}
+.topMenu1{
+	width:1200px;
+	height:60px;
+	margin:0 auto;
+	line-height:60px;
+	text-align:center;
 }
 .topMenu{
 	width:1200px;
 	height:50px;
 	margin:0 auto;
+	line-height:50px;
+	text-align:center;
 }
 .topMenu li{
 	float:left;
-	width:12.5%;
+	width:25%;
 	height:50px;
 	line-height:50px;
-	font-size:1.4em;
 	text-align:center;
-	font-weight:500;
+	font-size:1.3em;
+}
+.topMenu1 img{
+	width:200px;
+}
+.topMenu{
+	font-weight:700;
+	font-size:1.4em;
+	color:red;
+}
+.gridContainer{
+	width:1200px;
+	height:50px;
+	display:grid;
+	grid-template-columns:170px 1fr 100px 300px;
+}
+#gridBtn{
+	margin-left:110px;
 }
 
 .bottom{
@@ -23,5 +51,52 @@ nav{
    text-align:center;
    color:white;
    background-color:gray;
+}
+.sign{
+	background-color:rgb(154, 97, 66);
+	font-weight:500px;
+}
+#topSearch{
+	padding-left:270px;
+	padding-top:5px;
+	
+}
 
+#searchInput{
+	text-align:center;
+	
+}
+#searchBox{
+	margin-top:5px;
+	height:40px;
+	line-height:35px;
+	background-color:white;
+	border-radius:10px;
+	border:1px solid #666;
+	
+}
+#searchBox>input{
+	background-color:rgba(0, 0, 0, 0);
+	border:0px;
+	border-bottom:1px grid gray;
+}
+#searchBox>input:focus{
+	border:none !important;
+	box-shadow:none !important;
+}
+#searchIcon{
+	padding:0 10px;	
+}
+#searchIcon:hover{
+	cursor: pointer !important;
+}
+#topSelect{
+	height:50px;
+	text-align:center;
+ 	width: 150px;
+ 	height: 35px;
+  	border-radius: 10px;
+    border: 2px solid none;
+   	padding-top:5px;
+   	color:rgb(154, 97, 66);
 }

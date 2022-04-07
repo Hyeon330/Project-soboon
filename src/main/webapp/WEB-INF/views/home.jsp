@@ -10,6 +10,7 @@ $(document).ready(function(){
 	});
 });
 </script>
+<div class="entireContaier">
 <div class="indexContainer"> 			
 	<div id="demo" class="carousel slide" data-ride="carousel">
 	  <!-- Indicators -->
@@ -210,4 +211,5 @@ $(document).ready(function(){
 		</div>
 		<br/>
 	</div>
+</div>
 </div>

@@ -1,4 +1,7 @@
 @charset "UTF-8";
+.entireContaier{
+	background: linear-gradient(rgb(233, 217, 205), white);
+}
 .indexContainer{
 	width:1200px;
 	margin:0 auto;
@@ -11,7 +14,7 @@
 	width:1200px;
 	height:850px;
 	margin:0 auto;
-	background: linear-gradient(rgb(250, 246, 243), white);
+	background: linear-gradient(rgb(233, 217, 205), white);
 }
 #functionIntroduce img{
 	width:240px;
