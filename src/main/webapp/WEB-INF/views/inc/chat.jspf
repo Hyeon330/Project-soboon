@@ -169,6 +169,8 @@
 				$('#chatPopup').css('height', window.innerHeight-120+'px');
 				resizeChatLists();
 			}
+			
+			
 		});
 		
 		// 채팅 검색창 자연스러운 테두리 나타내기
@@ -238,7 +240,7 @@
 		
 		<style>
 			.msg-lists{
-			
+				
 			}
 		</style>
 		<ul class="msg-lists">
