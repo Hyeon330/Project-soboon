@@ -1,40 +1,21 @@
 @charset "UTF-8";
-<<<<<<< HEAD
 @import url(https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css);
-=======
->>>>>>> main
 body,
 div,
 ul,
 li{
 	margin:0;
 	padding:0;
-<<<<<<< HEAD
-	
+	list-style-type:none;
 }
-
 body {
 	background: linear-gradient(rgba(250, 246, 243), white);
 	font-family: 나눔스퀘어, 'NanumSquare', sans-serif;
 	
 }
-
-=======
-}
-body {
-	background-color: #FAF6F3;
-}
->>>>>>> main
-ul,
-li{
-	list-style-type:none;
-}
-<<<<<<< HEAD
-=======
 .container{
 	min-height:717px;
 }
->>>>>>> main
 a,
 a:visited,
 a:hover,
@@ -44,8 +25,4 @@ a:active {
 }
 a:hover {
 	font-weight: 500;
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> main

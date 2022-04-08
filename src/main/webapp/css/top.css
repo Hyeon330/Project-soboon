@@ -39,7 +39,7 @@ nav>hr{
 	width:1200px;
 	height:50px;
 	display:grid;
-	grid-template-columns:170px 1fr 100px 300px;
+	grid-template-columns:170px 600px 100px 330px;
 }
 #gridBtn{
 	margin-left:110px;
@@ -57,7 +57,7 @@ nav>hr{
 	font-weight:500px;
 }
 #topSearch{
-	padding-left:270px;
+	padding-left:200px;
 	padding-top:5px;
 	
 }
@@ -67,7 +67,7 @@ nav>hr{
 	
 }
 #searchBox{
-	margin-top:5px;
+	margin-top:4px;
 	height:40px;
 	line-height:35px;
 	background-color:white;
@@ -97,6 +97,6 @@ nav>hr{
  	height: 35px;
   	border-radius: 10px;
     border: 2px solid none;
-   	padding-top:5px;
+   	padding-top:3px;
    	color:rgb(171, 128, 119);
 }
