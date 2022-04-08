@@ -27,10 +27,6 @@ function memberCheck(){
 		$("#userpwd2").focus();
 		return false;
 	}
-<<<<<<< HEAD
-=======
-	
->>>>>>> main
 	reg = /^[a-zA-Z가-힣]{2,7}$/;
 	if($("#username").val()==''){
 		alert("이름을 입력하세요.");
@@ -41,12 +37,7 @@ function memberCheck(){
 		alert("이름을 잘못 입력하였습니다. 이름은 2~7글자내로 입력하셔야 합니다.");
 		$("#username").focus();
 		return false;
-<<<<<<< HEAD
-	}  	
-=======
 	}  
-	
->>>>>>> main
 	reg = /^[가-힣]{2,7}$/;
 	if($("#nickname").val()==''){
 		alert("닉네임을 입력하세요.");
@@ -140,8 +131,4 @@ $(function(){
 				$("#nchk").css("color","red");
 			}
 		});
-<<<<<<< HEAD
 	});
-=======
-	});
->>>>>>> main

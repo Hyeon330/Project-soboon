@@ -53,14 +53,8 @@ public class MemberController {
 		ResponseEntity<String> entity = null;
 		
 		HttpHeaders headers = new HttpHeaders();
-<<<<<<< HEAD
-		headers.add("Content-Type", "text/html; charest=utf-8");		
-		headers.add("Content-Type", "text/html; charset=utf-8");
-=======
 		headers.add("Content-Type", "text/html; charset=utf-8");
 		
->>>>>>> main
-	
 		MemberVO vo2 = service.loginCheck(vo);
 		if (vo2 != null) {
 			session.setAttribute("logId", vo2.getUserid());
