@@ -76,6 +76,15 @@ public class MemberController {
 		return entity;
 	}
 	
+	//로그아웃
+	@GetMapping("logout")
+	public ModelAndView logout(HttpSession session) {
+		session.invalidate();
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("redirect:/");
+		return mav;
+	}
+	
 	@PostMapping("memberIdCheck")
 	@ResponseBody
 	public int idCheck(String userid) {
