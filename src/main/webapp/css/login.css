@@ -14,8 +14,8 @@
 	width:100%;
 }
 
-#userid,
-#userpwd{
+.login-id,
+.login-pwd{
 	width:40%;
 	border:none;
 	border-bottom:2px solid #adadad;
@@ -27,21 +27,24 @@
 	margin-top:40px;
 }
 
-.btn{
+.login-btn, 
+.login-btn1, 
+.login-btn2{
 	margin:10px;
 }
 
-.log{
-	margin-top:30px;
+.login-btn{
+	margin-top:50px;
 	margin-bottom:20px;
 	background-color:rgb(246, 236, 223);
 }
 
 .kakao{
-	width:200px;
+	width:210px;
+	margin:10px;
 }
 
-.btn1, .btn2{
+.login-btn1, .login-btn2{
 	background-color:#ddd;
 	margin-top:20px;
 	margin-bottom:130px;
@@ -50,4 +53,5 @@
 #kakaobtn{
 	background-color:#F7E600;
 	padding:15px;
+	margin-top:20px;
 }

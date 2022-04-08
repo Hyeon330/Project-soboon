@@ -65,7 +65,6 @@ public class MemberController {
 
 			entity = new ResponseEntity<String>(msg, headers, HttpStatus.OK);
 		} else {
-
 			String msg = "<script>alert('로그인에 실패하였습니다.\\n로그인 폼으로 돌아갑니다.'); history.back(-1);</script>";
 			entity = new ResponseEntity<String>(msg, headers, HttpStatus.BAD_REQUEST);
 		}
