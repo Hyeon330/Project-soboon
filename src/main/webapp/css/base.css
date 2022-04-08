@@ -13,6 +13,9 @@ ul,
 li{
 	list-style-type:none;
 }
+.container{
+	min-height:717px;
+}
 a,
 a:visited,
 a:hover,
