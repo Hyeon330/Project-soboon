@@ -7,6 +7,10 @@ public class AdminajaxVO {
 	private int price;
 	private int cnt;
 	
+	public AdminajaxVO() {
+		
+	}
+	
 	public AdminajaxVO(int proNo, String proName, int price, int cnt) {
 		this.proNo = proNo;
 		this.proName = proName;
