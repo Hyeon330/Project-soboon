@@ -11,7 +11,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.semiproject.soboon.vo.BoardVO;
 
-public class RelateUploadFile {
+public class RelateUploadImgFile {
 
 	public static void fileDelete(String path, String files) {
 		if(files!=null) { // 파일이 존재하면

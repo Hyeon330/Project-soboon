@@ -7,7 +7,8 @@
 		insert into board(userid, title, content, category, thumbnailImg, img1, img2, img3)
 		value(#{userid},#{title},#{content}, #{category}, #{thumbnailImg}, #{img1}, #{img2}, #{img3})
 	</insert>
-	<select id="shareListSelect">
-		select 
+	<select id="shareListSelect" resultType="com.semiproject.soboon.vo.BoardVO">
+		select title, date_format(createdate, "%m/%d %H:%i")createdate,
+		thumbnailImg, pick, views from board order by no desc;
 	</select>
 </mapper>

@@ -28,6 +28,21 @@
 	margin-bottom:30px;
 }
 
+.proIcon{
+	margin-top:10px;
+}
+
+#pick{
+ 	background-color: rgb(239, 136, 105);
+	color:white;
+}
+
+#proWarn{
+	background-color: gray;
+	color:white;
+}
+ 
+
 #userInfo{
 	display:flex;
 }
@@ -52,7 +67,7 @@
 }
 
 #joinPlus, #joinChat, #shareEdit, #replyInsert{
-	background-color: rgb(239, 136, 105) ;
+	background-color: rgb(239, 136, 105);
 	color:white;
 	padding:10px 30px;
 }

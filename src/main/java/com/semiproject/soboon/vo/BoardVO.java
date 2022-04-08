@@ -8,6 +8,7 @@ public class BoardVO {
 	private String address;
 	private int views;
 	private int pick;
+	private int joinno;
 	private int warn;
 	private String createdate;
 	private String thumbnailImg;
@@ -59,6 +60,12 @@ public class BoardVO {
 	public void setPick(int pick) {
 		this.pick = pick;
 	}
+	public int getJoinno() {
+		return joinno;
+	}
+	public void setJoinno(int joinno) {
+		this.joinno = joinno;
+	}
 	public int getWarn() {
 		return warn;
 	}
@@ -107,5 +114,6 @@ public class BoardVO {
 	public void setPrice(String price) {
 		this.price = price;
 	}
+
 	
 }

@@ -23,6 +23,13 @@
 }
 
 #shareTitle{
-	font-size:1.6em;
+	font-size:1.4em;
 	font-weight:bold;
+	white-space: nowrap;
+ 	overflow: hidden;
+ 	text-overflow: ellipsis;
+}
+
+.iconValue{
+	margin-left:10px;
 }

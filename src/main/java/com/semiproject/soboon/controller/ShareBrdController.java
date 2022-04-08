@@ -19,7 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.semiproject.soboon.RelateUploadFile;
+import com.semiproject.soboon.RelateUploadImgFile;
 import com.semiproject.soboon.service.ShareBrdService;
 import com.semiproject.soboon.vo.BoardVO;
 
@@ -35,6 +35,7 @@ public class ShareBrdController {
 	
 	@GetMapping("shareList")
 	public ModelAndView shareForm() {
+		mav.addObject("list", service.shareListSelect());
 		mav.setViewName("shareBoard/shareList");
 		return  mav;
 	}
@@ -61,7 +62,7 @@ public class ShareBrdController {
 		
 		try { 
 			// 파일 업로드 성공
-			RelateUploadFile.fileRenameAndUpload(vo, path, request);
+			RelateUploadImgFile.fileRenameAndUpload(vo, path, request);
 			// 업로드 성공(DB에 레코드 등록)
 			service.shareInsert(vo);
 			String msg = "<script>alert('🟢 글이 등록되었습니다.'); location.href='/shareBoard/shareView';</script>";
@@ -70,10 +71,10 @@ public class ShareBrdController {
 			e.printStackTrace();
 			// 데이터가 DB에 정상적으로 들어가지 않았다면 이미 업로드한 파일은 upload 폴더에 들어갔기 때문에 삭제해야 한다.
 			// 삭제할 파일명은 vo안에 있고, fileDelete 메서드를 이용해서 삭제
-			RelateUploadFile.fileDelete(path, vo.getThumbnailImg());
-			RelateUploadFile.fileDelete(path, vo.getImg1());
-			RelateUploadFile.fileDelete(path, vo.getImg2());
-			RelateUploadFile.fileDelete(path, vo.getImg3());
+			RelateUploadImgFile.fileDelete(path, vo.getThumbnailImg());
+			RelateUploadImgFile.fileDelete(path, vo.getImg1());
+			RelateUploadImgFile.fileDelete(path, vo.getImg2());
+			RelateUploadImgFile.fileDelete(path, vo.getImg3());
 			
 			String msg ="<script>alert('🚫 글 등록에 실패했습니다.'); location.href=history.go(-1);</script>";
 			entity = new ResponseEntity<String>(msg, headers, HttpStatus.BAD_REQUEST);

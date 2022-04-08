@@ -6,11 +6,11 @@
 	<div class="row">
 
 		<div class="col-6 sv">
-			<div id="demo" class="carousel slide" data-ride="carousel">
+			<div id="demo" class="carousel slide">
 
 				<!-- Indicators -->
 				<ul class="carousel-indicators">
-					<li data-target="#demo" data-slide-to="0" class="active"></li>
+					<li data-target="#demo" data-slide-to="0"></li>
 					<li data-target="#demo" data-slide-to="1"></li>
 					<li data-target="#demo" data-slide-to="2"></li>
 				</ul>
@@ -48,10 +48,10 @@
 					</div>
 					<hr/>
 					<div id="productIcon">
-							<div><i class="fa fa-heart fa-lg"></i> 30</div>
-							<div><i class="fa fa-eye fa-lg"></i> 30 </div>
-							<div><i class="fa fa-clock fa-lg"></i> 1분전</div>
-							<div><i class="fa fa-bell fa-lg"></i> 신고하기</div>
+							<div class="btn" id="pick">찜하기</div>
+							<div class="proIcon"><i class="fa fa-eye fa-lg"></i> 30 </div>
+							<div class="proIcon"><i class="fa fa-clock fa-lg"></i> 1분전</div>
+							<div class="btn" id="proWarn"><i class="fa fa-bell"></i>   신고하기</div>
 					</div>
 					<div id="userInfo">
 							<div><i class="fa fa-user fa-5x"></i></div>

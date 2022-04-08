@@ -14,10 +14,10 @@
 			</thead>
 			<tbody>
 				<tr>
-					<td><input type="text" class="form-control" placeholder="글 제목을 입력하세요" id="title" name="title"/></td>
+					<td><input type="text" class="form-control" placeholder="글 제목을 입력하세요." id="title" name="title"/></td>
 				</tr>
 				<tr>
-					<td><textarea name="content" id="content" placeholder="글 내용을 입력하세요"></textarea></td>
+					<td><textarea name="content" id="content" placeholder="글 내용을 입력하세요."></textarea></td>
 				</tr>
 			</tbody>
 		</table>
