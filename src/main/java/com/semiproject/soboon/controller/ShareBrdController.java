@@ -63,31 +63,44 @@ public class ShareBrdController {
 			//System.out.println("업로드한 파일 수 "  + files.size());
 			
 			
-//			if(files!=null) { // 파일 rename
-//				int cnt = 1; 
-//				
-//				// 첨부파일 수 만큼 반복 업로드
-//				for(int i=0; i<files.size(); i++) {
-//					MultipartFile mpf = files.get(i); // multipartfile 객체로 files에 있는 값 얻어오기
-//					String orgFileName = mpf.getOriginalFilename(); // 실제 파일명
-//					System.out.println(orgFileName);
-//					if(orgFileName!=null && !orgFileName.equals("")) { //original파일이 있으면 rename
-//						File f = new File(path, orgFileName); // 파일 객체로 경로와 실제 파일명 얻어오기
-//						
-//					    // 파일이 존재하는지 확인
-//						if(f.exists()) {
-//							for(int renameNum=1;;renameNum++) {
-//								int point = orgFileName.lastIndexOf("."); // .으로 확장자 파일 분리
-//								String filename = orgFileName.substring(0,point); // 파일명
-//								String ext = orgFileName.substring(point+1); // 확장자
-//								
-//								// 새로 rename 하기 
-//								f = new File(path, filename + "(" + renameNum + ")" + ext);
-//							}
-//						}
-//					}
-//				}
-//			}
+			if(files!=null) { // 파일 rename
+				int cnt = 1;  //
+				
+				// 첨부파일 수 만큼 반복 업로드
+				for(int i=0; i<files.size(); i++) {
+					MultipartFile mpf = files.get(i); // multipartfile 객체로 files에 있는 값 얻어오기
+					String orgFileName = mpf.getOriginalFilename(); // 실제 파일명
+					//System.out.println(orgFileName);
+					if(orgFileName!=null && !orgFileName.equals("")) { //original 파일이 있으면 rename
+						File f = new File(path, orgFileName); // 파일 객체로 경로와 실제 파일명 얻어오기
+						
+					    // 파일이 존재하는지 확인
+						if(f.exists()) {
+							for(int renameNum=1;;renameNum++) {
+								int point = orgFileName.lastIndexOf("."); // .으로 확장자 파일 분리
+								String filename = orgFileName.substring(0,point); // 파일명
+								String ext = orgFileName.substring(point+1); // 확장자
+								
+								// 새로 rename 하기 
+								f = new File(path, filename + "(" + renameNum + ")" + ext);
+								if(!f.exists()) { // 
+									orgFileName = f.getName();
+									break;
+								}
+							}
+						}
+						// 파일 업로드 하기
+						mpf.transferTo(f); // 업로드 발생
+						if(cnt==1) vo.setThumbnailImg(orgFileName);
+						if(cnt==2) vo.setImg1(orgFileName);
+						if(cnt==3) vo.setImg2(orgFileName);
+						if(cnt==4) vo.setImg3(orgFileName);
+						cnt++;
+					}
+				}
+			}// 업로드 성공
+			System.out.println(vo.toString());
+			entity = null;
 		}catch(Exception e) {
 			e.printStackTrace();
 			entity = null;

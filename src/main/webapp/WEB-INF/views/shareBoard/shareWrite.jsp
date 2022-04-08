@@ -32,7 +32,7 @@
 			</tbody>
 		</table>
 		<div id="fileList">
-			<button type="button" class="btn" id="uploadBtn">첨부파일 선택</button>
+			<button type="button" class="btn" id="shareUploadBtn">첨부파일 선택</button>
 				<div id="innerFiles">
 	     			<input type="file" name="fileImg" id="thumbnailImg"/>
 	     			<input type="file" name="fileImg" id="img1"/>

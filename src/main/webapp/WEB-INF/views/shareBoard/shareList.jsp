@@ -27,7 +27,7 @@
 				<div class="card-body cb">
 						<ul>
 							<li>닉네임</li>
-							<li id="title"><a href="/shareBoard/shareView">제목</a></li>
+							<li id="shareTitle"><a href="/shareBoard/shareView">제목</a></li>
 							<li><i class="fa fa-user fa-lg"></i> 참여인원</li>
 							<li><i class="fa fa-location-arrow fa-lg"></i> 주소</li>
 							<li>등록시간<span id="views"><i class="fa fa-eye fa-lg"></i>  30</span></li>

@@ -4,7 +4,7 @@ $(function(){
 			startupFocus : false,
 		});
 
-		$("#uploadBtn").click(function(){
+		$("#shareUploadBtn").click(function(){
 			if($("#innerFiles").css("display")=='none'){
 				$("#innerFiles").show();
 			}else{

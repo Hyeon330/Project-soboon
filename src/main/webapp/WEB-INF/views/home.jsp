@@ -50,7 +50,7 @@ $(document).ready(function(){
 		<h1 style="text-align:center">소분소분의 이야기</h1>
 	</div>
 	<br/>
-	<a href="#"><img src="/img/inform.png" class="functionImage"/></a>
+	<a href="/shareBoard/shareList"><img src="/img/inform.png" class="functionImage"/></a>
 	<a href="#"><img src="/img/inform.png" class="functionImage"/></a>
 	<a href="#"><img src="/img/inform.png" class="functionImage"/></a>
 	<a href="#"><img src="/img/inform.png" class="functionImage"/></a>

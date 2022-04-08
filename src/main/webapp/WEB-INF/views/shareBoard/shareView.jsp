@@ -67,7 +67,7 @@
 							<div>5명/6명</div>
 					</div>
 					<hr/>
-				<textarea name="content" id="content" rows="5" cols="70" placeholder="내용을 입력하세요"></textarea>
+				<textarea name="content" id="content" class="shareContent" rows="5" cols="70" placeholder="내용을 입력하세요"></textarea>
 				<div class="col-12 text-center">
 						<input type="submit" class="btn" id="joinPlus" name="joinPlus" value="참여">
 				</div>
@@ -85,7 +85,7 @@
 		<div class="col-12">
 		<hr/>
 			<div><i class="fa fa-comment fa-lg"></i>   댓글</div>
-			<textarea name="coment" id="coment" rows="4" cols="110" placeholder="내용을 입력하세요"></textarea>
+			<textarea name="coment" id="coment" class="shareComent" rows="4" cols="110" placeholder="내용을 입력하세요"></textarea>
 			<div>
 				<input type="submit" class="btn" id="replyInsert" name="replyInsert" value="댓글 등록">
 			</div>
