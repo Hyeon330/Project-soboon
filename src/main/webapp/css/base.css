@@ -1,11 +1,15 @@
 @charset "UTF-8";
+<<<<<<< HEAD
 @import url(https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css);
+=======
+>>>>>>> main
 body,
 div,
 ul,
 li{
 	margin:0;
 	padding:0;
+<<<<<<< HEAD
 	
 }
 
@@ -15,10 +19,22 @@ body {
 	
 }
 
+=======
+}
+body {
+	background-color: #FAF6F3;
+}
+>>>>>>> main
 ul,
 li{
 	list-style-type:none;
 }
+<<<<<<< HEAD
+=======
+.container{
+	min-height:717px;
+}
+>>>>>>> main
 a,
 a:visited,
 a:hover,
@@ -28,4 +44,8 @@ a:active {
 }
 a:hover {
 	font-weight: 500;
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> main
