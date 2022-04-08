@@ -1,6 +1,6 @@
 @charset "utf-8";
 nav{
-	background-color:rgba(154, 97, 66, 40%);
+	background-color:rgb(220, 195, 182);
 }
 nav>hr{
 	margin:0 auto; padding:0px; width:1200px;
@@ -98,5 +98,5 @@ nav>hr{
   	border-radius: 10px;
     border: 2px solid none;
    	padding-top:5px;
-   	color:rgb(154, 97, 66);
+   	color:rgb(171, 128, 119);
 }
