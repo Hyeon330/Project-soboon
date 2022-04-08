@@ -33,22 +33,4 @@
 	margin:0 auto;
 	background-color:white;
 }
-.card-body>ul>li{
-	margin-bottom:10px;
-}
 
-.col-sm-4{
-	margin-bottom:50px;
-}
-h1{
-	text-align:center;
-	font-weight:bold;
-}
-
-span{
-	float:right;
-}
-li:nth-child(2){
-	font-size:1.6em;
-	font-weight:bold;
-}
