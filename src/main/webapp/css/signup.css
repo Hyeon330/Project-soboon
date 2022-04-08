@@ -53,4 +53,10 @@ h2{
 #tbtn{
 	margin-left:20px;
 	width:60px;
+<<<<<<< HEAD
+=======
+}
+.btn{
+	background-color:rgb(254, 224, 180);
+>>>>>>> f651225f559e4fd04eab1927066467ac6be9d216
 }

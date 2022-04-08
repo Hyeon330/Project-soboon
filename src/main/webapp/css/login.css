@@ -27,6 +27,19 @@
 	margin-top:40px;
 }
 
+<<<<<<< HEAD
+=======
+.btn{
+	margin:10px;
+}
+
+.log{
+	margin-top:30px;
+	margin-bottom:20px;
+	background-color:rgb(246, 236, 223);
+}
+
+>>>>>>> f651225f559e4fd04eab1927066467ac6be9d216
 .kakao{
 	width:200px;
 }
