@@ -70,10 +70,19 @@ public class MemberController {
 		}catch(Exception e) {
 			e.printStackTrace();
 			
-			String msg = "<script>alert('로그인에 실패하였습니다.\n로그인 폼으로 돌아갑니다.'); history.back(-1);</script>";
+			String msg = "<script>alert('로그인에 실패하였습니다.\\n로그인 폼으로 돌아갑니다.'); history.back(-1);</script>";
 			entity = new ResponseEntity<String>(msg, headers, HttpStatus.BAD_REQUEST);
 		}
 		return entity;
+	}
+	
+	//로그아웃
+	@GetMapping("logout")
+	public ModelAndView logout(HttpSession session) {
+		session.invalidate();
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("redirect:/");
+		return mav;
 	}
 	
 	@PostMapping("memberIdCheck")
