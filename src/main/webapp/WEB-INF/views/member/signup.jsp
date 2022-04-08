@@ -58,7 +58,7 @@
 		});
 	});
 </script>
-<div class="container" style="min-height:717px">
+<div class="container">
 	<h2>회원가입</h2>
 	<hr/>
 	<form method="post" action="/member/memberOk" id="memberFrm" onsubmit="return memberCheck()">
