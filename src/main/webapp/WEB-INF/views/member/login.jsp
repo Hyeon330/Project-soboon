@@ -1,20 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <link rel="stylesheet" href="/css/login.css" type="text/css"/>
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-<script>
-	function loginFrmCheck(){
-		if($("#userid").val()==""){
-			alert("아이디를 입력하세요.");
-			$("#userid").focus();
-			return false;
-		}
-		if($("#userpwd").val()==''){
-			alert("비밀번호를 입력하세요.");
-			$("#userpwd").focus();
-			return false;
-		}
-		return true;
-	}
 <script src="/js/login.js"></script>
 <div class="container">
 	<div id="login">
