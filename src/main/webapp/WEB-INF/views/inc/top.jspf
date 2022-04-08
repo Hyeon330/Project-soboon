@@ -64,7 +64,11 @@
 	</div> -->
 	<div class="topMenu1">
 		<div class="gridContainer">
+<<<<<<< HEAD
 				<div><img src="/img/logo3.png"/></div>
+=======
+				<div><a href="/"><img src="/img/logo3.png"/></a></div>
+>>>>>>> main
 				<div id="topSearch">
 					<form class="form-inline" action="/action_page.php">
 					    <div id="searchBox">

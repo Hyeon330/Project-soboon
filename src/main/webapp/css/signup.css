@@ -22,19 +22,18 @@
 	width:100%;
 	margin-top:50px;
 }
-h2{
+#signup-logo{
 	margin:50px;
 	text-align:center;
 }
-#userid,
-#userpwd,
-#userpwd2,
-#username,
-#email,
-#nickname,
-#tel1,#tel2,#tel3,
-#address{
-	width:40%;
+.signup-id,
+.signup-pwd,
+.signup-name,
+.signup-email,
+.signup-nickname,
+.signup-tel,
+.signup-addr{
+	width:30%;
 	border:none;
 	border-bottom:2px solid #adadad;
 	outline:none;
@@ -43,21 +42,21 @@ h2{
 	height:25px;
 	background:none;
 }
-#userid, #nickname{
-	width:24%;
+.signup-id, .signup-nickname{
+	width:22%;
 	margin-right:20px;
 }
-#tel1,#tel2,#tel3{
+.signup-tel{
 	width:49px;
 }
-#tbtn{
+#tel-btn{
 	margin-left:20px;
 	width:60px;
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
 }
-.btn{
+.signup-btn{
 	background-color:rgb(254, 224, 180);
 >>>>>>> f651225f559e4fd04eab1927066467ac6be9d216
 =======
