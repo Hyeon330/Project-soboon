@@ -8,7 +8,7 @@
 	<br/>
 	<h1 id="nanum">나눔 게시판</h1>
 	<br/>
-	<a href="/shareBoard/shareWrite" class="btn" id="shareWrite">글작성하기</a>
+	<a href="/shareBoard/shareWrite" class="btn" id="shareWrite">글 작성하기</a>
 	<br/>
 	<div class="row">
 		<div class="col-sm-4 sl">

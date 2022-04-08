@@ -44,7 +44,7 @@
 		<div class="col-6 sv">
 			<form class="productInfo">
 					<div id="productTitle">
-							<span id="category">category</span><h2>[category]  책 나눔합니다.</h2>
+							<span id="category">vo.category</span><h2>[vo.category] 책 나눔합니다.</h2>
 					</div>
 					<hr/>
 					<div id="productIcon">

@@ -108,9 +108,4 @@ public class BoardVO {
 		this.price = price;
 	}
 	
-	@Override
-	public String toString() {
-		return userid + " " + title + " " + content + " " + thumbnailImg 
-				+ " " + img1 + " " + img2 + " " + img3;
-	}
 }

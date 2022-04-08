@@ -1,5 +1,5 @@
 $(function(){
-		CKEDITOR.replace("writeContent", {
+		CKEDITOR.replace("content", {
 			height:'400px',
 			startupFocus : false,
 		});

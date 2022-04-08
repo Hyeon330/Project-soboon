@@ -71,8 +71,8 @@ $(document).ready(function(){
 	      				</div>
 						<div class="card-body">
 								<ul>
-										<li>닉네임</li>
-										<li><a href="/shareBoard/shareView">제목</a></li>
+									<li>닉네임</li>
+									<li><a href="/shareBoard/shareView">제목</a></li>
 								</ul>
 							</div>
 						</div>
@@ -89,8 +89,8 @@ $(document).ready(function(){
 	      				</div>
 						<div class="card-body">
 								<ul>
-										<li>닉네임</li>
-										<li><a href="/shareBoard/shareView">제목</a></li>
+									<li>닉네임</li>
+									<li><a href="/shareBoard/shareView">제목</a></li>
 								</ul>
 							</div>
 						</div>
@@ -198,8 +198,8 @@ $(document).ready(function(){
 	      				</div>
 						<div class="card-body">
 								<ul>
-										<li>닉네임</li>
-										<li><a href="/shareBoard/shareView">제목</a></li>
+									<li>닉네임</li>
+									<li><a href="/shareBoard/shareView">제목</a></li>
 								</ul>
 							</div>
 						</div>

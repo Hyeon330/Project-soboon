@@ -3,16 +3,6 @@
 <link rel="stylesheet" href="/css/shareWrite.css" type="text/css"/>
 <script src="//cdn.ckeditor.com/4.17.2/full/ckeditor.js"></script>
 <script src="/js/shareWrite.js"></script>
-<script>
-	$(function(){
-		
-		let fileCount = 0; // 첨뷰파일 선택 개수
-		if($("#thumbnailImg").val()!==''){ // 파일을 선택했을 때
-			fileCount++;
-		}
-	});
-
-</script>
 <div class="container">
 	<br/>
 	<form class="form-group" method="post" action="/shareBoard/shareWriteOk" id="shareForm" enctype="multipart/form-data">
@@ -24,10 +14,10 @@
 			</thead>
 			<tbody>
 				<tr>
-					<td><input type="text" class="form-control" placeholder="글 제목을 입력하세요" id="writeTitle" name="writeTitle" /></td>
+					<td><input type="text" class="form-control" placeholder="글 제목을 입력하세요" id="title" name="title"/></td>
 				</tr>
 				<tr>
-					<td><textarea name="writeContent" id="writeContent" placeholder="글 내용을 입력하세요"></textarea></td>
+					<td><textarea name="content" id="content" placeholder="글 내용을 입력하세요"></textarea></td>
 				</tr>
 			</tbody>
 		</table>
