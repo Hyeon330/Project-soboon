@@ -1,22 +1,19 @@
 package com.semiproject.soboon.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.RequestMapping;
 
+@RequestMapping("/mypage/")
 @Controller
 public class mypageController {
-	@GetMapping("/mypage")
-	public String myPage() {
+	// 개인정보수정 페이지 이동
+	@GetMapping("editForm")
+	public String myPageEdit(HttpServletRequest request) {
+		System.out.println(request.getParameter("pageName"));
 		return "mypage/mypageEditForm";
-	}
-	@GetMapping("/mypageEdit")
-	public ModelAndView mypageEdit() {
-		ModelAndView mav = new ModelAndView();
-		
-		mav.setViewName("mypage/mypageEditForm");
-		
-		return mav;
 	}
 	
 }//controller

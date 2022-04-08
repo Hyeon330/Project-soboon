@@ -62,7 +62,7 @@
 						<div style="width:75%;"><input type="text" id="userid" name="userid"/></div>
 					</li>
 					<li>
-						<div style="width:20%;">비밃번호</div>
+						<div style="width:20%;">비밀번호</div>
 						<div style="width:5%;"></div> 
 						<div style="width:75%"><input type="password" id="userpwd" name="userpwd"/></div>
 					</li>
