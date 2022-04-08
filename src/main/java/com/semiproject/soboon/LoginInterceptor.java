@@ -23,6 +23,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 		String logStatus = (String) session.getAttribute("logStatus");
 
 		if (logStatus != null && logStatus.equals("Y")) { // 로그인되었을때
+			
 			return true;
 		} else { // 로그인 안된경우
 			response.sendRedirect("/member/login");
