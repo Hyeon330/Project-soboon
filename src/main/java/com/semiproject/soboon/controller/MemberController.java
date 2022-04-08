@@ -54,6 +54,7 @@ public class MemberController {
 		
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Content-Type", "text/html; charest=utf-8");		
+		headers.add("Content-Type", "text/html; charset=utf-8");
 	
 		MemberVO vo2 = service.loginCheck(vo);
 		if (vo2 != null) {
@@ -64,7 +65,6 @@ public class MemberController {
 
 			entity = new ResponseEntity<String>(msg, headers, HttpStatus.OK);
 		} else {
-
 			String msg = "<script>alert('로그인에 실패하였습니다.\\n로그인 폼으로 돌아갑니다.'); history.back(-1);</script>";
 			entity = new ResponseEntity<String>(msg, headers, HttpStatus.BAD_REQUEST);
 		}

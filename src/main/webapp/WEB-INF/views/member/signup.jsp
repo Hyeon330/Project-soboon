@@ -59,7 +59,7 @@
 	});
 </script>
 <div class="container">
-	<h2>회원가입</h2>
+	<h2 id="signup-logo">회원가입</h2>
 	<hr/>
 	<form method="post" action="/member/memberOk" id="memberFrm" onsubmit="return memberCheck()">
 		<ul>
@@ -67,6 +67,7 @@
 			<li>
 				<input type="text" name="userid" id="userid" placeholder="아이디" />
 				<input type="button" class="btn" value="중복확인" /> 
+				<input type="text" class="signup-id" name="userid" id="userid" placeholder="아이디" />
 				<span id="chk"></span> 
 				<input type="hidden" id="idChk" value="N" />
 			</li>
@@ -80,9 +81,6 @@
 			<li>
 				<input type="text" name="nickname" id="nickname" placeholder="닉네임" />
 				<input type="button" class="btn" value="중복확인" />
-				<span id="nchk"></span> 
-				<input type="hidden" id="nickChk" value="N" />
-			</li>
 			<li>연락처</li>
 			<li>
 				<input type="text" name="tel1" id="tel1" maxlength="3" /> - 
@@ -91,10 +89,10 @@
 				<input type="button" id="tbtn" class="btn" value="인증"/>
 			</li>
 			<li>이메일</li>
-			<li><input type="text" name="email" id="email" placeholder="example@naver.com"/></li>
+				<li><input type="text" class="signup-email" name="email" id="email" placeholder="example@naver.com"/></li>
 			<li>주소</li>
-			<li><input type="text" name="address" id="address" placeholder="ex) 서울시 광진구" /></li>
-			<li><input type="submit" class="btn" id="signSub" value="가입하기" /></li>
+				<li><input type="text" class="signup-addr" name="address" id="address" placeholder="ex) 서울시 광진구" /></li>
+				<li><input type="submit" class="btn signup-btn" id="signSub" value="가입하기" /></li>
 		</ul>
 	</form>
 </div>

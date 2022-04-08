@@ -27,8 +27,7 @@ function memberCheck(){
 		$("#userpwd2").focus();
 		return false;
 	}
-	
-	reg = /^[가-힣]{2,7}$/;
+	reg = /^[a-zA-Z가-힣]{2,7}$/;
 	if($("#username").val()==''){
 		alert("이름을 입력하세요.");
 		$("#username").focus();
@@ -38,8 +37,7 @@ function memberCheck(){
 		alert("이름을 잘못 입력하였습니다. 이름은 2~7글자내로 입력하셔야 합니다.");
 		$("#username").focus();
 		return false;
-	}  
-	
+	}  	
 	reg = /^[가-힣]{2,7}$/;
 	if($("#nickname").val()==''){
 		alert("닉네임을 입력하세요.");
@@ -80,3 +78,57 @@ function memberCheck(){
 		return false;
 	}
 }
+$(function(){
+		$("#userid").keyup(function(){
+			var userid = $("#userid").val();
+			if(userid!='' && userid.length>=6){
+				var url = "/member/memberIdCheck";
+				$.ajax({
+					url:url,
+					data:"userid="+userid,
+					type:"post",
+					success:function(res){
+						if(res>0){
+							$("#chk").html("사용불가합니다.");
+							$("#idChk").val('N');
+							$("#chk").css("color","red");
+						} else{
+							$("#chk").html("사용가능합니다.");
+							$("#idChk").val('Y');
+							$("#chk").css("color","green");
+						}
+					}
+				});
+			} else{
+				$("#chk").html("사용불가합니다.");
+				$("#idChk").val('N');
+				$("#chk").css("color","red");
+			}
+		});
+		$("#nickname").keyup(function(){
+			var nickname = $("#nickname").val();
+			if(nickname!=''){
+				var url = "/member/memberNicknameCheck";
+				$.ajax({
+					url:url,
+					data:"nickname="+nickname,
+					type:"post",
+					success:function(res){
+						if(res>0){
+							$("#nchk").html("사용불가합니다.");
+							$("#nickChk").val('N');
+							$("#nchk").css("color","red");
+						} else{
+							$("#nchk").html("사용가능합니다.");
+							$("#nickChk").val('Y');
+							$("#nchk").css("color","green");
+						}
+					}
+				});
+			} else{
+				$("#nchk").html("사용불가합니다.");
+				$("#nickChk").val('N');
+				$("#nchk").css("color","red");
+			}
+		});
+	});

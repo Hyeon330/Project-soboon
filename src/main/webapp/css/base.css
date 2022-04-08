@@ -11,6 +11,8 @@ li{
 body {
 	background: linear-gradient(rgba(241, 232, 223), white);
 	font-family: 나눔스퀘어, 'NanumSquare', sans-serif;	
+	background: linear-gradient(rgba(250, 246, 243), white);
+	font-family: 나눔스퀘어, 'NanumSquare', sans-serif;
 }
 .container{
 	min-height:717px;
