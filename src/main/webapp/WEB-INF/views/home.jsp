@@ -1,11 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<<<<<<< HEAD
-<<<<<<< HEAD
-<h1>홈</h1>
-=======
-=======
->>>>>>> main
 <link rel="stylesheet" href="/css/home.css" type="text/css"/>
 <script>
 $(document).ready(function(){
@@ -218,9 +212,3 @@ $(document).ready(function(){
 		<br/>
 	</div>
 </div>
-<<<<<<< HEAD
-</div>
->>>>>>> main
-=======
-</div>
->>>>>>> main
