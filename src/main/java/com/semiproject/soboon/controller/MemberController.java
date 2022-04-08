@@ -53,31 +53,25 @@ public class MemberController {
 		ResponseEntity<String> entity = null;
 		
 		HttpHeaders headers = new HttpHeaders();
-		headers.add("Content-Type", "text/html; charest=utf-8");
-		
-		try {
-			MemberVO vo2 = service.loginCheck(vo);
-			if(vo2!=null) {
-				session.setAttribute("logId", vo2.getUserid());
-				session.setAttribute("logName", vo2.getUsername());
-				session.setAttribute("logStatus","Y");
-				String msg = "<script>location.href='/';</script>";
-				
-				entity = new ResponseEntity<String>(msg, headers, HttpStatus.OK);
-			} else {
-				throw new Exception();	
-			}
-		}catch(Exception e) {
-			e.printStackTrace();
-			
-			String msg = "<script>alert('로그인에 실패하였습니다.\n로그인 폼으로 돌아갑니다.'); history.back(-1);</script>";
+		headers.add("Content-Type", "text/html; charest=utf-8");		
+	
+		MemberVO vo2 = service.loginCheck(vo);
+		if (vo2 != null) {
+			session.setAttribute("logId", vo2.getUserid());
+			session.setAttribute("logName", vo2.getUsername());
+			session.setAttribute("logStatus", "Y");
+			String msg = "<script>location.href='/';</script>";
 
+			entity = new ResponseEntity<String>(msg, headers, HttpStatus.OK);
+		} else {
+
+			String msg = "<script>alert('로그인에 실패하였습니다.\\n로그인 폼으로 돌아갑니다.'); history.back(-1);</script>";
 			entity = new ResponseEntity<String>(msg, headers, HttpStatus.BAD_REQUEST);
 		}
+		
 		return entity;
 	}
 	
-
 	//로그아웃
 	@GetMapping("logout")
 	public ModelAndView logout(HttpSession session) {

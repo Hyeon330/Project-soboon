@@ -66,10 +66,7 @@
 			<li>아이디</li>
 			<li>
 				<input type="text" name="userid" id="userid" placeholder="아이디" />
-<<<<<<< HEAD
 				<input type="button" class="btn" value="중복확인" /> 
-=======
->>>>>>> main
 				<span id="chk"></span> 
 				<input type="hidden" id="idChk" value="N" />
 			</li>
@@ -82,10 +79,7 @@
 			<li>닉네임</li>
 			<li>
 				<input type="text" name="nickname" id="nickname" placeholder="닉네임" />
-<<<<<<< HEAD
 				<input type="button" class="btn" value="중복확인" />
-=======
->>>>>>> main
 				<span id="nchk"></span> 
 				<input type="hidden" id="nickChk" value="N" />
 			</li>
