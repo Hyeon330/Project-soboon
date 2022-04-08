@@ -5,6 +5,7 @@ nav{
 nav>hr{
 	margin:0 auto; padding:0px; width:1200px;
 }
+/*==================Top 1행==========================*/
 .topMenu1{
 	width:1200px;
 	height:60px;
@@ -19,52 +20,15 @@ nav>hr{
 	line-height:50px;
 	text-align:center;
 }
-.topMenu li{
-	float:left;
-	width:25%;
-	height:50px;
-	line-height:50px;
-	text-align:center;
-	font-size:1.3em;
-}
+/*!!!!!!!!!!로고!!!!!!!!!!*/
 .topMenu1 img{
 	width:200px;
 }
-.topMenu{
-	font-weight:700;
-	font-size:1.4em;
-	color:red;
-}
-.gridContainer{
-	width:1200px;
-	height:50px;
-	display:grid;
-	grid-template-columns:170px 600px 100px 330px;
-}
-#gridBtn{
-	margin-left:110px;
-}
 
-.bottom{
-   width:100%;
-   height:50px;
-   text-align:center;
-   color:white;
-   background-color:gray;
-}
-.sign{
-	background-color:rgb(154, 97, 66);
-	font-weight:500px;
-}
+/*--------------검색 영억---------------------*/
 #topSearch{
 	padding-left:250px;
 	padding-top:5px;
-	
-}
-
-#searchInput{
-	text-align:center;
-	
 }
 #searchBox{
 	margin-top:4px;
@@ -73,23 +37,27 @@ nav>hr{
 	background-color:white;
 	border-radius:10px;
 	border:1px solid #666;
-	
 }
-#searchBox>input{
+#searchInput{
+	text-align:center;
 	background-color:rgba(0, 0, 0, 0);
 	border:0px;
 	border-bottom:1px grid gray;
+	color:rgb(154, 97, 66);
 }
 #searchBox>input:focus{
 	border:none !important;
 	box-shadow:none !important;
 }
+/*!!!!검색박스의 돋보기 아이콘!!!!!!!!!*/
 #searchIcon{
 	padding:0 10px;	
 }
 #searchIcon:hover{
 	cursor: pointer !important;
 }
+
+/*---------------select 영억---------------------*/
 #topSelect{
 	height:50px;
 	text-align:center;
@@ -98,5 +66,37 @@ nav>hr{
   	border-radius: 10px;
     border: 2px solid none;
    	padding-top:3px;
-   	color:rgb(171, 128, 119);
+   	font-weight:100;
+}
+
+/*--------------버튼 영억---------------------*/
+.gridContainer{
+	width:1200px;
+	height:50px;
+	display:grid;
+	grid-template-columns:170px 600px 100px 330px;
+}
+
+/*!!!!!로그인 회원가입 / 마이페이지 로그아웃 버튼!!!!!!!!!!*/
+#gridBtn{
+	margin-left:110px;
+}
+.sign{
+	background-color:rgb(154, 97, 66);
+	font-weight:500px;
+}
+
+
+/*==================Top 2행==========================*/
+.topMenu{
+	font-weight:700;
+	font-size:1.4em;
+}
+
+.bottom{
+   width:100%;
+   height:50px;
+   text-align:center;
+   color:white;
+   background-color:gray;
 }
