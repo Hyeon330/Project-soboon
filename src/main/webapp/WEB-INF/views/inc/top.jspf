@@ -4,7 +4,11 @@
 <html>
 <head>
 <meta charset="utf-8">
+<<<<<<< HEAD
 <title>Insert title here</title>
+=======
+<title>소분소분</title>
+>>>>>>> main
 <!-- 부트스트랩 JS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
@@ -25,7 +29,11 @@
 					<form class="form-inline" action="/action_page.php">
 					    <div id="searchBox">
 						    <input class="form-control mr-sm-12" id="searchInput" type="text" placeholder="검색어를 입력하세요"
+<<<<<<< HEAD
 						    style="width:300px; height:40px; color:rgb(154, 97, 66);">
+=======
+						    style="width:300px; height:40px;">
+>>>>>>> main
 						    <i class="bi bi-search" id="searchIcon"></i>
 						</div>
 					</form>
@@ -39,6 +47,7 @@
 					</select>
 				</div>
 				<div id="gridBtn">
+<<<<<<< HEAD
 				<c:if test="${logStatus!='Y'}">
 					<a href="/member/login" class="btn sign" style="color:white">로그인</a>&nbsp;&nbsp;&nbsp;
 					<a href="/member/signup" class="btn sign" style="color:white">회원가입</a>
@@ -47,11 +56,25 @@
 					<a href="#" class="btn sign">마이페이지</a>&nbsp;&nbsp;&nbsp;
 					<a href="/member/logout" class="btn sign">로그아웃</a>
 				</c:if>
+=======
+					<c:if test="${logStatus!='Y'}">
+						<a href="/member/login" class="btn sign" style="color:white">로그인</a>&nbsp;&nbsp;&nbsp;
+						<a href="/member/signup" class="btn sign" style="color:white">회원가입</a>
+					</c:if>
+					<c:if test="${logStatus=='Y'}">
+						<a href="#" class="btn sign">마이페이지</a>&nbsp;&nbsp;&nbsp;
+						<a href="/member/logout" class="btn sign">로그아웃</a>
+					</c:if>
+>>>>>>> main
 				</div>
 		</div>
 	</div>
 	<hr/>
+<<<<<<< HEAD
 <div class="topMenu">
+=======
+	<div class="topMenu">
+>>>>>>> main
 		<div class="row">
 			<div class="col-lg-3"><a href="#" style="color:rgb(154, 97, 66)">나&nbsp;&nbsp;&nbsp;눔</a></div>
 			<div class="col-lg-3"><a href="#" style="color:rgb(154, 97, 66)">대&nbsp;&nbsp;&nbsp;여</a></div>

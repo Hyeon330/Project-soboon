@@ -9,10 +9,16 @@ li{
 	list-style-type:none;
 }
 body {
+<<<<<<< HEAD
 	background: linear-gradient(rgba(241, 232, 223), white);
 	font-family: 나눔스퀘어, 'NanumSquare', sans-serif;	
 	background: linear-gradient(rgba(250, 246, 243), white);
 	font-family: 나눔스퀘어, 'NanumSquare', sans-serif;
+=======
+	background: linear-gradient(rgba(250, 246, 243), white);
+	font-family: 나눔스퀘어, 'NanumSquare', sans-serif;
+	
+>>>>>>> main
 }
 .container{
 	min-height:717px;
@@ -24,6 +30,9 @@ a:active {
 	text-decoration: none;
 	color: black;
 }
+<<<<<<< HEAD
 a:hover {
 	font-weight: 500;
 }
+=======
+>>>>>>> main

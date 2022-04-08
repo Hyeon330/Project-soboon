@@ -47,7 +47,11 @@ $(document).ready(function(){
 	<br/>
 	<br/>
 	<br/>
+<<<<<<< HEAD
 		<h1 style="text-align:center">소분소분의 이야기</h1>
+=======
+	<h1 id="fuctionTitle" style="text-align:center; font-weight:bold;">소분소분의 이야기</h1>
+>>>>>>> main
 	</div>
 	<br/>
 	<a href="#"><img src="/img/inform.png" class="functionImage"/></a>
@@ -58,7 +62,11 @@ $(document).ready(function(){
 <div id="recentItem">
 	<div class="container-fluid">
 		<br/>
+<<<<<<< HEAD
 		<h1>최근 게시물</h1>
+=======
+		<h1 id="fuctionTitle" style="text-align:center; font-weight:bold;">최근 게시물</h1>
+>>>>>>> main
 		
 		<br/>
 			<div class="row">

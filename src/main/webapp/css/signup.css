@@ -22,6 +22,7 @@
 	width:100%;
 	margin-top:50px;
 }
+<<<<<<< HEAD
 h2{
 	margin:50px;
 	text-align:center;
@@ -35,6 +36,20 @@ h2{
 #tel1,#tel2,#tel3,
 #address{
 	width:40%;
+=======
+#signup-logo{
+	margin:50px;
+	text-align:center;
+}
+.signup-id,
+.signup-pwd,
+.signup-name,
+.signup-email,
+.signup-nickname,
+.signup-tel,
+.signup-addr{
+	width:30%;
+>>>>>>> main
 	border:none;
 	border-bottom:2px solid #adadad;
 	outline:none;
@@ -43,6 +58,7 @@ h2{
 	height:25px;
 	background:none;
 }
+<<<<<<< HEAD
 #userid, #nickname{
 	width:24%;
 	margin-right:20px;
@@ -55,5 +71,19 @@ h2{
 	width:60px;
 }
 .btn{
+=======
+.signup-id, .signup-nickname{
+	width:22%;
+	margin-right:20px;
+}
+.signup-tel{
+	width:49px;
+}
+#tel-btn{
+	margin-left:20px;
+	width:60px;
+}
+.signup-btn{
+>>>>>>> main
 	background-color:rgb(254, 224, 180);
 }
