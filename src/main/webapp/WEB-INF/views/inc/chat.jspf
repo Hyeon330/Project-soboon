@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <style>
 /* 채팅 리스트 위치 */
 #chatBlock{
@@ -180,85 +181,83 @@
 		});
 	});
 </script>
-<c:if test="${logStatus!='Y'}">
-	<div id="chatBlock">
-		<button id="chatBtn"><i class="bi bi-chat-square-text chat-icon"></i></button>
-		<div id="chatPopup">
-			
-			<div class="chat-head">
-				<span id="username">HyeonSu Lee</span>
-			</div>
+<div id="chatBlock">
+	<button id="chatBtn"><i class="bi bi-chat-square-text chat-icon"></i></button>
+	<div id="chatPopup">
 		
-			<div class="chat-search">
-				<div class="chat-search-box">
-					<i class="bi bi-search chat-search-icon"></i>
-					<input class="chat-search-text" type="text" placeholder="검색">
-				</div>
-			</div>
-			
-			<ul id="chatLists">
-				<li class="chat-list">
-					<div>
-						<div class="chat-info">
-							<p class="chat-name">HyeonSu Lee</p>
-							<p class="last-chat">안녕하세요~~</p>
-						</div>
-						<p class="chat-date">12월 31일</p>
-					</div>
-				</li>
-				<li class="chat-list">
-					<div>
-						<div class="chat-info">
-							<p class="chat-name">HyeonSu Lee</p>
-							<p class="last-chat">안녕하세요~~</p>
-						</div>
-						<p class="chat-date">12월 31일</p>
-					</div>
-				</li>
-				<li class="chat-list">
-					<div>
-						<div class="chat-info">
-							<p class="chat-name">HyeonSu Lee</p>
-							<p class="last-chat">안녕하세요~~</p>
-						</div>
-						<p class="chat-date">12월 31일</p>
-					</div>
-				</li>
-				
-			</ul>
-			
+		<div class="chat-head">
+			<span id="username">HyeonSu Lee</span>
 		</div>
+	
+		<div class="chat-search">
+			<div class="chat-search-box">
+				<i class="bi bi-search chat-search-icon"></i>
+				<input class="chat-search-text" type="text" placeholder="검색">
+			</div>
+		</div>
+		
+		<ul id="chatLists">
+			<li class="chat-list">
+				<div>
+					<div class="chat-info">
+						<p class="chat-name">HyeonSu Lee</p>
+						<p class="last-chat">안녕하세요~~</p>
+					</div>
+					<p class="chat-date">12월 31일</p>
+				</div>
+			</li>
+			<li class="chat-list">
+				<div>
+					<div class="chat-info">
+						<p class="chat-name">HyeonSu Lee</p>
+						<p class="last-chat">안녕하세요~~</p>
+					</div>
+					<p class="chat-date">12월 31일</p>
+				</div>
+			</li>
+			<li class="chat-list">
+				<div>
+					<div class="chat-info">
+						<p class="chat-name">HyeonSu Lee</p>
+						<p class="last-chat">안녕하세요~~</p>
+					</div>
+					<p class="chat-date">12월 31일</p>
+				</div>
+			</li>
+			
+		</ul>
+		
+	</div>
+</div>
+
+<div id="msgPopup">
+	<div class="msg-head">
+		<span id="username">HyeonSu Lee</span>
+		<i class="bi bi-x-lg msg-close"></i>
 	</div>
 	
-	<div id="msgPopup">
-		<div class="msg-head">
-			<span id="username">HyeonSu Lee</span>
-			<i class="bi bi-x-lg msg-close"></i>
-		</div>
+	<style>
+		.msg-lists{
 		
-		<style>
-			.msg-lists{
-			
-			}
-		</style>
-		<ul class="msg-lists">
-			<li class="msg-list left">안녕</li>
-			<li class="msg-list right">으아아</li>
-			<li class="msg-list left">안녕하세요~~</li>
-		</ul>
-		<style>
-			/* textarea{
-				border: none;
-				resize: none;
-			}
-			textarea:focus{
-				outline: none;
-			} */
-		</style>
-		<textarea></textarea>
-		
-		<div>
-			<button class="btn btn-info btn-sm">보내기</button>
-		</div>
+		}
+	</style>
+	<ul class="msg-lists">
+		<li class="msg-list left">안녕</li>
+		<li class="msg-list right">으아아</li>
+		<li class="msg-list left">안녕하세요~~</li>
+	</ul>
+	<style>
+		/* textarea{
+			border: none;
+			resize: none;
+		}
+		textarea:focus{
+			outline: none;
+		} */
+	</style>
+	<textarea></textarea>
+	
+	<div>
+		<button class="btn btn-info btn-sm">보내기</button>
 	</div>
-</c:if>
+</div>
