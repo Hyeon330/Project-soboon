@@ -1,5 +1,5 @@
 package com.semiproject.soboon.service;
 
-public class ShareBrdServiceImpl implements ShardBrdService {
+public class ShareBrdServiceImpl implements ShareBrdService {
 
 }
