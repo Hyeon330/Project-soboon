@@ -2,7 +2,7 @@
 <c:if test="${cnt>0}">
 	<script>
 		alert("소분소분으로 오세요~~~~~~~");
-		location.href="/myapp/member/login";
+		location.href="/member/login";
 	</script>
 </c:if>
 <c:if test="${cnt==null || cnt==0}">
