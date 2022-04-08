@@ -2,13 +2,24 @@
     pageEncoding="UTF-8"%>
 
 <script>
-	$(function(){
-		$('.sidebarMenu').click(function(){
-			$(this).css('font-size', '1.5em');
+
+
+	$(function() {
+
+		var url = window.location.pathname,
+
+		urlRegExp = new RegExp(url.replace(/\/$/, '') + "$");
+
+		$('a').each(function() {
+
+			if (urlRegExp.test(this.href.replace(/\/$/, ''))) {
+
+				$(this).addClass('active');
+			}
 		});
-		
 	});
 </script>
+
 <style>
 	#sideMenu>li {
 		background-color:rgb(250, 246, 243);
@@ -16,6 +27,7 @@
 	#sideMenuFrm>hr {
 		height: 5px; background: #ddd; border-style: none;
 	}
+	.active {font-size:1.5em;}
 </style>
 <body>
 <div id= "sideMenuFrm"style="width:30%; height:100%;">
