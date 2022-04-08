@@ -5,8 +5,12 @@
 <head>
 <meta charset="utf-8">
 <<<<<<< HEAD
+<<<<<<< HEAD
 <title>소분소분</title>
 
+=======
+<title>Insert title here</title>
+>>>>>>> main
 =======
 <title>Insert title here</title>
 >>>>>>> main
@@ -23,6 +27,7 @@
 </head>
 <body>
 <<<<<<< HEAD
+<<<<<<< HEAD
 <ul class="topMenu">
 	<li>로고</li>
 	<li></li>
@@ -34,6 +39,8 @@
 	<li>요청</li>
 </ul>
 =======
+=======
+>>>>>>> main
 <nav>
 <!-- 	<div class="topMenu">
 		<ul>
@@ -120,5 +127,9 @@
 			<div class="col-lg-3"><a href="#" style="color:rgb(154, 97, 66)">요&nbsp;&nbsp;&nbsp;청</a></div>
 		</div>
 	</div>
+<<<<<<< HEAD
+</nav>
+>>>>>>> main
+=======
 </nav>
 >>>>>>> main
