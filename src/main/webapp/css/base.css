@@ -10,10 +10,16 @@ li{
 body {
 	background-color: #FAF6F3;
 }
-main
+
+body {
+	background-color: #FAF6F3;
+}
 ul,
 li{
 	list-style-type:none;
+}
+.container{
+	min-height:717px;
 }
 a,
 a:visited,
