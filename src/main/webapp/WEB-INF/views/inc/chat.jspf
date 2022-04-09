@@ -7,6 +7,7 @@
 	right: 20px;
 	bottom: 0;
 	width: 230px;
+	z-index: 999;
 }
 #chatBtn {
 	position: relative;
@@ -68,7 +69,7 @@
 
 /* 채팅 리스트 */
 #chatLists{
-	overflow-y: scroll;
+	overflow: auto;
 }
 #chatLists::-webkit-scrollbar{
 	width: 3px;
@@ -118,6 +119,8 @@
 	border-radius: 10px;
 	border: 1px solid #ddd;
 	overflow: hidden;
+	z-index: 999;
+	display: none;
 }
 /* 메시지창 헤더 */
 .msg-head{
@@ -132,16 +135,8 @@
 .msg-close{
 	float: right;
 }
-
-
 .msg-close:hover{
 	cursor: pointer;
-}
-.msg-list.left{
-	color: blue;
-}
-.msg-list.right{
-	color: red;
 }
 </style>
 <script>
@@ -184,6 +179,25 @@
 		});
 		$('.chat-search-text').blur(function(){
 			$('.chat-search-box').css('border','2px solid rgba(0,0,0,0)');
+		});
+		
+		// 메시지 창 열고 닫기
+		$('.msg-close').click(() => {
+			$('#msgPopup').css('display', 'none');
+		});
+		$('.chat-list').click(() => {
+			$('#msgPopup').css('display', 'block');
+		});
+		
+		const sendMessage = () => {
+			console.log('send!!');
+			$('.msg-textarea').val('');
+		}
+		
+		$('.msg-textarea').keyup((e)=>{
+			if($('.msg-textarea').val() != '' && e.keyCode === 13 && !e.shiftKey){
+				sendMessage();
+			}
 		});
 	});
 </script>
@@ -244,27 +258,89 @@
 	
 	<style>
 		.msg-lists{
-			background-color: skyblue;
+			height: 300px;
+			overflow: auto;
+			border-bottom: 1px solid #ccc;
+			padding: 5px;
+		}
+		.msg-list{
+			width: 288px;
+			font-size: 14px;
+			font-weight: bold;
+			overflow: auto;
+		}
+		.msg-list > div{
+			position: relative;
+			padding: 5px 10px;
+			border-radius: 15px;
+			max-width: 150px;
+			margin: 2px 0;
+		}
+		.msg-list.left > div{
+			background: #FDD2BF;
+			float: left;
+			border: 1px solid #ddd;
+		}
+		.msg-list.right > div{
+			background: #FEF7DC;
+			float: right;
+			border: 1px solid #ddd;
 		}
 	</style>
 	<ul class="msg-lists">
-		<li class="msg-list left">안녕</li>
-		<li class="msg-list right">으아아</li>
-		<li class="msg-list left">안녕하세요~~</li>
+		<li class="msg-list left"><div>안녕하세요 저는 이현수 입니다. 잘 부탁드립니다.</div></li>
+		<li class="msg-list right"><div>ㄹㅇ너ㅏㅣ멍ㄹ남</div></li>
+		<li class="msg-list left"><div>안녕하세요~~</div></li>
+		<li class="msg-list right"><div>adsfdfasasdf</div></li>
+		<li class="msg-list left"><div>안녕하세요~~</div></li>
+		<li class="msg-list left"><div>안녕하세요~~</div></li>
 	</ul>
 	
 	<style>
-		/* textarea{
+		.msg-textarea-box {
+			width: inherit;
+			padding: 5px;
+			border-bottom: 1px solid #ccc;
+		}
+		.msg-textarea{
 			border: none;
 			resize: none;
+			width: 288px;
+			height: 50px;
+			font-size: 14px;
+			line-height: 16px;
+			background: rgba(0,0,0,0);
 		}
-		textarea:focus{
+		.msg-textarea:focus{
 			outline: none;
-		} */
+		}
+		.msg-textarea::-webkit-scrollbar{
+			width: 3px;
+		}
+		.msg-textarea::-webkit-scrollbar-thumb{
+			background-color: #888;
+			border-radius: 10px;
+		}
+		.msg-btns{
+			width: inherit;
+		}
+		.msg-send-btn{
+			float: right;
+			margin: 5px 15px;
+			border-radius: 50px;
+			box-shadow: none !important;
+			border: 1px solid gray;
+			outline: none;
+			background-color: #ddd;
+			font-size: 14px;
+			height: 33px;
+			width: 60px;
+		}
 	</style>
-	<textarea></textarea>
-	
-	<div>
-		<button class="btn btn-info btn-sm">보내기</button>
+	<div class="msg-textarea-box">
+		<textarea class="msg-textarea" placeholder="메시지 입력"></textarea>
+	</div>
+	<div class="msg-btns">
+		<button class="msg-send-btn">보내기</button>
 	</div>
 </div>

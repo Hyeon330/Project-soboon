@@ -1,3 +1,4 @@
+<%@page import="javax.print.attribute.HashPrintRequestAttributeSet"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
@@ -57,6 +58,7 @@
 			<div class="col-lg-3"><a href="#" style="color:rgb(154, 97, 66)">대&nbsp;&nbsp;&nbsp;여</a></div>
 			<div class="col-lg-3"><a href="#" style="color:rgb(154, 97, 66)">판&nbsp;&nbsp;&nbsp;매</a></div>
 			<div class="col-lg-3"><a href="#" style="color:rgb(154, 97, 66)">요&nbsp;&nbsp;&nbsp;청</a></div>
+			
 		</div>
 	</div>
 </nav>
