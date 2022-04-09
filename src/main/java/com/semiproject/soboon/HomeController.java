@@ -13,7 +13,6 @@ public class HomeController {
 //		session.setAttribute("userid", "jihyang123");
 //		session.setAttribute("nickname", "이쟝");
 //		session.setAttribute("address", "서울 강동구");
-		System.out.println(session.getAttribute("logId"));
 		return "home";
 	}
 }

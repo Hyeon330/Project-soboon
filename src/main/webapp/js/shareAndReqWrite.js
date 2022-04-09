@@ -4,7 +4,7 @@ $(function(){
 			startupFocus : false,
 		});
 
-		$("#shareUploadBtn").click(function(){
+		$("#uploadBtn").click(function(){
 			if($("#innerFiles").css("display")=='none'){
 				$("#innerFiles").show();
 			}else{
@@ -12,8 +12,8 @@ $(function(){
 			};
 		});
 		
-		$("#shareForm").submit(function(){
-			if($("#writeTitle").val()==''){
+		$("#shareAndReqTitle").submit(function(){
+			if($("#shareAndReqTitle").val()==''){
 				alert("🚫 제목을 입력해주세요");
 				return false;
 			}

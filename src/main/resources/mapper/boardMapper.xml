@@ -2,13 +2,16 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.semiproject.soboon.dao.ShareBrdDAO">
-	<insert id="shareInsert">
+<mapper namespace="com.semiproject.soboon.dao.BoardDAO">
+	<insert id="shareAndReqInsert">
 		insert into board(userid, title, content, category, thumbnailImg, img1, img2, img3)
 		value(#{userid},#{title},#{content}, #{category}, #{thumbnailImg}, #{img1}, #{img2}, #{img3})
 	</insert>
-	<select id="shareListSelect" resultType="com.semiproject.soboon.vo.BoardVO">
+	<select id="selectList" resultType="com.semiproject.soboon.vo.BoardVO">
 		select title, date_format(createdate, "%m/%d %H:%i")createdate,
-		thumbnailImg, pick, views from board order by no desc;
+		thumbnailImg, pick, views, price from board where category=#{param1} order by no desc
+	</select>
+	<select id="selectCategory" resultType="com.semiproject.soboon.vo.BoardVO">
+		select category from board where category=#{param1} limit 1
 	</select>
 </mapper>

@@ -6,23 +6,28 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
-import com.semiproject.soboon.dao.ShareBrdDAO;
+import com.semiproject.soboon.dao.BoardDAO;
 import com.semiproject.soboon.vo.BoardVO;
 
 @Service
-public class ShareBrdServiceImpl implements ShareBrdService {
+public class BoardServiceImpl implements BoardService {
 
 	@Inject
-	ShareBrdDAO dao;
-	
+	BoardDAO dao;
+
 	@Override
-	public int shareInsert(BoardVO vo) {
-		return dao.shareInsert(vo);
+	public int shareAndReqInsert(BoardVO vo) {
+		return dao.shareAndReqInsert(vo);
 	}
 
 	@Override
-	public List<BoardVO> shareListSelect() {
-		return dao.shareListSelect();
+	public List<BoardVO> selectList(String category) {
+		return dao.selectList(category);
+	}
+
+	@Override
+	public BoardVO selectCategory(String category) {
+		return dao.selectCategory(category);
 	}
 
 }

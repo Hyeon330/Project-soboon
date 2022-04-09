@@ -20,38 +20,45 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.semiproject.soboon.RelateUploadImgFile;
-import com.semiproject.soboon.service.ShareBrdService;
+import com.semiproject.soboon.service.BoardService;
 import com.semiproject.soboon.vo.BoardVO;
 
-@RequestMapping("/shareBoard/")
+@RequestMapping("/board/")
 @RestController
-public class ShareBrdController {
+public class BoardController {
 	
 	@Inject
-	ShareBrdService service;
+	BoardService service;
 	
 	ModelAndView mav = new ModelAndView();
 	ResponseEntity<String> entity = null;
 	
-	@GetMapping("shareList")
-	public ModelAndView shareForm() {
-		mav.addObject("list", service.shareListSelect());
-		mav.setViewName("shareBoard/shareList");
+	@GetMapping("shareAndReqList")
+	public ModelAndView shareAndReqListForm(String category) {
+		mav.addObject("list", service.selectList(category));
+		if(category.equals("share")||category.equals("request")) {
+			mav.setViewName("board/shareAndReqList");
+		}
+		mav.addObject("shareVO", service.selectCategory(category));
 		return  mav;
 	}
-	
-	@GetMapping("shareWrite")
-	public ModelAndView shareWrite() {
-		mav.setViewName("shareBoard/shareWrite");
+
+	@GetMapping("shareAndReqWrite")
+	public ModelAndView shareAndReqWrite() {
+		mav.setViewName("board/shareAndReqWrite");
 		return mav;
 	}
 
-	@PostMapping("shareWriteOk")
-	public ResponseEntity<String> shareWriteOk(BoardVO vo, HttpServletRequest request){
+	@GetMapping("shareAndReqView")
+	public ModelAndView shareAndReqView() {
+		mav.setViewName("board/shareAndReqView");
+		return mav;
+	}
+	
+	@PostMapping("shareAndReqWriteOk")
+	public ResponseEntity<String> shareAndReqWriteOk(BoardVO vo, HttpServletRequest request){
 		// 현재 session에 있는 ID 구하기
 		vo.setUserid((String)request.getSession().getAttribute("logId")); 
-		// 현재 카테고리 설정
-		vo.setCategory("나눔");
 
 		// 결과를 return할 페이지 구조 
 		HttpHeaders headers = new HttpHeaders();
@@ -59,13 +66,12 @@ public class ShareBrdController {
 		
 		// 파일을 업로드할 폴더 절대경로
 		String path = request.getSession().getServletContext().getRealPath("/upload");
-		
 		try { 
 			// 파일 업로드 성공
 			RelateUploadImgFile.fileRenameAndUpload(vo, path, request);
 			// 업로드 성공(DB에 레코드 등록)
-			service.shareInsert(vo);
-			String msg = "<script>alert('🟢 글이 등록되었습니다.'); location.href='/shareBoard/shareView';</script>";
+			service.shareAndReqInsert(vo);
+			String msg = "<script>alert('🟢 글이 등록되었습니다.'); location.href='/board/shareAndReqView';</script>";
 			entity = new ResponseEntity<String>(msg, headers, HttpStatus.OK);
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -81,10 +87,16 @@ public class ShareBrdController {
 		}
 		return entity;
 	}
-
-	@GetMapping("shareView")
-	public ModelAndView shareView() {
-		mav.setViewName("shareBoard/shareView");
-		return mav;
+	
+	
+	
+	@GetMapping("rentAndSaleList")
+	public ModelAndView priceListForm(String category) {
+		mav.addObject("list", service.selectList(category));
+		if(category.equals("rent") || category.equals("sale")) {
+			mav.setViewName("board/rentAndSaleList");
+		}
+		return  mav;
 	}
+
 }

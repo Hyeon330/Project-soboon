@@ -9,11 +9,15 @@ import com.semiproject.soboon.vo.BoardVO;
 
 @Mapper 
 @Repository
-public interface ShareBrdDAO {
+public interface BoardDAO {
 
-	// 글 등록
-	public int shareInsert(BoardVO vo); 
+	// 나눔,요청 글 등록
+	public int shareAndReqInsert(BoardVO vo); 
 	
 	// 글 리스트 보이기
-	public List<BoardVO> shareListSelect();
+	public List<BoardVO> selectList(String category);
+	
+	// 카테고리 가져오기
+	public BoardVO selectCategory(String category);
+	
 }
