@@ -13,4 +13,13 @@
 		join member d on d.userid=a.receiver
 		order by chatno desc;
 	</select>
+	<select id="getAllMessage" resultType="ChatVO">
+		select a.*
+		from chat a
+		join (select userid from member where nickname=#{param2})b
+		on (a.sender=#{param1}
+		and a.receiver=b.userid)
+		or (a.sender=b.userid
+		and receiver=#{param1});
+	</select>
 </mapper>

@@ -22,7 +22,7 @@ io.sockets.on('connection', (socket) => {
     socket.on('send-nickname', (nickname) => {
         userList.push({
             nickName: nickname,
-            socketId: socket.idsa
+            socketId: socket.id
         });
     });
 

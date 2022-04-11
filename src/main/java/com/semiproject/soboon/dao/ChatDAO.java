@@ -11,4 +11,5 @@ import com.semiproject.soboon.vo.ChatVO;
 @Repository
 public interface ChatDAO {
 	public List<ChatVO> getLastMessage(String userid);
+	public List<ChatVO> getAllMessage(String myUserid, String oppNickname);
 }

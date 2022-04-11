@@ -1,7 +1,6 @@
 package com.semiproject.soboon.controller;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -10,6 +9,7 @@ import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -43,10 +43,24 @@ public class ChatController {
 			}
 		}
 		
-		for (ChatVO chatVO : resultList) {
-			System.out.println(chatVO.toString());
+		return resultList;
+	}
+	
+	@PostMapping("getAllMessage")
+	public List<ChatVO> getAllMessage(String oppNickname, HttpSession session){
+		String myId = (String)session.getAttribute("logId");
+		List<ChatVO> list = service.getAllMessage(myId, oppNickname);
+		
+		for (ChatVO chatVO : list) {
+			if(chatVO.getSender().equals(myId)) {
+				chatVO.setS_nickname((String)session.getAttribute("nickName"));
+				chatVO.setR_nickname(oppNickname);
+			} else {
+				chatVO.setS_nickname(oppNickname);
+				chatVO.setR_nickname((String)session.getAttribute("nickName"));
+			}
 		}
 		
-		return resultList;
+		return list;
 	}
 }
