@@ -154,6 +154,15 @@ $(function(){
 							<li>전화번호</li>
 							<li>이메일</li>
 							<li>주소</li>
+						
+						<li><input type="checkbox" id="checkAll"></li>
+							<li>soboona3b3</li>
+							<li>0 회</li>
+							<li>관리자</li>
+							<li>관리자</li>
+							<li>010-1111-2222</li>
+							<li>admin@admin.co.kr</li>
+							<li>서울시 강남구</li>
 						</ul>
 					</div>
 					<div class="tab-pane fade" id="reportMgr">
