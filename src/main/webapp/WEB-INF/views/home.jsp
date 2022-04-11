@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
 <link rel="stylesheet" href="/css/home.css" type="text/css"/>
 	<div class="mainContainer">
 		<div class="typingContainer">
@@ -24,7 +23,8 @@
 			<br/>
 			<h1 id="fuctionTitle" style="text-align:center; font-weight:bold; color:rgb(154, 97, 66);">소분소분의 이야기</h1>
 			<br/>
-			<a href="#"><img src="/img/inform1.png" class="functionImage"/></a>				<a href="#"><img src="/img/inform2.png" class="functionImage"/></a>
+			<a href="/board/shareAndReqList?category=share"><img src="/img/inform1.png" class="functionImage"/></a>				
+			<a href="#"><img src="/img/inform2.png" class="functionImage"/></a>
 			<a href="#"><img src="/img/inform3.png" class="functionImage"/></a>
 			<a href="#"><img src="/img/inform4.png" class="functionImage"/></a>
 		</div>
@@ -187,4 +187,3 @@
 			</div>
 		</div>
 <script src="/js/home.js"></script>
-
