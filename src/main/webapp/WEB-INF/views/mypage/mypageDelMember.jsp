@@ -3,7 +3,11 @@
 
 
 <style>
-	#mypageContainer { height: 500px; margin-top: 10px;}
+	#mypageContainer {
+		height: 500px;
+	  	margin-top: 50px;
+	  	background-color:RGB(252, 249, 248);
+	  }
 	#mypageContainer>div {
 		float: left;
 	}
