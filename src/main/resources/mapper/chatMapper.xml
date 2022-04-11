@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.semiproject.soboon.dao.ChatDAO">
+	<select id="getLastMessage" resultType="ChatVO">
+		select a.chatno, a.datetime, a.msg , c.nickname s_nickname, d.nickname r_nickname, a.chat_read
+		from chat a join
+		(select max(chatno) chatno from chat
+		where sender=#{param1} or receiver=#{param1} 
+		group by sender, receiver) b on a.chatno=b.chatno
+		join member c on c.userid=a.sender
+		join member d on d.userid=a.receiver
+		order by chatno desc;
+	</select>
+</mapper>

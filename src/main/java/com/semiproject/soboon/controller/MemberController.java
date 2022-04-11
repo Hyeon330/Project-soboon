@@ -60,6 +60,7 @@ public class MemberController {
 		if (vo2 != null) {
 			session.setAttribute("logId", vo2.getUserid());
 			session.setAttribute("logName", vo2.getUsername());
+			session.setAttribute("nickName", vo2.getNickname());
 			session.setAttribute("logStatus", "Y");
 			String msg = "<script>location.href='/';</script>";
 
