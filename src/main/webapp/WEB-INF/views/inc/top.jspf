@@ -42,20 +42,15 @@
 						<a href="/member/signup" class="btn sign" style="color:white">회원가입</a>
 					</c:if>
 					<c:if test="${logStatus=='Y'}">
-<<<<<<< HEAD
 						<c:if test="${logAdmin==9}">
 							<a href="/admin" class="btn sign">관리자모드</a>&nbsp;&nbsp;&nbsp;
 							<a href="/member/logout" class="btn sign">로그아웃</a>
 						</c:if>
 						<c:if test="${logAdmin!=9}">
-							<a href="#" class="btn sign">마이페이지</a>&nbsp;&nbsp;&nbsp;
+							<a href="/areaSelect" class="btn sign">지역선택</a>&nbsp;&nbsp;&nbsp;
+						<a href="/mypage/showView?pageName=showView" class="btn sign">마이페이지</a>&nbsp;&nbsp;&nbsp;
 							<a href="/member/logout" class="btn sign">로그아웃</a>
 						</c:if>
-=======
-						<a href="/areaSelect" class="btn sign">지역선택</a>&nbsp;&nbsp;&nbsp;
-						<a href="/mypage/showView?pageName=showView" class="btn sign">마이페이지</a>&nbsp;&nbsp;&nbsp;
-						<a href="/member/logout" class="btn sign">로그아웃</a>
->>>>>>> main
 					</c:if>
 				</div>
 			</div>
