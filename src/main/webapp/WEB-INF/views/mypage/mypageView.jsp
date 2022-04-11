@@ -29,7 +29,24 @@
 		<hr/>
 		<form id="delFrm" method="post" action="/mypage/delMemberOk" class="formFrm-YES">
 			<div style="width:100%; height: 80%;">
-				<i class="bi bi-person-circle" style="font-size: 100px; color: cornflowerblue;"></i>
+				<div><i class="bi bi-person-circle" style="font-size: 100px; color: gray;"></i></div>
+				<div>${vo.userid }</div>
+				<div>${vo.address }</div>
+				<div>${vo.email }</div>
+				<div>
+					<div>
+						<div>작성글</div>
+						<div>3개</div>
+					</div>
+					<div>
+						<div>작성글</div>
+						<div>3개</div>
+					</div>
+					<div>
+						<div>작성글</div>
+						<div>3개</div>
+					</div>
+				</div>
 			</div>
 			<div style="width:100%; height: 90px;"><input type="submit" class="btn btn-success btn-last" value="탈퇴" id="btn_delMember"/></div>
 		</form>
