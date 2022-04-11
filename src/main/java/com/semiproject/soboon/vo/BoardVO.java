@@ -18,6 +18,9 @@ public class BoardVO {
 	private String category;
 	private String price;
 	
+	// 삭제할 파일을 담을 변수
+	private String deleteFile[];
+	
 	public int getNo() {
 		return no;
 	}
@@ -113,6 +116,12 @@ public class BoardVO {
 	}
 	public void setPrice(String price) {
 		this.price = price;
+	}
+	public String[] getDeleteFile() {
+		return deleteFile;
+	}
+	public void setDeleteFile(String deleteFile[]) {
+		this.deleteFile = deleteFile;
 	}
 
 	

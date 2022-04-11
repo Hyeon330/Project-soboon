@@ -49,7 +49,7 @@ public class RelateUploadImgFile {
 							String ext = orgFileName.substring(point+1); // 확장자
 							
 							// 새로 rename 하기 
-							f = new File(path, filename + " (" + renameNum + ")" + ext);
+							f = new File(path, filename + "[" + renameNum + "]" + ext);
 							if(!f.exists()) { // 
 								orgFileName = f.getName();
 								break;

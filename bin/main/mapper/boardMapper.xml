@@ -4,14 +4,51 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.semiproject.soboon.dao.BoardDAO">
 	<insert id="shareAndReqInsert">
-		insert into board(userid, title, content, category, thumbnailImg, img1, img2, img3)
-		value(#{userid},#{title},#{content}, #{category}, #{thumbnailImg}, #{img1}, #{img2}, #{img3})
+		insert into board(userid, title, content, thumbnailImg, img1, img2, img3, category)
+		value(#{userid},#{title},#{content}, #{thumbnailImg}, #{img1}, #{img2}, #{img3}, #{category})
 	</insert>
-	<select id="selectList" resultType="com.semiproject.soboon.vo.BoardVO">
-		select title, date_format(createdate, "%m/%d %H:%i")createdate,
-		thumbnailImg, pick, views, price from board where category=#{param1} order by no desc
+	<select id="selectList" resultType="map">
+		select b.no, b.title, date_format(b.createdate, "%m/%d %H:%i")createdate,
+		b.thumbnailImg, b.joinno, b.pick, b.views, b.price, b.category, m.address, m.nickname
+		from board b join member m on m.userid = b.userid
+		where category=#{param1} order by no desc
 	</select>
 	<select id="selectCategory" resultType="com.semiproject.soboon.vo.BoardVO">
 		select category from board where category=#{param1} limit 1
+	</select>
+	<select id="selectView" resultType="map">
+		select b.no, b.userid, b.category, b.title, b. views, date_format(b.createdate, "%m/%d %H:%i")createdate,
+		b.thumbnailImg, b.img1, b.img2, b.img3, m.nickname, m.address, b.joinno, b.price, 
+		b.content from board b join member m on m.userid = b.userid 
+		where no=#{param1} and category=#{param2}
+	</select>
+	<update id="updateViews">
+		update board set views=views+1 where no=#{param1}
+	</update>
+	<select id="selectEditView" resultType="com.semiproject.soboon.vo.BoardVO">
+		select no, category, title, content, thumbnailImg, img1, img2, img3 
+		from board where no=#{param1} and category=#{param2} 
+	</select>
+	<update id="updateEditView">
+		update board set title=#{title}, content=#{content}, 
+		thumbnailImg=#{thumbnailImg}, img1=#{img1}, img2=#{img2}, img3=#{img3}
+		where no=${no} and userid=#{userid}
+	</update>
+	<select id="getFileName" resultType="com.semiproject.soboon.vo.BoardVO">
+		select thumbnailImg, img1, img2, img3 from board where no=${param1}
+	</select>
+	<delete id="deleteView">
+		delete from board where no=#{param1} and category=#{param2} and userid=#{param3}
+	</delete>
+	
+	<insert id="insertJoin" parameterType="com.semiproject.soboon.vo.JoinVO">
+		insert into joinlist
+		values(0,#{boardno},#{userid})
+	</insert>
+	<update id="updateJoinPlus" parameterType="com.semiproject.soboon.vo.BoardVO">
+		update board set joinno=joinno+1 where no=#{param1}
+	</update>
+	<select id="selectJoin" resultType="com.semiproject.soboon.vo.BoardVO">
+		select joinno from board where no=#{no}
 	</select>
 </mapper>

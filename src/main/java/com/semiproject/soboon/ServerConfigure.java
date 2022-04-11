@@ -15,7 +15,7 @@ public class ServerConfigure implements WebMvcConfigurer {
 	private static final List<String> URL_PATERRNS = Arrays.asList(
 			"/board/shareAndReqWrite","/board/shareAndReqWriteOK",
 			"/board/boardEdit","/board/boardEditOk",
-			"/board/boardDel"
+			"/board/boardDel","/board/joinPlus"
 			);
 	
 	public void addInterceptors(InterceptorRegistry registry) {
