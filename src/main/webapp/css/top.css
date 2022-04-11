@@ -20,6 +20,7 @@ nav>hr{
 	line-height:50px;
 	text-align:center;
 }
+
 /*!!!!!!!!!!로고!!!!!!!!!!*/
 .topMenu1 img{
 	width:200px;
@@ -27,7 +28,7 @@ nav>hr{
 
 /*--------------검색 영억---------------------*/
 #topSearch{
-	padding-left:250px;
+	padding-left:150px;
 	padding-top:5px;
 }
 #searchBox{
@@ -74,7 +75,7 @@ nav>hr{
 	width:1200px;
 	height:50px;
 	display:grid;
-	grid-template-columns:170px 600px 100px 330px;
+	grid-template-columns:170px 520px 100px 410px;
 }
 
 /*!!!!!로그인 회원가입 / 마이페이지 로그아웃 버튼!!!!!!!!!!*/
