@@ -1,0 +1,9 @@
+@charset "UTF-8";
+.entireContaier{
+	background: linear-gradient(rgb(241, 232, 223), white);
+	margin:0 auto;
+}
+.addrContainer{
+	width:1200px;
+	margin:0 auto;
+}

@@ -1,20 +1,55 @@
 @charset "UTF-8";
-.entireContaier{
-	background: linear-gradient(rgb(241, 232, 223), white);
-}
+	
 .indexContainer{
-	width:1200px;
+	width:100%;
 	margin:0 auto;
 }
-.indexContainer img{
-	width:1200px;
-	height:717px;
+.mainContainer{
+	width:100%;
+	height:800px;
+	float:left;	
+	background-color:rgb(241, 232, 223);
+	display:block;
 }
+.typingContainer{
+	padding-top:280px;
+	padding-bottom:23 5px;
+	width:49%;
+	position:block;
+	color:rgb(154, 97, 66);
+	text-align:center;
+	display:inline-block;
+}
+.lg-text{
+	font-size:3rem;
+	font-weight:600;
+}
+.sm-text{
+	font-size:2em;
+	font-weight:500;
+}
+#dynamic{
+	position:relative;
+}
+.slide{
+	display:inline-block;
+	float:right;	
+	position:relative;
+	width:49%;
+}	
+.slide>ul>li>img{
+	padding:70px;
+	position:absolute;
+	width:100%;
+	height:800px;
+	opacity:60%;
+}
+/*=================소분이야기=============================================*/
+
 #functionIntroduce{
 	width:1200px;
-	height:850px;
-	margin:0 auto;
-	background: linear-gradient(rgb(241, 232, 223), white);
+	height:750px;
+	margin:0px auto;
 }
 #functionIntroduce img{
 	width:240px;
@@ -24,12 +59,26 @@
 	float:left;
 	filter : drop-shadow(5px 5px 5px rgb(192, 188, 177));
 }
+
 .functionImage{
 	width:25%;
+}
+/*=================최근게시물============================================*/
+#bottomConatainer{
+	width:100%;
+	display:block;
+	background-color:rgb(241, 232, 223);
 }
 #recentItem{
 	width:1200px;
 	height:850px;
 	margin:0 auto;
-	background-color:white;
+	overflow:auto;
+	background-color:rgb(241, 232, 223);
 }
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> main
