@@ -16,5 +16,12 @@ public class HomeController {
 		System.out.println(session.getAttribute("logId"));
 		return "home";
 	}
+	
+	@GetMapping("/areaSelect")
+	public ModelAndView areaSelectForm() {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("areaSelect");
+		return mav;
+	}
 }
 
