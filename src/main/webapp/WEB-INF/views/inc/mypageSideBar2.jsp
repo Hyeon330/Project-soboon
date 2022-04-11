@@ -31,6 +31,8 @@
 			pageSubmitFn(menu);
 		});
 		
+		$.ajax 
+		
 		
 	});
 
@@ -45,6 +47,14 @@
 		height: 5px; background: #ddd; border-style: none;
 	}
 	.active {font-size:1.5em; background-color:orange !important; border-style: none !important;}
+	button {
+		border-style: none; background-color: red; height:100%;
+	}
+	.list-group-item {
+		
+	}
+	
+	
 </style>
 
 
@@ -52,7 +62,7 @@
 		<h1>마이페이지</h1>
 		<hr/>
 		<ul id="sideMenu"  class="list-group list-group-flush">
-			<li class="list-group-item" id="showView"><a href="#" class="sidebarMenu">내가 쓴 글보기</a></li>
+			<li class="list-group-item" id="showView"><button>내가 쓴 글보기</button></li>
 			<li class="list-group-item" id="editForm"><a href="#"  class="sidebarMenu">개인정보수정</a></li>
 			<li class="list-group-item" id="delMember"><a href="#" class="sidebarMenu">회원탈퇴</a></li>
 		</ul>
