@@ -12,7 +12,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <!-- 부트스트랩 JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
-
 <link rel="stylesheet" href="/css/top.css" type="text/css"/>
 <link rel="stylesheet" href="/css/base.css" type="text/css"/>
 </head>
@@ -45,7 +44,7 @@
 					</c:if>
 					<c:if test="${logStatus=='Y'}">
 						<a href="/areaSelect" class="btn sign">지역선택</a>&nbsp;&nbsp;&nbsp;
-						<a href="#" class="btn sign">마이페이지</a>&nbsp;&nbsp;&nbsp;
+						<a href="/mypage/showView?pageName=showView" class="btn sign">마이페이지</a>&nbsp;&nbsp;&nbsp;
 						<a href="/member/logout" class="btn sign">로그아웃</a>
 					</c:if>
 				</div>
