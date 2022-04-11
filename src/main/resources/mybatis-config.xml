@@ -3,12 +3,4 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-	<mappers>
-		<mapper resource="mapper/memberMapper.xml"></mapper>
-<<<<<<< HEAD
-		<mapper resource="mapper/boardMapper.xml"></mapper>
-=======
-		<mapper resource="mapper/editMapper.xml"></mapper>
->>>>>>> 6d6b27eae3a86f52c180229914c3c23906f17904
-	</mappers>
 </configuration>
