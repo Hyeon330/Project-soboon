@@ -60,6 +60,7 @@ public class MemberController {
 			session.setAttribute("logId", vo2.getUserid());
 			session.setAttribute("logName", vo2.getUsername());
 			session.setAttribute("logStatus", "Y");
+			session.setAttribute("logAdmin", "9");
 			String msg = "<script>location.href='/';</script>";
 
 			entity = new ResponseEntity<String>(msg, headers, HttpStatus.OK);

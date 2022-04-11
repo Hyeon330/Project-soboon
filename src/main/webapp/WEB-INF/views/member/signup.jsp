@@ -39,8 +39,6 @@
 			<li><input type="submit" class="btn signup-btn" id="signSub" value="가입하기" /></li>
 		</ul>
 	</form>
-<<<<<<< HEAD
 </div>
-=======
-</div>
->>>>>>> main
+
+

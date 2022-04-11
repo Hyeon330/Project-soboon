@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.semiproject.soboon.dao.MemberDAO;
 import com.semiproject.soboon.vo.MemberVO;
+import com.semiproject.soboon.vo.PagingVO;
 
 @Service
 public class MemberServiceImpl implements MemberService{
@@ -32,6 +33,15 @@ public class MemberServiceImpl implements MemberService{
 	public MemberVO loginCheck(MemberVO vo) {
 		return dao.loginCheck(vo);
 	}
-	
+
+	@Override
+	public int totalRecord(PagingVO pVO) {
+		return dao.totalRecord(pVO);
+	}
+
+	@Override
+	public Object memberList(PagingVO pVO) {
+		return dao.MemberList(pVO); //수정해야됨 왜 들어간건지 의문1
+	}
 	
 }
