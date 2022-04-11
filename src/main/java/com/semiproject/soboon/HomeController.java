@@ -11,5 +11,12 @@ public class HomeController {
 	public String home() {
 		return "home";
 	}
+	
+	@GetMapping("/areaSelect")
+	public ModelAndView areaSelectForm() {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("areaSelect");
+		return mav;
+	}
 }
 
