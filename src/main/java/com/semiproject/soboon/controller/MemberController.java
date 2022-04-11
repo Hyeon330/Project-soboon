@@ -1,8 +1,11 @@
 package com.semiproject.soboon.controller;
 
+import java.util.HashMap;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,9 +14,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.semiproject.soboon.service.KakaoAPI;
 import com.semiproject.soboon.service.MemberService;
 import com.semiproject.soboon.vo.MemberVO;
 
@@ -23,6 +28,9 @@ public class MemberController {
 	
 	@Inject
 	MemberService service;
+	@Autowired
+	KakaoAPI kakao;
+	
 	
 	@GetMapping("signup")
 	public String memberForm() {
@@ -76,9 +84,42 @@ public class MemberController {
 	@GetMapping("logout")
 	public ModelAndView logout(HttpSession session) {
 		session.invalidate();
+		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("redirect:/");
 		return mav;
+	}
+	
+	//카카오톡 로그인
+	@GetMapping("kakao/klogin")
+	public String kakaoLogin(@RequestParam("code") String code,HttpSession session) {
+		
+		String access_Token = kakao.getAccessToken(code);
+		HashMap<String, Object> userInfo = kakao.getUserInfo(access_Token);
+		System.out.println("login Controller: " + userInfo.get("email"));
+		
+//		// 클라이언트의 이메일이 존재할 때 세션에 해당 이메일과 토큰 등록
+		System.out.println(kakao.getUserInfo("email"));
+		if(userInfo.get("email") != null) {
+			session.setAttribute("logId", userInfo.get("email"));
+			session.setAttribute("access_Token", access_Token);
+			session.setAttribute("logStatus", "Y");
+		}else {
+			session.setAttribute("logStatus", "N");
+			System.out.println("N");
+		}
+		
+		return "redirect:/";
+	}
+	
+	//카카오톡 로그아웃
+	@RequestMapping(value="logout")
+	public String klogout(HttpSession session) {
+		kakao.kakaoLogout((String)session.getAttribute("access_Token"));
+		session.removeAttribute("access_Token");
+		session.removeAttribute("logId");
+		session.removeAttribute("logStatus");
+		return "redirect:/";
 	}
 	
 	@PostMapping("memberIdCheck")

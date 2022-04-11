@@ -28,6 +28,9 @@ dependencies {
 	implementation 'javax.servlet:jstl:1.2'
 	// javax Inject
 	implementation 'javax.inject:javax.inject:1'
+	// gson
+	implementation 'com.google.code.gson:gson:2.8.5'
+	
 }
 
 tasks.named('test') {

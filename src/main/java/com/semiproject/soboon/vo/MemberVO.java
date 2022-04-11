@@ -14,6 +14,7 @@ public class MemberVO {
 	private String email;
 	private String address;
 	private int warn;
+	private int verify;
 	
 	public String getUserid() {
 		return userid;
@@ -86,4 +87,11 @@ public class MemberVO {
 	public void setWarn(int warn) {
 		this.warn = warn;
 	}
+	public int getVerify() {
+		return verify;
+	}
+	public void setVerify(int verify) {
+		this.verify = verify;
+	}
+	
 }
