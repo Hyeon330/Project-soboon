@@ -23,8 +23,7 @@
 				<div id="topSearch">
 					<form class="form-inline" action="/action_page.php">
 					    <div id="searchBox">
-						    <input class="form-control mr-sm-12" id="searchInput" type="text" placeholder="검색어를 입력하세요"
-						    style="width:300px; height:40px;">
+						    <input class="form-control mr-sm-12" id="searchInput" type="text" placeholder="검색어를 입력하세요" style="width:300px; height:40px;">
 						    <i class="bi bi-search" id="searchIcon"></i>
 						</div>
 					</form>
@@ -51,9 +50,9 @@
 		</div>
 	</div>
 	<hr/>
-	<div class="topMenu">
+<div class="topMenu">
 		<div class="row">
-			<div class="col-lg-3"><a href="#" style="color:rgb(154, 97, 66)">나&nbsp;&nbsp;&nbsp;눔</a></div>
+			<div class="col-lg-3"><a href="/board/shareAndReqList?category=share" style="color:rgb(154, 97, 66)">나&nbsp;&nbsp;&nbsp;눔</a></div>
 			<div class="col-lg-3"><a href="#" style="color:rgb(154, 97, 66)">대&nbsp;&nbsp;&nbsp;여</a></div>
 			<div class="col-lg-3"><a href="#" style="color:rgb(154, 97, 66)">판&nbsp;&nbsp;&nbsp;매</a></div>
 			<div class="col-lg-3"><a href="#" style="color:rgb(154, 97, 66)">요&nbsp;&nbsp;&nbsp;청</a></div>
