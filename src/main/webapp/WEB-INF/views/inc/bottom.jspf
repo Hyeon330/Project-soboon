@@ -4,6 +4,3 @@
 <div class="bottom">
 	bottom.jspf
 </div>
-<%@ include file="/WEB-INF/views/inc/chat.jspf" %>
-</body>
-</html>

@@ -1,0 +1,25 @@
+@charset "UTF-8";
+/*myDelMember.jsp ---> 회원 탈퇴 */
+#mypageContainer { height: 500px; margin-top: 10px;}
+	#mypageContainer>div {
+		float: left;
+	}
+	#button_overlapCheck ,.btn-last {
+		background:rgb(239, 136, 105) !important;
+		border-style: none !important;
+	}
+	.viewPage-mypage>hr {		
+		height: 5px; background: #ddd; border-style: none;
+	}
+	.div1 {
+		display: none;
+	}
+	#selectBoxForDel, #pwdForCheck {
+		background-color: transparent; border-style: none; border-bottom: 2px solid #ddd;
+	}
+	#delFrm span {
+		font-size: 1.1em;
+	}
+	#delFrm ul {
+		margin-bottom: 30px;
+	}
