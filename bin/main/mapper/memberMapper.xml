@@ -17,4 +17,4 @@
 	<select id="nicknameCheck" resultType="int">
 		select count(nickname) cnt from member where nickname=#{parma1}
 	</select>
-</mapper>		
+</mapper>

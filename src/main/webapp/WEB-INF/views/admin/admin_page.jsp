@@ -82,7 +82,7 @@ ul.tab li.current {
 .reportList li:nth-child(5n+1) {
 	width: 4%;
 }
-/* =======↓↓↓==========탈 퇴 내 역=========↓↓↓======== */
+/* =======↓↓↓==========탈 퇴 내 역=========↓↓↓========
 .resignList{text-align:center;}
 .resignList li{
 	float: left;
@@ -96,7 +96,7 @@ ul.tab li.current {
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
-}
+} */
 </style>
 <script	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
@@ -176,14 +176,14 @@ $(function(){
 							</ul>
 						</ul>
 					</div>
-						<!-- 탈퇴 내역 -->
+					<!-- 	탈퇴내역
 					<div class="tab-pane fade" id="resignMgr">
 						<ul class="resignList">
 							<li>아이디</li>
 							<li>탈퇴사유</li>
 							<li>탈퇴일자</li>
 						</ul>
-					</div>
+					</div> -->
 				</div>
 			</div>
 		</div>

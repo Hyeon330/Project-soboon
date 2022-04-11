@@ -14,29 +14,6 @@
 			</ul>		
 		</div>
 	</div>
-<<<<<<< HEAD
-</div>
-<div id="functionIntroduce">
-	<div id="functionTitle">
-	<br/>
-	<br/>
-	<br/>
-	<h1 id="fuctionTitle" style="text-align:center; font-weight:bold;">소분소분의 이야기</h1>
-
-	</div>
-	<br/>
-	<a href="#"><img src="/img/inform.png" class="functionImage"/></a>
-	<a href="#"><img src="/img/inform.png" class="functionImage"/></a>
-	<a href="#"><img src="/img/inform.png" class="functionImage"/></a>
-	<a href="#"><img src="/img/inform.png" class="functionImage"/></a>
-</div>
-<div id="recentItem">
-	<div class="container-fluid">
-		<br/>
-		<h1 id="fuctionTitle" style="text-align:center; font-weight:bold;">최근 게시물</h1>
-		
-		<br/>
-=======
 	<div style="clear:both"></div>
 	
 	<div id="midContainer">
@@ -58,7 +35,6 @@
 			<h1 id="fuctionTitle" style="text-align:center; font-weight:bold; color:rgb(154, 97, 66);">최근 게시물</h1>
 			<br/>
 			<br/>
->>>>>>> main
 			<div class="row">
 				<div class="col-sm-3">
 					<div class="card-deck" >
