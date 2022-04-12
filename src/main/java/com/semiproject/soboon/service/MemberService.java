@@ -1,5 +1,7 @@
 package com.semiproject.soboon.service;
 
+import java.util.List;
+
 import com.semiproject.soboon.vo.MemberVO;
 import com.semiproject.soboon.vo.PagingVO;
 
@@ -9,5 +11,5 @@ public interface MemberService {
 	public int nicknameCheck(String nickname);
 	public MemberVO loginCheck(MemberVO vo);
 	public int totalRecord(PagingVO pVO);
-	public Object memberList(PagingVO pVO);
+	public List<MemberVO> memberList(PagingVO pVO);
 }

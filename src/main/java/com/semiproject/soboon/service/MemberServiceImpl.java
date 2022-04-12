@@ -1,5 +1,7 @@
 package com.semiproject.soboon.service;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
@@ -40,8 +42,8 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public Object memberList(PagingVO pVO) {
-		return dao.MemberList(pVO); //수정해야됨 왜 들어간건지 의문1
+	public List<MemberVO> memberList(PagingVO pVO) {
+		return dao.MemberList(pVO);
 	}
 	
 }

@@ -51,17 +51,17 @@ ul.tab li.current {
 	height: 40px;
 	line-height: 40px;
 	border-bottom: 1px solid #ddd;
-	width: 12%;
+	width: 10%;
 }
-
-.memberList li:nth-child(8n), .memberList li:nth-child(8n+1) {
-	width: 18%;
+ 
+.memberList li:nth-child(8n+1), .memberList li:nth-child(8n) { 
+	width: 23%;
 	white-space: nowrap; /*줄안바꿈*/
 	overflow: hidden; /*넘친 내용 숨기기*/
 	text-overflow: ellipsis; /*넘친 내용 있으면 ... 표시*/
 }
 
-.memberList li:nth-child(8n+2) {
+.memberList li:nth-child(8n+2) { 
 	width: 4%;
 }
 /* =========↓↓↓========신 고 관 리========↓↓↓========= */
@@ -99,7 +99,6 @@ ul.tab li.current {
 } */
 </style>
 <script	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script	src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 <link rel="stylesheet"	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -124,16 +123,98 @@ $(function(){
 	});
 });
 </script>
+
+<script>
+						$(function() {
+							ajaxsend('tab1')
+							$('ul.tab li').click(function() {
+								var activeTab = $(this).attr('id');
+								$('ul.tab li').removeClass('current');
+								$('.tabcontent').removeClass('current');
+								$(this).addClass('current');
+								$('#' + activeTab).addClass('current');
+								ajaxsend(activeTab)
+							})
+						});
+						function ajaxsend(tab){
+							var url='/admin';
+							if(tab=='tab1'){
+								url+='/memberMgr'
+							}else if (tab=='tab2'){
+								url+='/reportMgr'
+							}		
+							$.ajax({
+								url:url,
+								dataType:'json',
+								success:function(dataArr){
+									/* alert(JSON.stringify(dataArr)) */
+									/* var str='<table>';
+									$.each(dataArr,function(i, data){
+										str+="<tr><td>"+data.proName+"</td><td>"+data.price+"</td></tr>"
+									})
+									str+="</table>"
+									$('#'+tab).html(str)*/
+									if(tab=='tab1'){
+										showMember(dataArr, tab)
+									}else if (tab=='tab2'){
+										showReport(dataArr, tab)
+									}				
+								}			
+							})
+						}	
+						function showMember(dataArr, tab){
+							var str='<h3>회원관리</h3>';
+							//헤더 
+							str +="<li><input type='checkbox' id='checkALL'></li>";
+							str +="<li>아이디</li>";
+							str +="<li>경고회수</li>";
+							str +="<li>이름</li>";
+							str +="<li>닉네임</li>";
+							str +="<li>전화번호</li>";
+							str +="<li>이메일</li>";
+							str +="<li>주소</li>";
+							
+							$.each(dataArr, function(i, data){
+								//DB에서 가져올 데이터들
+								str+="<li><input type='checkbox'></li>";
+								str+="<li>"+data.userid+"</li>";
+								str+="<li>"+data.warn+"</li>";
+								str+="<li>"+data.username+"</li>";
+								str+="<li>"+data.nickname+"</li>";
+								str+="<li>"+data.tel+"</li>";
+								str+="<li>"+data.email+"</li>";
+								str+="<li>"+data.address+"</li>";
+							})
+							
+							$('.memberList').html(str);
+						}
+						
+						function showReport(dataArr, tab){
+							var str='<h3>신고관리</h3><table>';
+							$.each(dataArr,function(i, data){
+								str+="<tr><td>"+data.proName+"</td><td>"+data.price+"</td></tr>"
+							})
+							str+="</table>"
+							$('#'+tab).html(str)
+						}
+						/* $.ajax({ 
+							type: "GET", 
+							url: url, 
+							data: data, 
+							success: success, 
+							dataType: dataType 
+						}); */
+				
+					</script>
 </head>
 <body>
 	<div class="container">
 		<div class="row">
 			<div class="col">
 				<ul class="nav nav-tabs">
-					<li class="nav-item"><a class="nav-link active"	data-toggle="tab" href="#memberMgr">회원관리</a></li>
-					<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#reportMgr">신고관리</a></li>
-					<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#listupMgr">게시글 현황</a></li>
-					<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#resignMgr">탈퇴 내역</a></li>
+					<li class="nav-item"><a class="nav-link active"	data-toggle="tab" href="#memberMgr" id='tab1'>회원관리</a></li>
+					<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#reportMgr" id='tab2'>신고관리</a></li>
+					<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#listupMgr" id='tab3'>게시글 현황</a></li>
 				</ul>
 				
 				<div class="tab-content">
@@ -145,8 +226,8 @@ $(function(){
 						<br />
 						<!-- 회원관리 -->
 						<ul class="memberList">
-							<br/>
-							<li><input type="checkbox" id="checkAll"></li>
+						<!--
+						<li><input type="checkbox" id="checkAll"></li>
 							<li>아이디</li>
 							<li>경고횟수</li>
 							<li>이름</li>
@@ -154,17 +235,10 @@ $(function(){
 							<li>전화번호</li>
 							<li>이메일</li>
 							<li>주소</li>
-						
-						<li><input type="checkbox" id="checkAll"></li>
-							<li>soboona3b3</li>
-							<li>0 회</li>
-							<li>관리자</li>
-							<li>관리자</li>
-							<li>010-1111-2222</li>
-							<li>admin@admin.co.kr</li>
-							<li>서울시 강남구</li>
+							-->
 						</ul>
-					</div>
+					</div> 
+					
 					<div class="tab-pane fade" id="reportMgr">
 						<!-- 신고관리 -->
 						<ul class="reportList">
