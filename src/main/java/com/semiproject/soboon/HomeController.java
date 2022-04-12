@@ -9,6 +9,10 @@ import org.springframework.web.servlet.ModelAndView;
 public class HomeController {
 	@GetMapping("/")
 	public String home(HttpSession session) {
+<<<<<<< HEAD
+=======
+		System.out.println(session.getAttribute("logId"));
+>>>>>>> main
 		return "home";
 	}
 	

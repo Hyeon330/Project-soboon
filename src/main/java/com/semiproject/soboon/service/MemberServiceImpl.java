@@ -37,6 +37,7 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
+<<<<<<< HEAD
 	public int totalRecord(PagingVO pVO) {
 		return dao.totalRecord(pVO);
 	}
@@ -44,6 +45,10 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public List<MemberVO> memberList(PagingVO pVO) {
 		return dao.MemberList(pVO);
+=======
+	public int emailCheck(String email) {
+		return dao.emailCheck(email);
+>>>>>>> main
 	}
 	
 }

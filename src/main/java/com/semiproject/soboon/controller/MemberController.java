@@ -1,8 +1,12 @@
 package com.semiproject.soboon.controller;
 
+import java.util.HashMap;
+
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,9 +15,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.semiproject.soboon.service.KakaoAPI;
 import com.semiproject.soboon.service.MemberService;
 import com.semiproject.soboon.vo.MemberVO;
 
@@ -23,6 +29,9 @@ public class MemberController {
 	
 	@Inject
 	MemberService service;
+	@Autowired
+	KakaoAPI kakao;
+	
 	
 	@GetMapping("signup")
 	public String memberForm() {
@@ -72,14 +81,82 @@ public class MemberController {
 		
 		return entity;
 	}
-	
+
 	//로그아웃
 	@GetMapping("logout")
 	public ModelAndView logout(HttpSession session) {
 		session.invalidate();
+		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("redirect:/");
 		return mav;
+	}
+	
+	//카카오톡 로그인
+	@RequestMapping(value="kakao/klogin")
+	public String login(@RequestParam("code") String code, HttpSession session) {
+		
+		String access_Token = kakao.getAccessToken(code);
+//		System.out.println("controller access_token:" + access_Token);
+		HashMap<String, Object> userInfo = kakao.getUserInfo(access_Token);
+		System.out.println("login Controller: " + userInfo);
+		
+//		// 클라이언트의 이메일이 존재할 때 세션에 해당 이메일과 토큰 등록
+//		System.out.println(kakao.getUserInfo("email"));
+		if(userInfo.get("email") != null) {
+			session.setAttribute("logId", userInfo.get("email"));
+			session.setAttribute("access_Token", access_Token);
+			session.setAttribute("logStatus", "Y");
+		}
+		
+		return "redirect:/";
+	}
+	
+	//카카오톡 로그아웃
+	@RequestMapping(value="logout")
+	public String klogout(HttpSession session) {
+		kakao.kakaoLogout((String)session.getAttribute("access_Token"));
+		session.removeAttribute("access_Token");
+		session.removeAttribute("logId");
+		session.removeAttribute("logStatus");
+
+		return "redirect:/";
+	}
+	
+//	//카카오톡 연결 끊기
+//	@RequestMapping(value="/kakaounlink")
+//	public String unlink(HttpSession session) {
+//		kakao.kakaoUnlink((String)session.getAttribute("access_Token"));
+//		session.invalidate();
+//		return "redirect:/";
+//	}
+	
+	//카카오톡 연동 정보 조회+DB에 회원 정보 넣기
+	@RequestMapping(value="selectMyAccessToken")
+	public String oauthKakao(@RequestParam(value="code",required=false) String code, HttpServletRequest req) throws Exception{
+		System.out.println("카카오 정보 조회 들어옴");
+		
+		//발급받은 인가코드를 통해 토큰 발급받기
+		String access_Token = kakao.getAccessToken(code);
+		System.out.println("access_Token: " + access_Token);
+		
+		HashMap<String, Object> userInfo = kakao.getUserInfo(access_Token);
+		MemberVO kakaoVO = new MemberVO();
+		String kakao_email = (String)userInfo.get("email");
+		String kakao_nickname = (String)userInfo.get("nickname");
+		
+		if(service.emailCheck(kakao_email)<=0) {
+			System.out.println("유저 회원가입");
+			kakaoVO.setUserid(kakao_email);
+			kakaoVO.setUsername(kakao_nickname);
+			kakaoVO.setNickname(kakao_nickname);
+			kakaoVO.setSocialType("kakao");
+			service.memberInsert(kakaoVO);
+		}
+		HttpSession session = req.getSession();
+		session.setAttribute("logId", kakao_email);
+		
+		return "redirect:/";
 	}
 	
 	@PostMapping("memberIdCheck")
@@ -93,6 +170,13 @@ public class MemberController {
 	@ResponseBody
 	public int nicknameCheck(String nickname) {
 		int cnt = service.nicknameCheck(nickname);
+		return cnt;
+	}
+	
+	@PostMapping("memberEmailCheck")
+	@ResponseBody
+	public int emailCheck(String email) {
+		int cnt = service.emailCheck(email);
 		return cnt;
 	}
 }
