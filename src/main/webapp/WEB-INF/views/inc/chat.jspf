@@ -46,7 +46,7 @@
 		});
 	});
 </script>
-<c:if test="${logStatus!='Y'}">
+<c:if test="${logStatus=='Y'}">
 	<div id="msgBlock">
 		<button id="msgBtn"><i class="bi bi-chat-square-text"></i></button>
 		<div id="msgPopup">
