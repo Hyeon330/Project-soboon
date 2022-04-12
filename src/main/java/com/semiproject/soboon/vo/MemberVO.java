@@ -15,6 +15,7 @@ public class MemberVO {
 	private String address;
 	private int warn;
 	private int verify;
+	private String socialType;
 	
 	public String getUserid() {
 		return userid;
@@ -92,6 +93,12 @@ public class MemberVO {
 	}
 	public void setVerify(int verify) {
 		this.verify = verify;
+	}
+	public String getSocialType() {
+		return socialType;
+	}
+	public void setSocialType(String socialType) {
+		this.socialType = socialType;
 	}
 	
 }

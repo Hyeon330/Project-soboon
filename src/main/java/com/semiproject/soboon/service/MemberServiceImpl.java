@@ -32,5 +32,10 @@ public class MemberServiceImpl implements MemberService{
 	public MemberVO loginCheck(MemberVO vo) {
 		return dao.loginCheck(vo);
 	}
+
+	@Override
+	public int emailCheck(String email) {
+		return dao.emailCheck(email);
+	}
 	
 }
