@@ -8,7 +8,7 @@
 	width:100%;
 	height:800px;
 	float:left;	
-	background-color:rgb(241, 232, 223);
+	background-color:rgb(213, 218, 212);
 	display:block;
 }
 .typingContainer{
@@ -16,7 +16,7 @@
 	padding-bottom:23 5px;
 	width:49%;
 	position:block;
-	color:rgb(154, 97, 66);
+	color:rgb(72, 97, 86);
 	text-align:center;
 	display:inline-block;
 }
@@ -45,6 +45,9 @@
 	opacity:60%;
 }
 /*=================소분이야기=============================================*/
+#midContainer{
+	background-color:white;
+}
 
 #functionIntroduce{
 	width:1200px;
@@ -57,7 +60,7 @@
 	padding:0px;
 	display:block;
 	float:left;
-	filter : drop-shadow(5px 5px 5px rgb(192, 188, 177));
+	filter : drop-shadow(5px 5px 5px rgb(144, 163, 140));
 }
 
 .functionImage{
@@ -76,26 +79,82 @@
 	width:100%;
 	height:950px;
 	overflow:auto;
-	background-color:rgb(241, 232, 223);
+	background-color:rgb(213, 218, 212);
 }
 .card{
 	margin:10px;
 	border-bottom-left-radius:20px;
 	border-bottom-right-radius:20px;
-	filter : drop-shadow(5px 5px 5px rgb(192, 188, 177));
+	filter : drop-shadow(5px 5px 5px rgb(144, 163, 140));
 }
 .card-body{
-	background-color:rgba(241, 232, 223, 30%);
-	color:rgb(154, 97, 66);
+	background-color:rgba(213, 218, 212, 30%);
+	color:rgb(72, 97, 86);
 	border-bottom-left-radius:20px;
 	border-bottom-right-radius:20px;
+}
+.card-body>ul>li:nth-child(1){
+	padding-bottom:8px;
+}
+.card-body>ul>li:nth-child(2){
+	font-weight:600;
+}
+.card-body>ul>li:nth-child(3){
+	width:50%;
+	float:left;	
+}
+.card-body>ul>li:nth-child(4){
+	width:50%;
+	float:right;	
 }
 #shareAndReqTitle>a{
 	overflow:hidden;
 	white-space: nowrap;
  	overflow: hidden;
  	text-overflow: ellipsis;
- 	color:rgb(154, 97, 66);
+ 	color:rgb(72, 97, 86);
+}
+.imgFilm>img:before{
+	content:"";
+	width: 100%; 
+	height: 100%; 
+	position: absolute; 
+	top:0; 
+	left:0; 
+	background: rgba(0,0,0,10%);
+}
+.card{
+	margin:10px;
+	border-bottom-left-radius:20px;
+	border-bottom-right-radius:20px;
+	filter : drop-shadow(5px 5px 5px rgb(144, 163, 140));
+}
+.card-body{
+	background-color:rgba(213, 218, 212, 30%);
+	color:rgb(72, 97, 86);
+	border-bottom-left-radius:20px;
+	border-bottom-right-radius:20px;
+}
+.card-body>ul>li:nth-child(1){
+	padding-bottom:8px;
+}
+.card-body>ul>li:nth-child(2){
+	font-weight:600;
+}
+.card-body>ul>li:nth-child(3){
+	width:50%;
+	float:left;	
+}
+.card-body>ul>li:nth-child(4){
+	width:50%;
+	float:right;	
+}
+#shareAndReqTitle>a{
+	overflow:hidden;
+	white-space: nowrap;
+ 	overflow: hidden;
+ 	text-overflow: ellipsis;
+ 	color:rgb(72, 97, 86);
 }
 .imgFilm>img:before{
 	content:"";
