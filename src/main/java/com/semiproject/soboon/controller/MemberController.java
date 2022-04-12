@@ -98,12 +98,12 @@ public class MemberController {
 	public String login(@RequestParam("code") String code, HttpSession session, RedirectAttributes attr) {
 		
 		String access_Token = kakao.getAccessToken(code);
-//		System.out.println("controller access_token:" + access_Token);
+		System.out.println("controller access_token:" + access_Token);
 		HashMap<String, Object> userInfo = kakao.getUserInfo(access_Token);
-//		System.out.println("login Controller: " + userInfo);
+		System.out.println("login Controller: " + userInfo);
 		
-//		// 클라이언트의 이메일이 존재할 때 세션에 해당 이메일과 토큰 등록
-//		System.out.println(kakao.getUserInfo("email"));
+		// 클라이언트의 이메일이 존재할 때 세션에 해당 이메일과 토큰 등록
+		System.out.println(kakao.getUserInfo("email"));
 		if(userInfo.get("email") != null) {
 			
 			session.setAttribute("logId", userInfo.get("email"));
@@ -141,8 +141,8 @@ public class MemberController {
 		System.out.println("카카오 정보 조회 들어옴");
 		
 		//발급받은 인가코드를 통해 토큰 발급받기
-//		String access_Token =kakao.getAccessToken(code);
-//		System.out.println("access_Token: " + access_Token);
+		String access_Token =kakao.getAccessToken(code);
+		System.out.println("access_Token: " + access_Token);
 		HttpSession session = req.getSession();
 		
 		HashMap<String, Object> userInfo = (HashMap<String,Object>)session.getAttribute("userInfo");
@@ -150,10 +150,10 @@ public class MemberController {
 		String kakao_email = (String)userInfo.get("email");
 		String kakao_nickname = (String)userInfo.get("nickname");
 		
-//		System.out.println("nickname= " + kakao_nickname);
+		System.out.println("nickname= " + kakao_nickname);
 		
-//		int cnt = service.emailCheck(kakao_email);
-//		System.out.println(cnt);
+		int cnt = service.emailCheck(kakao_email);
+		System.out.println(cnt);
 		if(service.emailCheck(kakao_email)<=0) {
 			System.out.println("유저 회원가입");
 			kakaoVO.setUserid(kakao_email);
