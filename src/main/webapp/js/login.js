@@ -11,7 +11,12 @@ function loginFrmCheck(){
 		}
 		return true;
 }
+<<<<<<< HEAD
 
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> main
 
 $(document).ready(function(){
 	let codeURL = new URL(window.location.href);
@@ -40,4 +45,8 @@ $(document).ready(function(){
 		console.log("코드 존재하지 않음");
 	}
 })
+<<<<<<< HEAD
 
+=======
+>>>>>>> index_seongeun
+>>>>>>> main
