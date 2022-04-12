@@ -1,55 +1,71 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<style>
-#msgBlock{
-	position: fixed;
-	right: 20px;
-	bottom: 0;
-	width: 230px;
-}
-#msgBtn {
-	float: right;
-	width: 40px;
-	height: 40px;
-	background-color: #F29661;
-	border: 0;
-}
-.bi-chat-square-text {
-	font-size: 20px;
-}
-#msgPopup {
-	width: 230px;
-	height: 0;
-	overflow: hidden;
-	background-color: #fff;
-	border-radius: 5px;
-}
-</style>
-<script>
-	$(() => {
-		var msgPopupHeight = 1;
-		$('#msgBtn').click(function() {
-			msgPopupHeight = $('#msgPopup').css('height').substring(0,$('#msgPopup').css('height').length-2);
-			if(msgPopupHeight>0){
-				$('#msgPopup').animate({
-					height: '0'
-				}, 150);
-			}else {
-				$('#msgPopup').animate({
-					height: window.innerHeight*2/3+'px'
-				}, 150);
-			}
-		});
-		$(window).resize(() => {
-			if(msgPopupHeight==0){
-				$('#msgPopup').css('height', window.innerHeight*2/3+'px');
-			}
-		});
-	});
-</script>
-<c:if test="${logStatus=='Y'}">
-	<div id="msgBlock">
-		<button id="msgBtn"><i class="bi bi-chat-square-text"></i></button>
-		<div id="msgPopup">
+<script src="/js/chat.js"></script>
+<link rel="stylesheet" href="/css/chat.css">
+<div id="chatBlock">
+	<button id="chatBtn"><i class="bi bi-chat-square-text chat-icon"></i></button>
+	<div id="chatPopup">
+		
+		<div class="chat-head">
+			<span id="myNickName">${nickName}</span>
 		</div>
+	
+		<div class="chat-search">
+			<div class="chat-search-box">
+				<i class="bi bi-search chat-search-icon"></i>
+				<input class="chat-search-text" type="text" placeholder="검색">
+			</div>
+		</div>
+		
+		<ul id="chatLists">
+			<!-- <li class="chat-list">
+				<div>
+					<div class="chat-info">
+						<p class="chat-name">HyeonSu Lee</p>
+						<p class="last-chat">안녕하세요~~</p>
+					</div>
+					<p class="chat-date">12월 31일</p>
+				</div>
+			</li>-->
+		</ul>
 	</div>
-</c:if>
+</div>
+
+<div id="msgPopup">
+	<div class="msg-head">
+		<span id="oppNickName"></span>
+		<i class="bi bi-x-lg msg-close"></i>
+	</div>
+	
+	<ul class="msg-lists">
+		<!-- <li class="msg-list">
+			<div class="msg-box left">
+				<div class="msg-info">
+					<span class="msg-nickname">이현수</span>
+					·
+					<span class="msg-time">11시 19분</span>
+				</div>
+				<div class="msg-text left">안녕하세요 저는 이현수 입니다. 잘 부탁드립니다.</div>
+			</div>
+		</li>
+		
+		<li><div class="msg-date-line">1월 9일</div></li>
+		
+		<li class="msg-list">
+			<div class="msg-box right">
+				<div class="msg-info">
+					<span class="msg-time">11시 19분</span>
+					·
+					<span class="msg-nickname">이현수</span>
+				</div>
+				<div class="msg-text right">ㅇㅇ</div>
+			</div>
+		</li> -->
+	</ul>
+	
+	<div class="msg-textarea-box">
+		<textarea class="msg-textarea" placeholder="메시지 입력"></textarea>
+	</div>
+	<div class="msg-btns">
+		<button class="msg-send-btn">보내기</button>
+	</div>
+</div>

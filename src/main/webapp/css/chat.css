@@ -1,0 +1,272 @@
+@charset "UTF-8";
+/* 채팅 리스트 위치 */
+#chatBlock{
+	position: fixed;
+	right: 20px;
+	bottom: 0;
+	width: 230px;
+	z-index: 999;
+}
+#chatBtn {
+	position: relative;
+	right: 5px;
+	float: right;
+	width: 35px;
+	height: 35px;
+	background-color: #FEE0B4;
+	border-width: 1px 1px 0px 1px;
+	border-style: solid;
+	border-color: #888;
+}
+.chat-icon {
+	font-size: 20px;
+}
+#chatPopup {
+	width: 240px;
+	height: 0;
+	overflow: hidden;
+	background-color: #fff;
+	border-radius: 10px;
+	box-shadow: 0px 3px 5px #888;
+}
+
+/* 채팅리스트 헤드 */
+.chat-head{
+	height: 40px;
+	line-height: 40px;
+	font-size: 20px;
+	border-bottom: 1px solid #bbb;
+	padding: 0 10px;
+	background-color: #eee;
+	font-weight: bold;
+}
+
+/* 채팅 검색 */
+.chat-search{
+	width: inherit;
+	text-align: center;
+}
+.chat-search-box{
+	padding: 2px;
+	margin: 5px;
+	background-color: #eee;
+	border-radius: 5px;
+	border: 2px solid rgba(0,0,0,0);
+	transition: 0.3s;
+}
+.chat-search-text{
+	background-color: rgba(0,0,0,0);
+	height: 23px;
+	width: 200px;
+	border: none;
+	font-size: 14px;
+}
+.chat-search-text:focus{
+	outline: none;
+}
+
+/* 채팅 리스트 */
+#chatLists{
+	overflow: auto;
+}
+#chatLists::-webkit-scrollbar{
+	width: 3px;
+}
+#chatLists::-webkit-scrollbar-thumb{
+	background-color: #888;
+	border-radius: 10px;
+}
+#chatLists p {
+	margin: 0;
+}
+.chat-list {
+	padding: 5px;
+	border-bottom: 1px solid #ddd;
+}
+.chat-list:hover {
+	background-color: #eee;
+	cursor: pointer;
+}
+.chat-list > div{
+	overflow: auto;
+}
+.chat-info {
+	float: left;
+	width: 150px;
+}
+.last-chat {
+	font-size: 12px;
+	color: gray;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.not-read{
+	color: black;
+}
+.chat-date {
+	float: right;
+	font-size: 12px;
+	color: gray;
+	margin: 4px 0 !important;
+}
+
+/* 메시지 창 */
+#msgPopup{
+	height: 450px;
+	width: 300px;
+	position: fixed;
+	right: 260px;
+	bottom: 0px;
+	background-color: #fff;
+	box-shadow: 0px 3px 5px #888;
+	border-radius: 10px;
+	border: 1px solid #ddd;
+	overflow: hidden;
+	z-index: 999;
+	display: none;
+}
+
+/* 메시지창 헤더 */
+.msg-head{
+	height: 40px;
+	line-height: 40px;
+	font-size: 20px;
+	border-bottom: 1px solid #bbb;
+	padding: 0 10px;
+	background-color: #eee;
+	font-weight: bold;
+}
+
+/* 메시지창 닫기 */
+.msg-close{
+	float: right;
+}
+.msg-close:hover{
+	cursor: pointer;
+}
+
+/* 메시지 리스트 태그 */
+.msg-lists{
+	height: 300px;
+	max-height: 300px;
+	overflow-y: auto;
+	overflow-x: hidden;
+	border-bottom: 1px solid #ccc;
+	padding: 5px;
+}
+.msg-lists::-webkit-scrollbar{
+	width: 3px;
+}
+.msg-lists::-webkit-scrollbar-thumb{
+	background-color: #888;
+	border-radius: 10px;
+}
+.msg-list{
+	width: 288px;
+	font-size: 13px;
+	font-weight: bold;
+	overflow: auto;
+}
+
+/* 메시지 메인 */
+.msg-box{
+	position: relative;
+	margin: 2px 0;
+}
+.msg-box.right{
+	float: right;
+}
+.msg-text{
+	border-radius: 15px;
+	max-width: 150px;
+	border: 1px solid #ddd;
+	padding: 5px 10px;
+	overflow-x: hidden;
+}
+.msg-text.left{
+	background: #FDD2BF;
+	float: left;
+}
+.msg-text.right{
+	background: #FEF7DC;
+	float: right;
+}
+.msg-info{
+	margin: 0 7px;
+}
+.msg-box.right>.msg-info{
+	text-align: right;
+}
+.msg-nickname{
+	font-size: 14px;
+}
+.msg-time{
+	font-size: 12px;
+	color: gray;
+}
+
+/* 메시지 사이 날짜 가로줄 */
+.msg-date-line {
+    display:flex;
+    flex-basis:100%;
+    align-items:center;
+    color:rgba(0,0,0,0.7);
+    font-size:10px;
+    margin:8px 0px;
+}
+.msg-date-line::before{
+    content:"";
+    flex-grow:1;
+    margin:0px 16px;
+    background:rgba(0,0,0,0.35);
+    height:1px;
+}
+.msg-date-line::after {
+    content:"";
+    flex-grow:1;
+    margin:0px 16px;
+    background:rgba(0,0,0,0.35);
+    height:1px;
+}
+
+/* 메시지 입력창, 버튼 */
+.msg-textarea-box {
+	width: inherit;
+	padding: 5px;
+	border-bottom: 1px solid #ccc;
+}
+.msg-textarea{
+	border: none;
+	resize: none;
+	width: 288px;
+	height: 50px;
+	font-size: 14px;
+	line-height: 16px;
+	background: rgba(0,0,0,0);
+}
+.msg-textarea:focus{
+	outline: none;
+}
+.msg-textarea::-webkit-scrollbar{
+	width: 3px;
+}
+.msg-textarea::-webkit-scrollbar-thumb{
+	background-color: #888;
+	border-radius: 10px;
+}
+.msg-btns{
+	width: inherit;
+}
+.msg-send-btn{
+	float: right;
+	margin: 5px 15px;
+	border-radius: 50px;
+	box-shadow: none !important;
+	border: 1px solid gray;
+	outline: none;
+	background-color: #ddd;
+	font-size: 14px;
+	height: 33px;
+	width: 60px;
+}
