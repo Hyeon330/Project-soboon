@@ -27,8 +27,6 @@ $(() => {
 			$('#chatPopup').css('height', window.innerHeight-120+'px');
 			resizeChatLists();
 		}
-		
-		
 	});
 	
 	// 채팅 검색창 자연스러운 테두리 나타내기
@@ -172,12 +170,16 @@ $(() => {
 		$('.msg-textarea').val('');
 	}
 	
-	
-	/* $('.msg-textarea').keydown((e)=>{
-		if($('.msg-textarea').val() != '' && e.keyCode === 13 && !e.shiftKey){
-			sendMessage();
+	$('.msg-textarea').keyup((e)=>{
+		if($('.msg-textarea').val()!='' && e.keyCode === 13 && !e.shiftKey){
+			$('.msg-textarea').val('');
 		}
-	}); */
+	});
+	$('.msg-textarea').keydown((e)=>{
+		if($('.msg-textarea').val()!='' && e.keyCode === 13 && !e.shiftKey){
+			sendMessage($('.msg-textarea').val());
+		}
+	});
 	$('.msg-send-btn').click(() => {
 		if($('.msg-textarea').val()!=''){
 			sendMessage($('.msg-textarea').val());

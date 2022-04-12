@@ -1,7 +1,5 @@
 package com.semiproject.soboon.service;
 
-
-
 import com.semiproject.soboon.vo.MemberVO;
 
 public interface EditService {

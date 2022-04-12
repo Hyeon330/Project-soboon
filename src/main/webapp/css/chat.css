@@ -146,6 +146,7 @@
 /* 메시지 리스트 태그 */
 .msg-lists{
 	height: 300px;
+	max-height: 300px;
 	overflow-y: auto;
 	overflow-x: hidden;
 	border-bottom: 1px solid #ccc;
