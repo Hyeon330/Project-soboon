@@ -220,7 +220,7 @@ $(function(){
 				<div class="tab-content">
 					<br />
 					<div class="tab-pane fade show active" id="memberMgr">
-						<div style="float: left">현재인원 : ${pVO.totalRecord }명</div>
+						<div style="float: left">현재인원 : ${pVO.totalMember } 추가바랍니다 명</div>
 						<button type="button" id="multiDel" class="btn btn-outline-danger"
 							style="float: right">선택 삭제</button>
 						<br />
