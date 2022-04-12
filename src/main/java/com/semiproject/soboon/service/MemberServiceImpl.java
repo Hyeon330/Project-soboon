@@ -18,6 +18,7 @@ public class MemberServiceImpl implements MemberService{
 	
 	@Override
 	public int memberInsert(MemberVO vo) {
+		System.out.println("vo="+vo);
 		return dao.memberInsert(vo);
 	}
 
