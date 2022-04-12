@@ -17,11 +17,9 @@
 	padding: 0;
 	overflow: hidden;
 }
-
 .tab li {
 	float: left;
 }
-
 .tab li a {
 	display: inline-block;
 	color: #000;
@@ -31,7 +29,6 @@
 	font-size: 17px;
 	transition: 0.3s;
 }
-
 .tabcontent {
 	display: none;
 	background-color: rgb(0, 154, 200);
@@ -48,10 +45,7 @@ ul.tab li.current {
 	display: block;
 }
 /* =========↓↓↓========회 원 관 리========↓↓↓========= */
-.memberList {
-	text-align: center;
-}
-
+.memberList{text-align:center;}
 .memberList li {
 	float: left;
 	height: 40px;
@@ -59,37 +53,32 @@ ul.tab li.current {
 	border-bottom: 1px solid #ddd;
 	width: 10%;
 }
-
-.memberList li:nth-child(8n+1), .memberList li:nth-child(8n) {
+ 
+.memberList li:nth-child(8n+1), .memberList li:nth-child(8n) { 
 	width: 23%;
 	white-space: nowrap; /*줄안바꿈*/
 	overflow: hidden; /*넘친 내용 숨기기*/
 	text-overflow: ellipsis; /*넘친 내용 있으면 ... 표시*/
 }
 
-.memberList li:nth-child(8n+2) {
+.memberList li:nth-child(8n+2) { 
 	width: 4%;
 }
 /* =========↓↓↓========신 고 관 리========↓↓↓========= */
-.reportList {
-	text-align: center;
-}
-
-.reportList li {
+.reportList{text-align:center;}
+.reportList li{
 	float: left;
 	height: 40px;
 	line-height: 40px;
 	border-bottom: 1px solid #ddd;
-	width: 20%;
+	width:20%;
 }
-
 .reportList li:nth-child(5n+4) {
 	width: 36%;
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
 }
-
 .reportList li:nth-child(5n+1) {
 	width: 4%;
 }
@@ -109,12 +98,9 @@ ul.tab li.current {
 	text-overflow: ellipsis;
 } */
 </style>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script
-	src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+<script	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script	src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<link rel="stylesheet"	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>
 $(function(){
@@ -226,24 +212,21 @@ $(function(){
 		<div class="row">
 			<div class="col">
 				<ul class="nav nav-tabs">
-					<li class="nav-item"><a class="nav-link active"
-						data-toggle="tab" href="#memberMgr" id='tab1'>회원관리</a></li>
-					<li class="nav-item"><a class="nav-link" data-toggle="tab"
-						href="#reportMgr" id='tab2'>신고관리</a></li>
-					<li class="nav-item"><a class="nav-link" data-toggle="tab"
-						href="#listupMgr" id='tab3'>게시글 현황</a></li>
+					<li class="nav-item"><a class="nav-link active"	data-toggle="tab" href="#memberMgr" id='tab1'>회원관리</a></li>
+					<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#reportMgr" id='tab2'>신고관리</a></li>
+					<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#listupMgr" id='tab3'>게시글 현황</a></li>
 				</ul>
-
+				
 				<div class="tab-content">
 					<br />
 					<div class="tab-pane fade show active" id="memberMgr">
-						<div style="float: left">현재인원 : ${pVO.totalMember } 추가바랍니다 명</div>
+						<div style="float: left">현재인원 : ${pVO.totalRecord }명</div>
 						<button type="button" id="multiDel" class="btn btn-outline-danger"
 							style="float: right">선택 삭제</button>
 						<br />
 						<!-- 회원관리 -->
 						<ul class="memberList">
-							<!--
+						<!--
 						<li><input type="checkbox" id="checkAll"></li>
 							<li>아이디</li>
 							<li>경고횟수</li>
@@ -253,19 +236,9 @@ $(function(){
 							<li>이메일</li>
 							<li>주소</li>
 							-->
-					</div>
-					<div class="row">
-						<ul class="pagination justify-content-center" id="paging">
-							<c:if test="${pvo.currentPage==1}">
-								<li class="page-item disabled"><a class="page-link" id="prevBtn">Prev</a></li>
-							</c:if>
-							<c:if test="${pvo.currentPage>1}">
-								<li class="page-item"><a class="page-link" href="javascript:void(0);" id="prevBtn" 
-								onclick="goPrev(${pvo.currentPage},'${cvo.category}')">Prev</a></li>
-							</c:if>
 						</ul>
-					</div>
-
+					</div> 
+					
 					<div class="tab-pane fade" id="reportMgr">
 						<!-- 신고관리 -->
 						<ul class="reportList">
@@ -276,16 +249,13 @@ $(function(){
 							<li>신고처리</li>
 						</ul>
 					</div>
-					<!-- 게시글 현황 -->
+						<!-- 게시글 현황 -->
 					<div class="tab-pane fade" id="listupMgr">
 						<ul class="listupList">
 							<ul class="nav nav-tabs">
-								<li class="nav-item"><a class="nav-link active"
-									data-toggle="tab" href="#days">일일</a></li>
-								<li class="nav-item"><a class="nav-link" data-toggle="tab"
-									href="#months">주간</a></li>
-								<li class="nav-item"><a class="nav-link" data-toggle="tab"
-									href="#months">월</a></li>
+								<li class="nav-item"><a class="nav-link active"	data-toggle="tab" href="#days">일일</a></li>
+								<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#months">주간</a></li>
+								<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#months">월</a></li>
 							</ul>
 						</ul>
 					</div>
