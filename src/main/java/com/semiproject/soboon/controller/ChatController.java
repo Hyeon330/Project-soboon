@@ -1,9 +1,6 @@
 package com.semiproject.soboon.controller;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;

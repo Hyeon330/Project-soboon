@@ -8,15 +8,11 @@ public class ChatVO {
 	private String chat_datetime;
 	private String chat_read;
 	
-	private String s_nickname;
-	private String r_nickname;
-	
 	@Override
 	public String toString() {
 		return "ChatVO [getChatno()=" + getChatno() + ", getSender()=" + getSender() + ", getReceiver()="
-				+ getReceiver() + ", getMsg()=" + getMsg() + ", getDatetime()=" + getChat_datetime() + ", getChat_read()="
-				+ getChat_read() + ", getS_nickname()=" + getS_nickname() + ", getR_nickname()=" + getR_nickname()
-				+ "]";
+				+ getReceiver() + ", getMsg()=" + getMsg() + ", getChat_datetime()=" + getChat_datetime()
+				+ ", getChat_read()=" + getChat_read() + "]";
 	}
 	
 	public int getChatno() {
@@ -54,17 +50,5 @@ public class ChatVO {
 	}
 	public void setChat_read(String chat_read) {
 		this.chat_read = chat_read;
-	}
-	public String getS_nickname() {
-		return s_nickname;
-	}
-	public void setS_nickname(String s_nickname) {
-		this.s_nickname = s_nickname;
-	}
-	public String getR_nickname() {
-		return r_nickname;
-	}
-	public void setR_nickname(String r_nickname) {
-		this.r_nickname = r_nickname;
 	}
 }

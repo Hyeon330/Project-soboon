@@ -5,14 +5,14 @@
 <mapper namespace="com.semiproject.soboon.dao.ChatDAO">
 	<select id="getLastMessage" resultType="ChatVO">
 		select a.chatno, a.sender, a.receiver, a.chat_datetime, a.msg, a.chat_read
-		from chat_nickname a join
-		(select max(chatno) chatno from chat_nickname
+		from chat a join
+		(select max(chatno) chatno from chat
 		where sender=#{param1} or receiver=#{param1} 
 		group by sender, receiver) b on a.chatno=b.chatno
 		order by chatno desc;
 	</select>
 	<select id="getAllMessage" resultType="ChatVO">
-		select * from chat_nickname
+		select * from chat
 		where (sender=#{param1} and receiver=#{param2})
 		or (sender=#{param2} and receiver=#{param1});
 	</select>
