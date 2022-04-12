@@ -90,7 +90,7 @@
 			<div id="userInfo">
 				<div><i class="fa fa-user fa-5x"></i></div>
 				<div id="userinfoInner">
-					<div>${viewVo.nickname}</div>
+					<div id="viewNickname">${viewVo.nickname}</div>
 					<div>${viewVo.address}</div>
 				</div>
 			</div>
@@ -122,7 +122,9 @@
 		<div class="col-12 src">
 			<hr/><br/>
 			<div id="shareAndReqContent">${viewVo.content}</div>
+			
 		</div>
+		
 		<!-- 댓글 -->
 		<div class="col-12">
 			<hr/>
@@ -138,6 +140,11 @@
 			</c:if>
 			<hr/><!-- 댓글 목록 표시 -->
 			<div id="replyList">
+				<ul>
+					<li>
+						<div>유저아이디 | ( createdate )</div>
+					</li>
+				</ul>
 			</div>
 		</div>
 	</div>
