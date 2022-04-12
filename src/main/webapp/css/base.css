@@ -10,7 +10,8 @@ li{
 }
 body {
 	font-family: 나눔스퀘어, 'NanumSquare', sans-serif;
-	
+	background-color:rgb(213, 218, 212);
+	color:rgb(72, 97, 86);
 }
 .container{
 	min-height:717px;

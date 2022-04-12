@@ -27,7 +27,6 @@ function memberCheck(){
 		$("#userpwd2").focus();
 		return false;
 	}
-	
 	reg = /^[a-zA-Z가-힣]{2,7}$/;
 	if($("#username").val()==''){
 		alert("이름을 입력하세요.");
@@ -39,7 +38,6 @@ function memberCheck(){
 		$("#username").focus();
 		return false;
 	}  
-	
 	reg = /^[가-힣]{2,7}$/;
 	if($("#nickname").val()==''){
 		alert("닉네임을 입력하세요.");

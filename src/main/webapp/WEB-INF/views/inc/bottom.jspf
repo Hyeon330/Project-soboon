@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <div class="bottom">
+<<<<<<< HEAD
 	bottom.jspf
 </div>
 <c:if test="${logStatus=='Y'}">
@@ -7,3 +8,9 @@
 </c:if>
 </body>
 </html>
+=======
+	상호명 (주)소분&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;대표 유성은<br/>
+	개인정보보호책임자 김성전&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;사업자등록번호 330-10-54339&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;통신판매업신고번호 2022-서울서초-0260<br/>
+	주소 서울특별시 강남구 언주로 508)&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;이메일 help@soboon.com&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;마케팅/제휴 문의 marketing@soboon.com
+</div>
+>>>>>>> main

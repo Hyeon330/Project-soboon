@@ -17,4 +17,10 @@
 	<select id="nicknameCheck" resultType="int">
 		select count(nickname) cnt from member where nickname=#{parma1}
 	</select>
+	<select id="MemberList" resultType="MemberVO">
+		select userid, warn, username, nickname, tel, email, address from member
+	</select>
+	<select id="emailCheck" resultType="int">
+		select count(email) cnt from member where email=#{param1}
+	</select>
 </mapper>		
