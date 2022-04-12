@@ -39,7 +39,7 @@
 
 <style>
 	#sideMenu>li {
-		background-color:RGB(252, 249, 248);
+		background-color: RGB(241, 232, 223);
 	}
 	#sideMenuFrm>hr {
 		height: 5px; background: #ddd; border-style: none;

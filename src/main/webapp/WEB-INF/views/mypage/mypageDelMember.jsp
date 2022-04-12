@@ -6,7 +6,7 @@
 	#mypageContainer {
 		height: 500px;
 	  	margin-top: 50px;
-	  	background-color:RGB(252, 249, 248);
+	  	background-color: RGB(241, 232, 223);
 	  }
 	#mypageContainer>div {
 		float: left;
@@ -30,6 +30,7 @@
 	#delFrm ul {
 		margin-bottom: 30px;
 	}
+	
 </style>
 <script>
 $(function() {

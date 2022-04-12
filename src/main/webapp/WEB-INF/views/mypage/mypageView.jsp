@@ -6,7 +6,7 @@
 #mypageContainer {
 	height: 500px;
 	margin-top: 50px;
-	background-color:RGB(252, 249, 248);
+	background-color: RGB(241, 232, 223);
 }
 
 #mypageContainer>div {
@@ -85,9 +85,13 @@
 .resultFrm>ul>li {
 	width:20%; text-align: center;
 }
+
 </style>
 <script>
-	
+	$(function(){
+		//when page loads....
+		$('.tab_content').hide() // 모든 콘텐츠를 숨김.
+	});
 </script>
 
 
@@ -132,36 +136,48 @@
 			</div>
 		</div><!-- topMenu-mypageView -->
 		<div class="listMenuTab">
-			<ul>
-				<li>작성글</li>
-				<li>댓글</li>
-				<li>찜한글</li>
+		<!-- 탭메뉴 영역 -->
+			<ul class="tabs">
+				<li><a href="#tab1">작성글</a></li>
+				<li><a href="#tab2">댓글</a></li>
+				<li><a href="#tab3">찜한글</a></li>
 			</ul>
 		</div>
 		<div class="resultView-mypageView">
-			<form class="resultFrm"><!-- 제목란 -->
-				<ul>
-					<li><input type="checkbox" value="checkingAll"/> 전체선택</li>
-					<li>&nbsp;</li>
-					<li>제목</li>
-					<li>작성일</li>
-					<li>조회수</li>
-				</ul>
-				<ul>	
-					<li><input type="checkbox" value="cheking" id="checking"/></li>
-					<li>11231</li>
-					<li>휴지통 공구합니다.</li>
-					<li>2022.04.28</li>
-					<li>30</li>			
-				</ul>
-				<ul>	
-					<li><input type="checkbox" value="cheking" id="checking"/></li>
-					<li>11231</li>
-					<li>휴지통 공구합니다.</li>
-					<li>2022.04.28</li>
-					<li>30</li>			
-				</ul>
-			</form>	
-		</div>
+			<!-- Content -->
+			<div id="tab1" class="tab_content">
+				<form class="resultFrm"><!-- 제목란 -->
+					<ul>
+						<li><input type="checkbox" value="checkingAll"/> 전체선택</li>
+						<li>&nbsp;</li>
+						<li>제목</li>
+						<li>작성일</li>
+						<li>조회수</li>
+					</ul>
+					<ul>	
+						<li><input type="checkbox" value="cheking" id="checking"/></li>
+						<li>11231</li>
+						<li>휴지통 공구합니다.</li>
+						<li>2022.04.28</li>
+						<li>30</li>			
+					</ul>
+					<ul>	
+						<li><input type="checkbox" value="cheking" id="checking"/></li>
+						<li>11231</li>
+						<li>휴지통 공구합니다.</li>
+						<li>2022.04.28</li>
+						<li>30</li>			
+					</ul>
+				</form>	
+			</div><!-- tab1 -->
+			<div id="tab2" class="tab_content">
+				<h1>TAB2</h1>
+				내용내용내용내용내용
+			</div><!-- tab2 -->
+			<div id="tab3" class="tab_content">
+				<h1>TAB3</h1>
+				내용내용내용내용내용
+			</div><!-- tab3 -->
+		</div><!-- resultView-mypageView" -->
 	</div><!-- viewpage-mypage  -->
 </div><!-- container -->
