@@ -7,7 +7,7 @@
 		select a.chatno, a.sender, a.receiver, a.chat_datetime, a.msg, a.chat_read
 		from chat a join
 		(select max(chatno) chatno from chat
-		where sender=#{param1} or receiver=#{param1} 
+		where sender=#{param1} or receiver=#{param1}
 		group by sender, receiver) b on a.chatno=b.chatno
 		order by chatno desc;
 	</select>
