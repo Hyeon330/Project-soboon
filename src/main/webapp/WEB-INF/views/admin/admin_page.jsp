@@ -236,8 +236,38 @@ $(function(){
 							<li>이메일</li>
 							<li>주소</li>
 							-->
-						</ul>
 					</div> 
+					<div class="row">
+						<ul class="pagination justify-content-center" id="paging">
+						<c:if test="${pvo.currentPage==1}">
+							<li class="page-item disabled"><a class="page-link" id="prevBtn">Prev</a></li>
+							</c:if>
+							<c:if test="${pvo.currentPage>1}">
+								<li class="page-item"><a class="page-link" href="javascript:void(0);" id="prevBtn" 
+										onclick="goPrev(${pvo.currentPage},'${cvo.category}')">Prev</a></li>
+							</c:if>
+							<c:forEach var="p" begin="${pvo.startPage}" end="${pvo.totalPage}">
+								<c:if test="${p<=pvo.totalPage}">
+									<c:choose>
+										<c:when test="${p==pvo.currentPage}">
+											<li class="page-item disabled"><a class="page-link">${p}</a></li>
+										</c:when>
+										<c:when test="${p!=pvo.currentPage}">
+											<li class="page-item"><a class="page-link"href="javascript:void(0);"
+													onclick="goPage(${p},'${cvo.category}')">${p}</a></li>
+										</c:when>
+									</c:choose>
+								</c:if>
+							</c:forEach>
+							<c:if test="${pvo.currentPage==pvo.totalPage}">
+								<li class="page-item disabled"><a class="page-link" id="nextBtn">Ne1xt</a></li>
+							</c:if>
+							<c:if test="${pvo.currentPage<pvo.totalPage}">
+								<li class="page-item"><a class="page-link" href="javascript:void(0);" id="nextBtn"
+										onclick="goNext(${pvo.currentPage},'${cvo.category}')">Next</a></li>
+							</c:if>
+						</ul>
+					</div>
 					
 					<div class="tab-pane fade" id="reportMgr">
 						<!-- 신고관리 -->
