@@ -49,25 +49,25 @@ $(() => {
 			success: function (result){
 				console.log(result);
 				result.forEach(d => {
-					var chatDateArr = d.datetime.split(' ')[0].split('-');
-					var chatTimeArr = d.datetime.split(' ')[1].split(':');
+					var chatDateArr = d.chat_datetime.split(' ')[0].split('-');
+					var chatTimeArr = d.chat_datetime.split(' ')[1].split(':');
 					var chatDate = new Date(chatDateArr[0], chatDateArr[1], chatDateArr[2]);
 					var today = new Date(todayTime.getFullYear(), todayTime.getMonth()+1, todayTime.getDate());
 					
 					var chatList = '<li class="chat-list">';
 					chatList += '<div>';
 					chatList += '<div class="chat-info">';
-					if(d.r_nickname === myNickname){
-						chatList += '<p class="chat-name">'+d.s_nickname+'</p>';
+					if(d.receiver === myNickname){
+						chatList += '<p class="chat-name">'+d.sender+'</p>';
 					} else {
-						chatList += '<p class="chat-name">'+d.r_nickname+'</p>';
+						chatList += '<p class="chat-name">'+d.receiver+'</p>';
 					}
 					
 					// 메시지
-					if(d.chat_read == 'n' && d.s_nickname != myNickname){
-						chatList += '<p class="last-chat"><b class="not-read">'+d.s_nickname+": "+d.msg+'</b></p>';
+					if(d.chat_read == 'n' && d.sender != myNickname){
+						chatList += '<p class="last-chat"><b class="not-read">'+d.sender+": "+d.msg+'</b></p>';
 					}else {
-						chatList += '<p class="last-chat">'+d.s_nickname+": "+d.msg+'</p>';
+						chatList += '<p class="last-chat">'+d.sender+": "+d.msg+'</p>';
 					}
 					chatList += '</div>';
 					
@@ -97,7 +97,7 @@ $(() => {
 	var prevPosition = '';
 	var prevDate = '';
 	const setMessage = (data) => {
-		var msgDateArr = data.datetime.split(' ')[0].split('-');
+		var msgDateArr = data.chat_datetime.split(' ')[0].split('-');
 		var msgDate = msgDateArr[0]+'년 '+msgDateArr[1]+'월 '+msgDateArr[2]+'일';
 		if(prevDate != msgDate){
 			$('.msg-lists').append('<li><div class="msg-date-line">'+msgDate+'</div></li>');
@@ -106,22 +106,22 @@ $(() => {
 		var msg = '<li class="msg-list">';
 		
 		var position = '';
-		if(data.s_nickname == myNickname){
+		if(data.sender == myNickname){
 			position = 'right';
 		} else {
 			position = 'left';
 		}
 		
 		msg += '<div class="msg-box '+position+'">';
-		var msgDateTimeArr = data.datetime.split(' ')[1].split(':');
+		var msgDateTimeArr = data.chat_datetime.split(' ')[1].split(':');
 		var nowTime = msgDateTimeArr[0]+'시 '+msgDateTimeArr[1]+'분';
 		if(prevTime != nowTime || prevPosition != position){
 			msg += '<div class="msg-info">';
 			if(position=='right'){
 				msg += '<span class="msg-time">'+nowTime+'</span>';
-				msg += '·<span class="msg-nickname">'+data.s_nickname+'</span>';
+				msg += '·<span class="msg-nickname">'+data.sender+'</span>';
 			}else {
-				msg += '<span class="msg-nickname">'+data.s_nickname+'</span>';
+				msg += '<span class="msg-nickname">'+data.sender+'</span>';
 				msg += '·<span class="msg-time">'+nowTime+'</span>';
 			}
 			msg += '</div>';

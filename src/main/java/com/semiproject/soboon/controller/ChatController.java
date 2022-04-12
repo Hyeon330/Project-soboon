@@ -27,15 +27,16 @@ public class ChatController {
 	public List<ChatVO> getMessage(HttpSession session) {
 		List<ChatVO> resultList = new ArrayList<ChatVO>();
 		Set<String> oppNickNameSet = new HashSet<String>();
+		String myNickname = (String)session.getAttribute("nickName");
 		
-		List<ChatVO> dbMsgList = service.getLastMessage((String)session.getAttribute("logId"));
+		List<ChatVO> dbMsgList = service.getLastMessage(myNickname);
 		
 		for (ChatVO vo : dbMsgList) {
 			String oppNickName = "";
-			if(vo.getR_nickname().equals((String)session.getAttribute("nickName"))) {
-				oppNickName = vo.getS_nickname();
+			if(vo.getSender().equals(myNickname)) {
+				oppNickName = vo.getReceiver();
 			} else {
-				oppNickName = vo.getR_nickname();
+				oppNickName = vo.getSender();
 			}
 			if(!oppNickNameSet.contains(oppNickName)) {
 				oppNickNameSet.add(oppNickName);
@@ -47,19 +48,8 @@ public class ChatController {
 	
 	@PostMapping("getAllMessage")
 	public List<ChatVO> getAllMessage(String oppNickname, HttpSession session){
-		String myId = (String)session.getAttribute("logId");
-		List<ChatVO> list = service.getAllMessage(myId, oppNickname);
-		
-		for (ChatVO chatVO : list) {
-			if(chatVO.getSender().equals(myId)) {
-				chatVO.setS_nickname((String)session.getAttribute("nickName"));
-				chatVO.setR_nickname(oppNickname);
-			} else {
-				chatVO.setS_nickname(oppNickname);
-				chatVO.setR_nickname((String)session.getAttribute("nickName"));
-			}
-		}
-		
-		return list;
+		System.out.println(oppNickname);
+		System.out.println((String)session.getAttribute("nickName"));
+		return service.getAllMessage((String)session.getAttribute("nickName"), oppNickname);
 	}
 }

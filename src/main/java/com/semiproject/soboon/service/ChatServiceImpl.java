@@ -16,12 +16,16 @@ public class ChatServiceImpl implements ChatService {
 	ChatDAO dao;
 
 	@Override
-	public List<ChatVO> getLastMessage(String userid) {
-		return dao.getLastMessage(userid);
+	public List<ChatVO> getLastMessage(String myNickname) {
+		return dao.getLastMessage(myNickname);
 	}
 
 	@Override
 	public List<ChatVO> getAllMessage(String myUserid, String oppNickname) {
 		return dao.getAllMessage(myUserid, oppNickname);
 	}
+
+
+
+	
 }

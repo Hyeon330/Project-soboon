@@ -5,7 +5,7 @@ public class ChatVO {
 	private String sender;
 	private String receiver;
 	private String msg;
-	private String datetime;
+	private String chat_datetime;
 	private String chat_read;
 	
 	private String s_nickname;
@@ -14,7 +14,7 @@ public class ChatVO {
 	@Override
 	public String toString() {
 		return "ChatVO [getChatno()=" + getChatno() + ", getSender()=" + getSender() + ", getReceiver()="
-				+ getReceiver() + ", getMsg()=" + getMsg() + ", getDatetime()=" + getDatetime() + ", getChat_read()="
+				+ getReceiver() + ", getMsg()=" + getMsg() + ", getDatetime()=" + getChat_datetime() + ", getChat_read()="
 				+ getChat_read() + ", getS_nickname()=" + getS_nickname() + ", getR_nickname()=" + getR_nickname()
 				+ "]";
 	}
@@ -43,11 +43,11 @@ public class ChatVO {
 	public void setMsg(String msg) {
 		this.msg = msg;
 	}
-	public String getDatetime() {
-		return datetime;
+	public String getChat_datetime() {
+		return chat_datetime;
 	}
-	public void setDatetime(String datetime) {
-		this.datetime = datetime;
+	public void setChat_datetime(String chat_datetime) {
+		this.chat_datetime = chat_datetime;
 	}
 	public String getChat_read() {
 		return chat_read;

@@ -10,6 +10,6 @@ import com.semiproject.soboon.vo.ChatVO;
 @Mapper
 @Repository
 public interface ChatDAO {
-	public List<ChatVO> getLastMessage(String userid);
+	public List<ChatVO> getLastMessage(String myNickname);
 	public List<ChatVO> getAllMessage(String myUserid, String oppNickname);
 }
