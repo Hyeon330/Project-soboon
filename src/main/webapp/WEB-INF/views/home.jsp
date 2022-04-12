@@ -4,6 +4,7 @@
 	<div class="mainContainer">
 		<div class="typingContainer">
 			<p id="dynamic" class="lg-text active1"></p>
+			<br/>
 			<p class="sm-text">모든 1인, 소규모 가구의 불편함을 덜어주는 <br/> 이웃 대상 커뮤니티 서비스</p>
 		</div>
 		<div class="slide">
@@ -29,161 +30,42 @@
 			<a href="#"><img src="/img/inform4.png" class="functionImage"/></a>
 		</div>
 	</div>	
-	<div id="bottomContainer">
 		<div id="recentItem">
+	<div id="bottomContainer">
 			<br/>
 			<br/>
 			<h1 id="fuctionTitle" style="text-align:center; font-weight:bold; color:rgb(154, 97, 66);">최근 게시물</h1>
 			<br/>
 			<br/>
 			<div class="row">
-				<div class="col-sm-3">
-					<div class="card-deck" >
+				<c:forEach var="listVo" items="${list}">
+					<div class="col-sm-3 sr">
 							<div class="card">
-		      				<div class="embed-responsive embed-responsive-4by3">
-		       					<a href="/shareBoard/shareView"><img src="/img/books.jpg" class="card-img-top embed-responsive-item"  class="card-img-top" ></a>
-		      					<div class="card-img-overlay">
-		      					</div>
-		      				</div>
-							<div class="card-body">
+				    			<div class="embed-responsive embed-responsive-4by3">
+			     					<a href="/board/shareAndReqView?no=${listVo.no}&category=${listVo.category}">
+		      							<c:if test="${listVo.thumbnailImg==null}">
+		      							<div class="imgFilm">
+		      								<img src="/img/1.jpg" class="embed-responsive-item">
+		      							</div>
+		      							</c:if>
+		      							<c:if test="${listVo.thumbnailImg!=null}">
+		      								<img src="/upload/${listVo.thumbnailImg}" class="embed-responsive-item">
+		      							</c:if>
+			    						<span id="heart" class="card-img-overlay"><i class="fa fa-heart fa-lg"></i><span class="iconValue">${listVo.pick}</span></span>
+			    					</a>
+				    			</div>
+								<div class="card-body cb">
 									<ul>
-											<li>닉네임</li>
-											<li><a href="/shareBoard/shareView">제목</a></li>
+										<c:if test="${listVo.category == 'share'}"><li style="font-size:1.5em; font-weight:900">나눔</li></c:if>
+										<li id="shareAndReqTitle"><a href="/board/shareAndReqView?no=${listVo.no}&category=${listVo.category}">${listVo.title}</a></li>
+										<li>${listVo.nickname}</li>
+										<li><i class="fa fa-location-arrow fa-lg"></i><span class="iconValue">${listVo.address}</span></li>
 									</ul>
 								</div>
 							</div>
 						</div>
-					</div>
-					<br/>
-					<div class="col-sm-3">
-						<div class="card-deck" >
-							<div class="card">
-		      				<div class="embed-responsive embed-responsive-4by3">
-		       					<a href="/shareBoard/shareView"><img src="/img/books.jpg" class="card-img-top embed-responsive-item"  class="card-img-top" ></a>
-		      					<div class="card-img-overlay">
-		      					</div>
-		      				</div>
-							<div class="card-body">
-									<ul>
-											<li>닉네임</li>
-											<li><a href="/shareBoard/shareView">제목</a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-					<br/>
-					<div class="col-sm-3">
-						<div class="card-deck" >
-							<div class="card">
-		      				<div class="embed-responsive embed-responsive-4by3">
-		       					<a href="/shareBoard/shareView"><img src="/img/books.jpg" class="card-img-top embed-responsive-item"  class="card-img-top" ></a>
-		      					<div class="card-img-overlay">
-		      					</div>
-		      				</div>
-							<div class="card-body">
-									<ul>
-											<li>닉네임</li>
-											<li><a href="/shareBoard/shareView">제목</a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-					<br/>
-					<div class="col-sm-3">
-						<div class="card-deck" >
-							<div class="card">
-		      				<div class="embed-responsive embed-responsive-4by3">
-		       					<a href="/shareBoard/shareView"><img src="/img/books.jpg" class="card-img-top embed-responsive-item"  class="card-img-top" ></a>
-		      					<div class="card-img-overlay">
-		      					</div>
-		      				</div>
-							<div class="card-body">
-									<ul>
-											<li>닉네임</li>
-											<li><a href="/shareBoard/shareView">제목</a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-					<br/>
-					<div class="col-sm-12"></div>
-					<div class="col-sm-3">
-						<div class="card-deck" >
-							<div class="card">
-		      				<div class="embed-responsive embed-responsive-4by3">
-		       					<a href="/shareBoard/shareView"><img src="/img/books.jpg" class="card-img-top embed-responsive-item"  class="card-img-top" ></a>
-		      					<div class="card-img-overlay">
-		      					</div>
-		      				</div>
-							<div class="card-body">
-									<ul>
-											<li>닉네임</li>
-											<li><a href="/shareBoard/shareView">제목</a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-					<br/>
-					<div class="col-sm-3">
-						<div class="card-deck" >
-							<div class="card">
-		      				<div class="embed-responsive embed-responsive-4by3">
-		       					<a href="/shareBoard/shareView"><img src="/img/books.jpg" class="card-img-top embed-responsive-item"  class="card-img-top" ></a>
-		      					<div class="card-img-overlay">
-		      					</div>
-		      				</div>
-							<div class="card-body">
-									<ul>
-											<li>닉네임</li>
-											<li><a href="/shareBoard/shareView">제목</a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-					<br/>
-					<div class="col-sm-3">
-						<div class="card-deck" >
-							<div class="card">
-		      				<div class="embed-responsive embed-responsive-4by3">
-		       					<a href="/shareBoard/shareView"><img src="/img/books.jpg" class="card-img-top embed-responsive-item"  class="card-img-top" ></a>
-		      					<div class="card-img-overlay">
-		      					</div>
-		      				</div>
-							<div class="card-body">
-									<ul>
-											<li>닉네임</li>
-											<li><a href="/shareBoard/shareView">제목</a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-					<br/>
-					<div class="col-sm-3">
-						<div class="card-deck" >
-							<div class="card">
-		      				<div class="embed-responsive embed-responsive-4by3">
-		       					<a href="/shareBoard/shareView"><img src="/img/books.jpg" class="card-img-top embed-responsive-item"  class="card-img-top" ></a>
-		      					<div class="card-img-overlay">
-		      					</div>
-		      				</div>
-							<div class="card-body">
-									<ul>
-											<li>닉네임</li>
-											<li><a href="/shareBoard/shareView">제목</a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-					<br/>
-				</div>
-				<br/>
+				</c:forEach>	
 			</div>
 		</div>
+	</div>
 <script src="/js/home.js"></script>

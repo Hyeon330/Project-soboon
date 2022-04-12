@@ -25,7 +25,6 @@ function resetTyping(){
 
 //한글자씩 출력하는 함수
 function dynamic(randomArr){
-	console.log(randomArr);
 	if(randomArr.length > 0){
 		target.textContent += randomArr.shift();
 		setTimeout(function(){ 
