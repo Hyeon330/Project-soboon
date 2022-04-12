@@ -209,5 +209,5 @@ $(() => {
     setInterval(() => {
 		chatListsReload();
 		openMsgPopupReload();
-	}, 1000);
+	}, 4000);
 });
