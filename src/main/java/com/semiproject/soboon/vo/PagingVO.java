@@ -4,6 +4,7 @@ public class PagingVO {
 	
 	private int currentPage = 1;    // 현재페이지
 	private int startPage = 1;      // 시작페이지
+	private int memberPerPage = 10;	// 한 페이지당 10명의 레코드 출력
 	private int recordPerPage = 12; // 한 페이지당 표시할 DB 레코드 수(글 개수)
 	private int onePageCount = 5;   // 하단에 한 번에 표시할 페이지 수
 	private int totalRecord;        // 게시글 총 개수(DB)
@@ -21,6 +22,17 @@ public class PagingVO {
         // 페이지 번호의 시작값
         startPage = ((currentPage-1)/onePageCount*onePageCount)+1;
     }
+	
+	public int getMemberPerPage() {
+		return memberPerPage;
+	}
+	public void setMemberPerPage(int memberPerPage) {
+		this.memberPerPage = memberPerPage;
+		// offset위치 계산
+        setOffsetIndex((currentPage-1)*memberPerPage);
+        // 페이지 번호의 시작값
+        startPage = ((currentPage-1)/onePageCount*onePageCount)+1;
+	}
 	public int getStartPage() {
 		return startPage;
 	}
