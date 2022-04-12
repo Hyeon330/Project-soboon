@@ -130,5 +130,7 @@ public class RelateUploadFile {
 				vo.setImg3(fileList.get(fl));
 		}
 	}
+	
+	
 }
 

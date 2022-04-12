@@ -42,10 +42,11 @@ public class BoardController {
 	
 	@GetMapping("shareAndReqList")
 	public ModelAndView shareAndReqListForm(String category, PagingVO pvo) {
-		// 게시판 글 DB연결해서 보이기 
-		mav.addObject("list", service.selectList(category, pvo));
 		// 게시판 별 총 레코드 수
 		pvo.setTotalRecord(service.selectTotalRecord(category, pvo));
+		// 게시판 글 DB연결해서 보이기 
+		mav.addObject("list", service.selectList(category, pvo));
+
 
 		mav.addObject("pvo", pvo);
 		mav.addObject("cvo", service.selectCategory(category));
@@ -68,7 +69,7 @@ public class BoardController {
 		// 현재 session에 있는 ID와 카테고리
 		vo.setUserid((String)request.getSession().getAttribute("logId")); 
 		vo.setCategory(category);
-		mav.setViewName("board/shareAndReqWriteSuc");
+		mav.setViewName("board/BoardWriteSuc");
 		
 		// 파일을 업로드할 폴더 절대경로
 		String path = request.getSession().getServletContext().getRealPath("/upload");
@@ -159,57 +160,8 @@ public class BoardController {
 				}
 			}
 			// rename하고 기존 파일 수정하기
-			// 새로 업로드 하기
-			MultipartHttpServletRequest mp = (MultipartHttpServletRequest)request;
-
-			// 새로 업로드된 MultipartFile 객체를 얻어 오기(shareAndReqEdit에서의 name)
-			List<MultipartFile> files = mp.getFiles("fileImg");
-			if (files != null) {
-
-				for (int i = 0; i < files.size(); i++) { // 업로드할 파일만큼 for문 실행
-					// rename 하기
-					MultipartFile mpf = files.get(i);
-					// 새로운 파일명 newUploadFileName
-					String newUploadFileName = mpf.getOriginalFilename();
-
-					if (newUploadFileName != null && !newUploadFileName.equals("")) {
-						// 있으면 rename하고 없으면 안하기
-						File f = new File(path, newUploadFileName);
-
-						// 파일이 존재할 때 rename
-						if (f.exists()) {
-							for (int n = 1;; n++) {
-								int point = newUploadFileName.lastIndexOf(".");
-								String newFileName = newUploadFileName.substring(0, point);
-								String ext = newUploadFileName.substring(point + 1);
-
-								// 새로 rename
-								String newf = newFileName + "[" + n + "]" + ext;
-								f = new File(path, newf);
-								if (!f.exists()) {
-									newUploadFileName = newf;
-									break;
-								}
-							}
-						}
-						// 파일 업로드
-						mpf.transferTo(f); // 업로드!!
-						fileList.add(newUploadFileName); // DB에 등록
-						newFileList.add(newUploadFileName); // 새로운 업로드 목록 추가
-					}
-				}
-			}
-			// fileList에 있는 DB에 등록할 파일을 vo에 담기
-			for (int fl = 0; fl < fileList.size(); fl++) {
-				if (fl == 0) vo.setThumbnailImg(fileList.get(fl));
-				if (fl == 1) vo.setImg1(fileList.get(fl));
-				if (fl == 2) vo.setImg2(fileList.get(fl));
-				if (fl == 3) vo.setImg3(fileList.get(fl));
-			}
-			if(fileVO==null) {
-				// DB 업데이트
-				int cnt = service.updateEditView(vo);
-			}
+			RelateUploadFile.fileRenameAndUpdate(fileVO, path, fileList, newFileList, request);
+			
 			// DB 업데이트
 			int cnt = service.updateEditView(vo);
 			
@@ -221,9 +173,7 @@ public class BoardController {
 			}
 			mav.addObject("cnt", cnt);
 			mav.addObject("vo", vo);
-			System.out.println(cnt);
-			System.out.println("수정성공");
-			mav.setViewName("board/shareAndReqEditSuc");
+			mav.setViewName("board/BoardEditSuc");
 		}catch(Exception e) {
 			e.printStackTrace();
 			// DB수정 실패(새로 올라간 파일 삭제)

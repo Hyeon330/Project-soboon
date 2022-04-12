@@ -9,23 +9,9 @@
 				location.href="/board/shareAndReqDel?no=${viewVo.no}&category=${viewVo.category}";
 			}
 		});
-		$("#joinPlus").click(function(){
-			let no = "${viewVo.no}"
-			let userid = "${viewVo.userid}";
-			console.log(no);
-			console.log(userid);
-			$.ajax({
-				type:"POST",
-				url:"/board/joinPlus",
-				data:{"no":no,"userid":userid},
-				dataType:"json",
-				success:function(result){
-					alert("성공적으로 참가하였습니다.");
-					$("#joinUpdate").text(result);
-				},error:function(e){
-					alert("참여에 실패했습니다.");
-				}
-			});
+		
+		$(function(){
+			// 댓글 목록
 		});
 	});
 </script>
@@ -131,18 +117,23 @@
 				</c:if>
 			</div>
 		</div>
+		<!-- 글 내용 -->
 		<div class="col-12 src" >	
 			<div id="shareAndReqContent">${viewVo.content}</div>
 		</div>
+		<!-- 댓글 -->
 		<div class="col-12">
 			<hr/>
-			<form>
-				<div><i class="fa fa-comment fa-lg"></i><span class="iconValue">댓글</span></div>
-				<div id="commentLine">
-					<textarea name="coment" id="coment" class="shareAndReqComent" rows="4" cols="80" placeholder="내용을 입력하세요"></textarea>
-					<span id="replyBtn"><input type="submit" class="btn" id="replyInsert" name="replyInsert" value="댓글 등록"></span>
-				</div>
-			</form>
+			<c:if test="${logStatus=='Y'}">
+			<div><i class="fa fa-comment fa-lg"></i><span class="iconValue">댓글</span></div>
+				<form method="post" id="replyForm">
+					<input type="hidden" name="replyno" value="${viewVo.no}">
+					<div id="commentLine">
+						<textarea name="coment" id="coment" class="shareAndReqComent" rows="4" cols="80" placeholder="내용을 입력하세요"></textarea>
+						<span id="replyBtn"><input type="submit" class="btn" id="replyInsert" name="replyInsert" value="댓글 등록"></span>
+					</div>
+				</form>
+			</c:if>
 		</div>
 	</div>
 </div>

@@ -12,7 +12,7 @@
 		b.thumbnailImg, b.joinno, b.pick, b.views, b.price, b.category, m.address, m.nickname
 		from board b join member m on m.userid = b.userid
 		where category=#{param1} order by no desc 
-		limit 12
+		limit ${param2.recordPerPage} offset ${param2.offsetIndex}
 	</select>
 	<select id="selectTotalRecord" resultType="int">
 		select count(no) count from board where category=#{param1}
