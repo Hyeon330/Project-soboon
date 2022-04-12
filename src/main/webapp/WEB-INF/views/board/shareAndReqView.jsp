@@ -107,7 +107,7 @@
 				</div>
 				<div class="col-12 text-center pb">
 					<input type="submit" class="btn" id="joinMinus" name="joinMinus" value="참여취소">
-					<span id="btnSpace"></span><input type="submit" class="btn" id="joinChat" name="joinChat" value="채팅방 입장">
+					<span id="btnSpace"></span><input type="submit" class="btn" id="joinChat" name="joinChat" value="채팅 보내기">
 				</div>
 				<c:if test="${logId==viewVo.userid}">
 					<div class="col-12 text-center pb">
