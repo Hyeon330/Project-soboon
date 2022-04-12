@@ -10,7 +10,7 @@
 				<li><input type="text" class="login-id" name="userid" id="userid" placeholder="ID" /></li>
 				<li><input type="password" class="login-pwd" name="userpwd" id="userpwd" placeholder="PASSWORD" /></li>
 				<li><input type="submit" class="btn login-btn" value="로그인" /></li>
-				<li><span id="kakaobtn"><i class="bi bi-chat"></i><input type="submit" class="btn kakao" value="카카오톡으로 로그인하기"/></span></li>
+				<li><a href="https://kauth.kakao.com/oauth/authorize?client_id=4f0872694d90dd12a1b5d2f2045a544b&redirect_uri=http://localhost:9000/member/kakao/klogin&response_type=code"><img src="/img/kakao_login_button.png" class="kakaoBtn"/></a></li>
 				<li>
 					<input type="button" class="btn login-btn1" id="changeBtn" value="아이디/비밀번호찾기"/>
 					<a href="/member/signup"><input type="button" class="btn login-btn2" id="signupBtn" value="회원가입"/></a>
