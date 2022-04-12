@@ -66,7 +66,7 @@
 						</c:when>
 						<c:otherwise>
 							<div id="carousel-item active">
-								<img src="/img/1.jpg"/>
+								<img src="/img/share.jpg"/>
 							</div>
 						</c:otherwise>
 					</c:choose>

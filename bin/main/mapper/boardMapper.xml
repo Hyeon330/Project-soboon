@@ -11,7 +11,11 @@
 		select b.no, b.title, date_format(b.createdate, "%m/%d %H:%i")createdate,
 		b.thumbnailImg, b.joinno, b.pick, b.views, b.price, b.category, m.address, m.nickname
 		from board b join member m on m.userid = b.userid
-		where category=#{param1} order by no desc
+		where category=#{param1} order by no desc 
+		limit 12
+	</select>
+	<select id="selectTotalRecord" resultType="int">
+		select count(no) count from board where category=#{param1}
 	</select>
 	<select id="selectCategory" resultType="com.semiproject.soboon.vo.BoardVO">
 		select category from board where category=#{param1} limit 1
