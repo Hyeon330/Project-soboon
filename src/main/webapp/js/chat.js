@@ -137,25 +137,29 @@ $(() => {
 		$('#msgPopup').css('display', 'none');
 	});
 	
+	// 닉네임에 맞는 메시지 가져오는 함수
+	const msgLoad = (oppNickname) => {
+		$('#oppNickName').text(oppNickname);
+		$('.msg-lists').empty();
+		$.ajax({
+			url: '/chat/getAllMessage',
+			type: 'post',
+			data: 'oppNickname='+oppNickname,
+			async: false,
+			success: function(result) {
+				prevDate = '';
+				result.forEach(data => {
+					setMessage(data);
+				});
+			}
+		});
+		$('#msgPopup').css('display', 'block');
+		$('.msg-lists').scrollTop($('.msg-lists')[0].scrollHeight);
+	}
+	
 	const openMsgPopupReload = () => {
 		$('.chat-list').on('click', function(){
-			var oppNickname = $(this).find('.chat-name').text();
-			$('#oppNickName').text(oppNickname);
-			$('.msg-lists').empty();
-			$.ajax({
-				url: '/chat/getAllMessage',
-				type: 'post',
-				data: 'oppNickname='+oppNickname,
-				async: false,
-				success: function(result) {
-					prevDate = '';
-					result.forEach(data => {
-						setMessage(data);
-					});
-				}
-			});
-			$('#msgPopup').css('display', 'block');
-			$('.msg-lists').scrollTop($('.msg-lists')[0].scrollHeight);
+			msgLoad($(this).find('.chat-name').text());
 		});
 	}
 	openMsgPopupReload();
@@ -194,8 +198,12 @@ $(() => {
     
     // 채팅 보내기 버튼 클릭시
     $('#joinChat').click(() => {
-		$('#chatBtn').click();
-		$('#viewNickname').text();
+		if($('#chatPopup').css('height').substring(0,$('#chatPopup').css('height').length-2)==0){
+			$('#chatBtn').click();
+		}
+		$('#oppNickName').text($('#viewNickname').text());
+		msgLoad($('#viewNickname').text());
+		$('#msgPopup').css('display', 'block');
 	});
     
     setInterval(() => {
