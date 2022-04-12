@@ -22,11 +22,13 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.ModelAndViewDefiningException;
 
-import com.semiproject.soboon.RelateUploadImgFile;
+import com.semiproject.soboon.RelateUploadFile;
 import com.semiproject.soboon.service.BoardService;
 import com.semiproject.soboon.vo.BoardVO;
 import com.semiproject.soboon.vo.JoinVO;
+import com.semiproject.soboon.vo.PagingVO;
 
 @RequestMapping("/board/")
 @RestController
@@ -39,12 +41,19 @@ public class BoardController {
 	ResponseEntity<String> entity = null;
 	
 	@GetMapping("shareAndReqList")
-	public ModelAndView shareAndReqListForm(String category) {
-		mav.addObject("list", service.selectList(category));
+	public ModelAndView shareAndReqListForm(String category, PagingVO pvo) {
+		// 게시판 별 총 레코드 수
+		pvo.setTotalRecord(service.selectTotalRecord(category, pvo));
+		// 게시판 글 DB연결해서 보이기 
+		mav.addObject("list", service.selectList(category, pvo));
+
+
+		mav.addObject("pvo", pvo);
+		mav.addObject("cvo", service.selectCategory(category));
+		
 		if(category.equals("share")||category.equals("request")) {
 			mav.setViewName("board/shareAndReqList");
 		}
-		mav.addObject("vo", service.selectCategory(category));
 		return  mav;
 	}
 
@@ -60,14 +69,13 @@ public class BoardController {
 		// 현재 session에 있는 ID와 카테고리
 		vo.setUserid((String)request.getSession().getAttribute("logId")); 
 		vo.setCategory(category);
-		mav.addObject("vo", service.selectList(category));
-		mav.setViewName("board/shareAndReqWriteSuc");
+		mav.setViewName("board/BoardWriteSuc");
 		
 		// 파일을 업로드할 폴더 절대경로
 		String path = request.getSession().getServletContext().getRealPath("/upload");
 		try { 
 			// 파일 업로드 성공
-			RelateUploadImgFile.fileRenameAndUpload(vo, path, request);
+			RelateUploadFile.fileRenameAndUpload(vo, path, request);
 			// 업로드 성공(DB에 레코드 등록)
 			int cnt = service.shareAndReqInsert(vo);
 			mav.addObject("cnt", cnt);
@@ -75,10 +83,10 @@ public class BoardController {
 			e.printStackTrace();
 			// 데이터가 DB에 정상적으로 들어가지 않았다면 이미 업로드한 파일은 upload 폴더에 들어갔기 때문에 삭제해야 한다.
 			// 삭제할 파일명은 vo안에 있고, fileDelete 메서드를 이용해서 삭제
-			RelateUploadImgFile.fileDelete(path, vo.getThumbnailImg());
-			RelateUploadImgFile.fileDelete(path, vo.getImg1());
-			RelateUploadImgFile.fileDelete(path, vo.getImg2());
-			RelateUploadImgFile.fileDelete(path, vo.getImg3());
+			RelateUploadFile.fileDelete(path, vo.getThumbnailImg());
+			RelateUploadFile.fileDelete(path, vo.getImg1());
+			RelateUploadFile.fileDelete(path, vo.getImg2());
+			RelateUploadFile.fileDelete(path, vo.getImg3());
 		}
 		return mav;
 	}
@@ -111,82 +119,69 @@ public class BoardController {
 		}
 		mav.addObject("totalFile", totalFile);
 		mav.addObject("bvo", bvo);
-		mav.setViewName("/board/shareAndReqEdit");
+		mav.setViewName("board/shareAndReqEdit");
 		return mav;
 	}
 	
 	// 글 수정 DB연결
 	@PostMapping("shareAndReqEditOk")
-	public ResponseEntity<String> shareAndReqEditOk(BoardVO vo, HttpServletRequest request){
+	public ModelAndView shareAndReqEditOk(BoardVO vo, HttpServletRequest request){
 		vo.setUserid((String)request.getSession().getAttribute("logId"));
-		
+
 		// 파일을 수정하기 위해서 경로
 		String path = request.getSession().getServletContext().getRealPath("/upload");
 
-		HttpHeaders headers = new HttpHeaders();
-		headers.setContentType(new MediaType("text", "html", Charset.forName("utf-8")));
-		
-		// DB에서 가져온 파일명을 넣을 임시 리스트
+		// DB에 업데이트할 파일명을 넣는 리스트
 		List<String> fileList = new ArrayList<String>();
-		// 새로 업로드할 파일명
-		List<String> newFile = new ArrayList<String>();
+		// 새로 업로드할 파일 리스트
+		List<String> newFileList = new ArrayList<String>();
 		
 		try{
 			// DB에서 파일명 가져오기
 			BoardVO fileVO = service.getFileName(vo.getNo());
 			
-			// 임시 리스트에 기존 파일명 넣기
-			if(fileVO.getThumbnailImg()!=null || fileVO.getThumbnailImg()!="") {
-				fileList.add(fileVO.getThumbnailImg());
-			}else if(fileVO.getImg1()!=null || fileVO.getImg1()!="") {
-				fileList.add(fileVO.getImg1());
-			}else if(fileVO.getImg2()!=null || fileVO.getImg2()!="") {
-				fileList.add(fileVO.getImg2());
-			}else if(fileVO.getImg3()!=null || fileVO.getImg3()!="") {
-				fileList.add(fileVO.getImg3());
+			// DB 리스트에 기존 파일명 넣기
+			if(fileVO!=null) {
+				if(fileVO.getThumbnailImg()!=null || fileVO.getThumbnailImg()!="") {
+					fileVO = service.getFileName(vo.getNo());
+					fileList.add(fileVO.getThumbnailImg());
+				}else if(fileVO.getImg1()!=null || fileVO.getImg1()!="") {
+					fileList.add(fileVO.getImg1());
+				}else if(fileVO.getImg2()!=null || fileVO.getImg2()!="") {
+					fileList.add(fileVO.getImg2());
+				}else if(fileVO.getImg3()!=null || fileVO.getImg3()!="") {
+					fileList.add(fileVO.getImg3());
+				}
 			}
-			
-			// 삭제된 파일이 있으면(사용자가 x버튼을 누르면) List에서 deleteFile[]과 같은 파일명을 지운다. 
-			if(vo.getDeleteFile()!=null) { // deleteFile[]안에 파일이 있는 경우
-				for(String deleteFile:vo.getDeleteFile()) {
+			// 삭제된 파일이 있으면(사용자가 x버튼을 누르면) List에서 deleteFile[]과 같은 파일명을 지운다.
+			if(vo.getDeleteFile()!= null) { // deleteFile[]안에 파일이 있는 경우
+				for (String deleteFile : vo.getDeleteFile()) {
 					fileList.remove(deleteFile);
 				}
 			}
+			// rename하고 기존 파일 수정하기
+			RelateUploadFile.fileRenameAndUpdate(fileVO, path, fileList, newFileList, request);
 			
-			// 새로 업로드 하기
-			MultipartHttpServletRequest mp = (MultipartHttpServletRequest)request;
-			
-			// 새로 업로드된 MultipartFile 객체를 얻어 오기(shareAndReqEdit에서의 name)
-			List<MultipartFile> files = mp.getFiles("fileImg");
-			if(files!=null) {
-				int cnt = 1;
-				
-				for(int i=0; i<files.size(); i++) { // 업로드할 파일만큼 for문 실행
-					// rename 하기
-					MultipartFile mpf = files.get(i);
-					// 새로운 파일명 newUploadFileName
-					String newUploadFileName = mpf.getOriginalFilename();
-					
-					if(newUploadFileName!=null && !newUploadFileName.equals("")) {
-						//있으면 rename하고 없으면 안하기
-						File f = new File(path, newUploadFileName);
-					}
-				}
-			}
 			// DB 업데이트
-			service.updateEditView(vo);
+			int cnt = service.updateEditView(vo);
 			
 			// DB 수정 성공 뒤
-			if(vo.getDeleteFile()!=null) {
-				for(String filename:vo.getDeleteFile()) {
-					RelateUploadImgFile.fileRenameAndUpload(vo, path, request);
+			if(vo.getDeleteFile()!=null) { // deFile에 있는것들은 지우기
+				for(String fname:vo.getDeleteFile()) {
+					RelateUploadFile.fileDelete(path, fname);
 				}
 			}
-			
+			mav.addObject("cnt", cnt);
+			mav.addObject("vo", vo);
+			mav.setViewName("board/BoardEditSuc");
 		}catch(Exception e) {
-			
+			e.printStackTrace();
+			// DB수정 실패(새로 올라간 파일 삭제)
+			for(String fname:newFileList) {
+				RelateUploadFile.fileDelete(path, fname);
+			}
 		}
-		return entity;
+		return mav;
 	}
 	
 	
@@ -209,10 +204,10 @@ public class BoardController {
 			
 			if(result>0) {
 				// 삭제 성공하면 파일도 삭제
-				RelateUploadImgFile.fileDelete(path, fileVO.getThumbnailImg());
-				RelateUploadImgFile.fileDelete(path, fileVO.getImg1());
-				RelateUploadImgFile.fileDelete(path, fileVO.getImg2());
-				RelateUploadImgFile.fileDelete(path, fileVO.getImg3());
+				RelateUploadFile.fileDelete(path, fileVO.getThumbnailImg());
+				RelateUploadFile.fileDelete(path, fileVO.getImg1());
+				RelateUploadFile.fileDelete(path, fileVO.getImg2());
+				RelateUploadFile.fileDelete(path, fileVO.getImg3());
 				
 				String msg ="<script>alert('글이 삭제되었습니다.');";
 				msg +="location.href='/board/shareAndReqList?category="+category+"';</script>";
@@ -253,15 +248,7 @@ public class BoardController {
 		return bvo;
 		
 	}
-	
-	@GetMapping("rentAndSaleList")
-	public ModelAndView priceListForm(String category) {
-		mav.addObject("list", service.selectList(category));
-		if(category.equals("rent") || category.equals("sale")) {
-			mav.setViewName("board/shareAndReqList");
-		}
-		return  mav;
-	}
+
 
 
 }

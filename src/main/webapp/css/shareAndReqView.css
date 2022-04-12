@@ -89,11 +89,6 @@
 	line-height:50px;
 }
 
-/*내용*/
-#shareAndReqContent {
-	margin-bottom:20px;
-}
-
 /*버튼*/
 #joinPlus, #joinChat, #shareEdit {
 	background-color: rgb(72, 97, 86);
@@ -116,7 +111,7 @@
 }
 .shareAndReqComent{
 	padding: 12px;
-	border: 2px solid gray;
+	border: none;
 	border-radius:10px;
 	outline:none;
 	resize:none;
@@ -135,7 +130,7 @@
 	color:white;
 }
 
-#replyBtn {
+#replyInsert {
 	position:absolute;
 	left:750px; 
 	bottom:0px;

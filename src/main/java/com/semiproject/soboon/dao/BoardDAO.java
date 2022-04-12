@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.semiproject.soboon.vo.BoardVO;
 import com.semiproject.soboon.vo.JoinVO;
 import com.semiproject.soboon.vo.MemberVO;
+import com.semiproject.soboon.vo.PagingVO;
 
 @Mapper 
 @Repository
@@ -18,7 +19,10 @@ public interface BoardDAO {
 	public int shareAndReqInsert(BoardVO vo); 
 	
 	// 글 리스트 보이기
-	public List<BoardVO> selectList(String category);
+	public List<BoardVO> selectList(String category, PagingVO pvo);
+	
+	// 게시판의 레코드 개수 가져오기(페이징)
+	public int selectTotalRecord(String category,PagingVO pvo);
 	
 	// 카테고리 가져오기
 	public BoardVO selectCategory(String category);

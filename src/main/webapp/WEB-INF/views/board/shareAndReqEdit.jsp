@@ -75,7 +75,6 @@
 					<input type="file" name="fileImg" id="img3"/>
 				</c:otherwise>
 			</c:choose>
-				
   			</div>
   		</div>
   		<div class="col-12 text-center">

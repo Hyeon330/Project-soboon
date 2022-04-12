@@ -5,6 +5,7 @@
 
 .sr{
 	margin-bottom:40px;
+	filter : drop-shadow(10px 10px 10px rgb(144, 163, 140));
 }
 .space{
 	padding:20px;
@@ -12,6 +13,7 @@
 #shareBrd, #requestBrd{
 	text-align:center;
 	font-weight:bold;
+	margin-top:20px;
 }
 
 #shareReqWrite{
@@ -35,4 +37,14 @@
 
 .iconValue{
 	margin-left:10px;
+}
+
+/*페이징*/
+#paging{
+	margin:0 auto;
+}
+
+#prevBtn, #nextBtn{
+	background-color: rgb(239, 136, 105) ;
+	color:white;
 }
