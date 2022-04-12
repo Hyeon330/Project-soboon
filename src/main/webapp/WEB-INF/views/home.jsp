@@ -22,19 +22,19 @@
 			<br/>
 			<br/>
 			<br/>
-			<h1 id="fuctionTitle" style="text-align:center; font-weight:bold; color:rgb(154, 97, 66);">소분소분의 이야기</h1>
+			<h1 id="fuctionTitle" style="text-align:center; font-weight:bold; color:rgb(72, 97, 86);">소분소분의 이야기</h1>
 			<br/>
-			<a href="/board/shareAndReqList?category=share"><img src="/img/inform1.png" class="functionImage"/></a>				
-			<a href="#"><img src="/img/inform2.png" class="functionImage"/></a>
-			<a href="#"><img src="/img/inform3.png" class="functionImage"/></a>
-			<a href="#"><img src="/img/inform4.png" class="functionImage"/></a>
+			<a href="/board/shareAndReqList?category=share"><img src="/img/inform1_1.png" class="functionImage"/></a>				
+			<a href="#"><img src="/img/inform2_1.png" class="functionImage"/></a>
+			<a href="#"><img src="/img/inform3_1.png" class="functionImage"/></a>
+			<a href="#"><img src="/img/inform4_1.png" class="functionImage"/></a>
 		</div>
 	</div>	
 		<div id="recentItem">
 	<div id="bottomContainer">
 			<br/>
 			<br/>
-			<h1 id="fuctionTitle" style="text-align:center; font-weight:bold; color:rgb(154, 97, 66);">최근 게시물</h1>
+			<h1 id="fuctionTitle" style="text-align:center; font-weight:bold; color:rgb(72, 97, 86);">최근 게시물</h1>
 			<br/>
 			<br/>
 			<div class="row">
@@ -61,6 +61,7 @@
 										<c:if test="${listVo.category == 'sale'}"><li style="font-size:1.5em; font-weight:900">판매</li></c:if>
 										<c:if test="${listVo.category == 'request'}"><li style="font-size:1.5em; font-weight:900">요청</li></c:if>
 										<li id="shareAndReqTitle"><a href="/board/shareAndReqView?no=${listVo.no}&category=${listVo.category}">${listVo.title}</a></li>
+										<hr/>
 										<li>${listVo.nickname}</li>
 										<li><i class="fa fa-location-arrow fa-lg"></i><span class="iconValue">${listVo.address}</span></li>
 									</ul>
