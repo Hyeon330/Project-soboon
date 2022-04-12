@@ -19,18 +19,34 @@ conn.connect();
 
 var userList = [];
 io.sockets.on('connection', (socket) => {
-    socket.on('send-nickname', (nickname) => {
-        userList.push({
-            nickName: nickname,
-            socketId: socket.id
-        });
+    socket.on('send-msg', (data) => {
+        var insertMsgSql = 'insert into chat(sender, receiver, msg) values (?, ?, ?)';
+
+        conn.execute(insertMsgSql, [data.sender, data.receiver, data.msg], (err, result) => {
+            if(result) {
+                var selectMsgSql = 'select * from chat ';
+                selectMsgSql += 'where chatno=( ';
+                selectMsgSql += 'select max(chatno) from chat ';
+                selectMsgSql += 'where (sender=? and receiver=?))';
+
+                conn.execute(selectMsgSql, [data.sender, data.receiver], (err, result) => {
+                    var chatDateTimeArr = String(result[0].chat_datetime).split(' ');
+                    result[0].chat_datetime = chatDateTimeArr[3]+'-0'+(result[0].chat_datetime.getMonth()+1)+'-'+result[0].chat_datetime.getDate()+' '+chatDateTimeArr[4];
+                    io.emit('receive-msg', result[0]);
+                });
+            }
+        })
     });
 
-    socket.on('send-msg', (msg) => {
-        console.log(msg);
-    });
 });
 
 server.listen(9001, () => {
     console.log('Server Start => http://localhost:9001/');
 });
+
+// chat_datetime: "2022-04-12 12:38:08"
+// chat_read: "n"
+// chatno: 11
+// msg: "ㄹㄴㅁ어ㅏㅣㅇㄻ너ㅏㅣㅁㄹㅇ너ㅏ"
+// receiver: "개나리"
+// sender: "현수"

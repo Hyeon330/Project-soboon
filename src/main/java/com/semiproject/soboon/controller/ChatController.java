@@ -45,8 +45,6 @@ public class ChatController {
 	
 	@PostMapping("getAllMessage")
 	public List<ChatVO> getAllMessage(String oppNickname, HttpSession session){
-		System.out.println(oppNickname);
-		System.out.println((String)session.getAttribute("nickName"));
 		return service.getAllMessage((String)session.getAttribute("nickName"), oppNickname);
 	}
 }
