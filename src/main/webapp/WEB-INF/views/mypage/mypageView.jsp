@@ -85,15 +85,36 @@
 .resultFrm>ul>li {
 	width:20%; text-align: center;
 }
-
+.tabs>li{
+		cursor:pointer;
+	}
 </style>
 <script>
 	$(function(){
 		//when page loads....
 		$('.tab_content').hide() // 모든 콘텐츠를 숨김.
+		$('ul.tabs li:first').add("active").show();//첫번째 탭 활성화
+		$('.tab_content:first').show(); //첫번째 탭 콘텐츠 보여줌.
+		
+		//On click Event
+		$('.tabs>li').click(function(){
+			var idx = $('.tabs>li').index(this); 
+	
+			
+			console.log('event');
+			$('.tabs li').removeClass('active'); // active클래스 사전에 모두 제거
+			console.log('event2');
+			$(this).addClass('active'); // 선택된 탭에 active클래스 추가함.
+			$('.tab_content').hide(); // 모든 탭 콘텐츠를 숨김
+			console.log($('.tabs>li'));
+			
+			$('.tab_content').eq(idx).fadeIn('linear'); // Fade in the active ID content
+			
+			return false;
+			
+		});
 	});
 </script>
-
 
 <div class="container" id="mypageContainer">
 	<!--   사이드 메뉴 (include) -->
@@ -137,10 +158,10 @@
 		</div><!-- topMenu-mypageView -->
 		<div class="listMenuTab">
 		<!-- 탭메뉴 영역 -->
-			<ul class="tabs">
-				<li><a href="#tab1">작성글</a></li>
-				<li><a href="#tab2">댓글</a></li>
-				<li><a href="#tab3">찜한글</a></li>
+			<ul class="tabs"> 
+				<li>작성글</li>
+				<li>댓글</li>
+				<li>찜한글</li>
 			</ul>
 		</div>
 		<div class="resultView-mypageView">

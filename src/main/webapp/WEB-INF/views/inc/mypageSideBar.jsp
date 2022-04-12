@@ -15,11 +15,11 @@
 	}
 	
 	$(function(){
-		$(".list-group-item").removeClass('active');
+		$(".list-group-item").removeClass('active_sub');
 		
 		var pageName = "<c:out value='${param.pageName}'/>";
 		
-		$('#'+pageName).addClass('active');
+		$('#'+pageName).addClass('active_sub');
 		
 		$('.list-group-item').click(function(){
 			console.log(this);
@@ -44,7 +44,7 @@
 	#sideMenuFrm>hr {
 		height: 5px; background: #ddd; border-style: none;
 	}
-	.active {font-size:1.5em; background-color:orange !important; border-style: none !important;}
+	.active_sub {font-size:1.5em; background-color:orange !important; border-style: none !important;}
 </style>
 
 
