@@ -88,6 +88,7 @@
 .tabs>li{
 		cursor:pointer;
 	}
+.active
 </style>
 <script>
 	$(function(){
