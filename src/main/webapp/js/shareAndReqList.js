@@ -1,23 +1,13 @@
-$(function(){
-	
-	let currentPg = $("#currentPg").val();
-	let nextBtn = Number(currentPg) + 1;
-	let prevBtn = Number(currentPg) - 1;
+function goPrev(gp, category){
+   let goPrev = gp-1;
+   location.href="/board/shareAndReqList?currentPage="+goPrev+"&category="+category+"";
+}
 
-	let category = $("#cvoCategory").val();
-	
-	$("#prevBtn").click(function(){
-		location.href="/board/shareAndReqList?currentPage="+prevBtn+"&category="+category+"";
-	})
-	
-	
-	$("#nextBtn").click(function(){
-		location.href="/board/shareAndReqList?currentPage="+nextBtn+"&category="+category+"";
-	})
-	
-	
-});
+function goPage(p, category){
+   location.href="/board/shareAndReqList?currentPage="+p+"&category="+category+"";
+}
 
-	function goPage(p, category){
-			location.href="/board/shareAndReqList?currentPage="+p+"&category="+category+"";
-	}
+function goNext(gn, category){
+   let goNext = gn+1;
+   location.href="/board/shareAndReqList?currentPage="+goNext+"&category="+category+"";
+}

@@ -117,8 +117,10 @@
 				</c:if>
 			</div>
 		</div>
+		
 		<!-- 글 내용 -->
-		<div class="col-12 src" >	
+		<div class="col-12 src">
+			<hr/><br/>
 			<div id="shareAndReqContent">${viewVo.content}</div>
 		</div>
 		<!-- 댓글 -->
@@ -127,13 +129,16 @@
 			<c:if test="${logStatus=='Y'}">
 			<div><i class="fa fa-comment fa-lg"></i><span class="iconValue">댓글</span></div>
 				<form method="post" id="replyForm">
-					<input type="hidden" name="replyno" value="${viewVo.no}">
+					<input type="hidden" name="replyno" id="replyno" value="${viewVo.no}">
 					<div id="commentLine">
 						<textarea name="coment" id="coment" class="shareAndReqComent" rows="4" cols="80" placeholder="내용을 입력하세요"></textarea>
-						<span id="replyBtn"><input type="submit" class="btn" id="replyInsert" name="replyInsert" value="댓글 등록"></span>
+						<span id="replyBtn"><input type="submit" class="btn" id="replyInsert" value="댓글 등록"></span>
 					</div>
 				</form>
 			</c:if>
+			<hr/><!-- 댓글 목록 표시 -->
+			<div id="replyList">
+			</div>
 		</div>
 	</div>
 </div>

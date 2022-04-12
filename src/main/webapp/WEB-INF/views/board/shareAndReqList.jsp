@@ -9,8 +9,7 @@
 	<c:if test="${cvo.category=='share'}">
 		<h1 id="shareBrd">나눔 게시판</h1>
 		<br/>
-		<div>
-			<a href="/board/shareAndReqWrite?category=share" class="btn" id="shareReqWrite">글 작성하기</a>
+		<a href="/board/shareAndReqWrite?category=share" class="btn" id="shareReqWrite">글 작성하기</a>
 		<div class="row">
 			<c:forEach var="listVo" items="${list}">
 			<div class="col-sm-4 sr">
@@ -40,32 +39,33 @@
 			</c:forEach>
 		</div>
 		<div class="row">
-			<input type="hidden" id="currentPg" value="${pvo.currentPage}">
-			<input type="hidden" id="cvoCategory" value="${cvo.category}"/>
 			<ul class="pagination justify-content-center" id="paging">
 				<c:if test="${pvo.currentPage==1}">
-					<li class="page-item disabled"><a class="page-link" href="javascript:void(0);" id="prevBtn">Prev</a></li>
+					<li class="page-item disabled"><a class="page-link" id="prevBtn">Prev</a></li>
 				</c:if>
 				<c:if test="${pvo.currentPage>1}">
-					<li class="page-item"><a class="page-link" href="javascript:void(0);" id="prevBtn">Prev</a></li>
+					<li class="page-item"><a class="page-link" href="javascript:void(0);" id="prevBtn" 
+							onclick="goPrev(${pvo.currentPage},'${cvo.category}')">Prev</a></li>
 				</c:if>
 				<c:forEach var="p" begin="${pvo.startPage}" end="${pvo.totalPage}">
 					<c:if test="${p<=pvo.totalPage}">
 						<c:choose>
 							<c:when test="${p==pvo.currentPage}">
-								<li class="page-item disabled"><a class="page-link" href="javascript:void(0);">${p}</a></li>
+								<li class="page-item disabled"><a class="page-link">${p}</a></li>
 							</c:when>
 							<c:when test="${p!=pvo.currentPage}">
-								<li class="page-item"><a class="page-link" href="javascript:void(0);" onclick="goPage(${p},'${cvo.category}')">${p}</a></li>
+								<li class="page-item"><a class="page-link"href="javascript:void(0);"
+										onclick="goPage(${p},'${cvo.category}')">${p}</a></li>
 							</c:when>
 						</c:choose>
 					</c:if>
 				</c:forEach>
 				<c:if test="${pvo.currentPage==pvo.totalPage}">
-					<li class="page-item disabled"><a class="page-link" href="javascript:void(0);" id="nextBtn">Next</a></li>
+					<li class="page-item disabled"><a class="page-link" id="nextBtn">Next</a></li>
 				</c:if>
 				<c:if test="${pvo.currentPage<pvo.totalPage}">
-					<li class="page-item"><a class="page-link" href="javascript:void(0);" id="nextBtn">Next</a></li>
+					<li class="page-item"><a class="page-link" href="javascript:void(0);" id="nextBtn"
+							onclick="goNext(${pvo.currentPage},'${cvo.category}')">Next</a></li>
 				</c:if>
 			</ul>
 		</div>	
