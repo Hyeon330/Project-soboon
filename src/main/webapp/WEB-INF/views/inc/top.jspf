@@ -37,31 +37,22 @@
 					</select>
 				</div>
 				<div id="gridBtn">
-					<c:if test="${logStatus!='Y'}">
-						<a href="/member/login" class="btn sign" style="color:rgb(72, 97, 86); font-weight:700;">로그인</a>&nbsp;&nbsp;&nbsp;
-						<a href="/member/signup" class="btn sign" style="color:rgb(72, 97, 86); font-weight:700;">회원가입</a>
-					</c:if>
-					<c:if test="${logStatus=='Y'}">
-						<c:if test="${logAdmin==9}">
-							<a href="/admin" class="btn sign">관리자모드</a>&nbsp;&nbsp;&nbsp;
-<<<<<<< HEAD
-							<a href="/member/logout" class="btn sign">로그아웃</a>
-						</c:if>
-						<c:if test="${logAdmin!=9}">
-							<a href="/areaSelect" class="btn sign">지역선택</a>&nbsp;&nbsp;&nbsp;
-						<a href="/mypage/showView?pageName=showView" class="btn sign">마이페이지</a>&nbsp;&nbsp;&nbsp;
-							<a href="/member/logout" class="btn sign">로그아웃</a>
-=======
-							<a href="/member/logout" class="btn sign" style="color:rgb(72, 97, 86); font-weight:700;">로그아웃</a>
-						</c:if>
-						<c:if test="${logAdmin!=9}">
-							<a href="/areaSelect" class="btn sign" style="color:rgb(72, 97, 86); font-weight:700;">지역선택</a>&nbsp;&nbsp;&nbsp;
-						<a href="/mypage/showView?pageName=showView" class="btn sign" style="color:rgb(72, 97, 86); font-weight:700;">마이페이지</a>&nbsp;&nbsp;&nbsp;
-							<a href="/member/logout" class="btn sign" style="color:rgb(72, 97, 86); font-weight:700;">로그아웃</a>
->>>>>>> index_seongeun
-						</c:if>
-					</c:if>
-				</div>
+                    <c:if test="${logStatus!='Y'}">
+                        <a href="/member/login" class="btn sign" style="color:rgb(72, 97, 86); font-weight:700;">로그인</a>&nbsp;&nbsp;&nbsp;
+                        <a href="/member/signup" class="btn sign" style="color:rgb(72, 97, 86); font-weight:700;">회원가입</a>
+                    </c:if>
+                    <c:if test="${logStatus=='Y'}">
+                        <c:if test="${logAdmin==9}">
+                            <a href="/admin" class="btn sign" style="color:rgb(72, 97, 86); font-weight:700;">관리자모드</a>&nbsp;&nbsp;&nbsp;
+                            <a href="/member/logout" class="btn sign" style="color:rgb(72, 97, 86); font-weight:700;">로그아웃</a>
+                        </c:if>
+                        <c:if test="${logAdmin!=9}">
+                            <a href="/areaSelect" class="btn sign" style="color:rgb(72, 97, 86); font-weight:700;">지역선택</a>&nbsp;&nbsp;&nbsp;
+                        <a href="/mypage/showView?pageName=showView" class="btn sign" style="color:rgb(72, 97, 86); font-weight:700;">마이페이지</a>&nbsp;&nbsp;&nbsp;
+                            <a href="/member/logout" class="btn sign" style="color:rgb(72, 97, 86); font-weight:700;">로그아웃</a>
+                        </c:if>
+                    </c:if>
+                </div>
 			</div>
 		</div>
 	<hr/>

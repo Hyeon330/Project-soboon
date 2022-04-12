@@ -1,10 +1,6 @@
 @charset "utf-8";
 nav{
-<<<<<<< HEAD
-	background-color:rgb(230, 211, 202);
-=======
 	background-color:rgba(72, 97, 86, 90%);
->>>>>>> index_seongeun
 }
 nav>hr{
 	margin:0 auto; padding:0px; width:1200px;
@@ -81,12 +77,9 @@ nav>hr{
 	display:grid;
 	grid-template-columns:170px 520px 100px 410px;
 }
-<<<<<<< HEAD
-=======
 .gridContainer img{
 	width:100%;
 }
->>>>>>> index_seongeun
 /*!!!!!로그인 회원가입 / 마이페이지 로그아웃 버튼!!!!!!!!!!*/
 #gridBtn{
 	margin-left:110px;
@@ -102,13 +95,8 @@ nav>hr{
 }
 .bottom{
    width:100%;
-<<<<<<< HEAD
-   height:100px;
-   line-height:33px;
-=======
    height:120px;
    line-height:40px;
->>>>>>> index_seongeun
    text-align:center;
    color:white;
    background-color:rgb(142, 158, 139);
