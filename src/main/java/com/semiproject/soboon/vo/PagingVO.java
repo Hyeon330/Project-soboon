@@ -19,9 +19,9 @@ public class PagingVO {
 	public void setCurrentPage(int currentPage) {
         this.currentPage = currentPage;
         // offset위치 계산
-        setOffsetIndex((currentPage-1)recordPerPage);
+        setOffsetIndex((currentPage-1)*recordPerPage);
         // 페이지 번호의 시작값
-        startPage = ((currentPage-1)/onePageCountonePageCount)+1;
+        startPage = ((currentPage-1)/onePageCount*onePageCount)+1;
     }
 
 	public int getStartPage() {
@@ -53,6 +53,7 @@ public class PagingVO {
 	}
 
 	public void setTotalRecord(int totalRecord) {
+		this.totalRecord = totalRecord;
 		// 총 페이지 수
 		if (totalRecord % recordPerPage == 0) { // 총 레코드 개수에서 한 페이지당 표시할 레코드 수가 나누어떨어지면
 			totalPage = totalRecord / recordPerPage; // 나눗셈 몫이 totalPage안으로
@@ -62,11 +63,11 @@ public class PagingVO {
 	}
 
 	public int getTotalMember() {
-		return totalPage;
+		return totalMember;
 	}
 
 	public int setTotalMember(int totlaMember) {
-		return totalPage = totalMember;
+		return totalMember = totalMember;
 	}
 
 	public int getTotalPage() {
