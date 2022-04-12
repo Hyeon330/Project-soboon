@@ -137,7 +137,7 @@ $(() => {
 		$('#msgPopup').css('display', 'none');
 	});
 	
-	const openMsgPopup = () => {
+	const openMsgPopupReload = () => {
 		$('.chat-list').on('click', function(){
 			var oppNickname = $(this).find('.chat-name').text();
 			$('#oppNickName').text(oppNickname);
@@ -158,7 +158,7 @@ $(() => {
 			$('.msg-lists').scrollTop($('.msg-lists')[0].scrollHeight);
 		});
 	}
-	openMsgPopup();
+	openMsgPopupReload();
 	
 	const sendMessage = (msg) => {
 		var data = {
@@ -177,7 +177,7 @@ $(() => {
 	});
 	$('.msg-textarea').keydown((e)=>{
 		if($('.msg-textarea').val()!='' && e.keyCode === 13 && !e.shiftKey){
-			sendMessage($('.msg-textarea').val());
+			$('.msg-send-btn').click();
 		}
 	});
 	$('.msg-send-btn').click(() => {
@@ -188,7 +188,18 @@ $(() => {
 	
 	socket.on('receive-msg', (data) => {
 		chatListsReload();
-		openMsgPopup();
+		openMsgPopupReload();
 		setMessage(data);
     });
+    
+    // 채팅 보내기 버튼 클릭시
+    $('#joinChat').click(() => {
+		$('#chatBtn').click();
+		$('#viewNickname').text();
+	});
+    
+    setInterval(() => {
+		chatListsReload();
+		openMsgPopupReload();
+	}, 1000);
 });
