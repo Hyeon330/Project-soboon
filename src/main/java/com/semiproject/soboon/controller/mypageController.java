@@ -27,10 +27,6 @@ public class mypageController {
 	// 개인정보수정 페이지 이동
 	@GetMapping("editForm")
 	public ModelAndView myPageEdit(HttpSession session, HttpServletRequest request) {
-//		session.setAttribute("logId", vo2.getUserid());
-//		session.setAttribute("logName", vo2.getUsername());
-//		session.setAttribute("logStatus", "Y");
-//		String msg = "<script>location.href='/';</script>";
 		String userid = (String)session.getAttribute("logId");
 		MemberVO vo = service.selectEdit(userid);
 		

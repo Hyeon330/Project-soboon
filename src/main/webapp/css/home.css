@@ -64,16 +64,45 @@
 	width:25%;
 }
 /*=================최근게시물============================================*/
-#bottomConatainer{
-	width:100%;
+#bottomContainer{
+	width:1200px;
 	display:block;
-	background-color:rgb(241, 232, 223);
+	margin:0 auto;
+	margin-bottom:30px;
+	overflow:auto;
+	overflow-x: hidden;
 }
 #recentItem{
-	width:1200px;
-	height:850px;
-	margin:0 auto;
+	width:100%;
+	height:950px;
 	overflow:auto;
 	background-color:rgb(241, 232, 223);
 }
-
+.card{
+	margin:10px;
+	border-bottom-left-radius:20px;
+	border-bottom-right-radius:20px;
+	filter : drop-shadow(5px 5px 5px rgb(192, 188, 177));
+}
+.card-body{
+	background-color:rgba(241, 232, 223, 30%);
+	color:rgb(154, 97, 66);
+	border-bottom-left-radius:20px;
+	border-bottom-right-radius:20px;
+}
+#shareAndReqTitle>a{
+	overflow:hidden;
+	white-space: nowrap;
+ 	overflow: hidden;
+ 	text-overflow: ellipsis;
+ 	color:rgb(154, 97, 66);
+}
+.imgFilm>img:before{
+	content:"";
+	width: 100%; 
+	height: 100%; 
+	position: absolute; 
+	top:0; 
+	left:0; 
+	background: rgba(0,0,0,10%);
+}

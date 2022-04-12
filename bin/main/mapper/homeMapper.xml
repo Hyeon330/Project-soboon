@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.semiproject.soboon.dao.HomeDAO">
+  	<select id="selectList" resultType="map">
+		select b.no, b.title, b.thumbnailImg, b.category, m.address, m.nickname
+		from board b join member m on m.userid = b.userid
+		order by no desc limit 8;
+	</select>
+  </mapper>

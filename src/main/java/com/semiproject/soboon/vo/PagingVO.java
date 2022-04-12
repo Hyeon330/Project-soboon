@@ -1,7 +1,7 @@
 package com.semiproject.soboon.vo;
 
 public class PagingVO {
-
+	
 	// 현재페이지, 시작페이지, 끝페이지, 게시글 총 개수, 페이지당
 	private int currentPage = 1;    // 현재페이지
 	private int startPage = 1;      // 시작페이지
@@ -15,6 +15,7 @@ public class PagingVO {
 	}
 	public void setCurrentPage(int currentPage) {
 		this.currentPage = currentPage;
+	
 	}
 	public int getStartPage() {
 		return startPage;
@@ -49,8 +50,6 @@ public class PagingVO {
 		this.totalPage = totalPage;
 	}
 	
-	
-	
-	
-	
 }
+	
+	
