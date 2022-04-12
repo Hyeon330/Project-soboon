@@ -42,7 +42,6 @@ public class ChatController {
 				resultList.add(vo);
 			}
 		}
-		
 		return resultList;
 	}
 	

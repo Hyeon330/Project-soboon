@@ -47,6 +47,7 @@ $(() => {
 			type: 'get',
 			async: false,
 			success: function (result){
+				console.log(result);
 				result.forEach(d => {
 					var chatDateArr = d.datetime.split(' ')[0].split('-');
 					var chatTimeArr = d.datetime.split(' ')[1].split(':');
@@ -157,11 +158,11 @@ $(() => {
 	});
 	
 	const sendMessage = (msg) => {
-		if($('.msg-textarea').val()!=''){
-			console.log('send!!');
-			socket.emit('send-msg', msg);
-			$('.msg-textarea').val('');
+		var data = {
+			
 		}
+		socket.emit('send-msg', msg);
+		$('.msg-textarea').val('');
 	}
 	
 	
@@ -171,17 +172,13 @@ $(() => {
 		}
 	}); */
 	$('.msg-send-btn').click(() => {
-		sendMessage($('.msg-textarea').val());
-	});
-	
-	socket.on('receive-msg', (msg) => {
-		var nickname = msg.split(':')[0];
-		msg = msg.split(':')[1];
-		if(nickname === myNickname){
-			$('.msg-lists').append('<li class="msg-list right"><div>'+msg+'</div></li>');
-		}else {
-			$('.msg-lists').append('<li class="msg-list left"><div>'+msg+'</div></li>');
+		if($('.msg-textarea').val()!=''){
+			sendMessage($('.msg-textarea').val());
 		}
 	});
+	
+	/*socket.on('receive-msg', (data) => {
+		setMessage(data);
+	});*/
 	
 });
