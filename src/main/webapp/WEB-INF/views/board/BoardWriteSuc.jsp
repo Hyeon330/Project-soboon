@@ -16,7 +16,7 @@
 </c:if>
 <c:if test="${cnt==null || cnt==0}">
 	<script>
-		alert("🚫 글 등록에 실패했습니다.');
+		alert("🚫 글 등록에 실패했습니다.");
 		history.go(-1);
 	</script>
 </c:if>
