@@ -10,7 +10,11 @@
 	<select id="loginCheck" resultType="MemberVO">
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 		select userid, username, verify, nickname from member
+=======
+		select userid, username, nickname from member
+>>>>>>> fe8a1ff080a99e0a3164390729c6ef6f3df60003
 =======
 		select userid, username, nickname from member
 >>>>>>> fe8a1ff080a99e0a3164390729c6ef6f3df60003
