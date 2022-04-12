@@ -57,6 +57,9 @@
 								<div class="card-body cb">
 									<ul>
 										<c:if test="${listVo.category == 'share'}"><li style="font-size:1.5em; font-weight:900">나눔</li></c:if>
+										<c:if test="${listVo.category == 'lent'}"><li style="font-size:1.5em; font-weight:900">대여</li></c:if>
+										<c:if test="${listVo.category == 'sale'}"><li style="font-size:1.5em; font-weight:900">판매</li></c:if>
+										<c:if test="${listVo.category == 'request'}"><li style="font-size:1.5em; font-weight:900">요청</li></c:if>
 										<li id="shareAndReqTitle"><a href="/board/shareAndReqView?no=${listVo.no}&category=${listVo.category}">${listVo.title}</a></li>
 										<li>${listVo.nickname}</li>
 										<li><i class="fa fa-location-arrow fa-lg"></i><span class="iconValue">${listVo.address}</span></li>

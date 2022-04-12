@@ -80,7 +80,6 @@
 }
 .card{
 	margin:10px;
-	border:2px solid rgb(154, 97, 66);
 	border-bottom-left-radius:20px;
 	border-bottom-right-radius:20px;
 	filter : drop-shadow(5px 5px 5px rgb(192, 188, 177));
