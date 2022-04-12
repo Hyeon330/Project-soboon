@@ -2,5 +2,7 @@
 <%@ include file="/WEB-INF/views/inc/chat.jspf" %>
 
 <div class="bottom">
-	bottom.jspf
+	상호명 (주)소분 | 대표 유성은<br/>
+	개인정보보호책임자 유의선 | 사업자등록번호 330-10-54339 | 통신판매업신고번호 2022-서울서초-0260<br/>
+주소 서울특별시 강남구 언주로 508) | 이메일 help@soboon.com | 마케팅/제휴 문의 marketing@soboon.com
 </div>
