@@ -37,7 +37,7 @@
 	</div>
 	
 	<ul class="msg-lists">
-		<li class="msg-list">
+		<!-- <li class="msg-list">
 			<div class="msg-box left">
 				<div class="msg-info">
 					<span class="msg-nickname">이현수</span>
@@ -59,7 +59,7 @@
 				</div>
 				<div class="msg-text right">ㅇㅇ</div>
 			</div>
-		</li>
+		</li> -->
 	</ul>
 	
 	<div class="msg-textarea-box">
