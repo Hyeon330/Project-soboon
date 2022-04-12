@@ -66,8 +66,8 @@ public class PagingVO {
 		return totalMember;
 	}
 
-	public int setTotalMember(int totlaMember) {
-		return totalMember = totalMember;
+	public void setTotalMember(int totalMember) {
+		this.totalMember = totalMember;
 	}
 
 	public int getTotalPage() {

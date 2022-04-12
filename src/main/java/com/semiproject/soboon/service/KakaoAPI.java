@@ -97,7 +97,6 @@ public class KakaoAPI {
 			
 			while((line=br.readLine())!=null) {
 				result += line;
-				System.out.println(line);
 			}
 			System.out.println("responseBody : " + result);
 			
