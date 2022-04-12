@@ -137,28 +137,32 @@ $(() => {
 		$('#msgPopup').css('display', 'none');
 	});
 	
-	const openMsgPopup = () => {
+	// 닉네임에 맞는 메시지 가져오는 함수
+	const msgLoad = (oppNickname) => {
+		$('#oppNickName').text(oppNickname);
+		$('.msg-lists').empty();
+		$.ajax({
+			url: '/chat/getAllMessage',
+			type: 'post',
+			data: 'oppNickname='+oppNickname,
+			async: false,
+			success: function(result) {
+				prevDate = '';
+				result.forEach(data => {
+					setMessage(data);
+				});
+			}
+		});
+		$('#msgPopup').css('display', 'block');
+		$('.msg-lists').scrollTop($('.msg-lists')[0].scrollHeight);
+	}
+	
+	const openMsgPopupReload = () => {
 		$('.chat-list').on('click', function(){
-			var oppNickname = $(this).find('.chat-name').text();
-			$('#oppNickName').text(oppNickname);
-			$('.msg-lists').empty();
-			$.ajax({
-				url: '/chat/getAllMessage',
-				type: 'post',
-				data: 'oppNickname='+oppNickname,
-				async: false,
-				success: function(result) {
-					prevDate = '';
-					result.forEach(data => {
-						setMessage(data);
-					});
-				}
-			});
-			$('#msgPopup').css('display', 'block');
-			$('.msg-lists').scrollTop($('.msg-lists')[0].scrollHeight);
+			msgLoad($(this).find('.chat-name').text());
 		});
 	}
-	openMsgPopup();
+	openMsgPopupReload();
 	
 	const sendMessage = (msg) => {
 		var data = {
@@ -177,7 +181,7 @@ $(() => {
 	});
 	$('.msg-textarea').keydown((e)=>{
 		if($('.msg-textarea').val()!='' && e.keyCode === 13 && !e.shiftKey){
-			sendMessage($('.msg-textarea').val());
+			$('.msg-send-btn').click();
 		}
 	});
 	$('.msg-send-btn').click(() => {
@@ -188,7 +192,22 @@ $(() => {
 	
 	socket.on('receive-msg', (data) => {
 		chatListsReload();
-		openMsgPopup();
+		openMsgPopupReload();
 		setMessage(data);
     });
+    
+    // 채팅 보내기 버튼 클릭시
+    $('#joinChat').click(() => {
+		if($('#chatPopup').css('height').substring(0,$('#chatPopup').css('height').length-2)==0){
+			$('#chatBtn').click();
+		}
+		$('#oppNickName').text($('#viewNickname').text());
+		msgLoad($('#viewNickname').text());
+		$('#msgPopup').css('display', 'block');
+	});
+    
+    setInterval(() => {
+		chatListsReload();
+		openMsgPopupReload();
+	}, 1000);
 });

@@ -51,7 +51,7 @@
                         </c:if>
                         <c:if test="${logAdmin!=9}">
                             <a href="/areaSelect" class="btn sign" style="color:rgb(72, 97, 86); font-weight:700;">지역선택</a>&nbsp;&nbsp;&nbsp;
-                        <a href="/mypage/showView?pageName=showView" class="btn sign" style="color:rgb(72, 97, 86); font-weight:700;">마이페이지</a>&nbsp;&nbsp;&nbsp;
+                        	<a href="/mypage/showView?pageName=showView" class="btn sign" style="color:rgb(72, 97, 86); font-weight:700;">마이페이지</a>&nbsp;&nbsp;&nbsp;
                             <a href="/member/logout" class="btn sign" style="color:rgb(72, 97, 86); font-weight:700;">로그아웃</a>
                         </c:if>
                     </c:if>
