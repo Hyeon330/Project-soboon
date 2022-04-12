@@ -124,7 +124,7 @@ $(() => {
 				prevTime = nowTime;
 				prevPosition = position;
 			}
-			msg += '<div class="msg-text '+position+'">'+data.msg+'</div></div></li>';
+			msg += '<div class="msg-text '+position+'"><span>'+data.msg+'</span></div></div></li>';
 			
 			$('.msg-lists').append(msg);
 			$('.msg-lists').scrollTop($('.msg-lists')[0].scrollHeight);
