@@ -9,8 +9,12 @@ li{
 	list-style-type:none;
 }
 body {
+<<<<<<< HEAD
 	font-family: 나눔스퀘어, 'NanumSquare', sans-serif; background-color:RGB(241, 232, 223);
 	
+=======
+	font-family: 나눔스퀘어, 'NanumSquare', sans-serif;
+>>>>>>> main
 }
 .container{
 	min-height:717px;
