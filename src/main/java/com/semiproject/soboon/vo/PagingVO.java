@@ -1,7 +1,6 @@
 package com.semiproject.soboon.vo;
 
 public class PagingVO {
-	
 	private int currentPage = 1;    // 현재페이지
 	private int startPage = 1;      // 시작페이지
 	private int recordPerPage = 12; // 한 페이지당 표시할 DB 레코드 수(글 개수)
