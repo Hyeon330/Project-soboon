@@ -11,6 +11,7 @@ import com.semiproject.soboon.dao.BoardDAO;
 import com.semiproject.soboon.vo.BoardVO;
 import com.semiproject.soboon.vo.JoinVO;
 import com.semiproject.soboon.vo.MemberVO;
+import com.semiproject.soboon.vo.PagingVO;
 
 @Service
 public class BoardServiceImpl implements BoardService {
@@ -24,10 +25,15 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public List<BoardVO> selectList(String category) {
-		return dao.selectList(category);
+	public List<BoardVO> selectList(String category, PagingVO pvo) {
+		return dao.selectList(category, pvo);
 	}
 
+	@Override
+	public int selectTotalRecord(String category, PagingVO pvo) {
+		return dao.selectTotalRecord(category, pvo);
+	}
+	
 	@Override
 	public BoardVO selectCategory(String category) {
 		return dao.selectCategory(category);
@@ -77,6 +83,8 @@ public class BoardServiceImpl implements BoardService {
 	public BoardVO selectJoin(BoardVO vo) {
 		return dao.selectJoin(vo);
 	}
+
+
 
 
 

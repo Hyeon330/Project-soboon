@@ -90,11 +90,12 @@
 	}
 .active-tabs>span {font:ornange !important; border-bottom: 2px silid orange !important;}
 </style>
+
+
 <script>
-
-	
-
 	$(function(){
+		
+		
 		//when page loads....
 		$('.tab_content').hide() // 모든 콘텐츠를 숨김.
 		$('ul.tabs li:first').add("active-tabs").show();//첫번째 탭 활성화
@@ -103,8 +104,8 @@
 		//On click Event
 		$('.tabs>li').click(function(){
 			var idx = $('.tabs>li').index(this); 
-	
-			
+			var activeTab = $(this).attr('id');
+			console.log(activeTab);
 			console.log('event');
 			$('.tabs li').removeClass('active-tabs') // active클래스 사전에 모두 제거
 			console.log('event2');
@@ -114,9 +115,22 @@
 			
 			$('.tab_content').eq(idx).fadeIn('linear'); // Fade in the active ID content
 		
-			return false;
-			
+			return false;			
 		});
+		// 체크박스 전체선택 ---> 하위 체크박스 체크
+		$("#cbx_chk_mypageAll_mypage").click(function() {
+			if($("#cbx_chk_mypageAll_mypage").is(":checked")) $("input[name=chk_mypage]").prop("checked", true);
+			else $("input[name=chk_mypage]").prop("checked", false);
+		});
+
+		$("input[name=chk_mypage]").click(function() {
+			var total = $("input[name=chk_mypage]").length;
+			var checked = $("input[name=chk_mypage]:checked").length;
+
+			if(total != checked) $("#cbx_chk_mypageAll_mypage").prop("checked", false);
+			else $("#cbx_chk_mypageAll_mypage").prop("checked", true); 
+		});
+		
 		
 	});
 </script>
@@ -164,9 +178,9 @@
 		<div class="listMenuTab">
 		<!-- 탭메뉴 영역 -->
 			<ul class="tabs"> 
-				<li><span>작성글</span></li>
-				<li><span>댓글</span></li>
-				<li><span>찜한글</span></li>
+				<li id="t1"><span>작성글</span></li>
+				<li id="t2"><span>댓글</span></li>
+				<li id="t3"><span>찜한글</span></li>
 			</ul>
 			<span>
 			<select id="dataPerPage">
@@ -180,21 +194,21 @@
 			<div id="tab1" class="tab_content">
 				<form class="resultFrm"><!-- 제목란 -->
 					<ul>
-						<li><input type="checkbox" value="checkingAll"/> 전체선택</li>
+						<li><input type="checkbox" id="cbx_chk_mypageAll_mypage"/> 전체선택</li>
 						<li>&nbsp;</li>
 						<li>제목</li>
 						<li>작성일</li>
 						<li>조회수</li>
 					</ul>
 					<ul>	
-						<li><input type="checkbox" value="cheking" id="checking"/></li>
+						<li><input type="checkbox"name="chk_mypage"/></li>
 						<li>11231</li>
 						<li>휴지통 공구합니다.</li>
 						<li>2022.04.28</li>
 						<li>30</li>			
 					</ul>
 					<ul>	
-						<li><input type="checkbox" value="cheking" id="checking"/></li>
+						<li><input type="checkbox" name="chk_mypage"/></li>
 						<li>11231</li>
 						<li>휴지통 공구합니다.</li>
 						<li>2022.04.28</li>
