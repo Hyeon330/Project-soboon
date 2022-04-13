@@ -113,6 +113,7 @@ public class MemberController {
 		}
 		attr.addFlashAttribute("code",access_Token);
 		
+		System.out.println(session.getAttribute("logStatus"));
 		return "redirect:/?code="+access_Token;
 	}
 	
