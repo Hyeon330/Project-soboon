@@ -5,7 +5,7 @@
 	right: 20px;
 	bottom: 0;
 	width: 230px;
-	z-index: 999;
+	z-index: 10;
 }
 #chatBtn {
 	position: relative;
@@ -20,6 +20,16 @@
 }
 .chat-icon {
 	font-size: 20px;
+}
+.chat-alert-point{
+	position: absolute;
+	width: 10px;
+	height: 10px;
+	background-color: red;
+	border-radius: 100%;
+	top: 3px;
+	right: 10px;
+	z-index: 20;
 }
 #chatPopup {
 	width: 240px;
