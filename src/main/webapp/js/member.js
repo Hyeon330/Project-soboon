@@ -159,5 +159,5 @@ $(document).on('click','#sms-btn1',function(){ //sms인증 버튼 클릭했을 �
 });
 // 인증번호 확인
 $("#sms-btn2").click(function(){
-	if($("#"))
+	
 });
