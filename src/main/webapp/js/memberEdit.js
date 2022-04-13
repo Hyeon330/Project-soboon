@@ -14,7 +14,7 @@ $(() => {
 					url: url,
 					data: "nickname=" + nickname,
 					type: "post",
-					success: function(result) {
+					success: function(result) {  
 						if (result > 0) {//사용불가
 							if (nickname === exNickname) {
 								$('#nicknameCheck').val("Y");
