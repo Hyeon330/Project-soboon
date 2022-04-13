@@ -177,11 +177,7 @@ public class MemberController {
 		for(int i=0; i < 5; i++) {
 			String ranNum = Integer.toString(random.nextInt(10));
 			numStr += ranNum;
-		}
-		//확인용
-		System.out.println("수신자번호: " + tel);
-		System.out.println("인증번호: " + numStr);
-		
+		} 
 		//문자보내기
 		service.telCheck(tel, numStr);
 		return numStr;
