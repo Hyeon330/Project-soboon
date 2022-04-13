@@ -34,7 +34,7 @@
 	height:300px; width: 100%;
 }
 .listMenuTab {
-	width: 100%; height: 30px;
+	width: 100%; height: 30px; display: flex; justify-content: space-between;
 }
 .listMenuTab ul {
 	display: flex; justify-content: space-around; width: 30%; font-size:20px;
@@ -88,13 +88,16 @@
 .tabs>li{
 		cursor:pointer;
 	}
-.active
+.active-tabs>span {font:ornange !important; border-bottom: 2px silid orange !important;}
 </style>
 <script>
+
+	
+
 	$(function(){
 		//when page loads....
 		$('.tab_content').hide() // 모든 콘텐츠를 숨김.
-		$('ul.tabs li:first').add("active").show();//첫번째 탭 활성화
+		$('ul.tabs li:first').add("active-tabs").show();//첫번째 탭 활성화
 		$('.tab_content:first').show(); //첫번째 탭 콘텐츠 보여줌.
 		
 		//On click Event
@@ -103,17 +106,18 @@
 	
 			
 			console.log('event');
-			$('.tabs li').removeClass('active'); // active클래스 사전에 모두 제거
+			$('.tabs li').removeClass('active-tabs') // active클래스 사전에 모두 제거
 			console.log('event2');
-			$(this).addClass('active'); // 선택된 탭에 active클래스 추가함.
+			$(this).addClass('active-tabs')// 선택된 탭에 active클래스 추가함.
 			$('.tab_content').hide(); // 모든 탭 콘텐츠를 숨김
 			console.log($('.tabs>li'));
 			
 			$('.tab_content').eq(idx).fadeIn('linear'); // Fade in the active ID content
-			
+		
 			return false;
 			
 		});
+		
 	});
 </script>
 
@@ -160,10 +164,16 @@
 		<div class="listMenuTab">
 		<!-- 탭메뉴 영역 -->
 			<ul class="tabs"> 
-				<li>작성글</li>
-				<li>댓글</li>
-				<li>찜한글</li>
+				<li><span>작성글</span></li>
+				<li><span>댓글</span></li>
+				<li><span>찜한글</span></li>
 			</ul>
+			<span>
+			<select id="dataPerPage">
+        		<option value="10">10개씩보기</option>
+        		<option value="15">15개씩보기</option>
+        		<option value="20">20개씩보기</option>
+			</select></span>
 		</div>
 		<div class="resultView-mypageView">
 			<!-- Content -->
@@ -190,6 +200,7 @@
 						<li>2022.04.28</li>
 						<li>30</li>			
 					</ul>
+					<ul id="pagingul"></ul>
 				</form>	
 			</div><!-- tab1 -->
 			<div id="tab2" class="tab_content">
