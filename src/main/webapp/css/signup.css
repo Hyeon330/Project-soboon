@@ -37,8 +37,9 @@
 .signup-pwd,
 .signup-name,
 .signup-email,
-.signup-addr{
-	width:70%;
+.signup-addr,
+.signup-sms{
+	width:68%;
 	border:none;
 	border-bottom:2px solid #adadad;
 	outline:none;
@@ -48,9 +49,8 @@
 	background:none;
 	float:left;
 }
-
 .signup-id, .signup-nickname{
-	width:70%;
+	width:68%;
 	border:none;
 	border-bottom:2px solid #adadad;
 	outline:none;
@@ -60,7 +60,9 @@
 	background:none;
 	float:left;
 }
-
+.sms{
+	display:none;
+}
 .signup-tel{
 	width:60px;
 	border:none;
