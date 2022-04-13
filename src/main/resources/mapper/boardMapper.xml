@@ -44,15 +44,4 @@
 	<delete id="deleteView">
 		delete from board where no=#{param1} and category=#{param2} and userid=#{param3}
 	</delete>
-	
-	<insert id="insertJoin" parameterType="com.semiproject.soboon.vo.JoinVO">
-		insert into joinlist
-		values(0,#{boardno},#{userid})
-	</insert>
-	<update id="updateJoinPlus" parameterType="com.semiproject.soboon.vo.BoardVO">
-		update board set joinno=joinno+1 where no=#{param1}
-	</update>
-	<select id="selectJoin" resultType="com.semiproject.soboon.vo.BoardVO">
-		select joinno from board where no=#{no}
-	</select>
 </mapper>
