@@ -40,51 +40,75 @@ $(() => {
 	var myNickname = $('#myNickName').text();
 	var todayTime = new Date();
 	// 채팅 리스트 리로드
+	const setChatLists = function(result){
+		$('#chatLists').empty();
+		result.forEach(data => {
+			var chatDateArr = data.chat_datetime.split(' ')[0].split('-');
+			var chatTimeArr = data.chat_datetime.split(' ')[1].split(':');
+			var chatDate = new Date(chatDateArr[0], chatDateArr[1], chatDateArr[2]);
+			var today = new Date(todayTime.getFullYear(), todayTime.getMonth()+1, todayTime.getDate());
+			
+			var chatList = '<li class="chat-list">';
+			chatList += '<div>';
+			chatList += '<div class="chat-info">';
+			if(data.receiver === myNickname){
+				chatList += '<p class="chat-name">'+data.sender+'</p>';
+			} else {
+				chatList += '<p class="chat-name">'+data.receiver+'</p>';
+			}
+			
+			// 메시지
+			if(data.chat_read == 'n' && data.sender != myNickname){
+				chatList += '<p class="last-chat"><b class="not-read">'+data.sender+": "+d.msg+'</b></p>';
+			}else {
+				chatList += '<p class="last-chat">'+data.sender+": "+data.msg+'</p>';
+			}
+			chatList += '</div>';
+			
+			// 시간
+			if(chatDate.getTime() === today.getTime()){
+				chatList += '<p class="chat-date">'+Number(chatTimeArr[0])+':'+Number(chatTimeArr[1])+'</p>';
+			}else {
+				chatList += '<p class="chat-date">'+Number(chatDateArr[1])+'월 '+Number(chatDateArr[2])+'일'+'</p>';
+			}
+			
+			chatList += '</div></li>';
+			
+			$('#chatLists').append(chatList);
+		});
+	}
 	const chatListsReload = () => {
 		$.ajax({
 			url: '/chat/getLastMessage',
 			type: 'get',
 			async: false,
 			success: function (result){
-				$('#chatLists').empty();
-				result.forEach(d => {
-					var chatDateArr = d.chat_datetime.split(' ')[0].split('-');
-					var chatTimeArr = d.chat_datetime.split(' ')[1].split(':');
-					var chatDate = new Date(chatDateArr[0], chatDateArr[1], chatDateArr[2]);
-					var today = new Date(todayTime.getFullYear(), todayTime.getMonth()+1, todayTime.getDate());
-					
-					var chatList = '<li class="chat-list">';
-					chatList += '<div>';
-					chatList += '<div class="chat-info">';
-					if(d.receiver === myNickname){
-						chatList += '<p class="chat-name">'+d.sender+'</p>';
-					} else {
-						chatList += '<p class="chat-name">'+d.receiver+'</p>';
-					}
-					
-					// 메시지
-					if(d.chat_read == 'n' && d.sender != myNickname){
-						chatList += '<p class="last-chat"><b class="not-read">'+d.sender+": "+d.msg+'</b></p>';
-					}else {
-						chatList += '<p class="last-chat">'+d.sender+": "+d.msg+'</p>';
-					}
-					chatList += '</div>';
-					
-					// 시간
-					if(chatDate.getTime() === today.getTime()){
-						chatList += '<p class="chat-date">'+Number(chatTimeArr[0])+':'+Number(chatTimeArr[1])+'</p>';
-					}else {
-						chatList += '<p class="chat-date">'+Number(chatDateArr[1])+'월 '+Number(chatDateArr[2])+'일'+'</p>';
-					}
-					
-					chatList += '</div></li>';
-					
-					$('#chatLists').append(chatList);
-				});
+				setChatLists(result);
 			}
 		});
 	};
 	chatListsReload();
+	
+	// 닉네임 검색
+	$('#chatSearch').on('input', function() {
+		if($(this).val()!=''){
+			$.ajax({
+				url: '/chat/searchNickname',
+				data: 'nickNameKeyword='+$(this).val(),
+				type: 'post',
+				success: function(result) {
+					if(result.length!=0){
+						setChatLists(result);
+					}else {
+						$('#chatLists').html('');
+					}
+					openMsgPopupReload();
+				}
+			});
+		}else {
+			chatListsReload();
+		}
+	});
 	
 	// 메시지 창에 메시지 넣는 함수
 	var prevTime = '';
@@ -160,7 +184,12 @@ $(() => {
 	});
 	const openMsgPopupReload = () => {
 		$('.chat-list').on('click', function(){
+			if($(this).find('.chat-name').text()!=$('#oppNickName').text()){
+				$('.msg-textarea').val('');
+			}
 			msgLoad($(this).find('.chat-name').text());
+			chatListsReload();
+			openMsgPopupReload();
 		});
 	}
 	openMsgPopupReload();
@@ -179,7 +208,7 @@ $(() => {
 	// 보내기 버튼 클릭시 sendMessage함수 실행
 	$('.msg-send-btn').click(() => {
 		message = $('.msg-textarea').val().replace(/\n/g, '<br>');
-		if(message != '<br>'){
+		if(message != '<br>' && message!=''){
 			sendMessage(message);
 		}
 		$('.msg-textarea').val('');
@@ -198,6 +227,13 @@ $(() => {
 	
 	// 소켓 서버에서 메시지 데이터 받기
 	socket.on('receive-msg', (data) => {
+		if($('#msgPopup').css('display')=='block' && data.receiver==myNickname && data.sender==$('#oppNickName').text()){
+			$.ajax({
+				url: '/chat/updateChatRead',
+				type: 'post',
+				async: false
+			});
+		}
 		chatListsReload();
 		openMsgPopupReload();
 		setMessage(data);
@@ -212,9 +248,17 @@ $(() => {
 		msgLoad($('#viewNickname').text());
 		$('#msgPopup').css('display', 'block');
 	});
+	
+	// 채팅 한정 개수 100개로 하고 스크롤 최상단으로 올렸을시 리로드
+	
+	// 채팅 받았을 경우 버튼위에 빨간점
+	
+	// 페이지 이동시 현상 유지
     
     setInterval(() => {
-		chatListsReload();
-		openMsgPopupReload();
-	}, 3000);
+		if($('#chatSearch').val()==''){
+			chatListsReload();
+			openMsgPopupReload();
+		}
+	}, 2000);
 });
