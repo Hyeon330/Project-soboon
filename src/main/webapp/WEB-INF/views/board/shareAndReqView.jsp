@@ -2,17 +2,17 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <link rel="stylesheet" href="/css/shareAndReqView.css" type="text/css"/>
 <script src="https://kit.fontawesome.com/76aefe2b67.js" crossorigin="anonymous"></script>
+<script src="/js/shareAndReqView.js"></script>
 <script>
+	let nickname = "${nickName}";
+
 	$(function(){
 		$("#shareAndReqDel").click(function(){
 			if(confirm("삭제하시겠어요?")){
 				location.href="/board/shareAndReqDel?no=${viewVo.no}&category=${viewVo.category}";
 			}
 		});
-		
-		$(function(){
-			// 댓글 목록
-		});
+	
 	});
 </script>
 <div class="container">
@@ -95,23 +95,15 @@
 				</div>
 			</div>
 			<hr/>
-			<div id="joinMember">
-				<div><i class="fa fa-user fa-3x"></i></div>
-				<div>나눔 인원</div>
-				<div id="joinUpdate">${viewVo.joinno}&nbsp;명</div>
-			</div>
-			<hr/>
 			<div class="ProductBtns">
-				<div class="col-12 text-center pb">
-					<input type="button" class="btn" name="joinPlus" id="joinPlus" value="참여">
-				</div>
-				<div class="col-12 text-center pb">
-					<input type="submit" class="btn" id="joinMinus" name="joinMinus" value="참여취소">
-					<span id="btnSpace"></span><input type="submit" class="btn" id="joinChat" name="joinChat" value="채팅 보내기">
-				</div>
+				<c:if test="${logId!=viewVo.userid}">
+					<div class="col-12 text-center pb">
+						<span id="btnSpace"></span><input type="submit" class="btn" id="joinChat" name="joinChat" value="채팅 보내기">
+					</div>
+				</c:if>
 				<c:if test="${logId==viewVo.userid}">
 					<div class="col-12 text-center pb">
-						<a href="/board/shareAndReqEdit?no=${viewVo.no}&category=${viewVo.category}" class="btn" id="shareEdit">수정</a>
+						<a href="/board/shareAndReqEdit?no=${viewVo.no}&category=${viewVo.category}" class="btn" id="shareAndReqEdit">수정</a>
 						<span id="btnSpace"></span><input type="button" class="btn" id="shareAndReqDel" value="삭제"/>
 					</div>
 				</c:if>
@@ -128,23 +120,17 @@
 		<!-- 댓글 -->
 		<div class="col-12">
 			<hr/>
-			<c:if test="${logStatus=='Y'}">
 			<div><i class="fa fa-comment fa-lg"></i><span class="iconValue">댓글</span></div>
 				<form method="post" id="replyForm">
-					<input type="hidden" name="replyno" id="replyno" value="${viewVo.no}">
+					<input type="hidden" name="no" id="no" value="${viewVo.no}">
 					<div id="commentLine">
 						<textarea name="coment" id="coment" class="shareAndReqComent" rows="4" cols="80" placeholder="내용을 입력하세요"></textarea>
 						<span id="replyBtn"><input type="submit" class="btn" id="replyInsert" value="댓글 등록"></span>
 					</div>
 				</form>
-			</c:if>
-			<hr/><!-- 댓글 목록 표시 -->
+			<!-- 댓글 목록 표시 -->
 			<div id="replyList">
-				<ul>
-					<li>
-						<div>유저아이디 | ( createdate )</div>
-					</li>
-				</ul>
+				
 			</div>
 		</div>
 	</div>

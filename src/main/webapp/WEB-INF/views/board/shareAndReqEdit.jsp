@@ -21,7 +21,6 @@
 				<tr>
 					<td id="tbBody">
 						<input type="text" class="form-control" id="shareAndReqTitle" placeholder="글 제목을 입력하세요."  name="title" maxlength="16" value="${bvo.title}"/>
-						<input type="text" class="form-control" id="joinLimit" placeholder="참여인원이 필요하다면 적어주세요."/>	
 					</td>
 				</tr>
 				<tr>
@@ -30,7 +29,6 @@
 			</tbody>
 		</table>
 		<div id="fileList">
-			<button type="button" class="btn" id="uploadBtn">첨부파일 선택</button>
 			<div id="innerFiles" class="totalFile">
 			<c:choose>
 				<c:when test="${bvo.thumbnailImg!=null && bvo.thumbnailImg!=''}">
