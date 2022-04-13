@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="/css/signup.css" type="text/css"/>
 <script src="/js/member.js"></script>
 <div class="container">
-	<h2 id="signup-logo">회원가입</h2>
+	<h1 id="signup-logo">회원가입</h1>
 	<hr/>
 	<form method="post" action="/member/memberOk" id="memberFrm" onsubmit="return memberCheck()">
 		<ul>
@@ -30,6 +30,7 @@
 				<input type="text"  class="signup-tel" name="tel1" id="tel1" maxlength="3" /> - 
 				<input type="text" class="signup-tel" name="tel2" id="tel2" maxlength="4" /> -
 				<input type="text" class="signup-tel" name="tel3" id="tel3" maxlength="4" />
+<<<<<<< HEAD
 				<input type="button" id="sms-btn1" class="btn signup-btn" value="SMS인증"/>
 			</li>
 			<li class="sms">&nbsp;&nbsp;&nbsp;&nbsp;</li>
@@ -37,7 +38,16 @@
 				<input type="text" class="signup-sms" name="smsCode" id="smsCode" placeholder="인증번호 5자리를 입력하세요"/>
 				<input type="text" id="authCode"/>
 				<input type="button" id="sms-btn2" class="btn signup-btn" value="인증"/>
+=======
+				<input type="button" id="sms-btn1" class="btn signup-btn" value="인증"/>
+>>>>>>> main
 			</li>
+			<!-- <li class="sms">&nbsp;&nbsp;&nbsp;&nbsp;</li>
+			<li class="sms">
+				<input type="text" class="signup-sms" name="smsCode" id="smsCode" placeholder="인증번호 5자리를 입력하세요"/>
+				<input type="text" id="authCode"/>
+				<input type="button" id="sms-btn2" class="btn signup-btn" value="인증"/>
+			</li> -->
 			<li>이메일</li>
 			<li><input type="text" class="signup-email" name="email" id="email" placeholder="example@naver.com"/></li>
 			<li>주소</li>
