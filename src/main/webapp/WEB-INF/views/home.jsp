@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <link rel="stylesheet" href="/css/home.css" type="text/css"/>
 	<div class="mainContainer">
 		<div class="typingContainer">
@@ -22,7 +21,7 @@
 			<br/>
 			<br/>
 			<br/>
-			<h1 id="fuctionTitle" style="text-align:center; font-weight:bold; color:rgb(72, 97, 86);">소분소분의 이야기</h1>
+			<h1 id="fuctionTitle" style="text-align:center; font-weight:900; color:rgb(72, 97, 86);">소분소분의 이야기</h1>
 			<br/>
 			<a href="/board/shareAndReqList?category=share"><img src="/img/inform1_1.png" class="functionImage"/></a>				
 			<a href="#"><img src="/img/inform2_1.png" class="functionImage"/></a>
@@ -34,7 +33,7 @@
 	<div id="bottomContainer">
 			<br/>
 			<br/>
-			<h1 id="fuctionTitle" style="text-align:center; font-weight:bold; color:rgb(72, 97, 86);">최근 게시물</h1>
+			<h1 id="fuctionTitle" style="text-align:center; font-weight:900; color:rgb(72, 97, 86);">최근 게시물</h1>
 			<br/>
 			<br/>
 			<div class="row">

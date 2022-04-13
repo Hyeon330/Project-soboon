@@ -1,22 +1,25 @@
 @charset "UTF-8";
+#loginContainer{
+	min-height:800px;
+}
 #login {
-	width: 700px;
+	width: 500px;
 	margin: 0 auto;
 }
-
 #login>h1 {
 	text-align: center;
-	margin:50px;
+	margin:40px;
+	font-weight:900;
 }
-
 #loginFrm>ul>li {
 	text-align:center;
-	width:100%;
 }
-
+#userpwd{
+	margin-bottom:10px;
+}
 .login-id,
 .login-pwd{
-	width:40%;
+	width:70%;
 	border:none;
 	border-bottom:2px solid #adadad;
 	outline:none;
@@ -26,33 +29,20 @@
 	background:none;
 	margin-top:40px;
 }
-
-.login-btn, 
-.login-btn1, 
-.login-btn2{
+.login-btn, .login-btn1, .login-btn2{
 	height:50px;
-	margin:40px;
-	
-}
-
-.login-btn{
-	margin-top:50px;
-	margin-bottom:20px;
-	background-color:rgb(246, 236, 223);
-}
-
-.kakao{
-	width:210px;
-	margin:10px;
-}
-
-.login-btn1, .login-btn2{
-	background-color:#ddd;
+	margin:20px;
+	background-color:rgb(72, 97, 86);
+	color:white;
+	font-weight:500;
 	margin-top:20px;
-	margin-bottom:130px;
 }
-
+.login-btn, .login-btn1{
+	width:90px;
+}
 .kakaoBtn{
-	margin-top:40px;
 	height:50px;
+}
+#FindInfoBtn{
+	width:330px;
 }
