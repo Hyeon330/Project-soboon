@@ -173,17 +173,20 @@ $(() => {
 			msg: msg
 		};
 		socket.emit('send-msg', data);
-		$('.msg-textarea').val('');
 	}
 	
+	var message = '';
 	// 보내기 버튼 클릭시 sendMessage함수 실행
 	$('.msg-send-btn').click(() => {
-		if($('.msg-textarea').val()!=''){
-			sendMessage($('.msg-textarea').val());
+		message = $('.msg-textarea').val().replace(/\n/g, '<br>');
+		if(message != '<br>'){
+			sendMessage(message);
 		}
+		$('.msg-textarea').val('');
 	});
 	$('.msg-textarea').keydown((e)=>{
-		if($('.msg-textarea').val()!='' && e.keyCode === 13 && !e.shiftKey){
+		message = $('.msg-textarea').val().replace(/\n/g, '<br>');
+		if(message!='' && e.keyCode === 13 && !e.shiftKey){
 			$('.msg-send-btn').click();
 		}
 	});
