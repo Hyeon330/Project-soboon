@@ -21,8 +21,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 
 		// 로그인 상태구하기
 		String logStatus = (String) session.getAttribute("logStatus");
-		String logAdmin = (String) session.getAttribute("logAdmin");
-		if (logStatus != null && logStatus.equals("Y") && logAdmin.equals("9")) { // 로그인되었을때
+		if (logStatus != null && logStatus.equals("Y")) { // 로그인되었을때
 			
 			return true;
 		} else { // 로그인 안된경우

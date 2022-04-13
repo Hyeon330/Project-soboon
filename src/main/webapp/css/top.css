@@ -1,6 +1,6 @@
 @charset "utf-8";
 nav{
-	background-color:rgb(230, 211, 202);
+	background-color:rgba(72, 97, 86, 90%);
 }
 nav>hr{
 	margin:0 auto; padding:0px; width:1200px;
@@ -30,22 +30,21 @@ nav>hr{
 /*--------------검색 영억---------------------*/
 #topSearch{
 	padding-left:150px;
-	padding-top:5px;
+	padding-top:9px;
 }
 #searchBox{
 	margin-top:4px;
-	height:40px;
-	line-height:35px;
+	height:30px;
+	line-height:30px;
 	background-color:white;
 	border-radius:10px;
-	border:1px solid #666;
 }
 #searchInput{
 	text-align:center;
 	background-color:rgba(0, 0, 0, 0);
 	border:0px;
 	border-bottom:1px grid gray;
-	color:rgb(154, 97, 66);
+	color:white;
 }
 #searchBox>input:focus{
 	border:none !important;
@@ -60,14 +59,16 @@ nav>hr{
 }
 /*---------------select 영억---------------------*/
 #topSelect{
-	height:50px;
 	text-align:center;
  	width: 150px;
- 	height: 35px;
+ 	height: 20px;
   	border-radius: 10px;
-    border: 2px solid none;
    	padding-top:3px;
    	font-weight:100;
+   	color:rgb(72, 97, 86);
+}
+#topSelect{
+	
 }
 /*--------------버튼 영억---------------------*/
 .gridContainer{
@@ -76,12 +77,15 @@ nav>hr{
 	display:grid;
 	grid-template-columns:170px 520px 100px 410px;
 }
+.gridContainer img{
+	width:100%;
+}
 /*!!!!!로그인 회원가입 / 마이페이지 로그아웃 버튼!!!!!!!!!!*/
 #gridBtn{
 	margin-left:110px;
 }
 .sign{
-	background-color:rgb(154, 97, 66);
+	background-color:rgb(213, 218, 212);
 	font-weight:500px;
 }
 /*==================Top 2행==========================*/
@@ -91,8 +95,9 @@ nav>hr{
 }
 .bottom{
    width:100%;
-   height:50px;
+   height:120px;
+   line-height:40px;
    text-align:center;
    color:white;
-   background-color:gray;
+   background-color:rgb(142, 158, 139);
 }
