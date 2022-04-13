@@ -132,3 +132,32 @@ $(function(){
 			}
 		});
 	});
+
+// SMS문자 인증 ---------------------------------------------------
+$(document).on('click','#sms-btn1',function(){ //sms인증 버튼 클릭했을 때
+	let tel = $("#tel1").val() + $("#tel2").val() + $("#tel3").val(); //사용자가 입력한 번호
+	let authCode = $("#authCode");
+	
+	//사용자가 입력한 전화번호가 공백이 아니고, 11자리 이상일 경우
+	if(tel != '' && tel.length>10){
+		$.ajax({
+			url:'/member/memberTelCheck',
+			method:'get',
+			data:{'tel':tel},
+			success:function(res){
+				$(".signup-tel").attr("disabled",false);
+				authCode.attr('value',res);
+				//$(".sms").css("display","block");
+				alert('인증번호가 발송 되었습니다.\n휴대폰에서 인증번호 확인을 해주십시오.');
+			}, error:function(res){
+				alert('인증번호 발송에 실패하였습니다.\n잠시 후 다시 시도해주시기 바랍니다.');
+			}
+		});
+	}else{
+		alert("휴대폰 번호를 입력해 주세요");
+	}
+});
+// 인증번호 확인
+$("#sms-btn2").click(function(){
+	if($("#"))
+});

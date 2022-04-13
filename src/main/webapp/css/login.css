@@ -30,15 +30,16 @@
 .login-btn, 
 .login-btn1, 
 .login-btn2{
-	height:50px;
+	height:46px;
 	margin:40px;
+	background-color:#ddd;
 	
 }
 
 .login-btn{
-	margin-top:50px;
-	margin-bottom:20px;
-	background-color:rgb(246, 236, 223);
+	width:100px;
+	margin-top:40px;
+	margin-bottom:10px;
 }
 .kakao{
 	width:210px;
@@ -46,7 +47,6 @@
 }
 
 .login-btn1, .login-btn2{
-	background-color:#ddd;
 	margin-top:20px;
 	margin-bottom:130px;
 }

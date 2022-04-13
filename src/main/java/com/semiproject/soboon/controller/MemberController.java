@@ -1,6 +1,7 @@
 package com.semiproject.soboon.controller;
 
 import java.util.HashMap;
+import java.util.Random;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
@@ -77,7 +78,7 @@ public class MemberController {
 			entity = new ResponseEntity<String>(msg, headers, HttpStatus.OK);
 			
 		} else {
-			String msg = "<script>alert('로그인에 실패하였습니다.\\n로그인 폼으로 돌아갑니다.'); history.back(-1);</script>";
+			String msg = "<script>alert('로그인에 실패하였습니다.\\n아이디와 비밀번호를 다시 확인해주세요.'); history.back(-1);</script>";
 			entity = new ResponseEntity<String>(msg, headers, HttpStatus.BAD_REQUEST);
 		}
 		
@@ -129,14 +130,6 @@ public class MemberController {
 		return "redirect:/";
 	}
 	
-//	//카카오톡 연결 끊기
-//	@RequestMapping(value="/kakaounlink")
-//	public String unlink(HttpSession session) {
-//		kakao.kakaoUnlink((String)session.getAttribute("access_Token"));
-//		session.invalidate();
-//		return "redirect:/";
-//	}
-	
 	//카카오톡 연동 정보 조회+DB에 회원 정보 넣기
 	@RequestMapping(value="selectMyAccessToken")
 	public String oauthKakao(@RequestParam(value="code",required=false) String code, HttpServletRequest req) throws Exception{
@@ -172,6 +165,26 @@ public class MemberController {
 		session.setAttribute("logId", kakao_email);
 		
 		return "redirect:/";
+	}
+	
+	//SMS인증번호
+	@GetMapping("memberTelCheck")
+	@ResponseBody
+	public String sendSMS(String tel) {
+		//5자리 인증번호 만들기
+		Random random = new Random();
+		String numStr = "";
+		for(int i=0; i < 5; i++) {
+			String ranNum = Integer.toString(random.nextInt(10));
+			numStr += ranNum;
+		}
+		//확인용
+		System.out.println("수신자번호: " + tel);
+		System.out.println("인증번호: " + numStr);
+		
+		//문자보내기
+		service.telCheck(tel, numStr);
+		return numStr;
 	}
 	
 	@PostMapping("memberIdCheck")
