@@ -132,10 +132,7 @@ $(() => {
 	}
 	
 	var socket = io("http://1.246.60.149:9001");
-	// 메시지 창 열고 닫기
-	$('.msg-close').click(() => {
-		$('#msgPopup').css('display', 'none');
-	});
+	
 	
 	// 닉네임에 맞는 메시지 가져오는 함수
 	const msgLoad = (oppNickname) => {
@@ -157,6 +154,10 @@ $(() => {
 		$('.msg-lists').scrollTop($('.msg-lists')[0].scrollHeight);
 	}
 	
+	// 메시지 창 열고 닫기
+	$('.msg-close').click(() => {
+		$('#msgPopup').css('display', 'none');
+	});
 	const openMsgPopupReload = () => {
 		$('.chat-list').on('click', function(){
 			msgLoad($(this).find('.chat-name').text());
@@ -164,6 +165,7 @@ $(() => {
 	}
 	openMsgPopupReload();
 	
+	// 메시지 데이터 소켓 서버로 보내기
 	const sendMessage = (msg) => {
 		var data = {
 			sender: myNickname,
@@ -174,9 +176,10 @@ $(() => {
 		$('.msg-textarea').val('');
 	}
 	
-	$('.msg-textarea').keyup((e)=>{
-		if($('.msg-textarea').val()!='' && e.keyCode === 13 && !e.shiftKey){
-			$('.msg-textarea').val('');
+	// 보내기 버튼 클릭시 sendMessage함수 실행
+	$('.msg-send-btn').click(() => {
+		if($('.msg-textarea').val()!=''){
+			sendMessage($('.msg-textarea').val());
 		}
 	});
 	$('.msg-textarea').keydown((e)=>{
@@ -184,19 +187,20 @@ $(() => {
 			$('.msg-send-btn').click();
 		}
 	});
-	$('.msg-send-btn').click(() => {
-		if($('.msg-textarea').val()!=''){
-			sendMessage($('.msg-textarea').val());
+	$('.msg-textarea').keyup((e)=>{
+		if($('.msg-textarea').val()!='' && e.keyCode === 13 && !e.shiftKey){
+			$('.msg-textarea').val('');
 		}
 	});
 	
+	// 소켓 서버에서 메시지 데이터 받기
 	socket.on('receive-msg', (data) => {
 		chatListsReload();
 		openMsgPopupReload();
 		setMessage(data);
     });
     
-    // 채팅 보내기 버튼 클릭시
+    // 보드 뷰에서 '채팅 보내기' 버튼 클릭시
     $('#joinChat').click(() => {
 		if($('#chatPopup').css('height').substring(0,$('#chatPopup').css('height').length-2)==0){
 			$('#chatBtn').click();
@@ -209,5 +213,5 @@ $(() => {
     setInterval(() => {
 		chatListsReload();
 		openMsgPopupReload();
-	}, 4000);
+	}, 3000);
 });
