@@ -44,3 +44,33 @@ setInterval(function(){
 }, 3720)
 
 
+/*카카오톡 로그인!!!!!!!!------------------------------------------------------- */
+/*토큰 가져오기 */
+function selectMyAccessToken(){
+	let param = {"code: " : code};
+	
+	$.ajax({
+		url:'/member/selectMyAccessToken',
+		type:'get',
+		data:param,
+		contentType:"application/json; charset=UTF-8",
+		success:function(){
+			location.href="/mypage/editForm"; //연동 성공시 마이페이지로 이동
+		},error:function(){
+			location.href="/";
+		}
+	})
+}
+let codeURL = null;
+let code = null;
+$(function(){
+	codeURL = new URL(window.location.href);
+	code = codeURL.searchParams.get('code');
+	if(code != null){
+		selectMyAccessToken();
+		alert("처음 카카오톡 로그인시, 마이페이지에서 회원정보를 수정해주세요!");
+	}else{
+		//console.log("코드 존재하지 않음");
+	}
+})
+/*=========================================================================== */

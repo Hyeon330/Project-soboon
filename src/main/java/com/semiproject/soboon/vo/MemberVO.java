@@ -100,4 +100,7 @@ public class MemberVO {
 	public void setSocialType(String socialType) {
 		this.socialType = socialType;
 	}
+	public String toString() {
+		return "username="+username;
+	}
 }

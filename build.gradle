@@ -35,11 +35,15 @@ dependencies {
 	implementation 'commons-fileupload:commons-fileupload:1.4'
 	// https://mvnrepository.com/artifact/commons-io/commons-io
 	implementation 'commons-io:commons-io:2.11.0'
-	
+
 	// ajax
 	// https://mvnrepository.com/artifact/com.google.code.gson/gson
 	implementation 'com.google.code.gson:gson:2.8.5'
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> main
 }
 
 tasks.named('test') {

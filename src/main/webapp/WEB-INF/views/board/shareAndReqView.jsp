@@ -9,23 +9,9 @@
 				location.href="/board/shareAndReqDel?no=${viewVo.no}&category=${viewVo.category}";
 			}
 		});
-		$("#joinPlus").click(function(){
-			let no = "${viewVo.no}"
-			let userid = "${viewVo.userid}";
-			console.log(no);
-			console.log(userid);
-			$.ajax({
-				type:"POST",
-				url:"/board/joinPlus",
-				data:{"no":no,"userid":userid},
-				dataType:"json",
-				success:function(result){
-					alert("성공적으로 참가하였습니다.");
-					$("#joinUpdate").text(result);
-				},error:function(e){
-					alert("참여에 실패했습니다.");
-				}
-			});
+		
+		$(function(){
+			// 댓글 목록
 		});
 	});
 </script>
@@ -66,7 +52,7 @@
 						</c:when>
 						<c:otherwise>
 							<div id="carousel-item active">
-								<img src="/img/1.jpg"/>
+								<img src="/img/share.jpg"/>
 							</div>
 						</c:otherwise>
 					</c:choose>
@@ -104,7 +90,7 @@
 			<div id="userInfo">
 				<div><i class="fa fa-user fa-5x"></i></div>
 				<div id="userinfoInner">
-					<div>${viewVo.nickname}</div>
+					<div id="viewNickname">${viewVo.nickname}</div>
 					<div>${viewVo.address}</div>
 				</div>
 			</div>
@@ -121,7 +107,7 @@
 				</div>
 				<div class="col-12 text-center pb">
 					<input type="submit" class="btn" id="joinMinus" name="joinMinus" value="참여취소">
-					<span id="btnSpace"></span><input type="submit" class="btn" id="joinChat" name="joinChat" value="채팅방 입장">
+					<span id="btnSpace"></span><input type="submit" class="btn" id="joinChat" name="joinChat" value="채팅 보내기">
 				</div>
 				<c:if test="${logId==viewVo.userid}">
 					<div class="col-12 text-center pb">
@@ -131,18 +117,28 @@
 				</c:if>
 			</div>
 		</div>
-		<div class="col-12 src" >	
+		
+		<!-- 글 내용 -->
+		<div class="col-12 src">
+			<hr/><br/>
 			<div id="shareAndReqContent">${viewVo.content}</div>
 		</div>
+		<!-- 댓글 -->
 		<div class="col-12">
 			<hr/>
-			<form>
-				<div><i class="fa fa-comment fa-lg"></i><span class="iconValue">댓글</span></div>
-				<div id="commentLine">
-					<textarea name="coment" id="coment" class="shareAndReqComent" rows="4" cols="80" placeholder="내용을 입력하세요"></textarea>
-					<span id="replyBtn"><input type="submit" class="btn" id="replyInsert" name="replyInsert" value="댓글 등록"></span>
-				</div>
-			</form>
+			<c:if test="${logStatus=='Y'}">
+			<div><i class="fa fa-comment fa-lg"></i><span class="iconValue">댓글</span></div>
+				<form method="post" id="replyForm">
+					<input type="hidden" name="replyno" id="replyno" value="${viewVo.no}">
+					<div id="commentLine">
+						<textarea name="coment" id="coment" class="shareAndReqComent" rows="4" cols="80" placeholder="내용을 입력하세요"></textarea>
+						<span id="replyBtn"><input type="submit" class="btn" id="replyInsert" value="댓글 등록"></span>
+					</div>
+				</form>
+			</c:if>
+			<hr/><!-- 댓글 목록 표시 -->
+			<div id="replyList">
+			</div>
 		</div>
 	</div>
 </div>
