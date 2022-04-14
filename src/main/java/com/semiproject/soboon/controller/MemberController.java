@@ -95,6 +95,8 @@ public class MemberController {
 		return mav;
 	}
 	
+	//=========================================================================
+	//카카오톡관련
 	//카카오톡 로그인
 	@RequestMapping(value="kakao/klogin")
 	public String login(@RequestParam("code") String code, HttpSession session, RedirectAttributes attr) {
@@ -166,6 +168,7 @@ public class MemberController {
 		
 		return "redirect:/";
 	}
+	//=========================================================================
 	
 	//SMS인증번호
 	@GetMapping("memberTelCheck")
@@ -181,6 +184,12 @@ public class MemberController {
 		//문자보내기
 		service.telCheck(tel, numStr);
 		return numStr;
+	}
+	
+	//아이디/비밀번호 찾기 폼으로 이동
+	@GetMapping("search_info")
+	public String search_info() {
+		return "/member/search_info";
 	}
 	
 	@PostMapping("memberIdCheck")

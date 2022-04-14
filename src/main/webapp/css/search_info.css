@@ -1,0 +1,42 @@
+@charset "UTF-8";
+.searchinfofrm {
+	width:1000px;
+	text-align:center;
+}
+.searchinfofrm>h1{
+	margin-top:40px;
+}
+.sub_title>h3{
+	margin-top:30px;
+}
+.btn-searchinfo{
+	width:30%;
+	height:50px;
+}
+.searchinfo_searchtel{
+	margin-top:20px;
+}
+.searchinfo_1,
+.searchinfo_2{
+	width:20%;
+	border:none;
+	border-bottom:2px solid #adadad;
+	outline:none;
+	color:#636e72;
+	font-size:16px;
+	height:25px;
+	background:none;
+	margin-top:40px;
+}
+.input-tel,
+.input-email{
+	display:none;
+}
+.searchId-btn{
+	width:30%;
+	color:white;
+	background-color:rgb(72, 97, 86);
+}
+.searchPwd{
+	display:none;
+}
