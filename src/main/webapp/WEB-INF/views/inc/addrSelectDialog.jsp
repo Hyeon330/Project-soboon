@@ -6,7 +6,7 @@
 		});
 		$('#addrSelectDialog').dialog({
 			title: "지역선택",
-			autoOpen: true,
+			autoOpen: false,
 			modal: true,
 			buttons: {
 				등록: function() {
