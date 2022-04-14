@@ -137,14 +137,15 @@
 	}//showPost
 </script>
 
-<div class="container" id="mypageContainer">
+<div id="mypageContainer">
 	<!--   사이드 메뉴 (include) -->
 	<%@ include file="/WEB-INF/views/inc/mypageSideBar.jsp"%>
 
 	<!--  view -->
-	<div style="width: 65%; height: 100%;" class="viewPage-mypage">
-		<h1>내가 쓴 글보기</h1>
-		<hr />
+	<div style="width: 75%; height: 100%;" class="viewPage-mypage">
+		<h3>내가 쓴 글보기</h3>
+		<hr/>
+		<br/>
 		<div class="topMemu-mypageView" style="width: 100%; height: 150px">
 			<div style="width: 20%;" id="image-mypage">
 				<i class="bi bi-person-circle"
@@ -173,7 +174,7 @@
 				<div>
 					<div>
 						<div>찜한글</div>
-						<div>3개</div>
+						<div>3</div>
 					</div>
 				</div>
 			</div>
@@ -219,7 +220,3 @@
 	<!-- viewpage-mypage  -->
 </div>
 <!-- container -->
-
-
-
--->

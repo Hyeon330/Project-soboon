@@ -1,0 +1,53 @@
+@charset "UTF-8";
+
+.admincontainer {
+	padding-top:20px;
+	width: 1200px;
+	margin: 0 auto;
+	text-align: center;
+	min-height:717px;
+}
+.tab li {
+	float: left;
+}
+.nav-link {
+	display: inline-block;
+	color: rgb(72, 97, 86);
+	text-align: center;
+	text-decoration: none;
+	font-size: 17px;
+	transition: 0.3s;
+}
+/* =========↓↓↓========회 원 관 리========↓↓↓========= */
+.memberList{
+	text-align:center;
+}
+#clientManage>li {
+	float: left;
+	height: 40px;
+	line-height: 40px;
+	border-bottom: 1px solid white;
+	width: 8%;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+#clientManage>li:nth-child(8n+6){
+	width:15%;
+}
+#clientManage>li:nth-child(8n+7) {
+	width:20%;
+} 
+#clientManage>li:nth-child(8n) { 
+	width: 25%;
+	white-space: nowrap; /*줄안바꿈*/
+	overflow: hidden; /*넘친 내용 숨기기*/
+	text-overflow: ellipsis; /*넘친 내용 있으면 ... 표시*/
+}
+
+#prevBtn, #nextBtn{
+	background-color:rgb(72, 97, 86);
+	color:white;
+}
+.page-link{
+	color:rgb(72, 97, 86);
+}
