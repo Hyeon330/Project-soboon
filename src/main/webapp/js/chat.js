@@ -56,6 +56,7 @@ $(() => {
 			} else {
 				chatList += '<p class="chat-name">'+data.receiver+'</p>';
 			}
+			
 			// 메시지
 			if(data.chat_read == 'n' && data.sender != myNickname){
 				chatList += '<p class="last-chat"><b class="not-read">'+data.sender+": "+data.msg+'</b></p>';
@@ -66,7 +67,7 @@ $(() => {
 			
 			// 시간
 			if(chatDate.getTime() === today.getTime()){
-				chatList += '<p class="chat-date">'+Number(chatTimeArr[0])+':'+chatTimeArr[1]+'</p>';
+				chatList += '<p class="chat-date">'+Number(chatTimeArr[0])+':'+Number(chatTimeArr[1])+'</p>';
 			}else {
 				chatList += '<p class="chat-date">'+Number(chatDateArr[1])+'월 '+Number(chatDateArr[2])+'일'+'</p>';
 			}
@@ -82,17 +83,6 @@ $(() => {
 			type: 'get',
 			async: false,
 			success: function (result){
-				var readCheck = 0;
-				result.forEach(data => {
-					if(data.chat_read=='n' && data.receiver==myNickname){
-						readCheck++;
-					}
-				});
-				if(result.length == readCheck){
-					$('#chatBlock').prepend('<div class="chat-alert-point"></div>');
-				}else {
-					$('.chat-alert-point').remove();
-				}
 				setChatLists(result);
 			}
 		});
@@ -120,8 +110,6 @@ $(() => {
 		}
 	});
 	
-	var socket = io("http://1.246.60.149:9001");
-	
 	// 메시지 창에 메시지 넣는 함수
 	var prevTime = '';
 	var prevPosition = '';
@@ -146,7 +134,7 @@ $(() => {
 			
 			msg += '<div class="msg-box '+position+'">';
 			var msgDateTimeArr = data.chat_datetime.split(' ')[1].split(':');
-			var nowTime = Number(msgDateTimeArr[0])+':'+msgDateTimeArr[1];
+			var nowTime = Number(msgDateTimeArr[0])+':'+Number(msgDateTimeArr[1]);
 			if(prevTime != nowTime || prevPosition != position){
 				msg += '<div class="msg-info">';
 				if(position=='right'){
@@ -163,8 +151,12 @@ $(() => {
 			msg += '<div class="msg-text '+position+'"><span>'+data.msg+'</span></div></div></li>';
 			
 			$('.msg-lists').append(msg);
+			$('.msg-lists').scrollTop($('.msg-lists')[0].scrollHeight);
 		}
 	}
+	
+	var socket = io("http://1.246.60.149:9001");
+	
 	
 	// 닉네임에 맞는 메시지 가져오는 함수
 	const msgLoad = (oppNickname) => {
@@ -212,21 +204,6 @@ $(() => {
 		socket.emit('send-msg', data);
 	}
 	
-	// 소켓 서버에서 메시지 데이터 받기
-	socket.on('receive-msg', (data) => {
-		if($('#msgPopup').css('display')=='block' && data.receiver==myNickname && data.sender==$('#oppNickName').text()){
-			$.ajax({
-				url: '/chat/updateChatRead',
-				type: 'post',
-				async: false
-			});
-		}
-		chatListsReload();
-		openMsgPopupReload();
-		setMessage(data);
-		$('.msg-lists').scrollTop($('.msg-lists')[0].scrollHeight);
-    });
-	
 	var message = '';
 	// 보내기 버튼 클릭시 sendMessage함수 실행
 	$('.msg-send-btn').click(() => {
@@ -247,6 +224,20 @@ $(() => {
 			$('.msg-textarea').val('');
 		}
 	});
+	
+	// 소켓 서버에서 메시지 데이터 받기
+	socket.on('receive-msg', (data) => {
+		if($('#msgPopup').css('display')=='block' && data.receiver==myNickname && data.sender==$('#oppNickName').text()){
+			$.ajax({
+				url: '/chat/updateChatRead',
+				type: 'post',
+				async: false
+			});
+		}
+		chatListsReload();
+		openMsgPopupReload();
+		setMessage(data);
+    });
     
     // 보드 뷰에서 '채팅 보내기' 버튼 클릭시
     $('#joinChat').click(() => {
@@ -259,11 +250,6 @@ $(() => {
 	});
 	
 	// 채팅 한정 개수 100개로 하고 스크롤 최상단으로 올렸을시 리로드
-	/*$('.msg-lists').on('mousewheel', function(e) {
-		var wheel = e.originalEvent.wheelDelta;
-		console.log($(this).scrollTop());
-		console.log('휠 : '+wheel);
-	});*/
 	
 	// 채팅 받았을 경우 버튼위에 빨간점
 	
