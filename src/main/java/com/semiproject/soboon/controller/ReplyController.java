@@ -23,7 +23,6 @@ public class ReplyController {
 	// 댓글 등록하기
 	@PostMapping("writeOk")
 	public int writeOk(ReplyVO vo, HttpSession session) {
-		System.out.println("3030");
 		vo.setUserid((String)session.getAttribute("logId"));
 		vo.setNickname((String)session.getAttribute("nickName"));
 		return service.insertReply(vo);

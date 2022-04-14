@@ -1,26 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<link rel="stylesheet" href="/css/shareAndReqEdit.css" type="text/css"/>
+<link rel="stylesheet" href="/css/shareBoardEdit.css" type="text/css"/>
 <script src="//cdn.ckeditor.com/4.17.2/full/ckeditor.js"></script>
-<script src="/js/shareAndReqEdit.js"></script>
+<script src="/js/shareBoardEdit.js"></script>
 <div class="container">
 	<br/>
-	<form class="form-group" method="post" action="/board/shareAndReqEditOk?no=${bvo.no}&category=${bvo.category}" id="shareReqForm" enctype="multipart/form-data">
+	<form class="form-group" method="post" action="/board/shareBoardEditOk?no=${bvo.no}" id="shareReqForm" enctype="multipart/form-data">
 		<table class="table table-striped" style="text-align:center; border:1px solid #dddddd">
 			<thead>
 				<tr>
-					<c:if test="${bvo.category=='share'}">
-					<th><h1 style="text-align:center;">나눔 게시판 글 작성 폼</h1></th>
-					</c:if>
-					<c:if test="${bvo.category=='request'}">
-					<th><h1 style="text-align:center;">요청 게시판 글 작성 폼</h1></th>
-					</c:if>
+					<th><h1 style="text-align:center;">나눔 게시판 글 수정 폼</h1></th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
 					<td id="tbBody">
-						<input type="text" class="form-control" id="shareAndReqTitle" placeholder="글 제목을 입력하세요."  name="title" maxlength="16" value="${bvo.title}"/>
+						<input type="text" class="form-control" id="shareBoardTitle" placeholder="글 제목을 입력하세요."  name="title" maxlength="16" value="${bvo.title}"/>
 					</td>
 				</tr>
 				<tr>
