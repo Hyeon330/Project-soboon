@@ -6,9 +6,9 @@ public class ReplyVO {
 	private int warn;
 	private int no;
 	private String userid;
+	private String nickname;
 	private String coment;
 	private String createdate;
-	
 	
 	public int getReplyno() {
 		return replyno;
@@ -34,6 +34,12 @@ public class ReplyVO {
 	public void setUserid(String userid) {
 		this.userid = userid;
 	}
+	public String getNickname() {
+		return nickname;
+	}
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
 	public String getComent() {
 		return coment;
 	}
@@ -46,6 +52,5 @@ public class ReplyVO {
 	public void setCreatedate(String createdate) {
 		this.createdate = createdate;
 	}
-	
 	
 }

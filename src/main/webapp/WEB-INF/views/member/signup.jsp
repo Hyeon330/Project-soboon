@@ -30,18 +30,26 @@
 				<input type="text"  class="signup-tel" name="tel1" id="tel1" maxlength="3" /> - 
 				<input type="text" class="signup-tel" name="tel2" id="tel2" maxlength="4" /> -
 				<input type="text" class="signup-tel" name="tel3" id="tel3" maxlength="4" />
-				<input type="button" id="sms-btn1" class="btn signup-btn" value="인증"/>
+				<input type="button" id="sms-btn1" class="btn signup-btn" value="SMS인증"/>
 			</li>
-			<!-- <li class="sms">&nbsp;&nbsp;&nbsp;&nbsp;</li>
+			<li class="sms">&nbsp;&nbsp;&nbsp;&nbsp;</li>
 			<li class="sms">
-				<input type="text" class="signup-sms" name="smsCode" id="smsCode" placeholder="인증번호 5자리를 입력하세요"/>
-				<input type="text" id="authCode"/>
-				<input type="button" id="sms-btn2" class="btn signup-btn" value="인증"/>
-			</li> -->
+				<input type="text" class="signup-sms" name="smsCode" id="smsCode" placeholder="인증번호 5자리를 입력하세요" disabled required/>
+				<input type="hidden" id="authCode"/>
+				<input type="button" id="sms-btn2" class="btn signup-btn" value="인증" required/>
+			</li>
 			<li>이메일</li>
 			<li><input type="text" class="signup-email" name="email" id="email" placeholder="example@naver.com"/></li>
 			<li>주소</li>
-			<li><input type="text" class="signup-addr" name="address" id="address" placeholder="ex) 서울시 광진구" /></li>
+			<li>
+				<select name="large" id="addrLarge"></select>
+				<select name="medium" id="addrMedium">
+					<option value="">선택 없음</option>
+				</select>
+				<select name="small" id="addrSmall">
+					<option value="">선택 없음</option>
+				</select>
+			</li>
 			<li><input type="submit" class="btn signup-btn" id="signSub" value="가입하기" /></li>
 		</ul>
 	</form>

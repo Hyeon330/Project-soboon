@@ -1,6 +1,6 @@
 $(() => {
 	//닉네임 중복검사 (클릭시)
-	$('#button_overlapCheck').click(() => {
+	$('#button_overlapCheck').click((event) => {
 		event.preventDefault();
 		var nickname = $('#nickname').val();
 		var exNickname = $('#VO_nickname_hidden').text();
@@ -104,11 +104,11 @@ $(() => {
 		}
 
 		//주소
-		if ($('#address').val() === '') {
+		/*if ($('#address').val() === '') {
 			alert('주소를 입력해주세요.');
 			$('#address').focus();
 			return false;
-		}
+		}*/
 
 		return true;
 	});

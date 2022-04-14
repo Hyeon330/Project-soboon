@@ -52,6 +52,8 @@ ul.tab li.current {
 	line-height: 40px;
 	border-bottom: 1px solid #ddd;
 	width: 10%;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
  
 .memberList li:nth-child(8n+1), .memberList li:nth-child(8n) { 
@@ -98,6 +100,7 @@ ul.tab li.current {
 	text-overflow: ellipsis;
 } */
 </style>
+<link rel="stylesheet" href="/css/shareAndReqList.css" type="text/css"/>
 <script	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script	src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 <link rel="stylesheet"	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
@@ -116,32 +119,35 @@ $(function(){
 	});
 	
 	// 선택한 레코드 삭제
-	$("#multiDel").click(function() {
-		if($("input[name=noList]:checked").length==0) return false;
-		if(!confirm("선택한 레코드를 삭제하시겠습니까?")) return false;
+	$("#delMember").click(function() {
+		if($("input[name=noList]:checked").length==0) 
+			return false;
+		if(!confirm("선택한 레코드를 삭제하시겠습니까?")) 
+			return false;
 		$("#checkFrm").submit();
 	});
 });
 </script>
-
 <script>
-						$(function() {
-							ajaxsend('tab1')
-							$('ul.tab li').click(function() {
-								var activeTab = $(this).attr('id');
-								$('ul.tab li').removeClass('current');
-								$('.tabcontent').removeClass('current');
-								$(this).addClass('current');
-								$('#' + activeTab).addClass('current');
-								ajaxsend(activeTab)
-							})
-						});
+	$(function() {
+		ajaxsend('tab1')
+			$('ul#tab li').click(function() {
+			var activeTab = $(this).attr('id');
+				$('ul#tab li').removeClass('current');
+				$('.tabcontent').removeClass('current');
+				$(this).addClass('current');
+				$('#' + activeTab).addClass('current');
+					ajaxsend(activeTab)
+				})
+			});
 						function ajaxsend(tab){
+							/* alert(tab) */
 							var url='/admin';
 							if(tab=='tab1'){
 								url+='/memberMgr'
 							}else if (tab=='tab2'){
 								url+='/reportMgr'
+									$('#page').html("");
 							}		
 							$.ajax({
 								url:url,
@@ -157,12 +163,19 @@ $(function(){
 									if(tab=='tab1'){
 										showMember(dataArr, tab)
 									}else if (tab=='tab2'){
+										//alert("bbb")
+										
 										showReport(dataArr, tab)
-									}				
+									}
 								}			
 							})
-						}	
+						}
+						
+						
+						/* =================회원관리================= */
 						function showMember(dataArr, tab){
+							$("#membercnt").html("현재인원 :" +dataArr.cnt +"명")
+							/* alert('총회원수: '+dataArr.cnt) */
 							var str='<h3>회원관리</h3>';
 							//헤더 
 							str +="<li><input type='checkbox' id='checkALL'></li>";
@@ -174,28 +187,109 @@ $(function(){
 							str +="<li>이메일</li>";
 							str +="<li>주소</li>";
 							
-							$.each(dataArr, function(i, data){
+							$.each(dataArr.userList, function(i, data){
 								//DB에서 가져올 데이터들
 								str+="<li><input type='checkbox'></li>";
 								str+="<li>"+data.userid+"</li>";
-								str+="<li>"+data.warn+"</li>";
+								str+="<li>"+data.warn+ "회"+"</li>";
 								str+="<li>"+data.username+"</li>";
 								str+="<li>"+data.nickname+"</li>";
 								str+="<li>"+data.tel+"</li>";
 								str+="<li>"+data.email+"</li>";
 								str+="<li>"+data.address+"</li>";
+								
 							})
 							
+							let onePageRecord=10;	//한 페이지당 10명 기준
+							let totalCount=Number(dataArr.cnt)	//총 인원수 integer로 가져옴
+							
+							//페이지수 구하기 pageCount ==> 연산하는 로직 보면서 구하기
+							if(totalCount%onePageRecord == 0){
+								pageCount = totalCount/onePageRecord;
+							}else {
+								pageCount = totalCount/onePageRecord+1;
+							}
+							pageCount = Math.floor(pageCount);
+								/* alert(pageCount) */
+							//페이지 네비게이션 문자열 만들기
+							let pageStr='<br/><ul class="pagination justify-content-center" id="paging">';
+								pageStr += '<li class="page-item disabled"><a class="page-link" id="prevBtn">Prev</a></li>'
+								for(var p=1; p <= pageCount; p++){
+									pageStr += '<li class="page-item"><a class="page-link"href="javascript:void(0);" onclick="ml('+p+')">' + p + '</a></li>'
+								}
+								pageStr += '<li class="page-item"><a class="page-link" id="nextBtn">Next</a></li>'
+									
+							pageStr +='</ul>';
+							/* alert(pageStr) */
 							$('.memberList').html(str);
+							$('#page').html(pageStr);
+						}
+						function ml(p){
+							//alert(p)
+							var url="/admin/memberMgr?currentPage="+p+"&recordPerPage=10"
+							$.ajax({
+								url:url,
+								dataType:'json',
+								success:function(dataArr){
+									showMember(dataArr, 'tab1')								
+								}			
+							})
 						}
 						
-						function showReport(dataArr, tab){
+						/* =================신고관리================= */
+						function showReport(dataArr, tab){			
 							var str='<h3>신고관리</h3><table>';
-							$.each(dataArr,function(i, data){
-								str+="<tr><td>"+data.proName+"</td><td>"+data.price+"</td></tr>"
+							/* alert('총회원수: '+dataArr.cnt) */
+							//헤더 
+							str +="<li><input type='checkbox' id='checkALL'></li>";
+							str +="<li>아이디</li>";
+							str +="<li>누적신고수</li>";
+							str +="<li>신고내용</li>";
+							str +="<li>신고처리</li>";
+													
+							$.each(dataArr.userList, function(i, data){
+								//DB에서 가져올 데이터들
+								str+="<li><input type='checkbox'></li>";
+								str+="<li>"+data.userid+"</li>";
+								str+="<li>"+data.warn+ "회"+"</li>";
+								str+="<li>"+report+"</li>";
+								str+="<li>"+버튼+"</li>";			
 							})
-							str+="</table>"
-							$('#'+tab).html(str)
+							
+							let onePageRecord=10;	//한 페이지당 10명 기준
+							let totalCount=Number(dataArr.cnt)	//총 인원수 integer로 가져옴
+							
+							//페이지수 구하기 pageCount ==> 연산하는 로직 보면서 구하기
+							if(totalCount%onePageRecord == 0){
+								pageCount = totalCount/onePageRecord;
+							}else {
+								pageCount = totalCount/onePageRecord+1;
+							}
+							pageCount = Math.floor(pageCount);
+								/* alert(pageCount) */
+							//페이지 네비게이션 문자열 만들기
+							let pageStr='<br/><ul class="pagination justify-content-center" id="paging">';
+								pageStr += '<li class="page-item disabled"><a class="page-link" id="prevBtn">Prev</a></li>'
+								for(var p=1; p <= pageCount; p++){
+									pageStr += '<li class="page-item"><a class="page-link"href="javascript:void(0);" onclick="ml('+p+')">' + p + '</a></li>'
+								}
+								pageStr += '<li class="page-item"><a class="page-link" id="nextBtn">Next</a></li>'
+									
+							pageStr +='</ul>';
+							/* alert(pageStr) */
+							$('.memberList').html(str);
+							$('#page').html(pageStr);
+						}
+						function ml(p){
+							//alert(p)
+							var url="/admin/showReport?currentPage="+p+"&recordPerPage=10"
+							$.ajax({
+								url:url,
+								dataType:'json',
+								success:function(dataArr){
+									showReport(dataArr, 'tab2')								
+								}			
+							})
 						}
 						/* $.ajax({ 
 							type: "GET", 
@@ -211,16 +305,16 @@ $(function(){
 	<div class="container">
 		<div class="row">
 			<div class="col">
-				<ul class="nav nav-tabs">
-					<li class="nav-item"><a class="nav-link active"	data-toggle="tab" href="#memberMgr" id='tab1'>회원관리</a></li>
-					<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#reportMgr" id='tab2'>신고관리</a></li>
-					<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#listupMgr" id='tab3'>게시글 현황</a></li>
+				<ul class="nav nav-tabs" id="tab">
+					<li class="nav-item" id='tab1'><a class="nav-link active"	data-toggle="tab" href="#memberMgr">회원관리</a></li>
+					<li class="nav-item" id='tab2'><a class="nav-link" data-toggle="tab" href="#reportMgr" >신고관리</a></li>
+					<li class="nav-item" id='tab3'><a class="nav-link" data-toggle="tab" href="#listupMgr" id='tab3'>게시글 현황</a></li>
 				</ul>
 				
 				<div class="tab-content">
 					<br />
 					<div class="tab-pane fade show active" id="memberMgr">
-						<div style="float: left">현재인원 : ${pVO.totalRecord }명</div>
+						<div style="float: left" id="membercnt"></div>
 						<button type="button" id="multiDel" class="btn btn-outline-danger"
 							style="float: right">선택 삭제</button>
 						<br />
@@ -236,17 +330,19 @@ $(function(){
 							<li>이메일</li>
 							<li>주소</li>
 							-->
+							
 						</ul>
 					</div> 
 					
 					<div class="tab-pane fade" id="reportMgr">
 						<!-- 신고관리 -->
 						<ul class="reportList">
-							<li><input type="checkbox" id="checkAll"></li>
+							<!-- <li><input type="checkbox" id="checkAll"></li>
 							<li>아이디</li>
 							<li>누적신고</li>
 							<li>신고내용</li>
-							<li>신고처리</li>
+							<li>신고처리</li> -->
+							
 						</ul>
 					</div>
 						<!-- 게시글 현황 -->
@@ -269,6 +365,9 @@ $(function(){
 					</div> -->
 				</div>
 			</div>
+		</div>
+		<div id="page">
+				page
 		</div>
 	</div>
 </body>

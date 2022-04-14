@@ -1,6 +1,7 @@
 package com.semiproject.soboon.controller;
 
 import java.util.HashMap;
+import java.util.Random;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.semiproject.soboon.service.AddressService;
 import com.semiproject.soboon.service.KakaoAPI;
 import com.semiproject.soboon.service.MemberService;
 import com.semiproject.soboon.vo.MemberVO;
@@ -32,7 +34,8 @@ public class MemberController {
 	MemberService service;
 	@Autowired
 	KakaoAPI kakao;
-	
+	@Inject
+	AddressService serviceAddr;
 	
 	@GetMapping("signup")
 	public String memberForm() {
@@ -77,7 +80,7 @@ public class MemberController {
 			entity = new ResponseEntity<String>(msg, headers, HttpStatus.OK);
 			
 		} else {
-			String msg = "<script>alert('로그인에 실패하였습니다.\\n로그인 폼으로 돌아갑니다.'); history.back(-1);</script>";
+			String msg = "<script>alert('로그인에 실패하였습니다.\\n아이디와 비밀번호를 다시 확인해주세요.'); history.back(-1);</script>";
 			entity = new ResponseEntity<String>(msg, headers, HttpStatus.BAD_REQUEST);
 		}
 		
@@ -94,6 +97,8 @@ public class MemberController {
 		return mav;
 	}
 	
+	//=========================================================================
+	//카카오톡관련
 	//카카오톡 로그인
 	@RequestMapping(value="kakao/klogin")
 	public String login(@RequestParam("code") String code, HttpSession session, RedirectAttributes attr) {
@@ -114,6 +119,7 @@ public class MemberController {
 		}
 		attr.addFlashAttribute("code",access_Token);
 		
+		System.out.println(session.getAttribute("logStatus"));
 		return "redirect:/?code="+access_Token;
 	}
 	
@@ -127,14 +133,6 @@ public class MemberController {
 
 		return "redirect:/";
 	}
-	
-//	//카카오톡 연결 끊기
-//	@RequestMapping(value="/kakaounlink")
-//	public String unlink(HttpSession session) {
-//		kakao.kakaoUnlink((String)session.getAttribute("access_Token"));
-//		session.invalidate();
-//		return "redirect:/";
-//	}
 	
 	//카카오톡 연동 정보 조회+DB에 회원 정보 넣기
 	@RequestMapping(value="selectMyAccessToken")
@@ -156,14 +154,15 @@ public class MemberController {
 //		int cnt = service.emailCheck(kakao_email);
 //		System.out.println(cnt);
 		if(service.emailCheck(kakao_email)<=0) {
-			System.out.println("유저 회원가입");
+//			System.out.println("유저 회원가입");
 			kakaoVO.setUserid(kakao_email);
 			kakaoVO.setUserpwd("00000000");
 			kakaoVO.setUsername(kakao_nickname);
 			kakaoVO.setNickname(kakao_nickname);
-			kakaoVO.setAddress("소분소분");
+			kakaoVO.setLarge("");
+			kakaoVO.setMedium("");
+			kakaoVO.setSmall("");
 			kakaoVO.setTel("010-1111-1111");
-			kakaoVO.setSocialType("kakao");
 			kakaoVO.setEmail(kakao_email);
 			service.memberInsert(kakaoVO);
 		}
@@ -172,7 +171,46 @@ public class MemberController {
 		
 		return "redirect:/";
 	}
+	//=========================================================================
 	
+	//SMS인증번호
+	@GetMapping("memberTelCheck")
+	@ResponseBody
+	public String sendSMS(String tel) {
+		//5자리 인증번호 만들기
+		Random random = new Random();
+		String numStr = "";
+		for(int i=0; i < 5; i++) {
+			String ranNum = Integer.toString(random.nextInt(10));
+			numStr += ranNum;
+		} 
+		//문자보내기
+		service.telCheck(tel, numStr);
+		return numStr;
+	}
+	
+	//아이디/비밀번호 찾기 폼으로 이동
+	@GetMapping("search_info")
+	public String search_info() {
+		return "/member/search_info";
+	}
+	
+	//아이디찾기
+	//핸드폰번호로
+	@PostMapping("search_info")
+	@ResponseBody
+	public String useridSearch_tel(@RequestParam("searchinfo-name") String username, @RequestParam("searchinfo-tel") String tel) {
+		String result = service.searchid_tel(username,tel);
+		return result;
+	}
+	//이메일로
+//	@PostMapping("/search_info")
+//	@ResponseBody
+//	public String useridSearch_email(@RequestParam("searchinfo-email") String username, @RequestParam() String email) {
+//		String result = service.searchid_email(username,email);
+//		return result;
+//	}
+
 	@PostMapping("memberIdCheck")
 	@ResponseBody
 	public int idCheck(String userid) {

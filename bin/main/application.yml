@@ -3,7 +3,7 @@ server:
   servlet:
     session:
       timeout: 30m
-  
+ 
 # 뷰 페이지
 spring:
   mvc:
@@ -20,7 +20,10 @@ spring:
   devtools: # 코드 수정시 서버 자동 재시작
     livereload:
       enabled: true
-
+      
+  session:
+    store-type: redis  #session을 redis로 설정
+    
 mybatis:
   type-aliases-package: com.semiproject.soboon.vo
   mapper-locations: mapper/*Mapper.xml

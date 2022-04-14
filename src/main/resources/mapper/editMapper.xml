@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.semiproject.soboon.dao.EditDAO">
 	<select id="selectEdit" resultType="MemberVO">
-		select userid, username, userpwd, nickname, tel, address, email from member where userid = #{param1}
+		select userid, username, userpwd, nickname, tel, email from member where userid = #{param1}
 	</select>
 	<select id="nicknameCheck" resultType="int">
 		select count(nickname) from member where nickname=#{param1}

@@ -15,9 +15,13 @@ public interface MemberDAO {
 	public int idCheck(String userid);
 	public int nicknameCheck(String nickname);
 	public int emailCheck(String email);
+	public void telCheck(String tel, String ckNum);
+	public String searchid_tel(String username, String tel);
+	public String searchid_email(String username, String email);
 	public MemberVO loginCheck(MemberVO vo);
 	public int totalRecord(PagingVO pVO);
 	public List<MemberVO> MemberList(PagingVO pVO);
 	public int memberDelete(String userid);
 	public int memberMultiDelte(MemberVO vo);
+	public int getMembercnt();
 }

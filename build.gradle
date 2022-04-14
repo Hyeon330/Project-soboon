@@ -39,11 +39,10 @@ dependencies {
 	// ajax
 	// https://mvnrepository.com/artifact/com.google.code.gson/gson
 	implementation 'com.google.code.gson:gson:2.8.5'
-<<<<<<< HEAD
 	
-=======
-
->>>>>>> main
+	//핸드폰번호 인증 라이브러리
+	// https://mvnrepository.com/artifact/net.nurigo/javaSDK
+	implementation 'net.nurigo:javaSDK:2.2'
 }
 
 tasks.named('test') {

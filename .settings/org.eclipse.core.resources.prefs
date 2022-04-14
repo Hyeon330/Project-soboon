@@ -1,6 +1,5 @@
+=\=\=\=\=\=\=
+<<<<<<<=HEAD
+>>>>>>>=main
 eclipse.preferences.version=1
-<<<<<<< HEAD
 encoding//src/main/webapp/WEB-INF/views/admin/admin_page.jsp=UTF-8
-=======
-encoding//src/main/webapp/WEB-INF/views/board/shareAndReqView.jsp=UTF-8
->>>>>>> main
