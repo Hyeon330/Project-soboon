@@ -50,7 +50,7 @@ public class RelateUploadFile {
 							String ext = orgFileName.substring(point + 1); // 확장자
 
 							// 새로 rename 하기
-							f = new File(path, filename + "[" + renameNum + "]" + ext);
+							f = new File(path, filename+ "(" + renameNum +")." + ext);
 							if (!f.exists()) {
 								orgFileName = f.getName();
 								break;
@@ -80,6 +80,7 @@ public class RelateUploadFile {
 
 		// 새로 업로드된 MultipartFile 객체를 얻어 오기(shareAndReqEdit에서의 name)
 		List<MultipartFile> files = mp.getFiles("fileImg");
+		System.out.println(files.size());
 		if (files != null) {
 
 			for (int i = 0; i < files.size(); i++) { // 업로드할 파일만큼 for문 실행
@@ -100,7 +101,7 @@ public class RelateUploadFile {
 							String ext = newUploadFileName.substring(point + 1);
 
 							// 새로 rename
-							String newf = newFileName + "[" + n + "]" + ext;
+							String newf = newFileName + "(" + n + ")." + ext;
 							f = new File(path, newf);
 							if (!f.exists()) {
 								newUploadFileName = newf;
@@ -109,6 +110,7 @@ public class RelateUploadFile {
 						}
 					}
 					try {
+						System.out.println(f.getName());
 						// 파일 업로드
 						mpf.transferTo(f); // 업로드!!
 					}catch(Exception e) {e.printStackTrace();}
@@ -120,14 +122,16 @@ public class RelateUploadFile {
 
 		// fileList에 있는 DB에 등록할 파일을 vo에 담기
 		for (int fl = 0; fl < fileList.size(); fl++) {
-			if (fl == 0)
-				vo.setThumbnailImg(fileList.get(fl));
-			if (fl == 1)
-				vo.setImg1(fileList.get(fl));
-			if (fl == 2)
-				vo.setImg2(fileList.get(fl));
-			if (fl == 3)
-				vo.setImg3(fileList.get(fl));
+			if(vo!=null) {
+				if (fl == 0)
+					vo.setThumbnailImg(fileList.get(fl));
+				if (fl == 1)
+					vo.setImg1(fileList.get(fl));
+				if (fl == 2)
+					vo.setImg2(fileList.get(fl));
+				if (fl == 3)
+					vo.setImg3(fileList.get(fl));
+			}
 		}
 	}
 	

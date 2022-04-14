@@ -20,18 +20,18 @@ public class BoardServiceImpl implements BoardService {
 	BoardDAO dao;
 
 	@Override
-	public int shareAndReqInsert(BoardVO vo) {
-		return dao.shareAndReqInsert(vo);
+	public int boardInsert(BoardVO vo) {
+		return dao.boardInsert(vo);
 	}
 
 	@Override
-	public List<BoardVO> selectList(String category, PagingVO pvo) {
-		return dao.selectList(category, pvo);
+	public List<BoardVO> selectList(PagingVO pvo) {
+		return dao.selectList(pvo);
 	}
 
 	@Override
-	public int selectTotalRecord(String category, PagingVO pvo) {
-		return dao.selectTotalRecord(category, pvo);
+	public int selectTotalRecord(PagingVO pvo) {
+		return dao.selectTotalRecord(pvo);
 	}
 	
 	@Override
@@ -40,8 +40,8 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public Map<MemberVO, BoardVO> selectView(int no, String category) {
-		return dao.selectView(no, category);
+	public BoardVO selectView(int no) {
+		return dao.selectView(no);
 	}
 
 	@Override
@@ -55,8 +55,8 @@ public class BoardServiceImpl implements BoardService {
 	}
 	
 	@Override
-	public BoardVO selectEditView(int no, String category) {
-		return dao.selectEditView(no, category);
+	public BoardVO selectEditView(int no) {
+		return dao.selectEditView(no);
 	}
 	
 	@Override
@@ -65,24 +65,10 @@ public class BoardServiceImpl implements BoardService {
 	}
 	
 	@Override
-	public int deleteView(int no, String category, String userid) {
-		return dao.deleteView(no, category, userid);
-	}
-	
-	@Override
-	public int insertJoin(JoinVO vo) {
-		return dao.insertJoin(vo);
-	}
-	
-	@Override
-	public int updateJoinPlus(BoardVO vo) {
-		return dao.updateJoinPlus(vo);
+	public int deleteView(int no, String userid) {
+		return dao.deleteView(no, userid);
 	}
 
-	@Override
-	public BoardVO selectJoin(BoardVO vo) {
-		return dao.selectJoin(vo);
-	}
 
 
 
