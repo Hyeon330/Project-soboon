@@ -25,7 +25,13 @@ public class ChatServiceImpl implements ChatService {
 		return dao.getAllMessage(myUserid, oppNickname);
 	}
 
+	@Override
+	public int updateChatRead(String myNickname) {
+		return dao.updateChatRead(myNickname);
+	}
 
-
-	
+	@Override
+	public List<ChatVO> searchNickname(String myNickname, String nickNameKeyword) {
+		return dao.searchNickname(myNickname, nickNameKeyword);
+	}
 }

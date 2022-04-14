@@ -21,13 +21,31 @@ public class ChatController {
 	ChatService service;
 
 	@GetMapping("getLastMessage")
-	public List<ChatVO> getMessage(HttpSession session) {
+	public List<ChatVO> getLastMessage(HttpSession session) {
+		String myNickname = (String)session.getAttribute("nickName");
+		return lastMessage(service.getLastMessage(myNickname), myNickname);
+	}
+	
+	@PostMapping("getAllMessage")
+	public List<ChatVO> getAllMessage(String oppNickname, HttpSession session){
+		service.updateChatRead((String)session.getAttribute("nickName"));
+		return service.getAllMessage((String)session.getAttribute("nickName"), oppNickname);
+	}
+	
+	@PostMapping("updateChatRead")
+	public void updateChatRead(HttpSession session) {
+		service.updateChatRead((String)session.getAttribute("nickName"));
+	}
+	
+	@PostMapping("searchNickname")
+	public List<ChatVO> searchNickname(String nickNameKeyword, HttpSession session) {
+		String myNickname = (String)session.getAttribute("nickName");
+		return lastMessage(service.searchNickname((String)session.getAttribute("nickName"), nickNameKeyword), myNickname);
+	}
+	
+	List<ChatVO> lastMessage(List<ChatVO> dbMsgList, String myNickname){
 		List<ChatVO> resultList = new ArrayList<ChatVO>();
 		Set<String> oppNickNameSet = new HashSet<String>();
-		String myNickname = (String)session.getAttribute("nickName");
-		
-		List<ChatVO> dbMsgList = service.getLastMessage(myNickname);
-		
 		for (ChatVO vo : dbMsgList) {
 			String oppNickName = "";
 			if(vo.getSender().equals(myNickname)) {
@@ -41,10 +59,5 @@ public class ChatController {
 			}
 		}
 		return resultList;
-	}
-	
-	@PostMapping("getAllMessage")
-	public List<ChatVO> getAllMessage(String oppNickname, HttpSession session){
-		return service.getAllMessage((String)session.getAttribute("nickName"), oppNickname);
 	}
 }

@@ -1,11 +1,15 @@
 package com.semiproject.soboon.service;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
 import com.semiproject.soboon.dao.EditDAO;
+import com.semiproject.soboon.vo.BoardVO;
 import com.semiproject.soboon.vo.MemberVO;
+import com.semiproject.soboon.vo.MypagePagingVO;
 
 @Service
 public class EditServiceImpl implements EditService {
@@ -31,4 +35,21 @@ public class EditServiceImpl implements EditService {
 	public int delMember(String userid) {
 		return dao.delMember(userid);
 	}
+
+	@Override
+	public List<BoardVO> mypostList(String userid, MypagePagingVO pVO) {
+		return dao.mypostList(userid, pVO);
+	}
+
+	@Override
+	public int mypostCount(String userid) {
+		return dao.mypostCount(userid);
+	}
+
+	@Override
+	public int myreplyCount(String userid) {
+		return dao.myreplyCount(userid);
+	}
+
+	
 }

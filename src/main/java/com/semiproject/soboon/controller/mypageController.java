@@ -1,6 +1,8 @@
 package com.semiproject.soboon.controller;
 
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -16,7 +18,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.semiproject.soboon.service.EditService;
+import com.semiproject.soboon.vo.BoardVO;
 import com.semiproject.soboon.vo.MemberVO;
+import com.semiproject.soboon.vo.MypagePagingVO;
 
 @RequestMapping("/mypage/")
 @Controller
@@ -97,10 +101,24 @@ public class mypageController {
 	}
 	
 	@GetMapping("showView")
-	public ModelAndView mypageView() {
+	public ModelAndView mypageView(HttpSession session) {
+		String userid = (String) session.getAttribute("logId");
+		int pCnt = service.mypostCount(userid);
+		int rCnt = service.myreplyCount(userid);
 		ModelAndView mav = new ModelAndView();
+		mav.addObject("mpCnt", pCnt);
+		mav.addObject("mrCnt", rCnt);
 		mav.setViewName("mypage/mypageView");
 		return mav;
+	}
+	@GetMapping("mypost")
+	@ResponseBody
+	public List<BoardVO> mypost(MypagePagingVO pVO, HttpSession session) {
+		String userid = (String) session.getAttribute("logId"); 
+		System.out.println(userid);
+		List<BoardVO> list = service.mypostList(userid, pVO);
+		return list;
+		
 	}
 }//controller
 
