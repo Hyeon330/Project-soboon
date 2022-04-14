@@ -66,7 +66,7 @@ $(() => {
 			
 			// 시간
 			if(chatDate.getTime() === today.getTime()){
-				chatList += '<p class="chat-date">'+Number(chatTimeArr[0])+':'+Number(chatTimeArr[1])+'</p>';
+				chatList += '<p class="chat-date">'+Number(chatTimeArr[0])+':'+chatTimeArr[1]+'</p>';
 			}else {
 				chatList += '<p class="chat-date">'+Number(chatDateArr[1])+'월 '+Number(chatDateArr[2])+'일'+'</p>';
 			}
@@ -146,7 +146,7 @@ $(() => {
 			
 			msg += '<div class="msg-box '+position+'">';
 			var msgDateTimeArr = data.chat_datetime.split(' ')[1].split(':');
-			var nowTime = Number(msgDateTimeArr[0])+':'+Number(msgDateTimeArr[1]);
+			var nowTime = Number(msgDateTimeArr[0])+':'+msgDateTimeArr[1];
 			if(prevTime != nowTime || prevPosition != position){
 				msg += '<div class="msg-info">';
 				if(position=='right'){
