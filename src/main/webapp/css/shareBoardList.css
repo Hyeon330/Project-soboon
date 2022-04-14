@@ -5,7 +5,7 @@
 
 .sb{
 	margin-bottom:40px;
-	filter : drop-shadow(10px 10px 10px rgb(144, 163, 140));
+	filter : drop-shadow(0px 10px 10px rgb(144, 163, 140));
 }
 .space{
 	padding:20px;
@@ -45,6 +45,13 @@
 }
 
 #prevBtn, #nextBtn{
-	background-color: rgb(239, 136, 105) ;
+	background-color: rgb(72, 97, 86);
 	color:white;
+}
+#shareBoard{
+	border-top-left-radius:10px;
+	border-top-right-radius:10px;
+	background-color:rgb(213, 218, 212);
+	color:rgb(72, 97, 86);
+	margin-top:5px;
 }

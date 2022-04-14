@@ -1,7 +1,6 @@
 package com.semiproject.soboon.service;
 
 import java.util.List;
-import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -9,8 +8,6 @@ import org.springframework.stereotype.Service;
 
 import com.semiproject.soboon.dao.BoardDAO;
 import com.semiproject.soboon.vo.BoardVO;
-import com.semiproject.soboon.vo.JoinVO;
-import com.semiproject.soboon.vo.MemberVO;
 import com.semiproject.soboon.vo.PagingVO;
 
 @Service

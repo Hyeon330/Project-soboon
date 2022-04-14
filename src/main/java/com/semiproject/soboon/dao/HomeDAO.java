@@ -11,4 +11,5 @@ import com.semiproject.soboon.vo.HomeVO;
 @Repository
 public interface HomeDAO {
 	public List<HomeVO> selectList();
+	
 }

@@ -1,14 +1,11 @@
 package com.semiproject.soboon.dao;
 
 import java.util.List;
-import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 import com.semiproject.soboon.vo.BoardVO;
-import com.semiproject.soboon.vo.JoinVO;
-import com.semiproject.soboon.vo.MemberVO;
 import com.semiproject.soboon.vo.PagingVO;
 
 @Mapper 
