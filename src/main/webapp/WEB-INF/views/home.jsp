@@ -26,10 +26,10 @@
 			<br/>
 			<h1 id="fuctionTitle" style="text-align:center; font-weight:900; color:rgb(72, 97, 86);">소분소분의 이야기</h1>
 			<br/>
-			<a href="/board/shareAndReqList?category=share"><img src="/img/inform1_1.png" class="functionImage"/></a>				
-			<a href="#"><img src="/img/inform2_1.png" class="functionImage"/></a>
-			<a href="#"><img src="/img/inform3_1.png" class="functionImage"/></a>
-			<a href="#"><img src="/img/inform4_1.png" class="functionImage"/></a>
+			<a href="/board/shareBoardList"><img src="/img/inform1_1.png" class="functionImage"/></a>				
+			<a href="/board/rentBoardList"><img src="/img/inform2_1.png" class="functionImage"/></a>
+			<a href="/board/saleBoardList"><img src="/img/inform3_1.png" class="functionImage"/></a>
+			<a href="/board/requestBoardList"><img src="/img/inform4_1.png" class="functionImage"/></a>
 		</div>
 	</div>	
 		<div id="recentItem">

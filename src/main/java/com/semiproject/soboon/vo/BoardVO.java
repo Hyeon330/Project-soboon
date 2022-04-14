@@ -17,6 +17,7 @@ public class BoardVO {
 	private String img3;
 	private String category;
 	private String price;
+	private String nickname;
 	
 	// 삭제할 파일을 담을 변수
 	private String deleteFile[];
@@ -123,6 +124,11 @@ public class BoardVO {
 	public void setDeleteFile(String deleteFile[]) {
 		this.deleteFile = deleteFile;
 	}
-
+	public String getNickname() {
+		return nickname;
+	}
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
 	
 }

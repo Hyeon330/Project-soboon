@@ -1,24 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<link rel="stylesheet" href="/css/shareAndReqView.css" type="text/css"/>
+<link rel="stylesheet" href="/css/shareBoardView.css" type="text/css"/>
 <script src="https://kit.fontawesome.com/76aefe2b67.js" crossorigin="anonymous"></script>
-<script src="/js/shareAndReqView.js"></script>
+<script src="/js/shareBoardView.js"></script>
 <script>
 	let nickname = "${nickName}";
 
 	$(function(){
-		$("#shareAndReqDel").click(function(){
+		$("#shareBoardDel").click(function(){
 			if(confirm("삭제하시겠어요?")){
-				location.href="/board/shareAndReqDel?no=${viewVo.no}&category=${viewVo.category}";
+				location.href="/board/shareBoardDel?no=${viewVo.no}";
 			}
 		});
-	
 	});
 </script>
 <div class="container">
 	<div class="row">
 
-		<div class="col-6 sri">
+		<div class="col-6 sbi">
 			<div id="demo" class="carousel slide">
 				<!-- Indicators -->
 				<ul class="carousel-indicators">
@@ -59,7 +58,7 @@
 				</div>
 				<!-- Left and right controls -->
 				<c:choose>
-					<c:when test="${viewVo.thumbnailImg!=null}">
+					<c:when test="${viewVo.thumbnailImg=null}">
 						<a class="carousel-control-prev" href="#demo" data-slide="prev">
 							<span class="carousel-control-prev-icon" style="background:yellow"></span>
 						</a> 
@@ -72,16 +71,14 @@
 			</div>
 		</div>
 		
-		<div class="col-6 srb">
+		<div class="col-6 sb">
 			<div id="productTitle">
-				<c:if test="${viewVo.category=='share'}">
-					<span id="category">나눔</span>
-				</c:if>
+				<span id="category">나눔</span>
 				<h2><span id="titleInner">${viewVo.title}</span></h2>
 			</div>
 			<hr/>
 			<div id="productIcon">
-				<div class="btn" id="pick">좋아요</div>
+				<div class="btn" id="pick">찜하기</div>
 				<div class="proIcon"><i class="fa fa-eye fa-lg"></i><span class="iconValue">${viewVo.views}</span></div>
 				<div class="proIcon"><i class="fa fa-clock fa-lg"></i><span class="iconValue">${viewVo.createdate}</span></div>
 				<div class="btn" id="proWarn"><i class="fa fa-bell"></i><span class="iconValue">신고하기</span></div>
@@ -103,18 +100,17 @@
 				</c:if>
 				<c:if test="${logId==viewVo.userid}">
 					<div class="col-12 text-center pb">
-						<a href="/board/shareAndReqEdit?no=${viewVo.no}&category=${viewVo.category}" class="btn" id="shareAndReqEdit">수정</a>
-						<span id="btnSpace"></span><input type="button" class="btn" id="shareAndReqDel" value="삭제"/>
+						<a href="/board/shareBoardEdit?no=${viewVo.no}" class="btn" id="shareBoardEdit">수정</a>
+						<span id="btnSpace"></span><input type="button" class="btn" id="shareBoardDel" value="삭제"/>
 					</div>
 				</c:if>
 			</div>
 		</div>
 		
 		<!-- 글 내용 -->
-		<div class="col-12 src">
+		<div class="col-12 sbc">
 			<hr/><br/>
-			<div id="shareAndReqContent">${viewVo.content}</div>
-			
+			<div>${viewVo.content}</div>
 		</div>
 		
 		<!-- 댓글 -->
@@ -124,7 +120,7 @@
 				<form method="post" id="replyForm">
 					<input type="hidden" name="no" id="no" value="${viewVo.no}">
 					<div id="commentLine">
-						<textarea name="coment" id="coment" class="shareAndReqComent" rows="4" cols="80" placeholder="내용을 입력하세요"></textarea>
+						<textarea name="coment" id="coment" class="shareBoardComent" rows="4" cols="80" placeholder="내용을 입력하세요"></textarea>
 						<span id="replyBtn"><input type="submit" class="btn" id="replyInsert" value="댓글 등록"></span>
 					</div>
 				</form>
