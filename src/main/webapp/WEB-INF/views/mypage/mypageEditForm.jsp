@@ -1,70 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<link rel="stylesheet" href="/css/mypage.css" type="text/css"/>
 <script src="/js/memberEdit.js"></script>
-
-<style>
-#mypageContainer {
-	height: 500px;
-	margin-top: 50px;
-	background-color: RGB(241, 232, 223);
-}
-
-#mypageContainer>div {
-	float: left;
-}
-
-#button_overlapCheck, #button_editSubmit {
-	background: rgb(239, 136, 105) !important;
-	border-style: none !important;
-}
-
-#editView>hr {
-	height: 5px;
-	background: #ddd;
-	border-style: none;
-}
-
-#editView>form>div>ul>li>div {
-	margin-bottom: 13px;
-}
-
-#editView input {
-	border-style: none;
-	background-color: transparent;
-	border-bottom: 2px solid #ddd;
-	border-bottom-style:
-}
-
-#editFrm>li>div {
-	float: left;
-}
-
-#editView>form>div {
-	float: left;
-}
-
-#editView>form>div:last-of-type {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
-#button_editSubmit {
-	margin-bottom: 13px;
-}
-
-#button_overlapCheck {
-	font-size: small !important;
-}
-
-#VO_nickname_hidden {
-	display: none;
-}
-</style>
-
-
-
 <div class="container" id="mypageContainer">
 	<!--   사이드 메뉴 (include) -->
 	<%@ include file="/WEB-INF/views/inc/mypageSideBar.jsp"%>

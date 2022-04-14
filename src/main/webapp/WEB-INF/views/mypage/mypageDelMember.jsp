@@ -1,37 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
-
-<style>
-	#mypageContainer {
-		height: 500px;
-	  	margin-top: 50px;
-	  	background-color: RGB(241, 232, 223);
-	  }
-	#mypageContainer>div {
-		float: left;
-	}
-	#button_overlapCheck ,.btn-last {
-		background:rgb(239, 136, 105) !important;
-		border-style: none !important;
-	}
-	.viewPage-mypage>hr {		
-		height: 5px; background: #ddd; border-style: none;
-	}
-	.div1 {
-		display: none;
-	}
-	#selectBoxForDel, #pwdForCheck {
-		background-color: transparent; border-style: none; border-bottom: 2px solid #ddd;
-	}
-	#delFrm span {
-		font-size: 1.1em;
-	}
-	#delFrm ul {
-		margin-bottom: 30px;
-	}
-	
-</style>
+<link rel="stylesheet" href="/css/mypage.css" type="text/css"/>
 <script>
 $(function() {
 	  $('#selectBoxForDel').change(function() {
@@ -61,16 +30,12 @@ $(function() {
 			  alert('기존 비밀번호와 일치하지 않습니다.\n다시 확인해주시기 바랍니다.');
 			  $('#pwdForCheck').focus();
 			  return false;
-		  }
-		  
-		  
+		  } 
 		  return true;
 	  });
 
-	
 });
 </script>
-
 
 <div class="container" id="mypageContainer">
 <!--   사이드 메뉴 (include) -->
