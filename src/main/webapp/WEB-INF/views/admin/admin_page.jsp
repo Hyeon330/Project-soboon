@@ -172,7 +172,7 @@ $(function(){
 						}
 						
 						
-						
+						/* =================회원관리================= */
 						function showMember(dataArr, tab){
 							$("#membercnt").html("현재인원 :" +dataArr.cnt +"명")
 							/* alert('총회원수: '+dataArr.cnt) */
@@ -235,13 +235,61 @@ $(function(){
 								}			
 							})
 						}
+						
+						/* =================신고관리================= */
 						function showReport(dataArr, tab){			
 							var str='<h3>신고관리</h3><table>';
-							$.each(dataArr,function(i, data){
-								/* str+="<tr><td>"+data.proName+"</td><td>"+data.price+"</td></tr>" */
+							/* alert('총회원수: '+dataArr.cnt) */
+							//헤더 
+							str +="<li><input type='checkbox' id='checkALL'></li>";
+							str +="<li>아이디</li>";
+							str +="<li>누적신고수</li>";
+							str +="<li>신고내용</li>";
+							str +="<li>신고처리</li>";
+													
+							$.each(dataArr.userList, function(i, data){
+								//DB에서 가져올 데이터들
+								str+="<li><input type='checkbox'></li>";
+								str+="<li>"+data.userid+"</li>";
+								str+="<li>"+data.warn+ "회"+"</li>";
+								str+="<li>"+report+"</li>";
+								str+="<li>"+버튼+"</li>";			
 							})
-							str+="</table>"
-							$('#'+tab).html(str)
+							
+							let onePageRecord=10;	//한 페이지당 10명 기준
+							let totalCount=Number(dataArr.cnt)	//총 인원수 integer로 가져옴
+							
+							//페이지수 구하기 pageCount ==> 연산하는 로직 보면서 구하기
+							if(totalCount%onePageRecord == 0){
+								pageCount = totalCount/onePageRecord;
+							}else {
+								pageCount = totalCount/onePageRecord+1;
+							}
+							pageCount = Math.floor(pageCount);
+								/* alert(pageCount) */
+							//페이지 네비게이션 문자열 만들기
+							let pageStr='<br/><ul class="pagination justify-content-center" id="paging">';
+								pageStr += '<li class="page-item disabled"><a class="page-link" id="prevBtn">Prev</a></li>'
+								for(var p=1; p <= pageCount; p++){
+									pageStr += '<li class="page-item"><a class="page-link"href="javascript:void(0);" onclick="ml('+p+')">' + p + '</a></li>'
+								}
+								pageStr += '<li class="page-item"><a class="page-link" id="nextBtn">Next</a></li>'
+									
+							pageStr +='</ul>';
+							/* alert(pageStr) */
+							$('.memberList').html(str);
+							$('#page').html(pageStr);
+						}
+						function ml(p){
+							//alert(p)
+							var url="/admin/showReport?currentPage="+p+"&recordPerPage=10"
+							$.ajax({
+								url:url,
+								dataType:'json',
+								success:function(dataArr){
+									showReport(dataArr, 'tab2')								
+								}			
+							})
 						}
 						/* $.ajax({ 
 							type: "GET", 
@@ -289,11 +337,11 @@ $(function(){
 					<div class="tab-pane fade" id="reportMgr">
 						<!-- 신고관리 -->
 						<ul class="reportList">
-							<li><input type="checkbox" id="checkAll"></li>
+							<!-- <li><input type="checkbox" id="checkAll"></li>
 							<li>아이디</li>
 							<li>누적신고</li>
 							<li>신고내용</li>
-							<li>신고처리</li>
+							<li>신고처리</li> -->
 							
 						</ul>
 					</div>
