@@ -191,7 +191,7 @@ $(function(){
 								//DB에서 가져올 데이터들
 								str+="<li><input type='checkbox'></li>";
 								str+="<li>"+data.userid+"</li>";
-								str+="<li>"+data.warn+"</li>";
+								str+="<li>"+data.warn+ "회"+"</li>";
 								str+="<li>"+data.username+"</li>";
 								str+="<li>"+data.nickname+"</li>";
 								str+="<li>"+data.tel+"</li>";
