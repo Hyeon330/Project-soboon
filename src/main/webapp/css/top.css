@@ -26,14 +26,23 @@ nav>hr{
 .topMenu1 img{
 	width:200px;
 }
-
-/*--------------검색 영억---------------------*/
+/*---------------select 영억---------------------*/
+#topSelect{
+	text-align:center;
+ 	width: 150px;
+ 	height:30px;
+ 	line-height: 20px;
+ 	border:none;
+  	border-radius: 10px;
+   	padding-top:3px;
+/*    	font-weight:100; */
+   	color:rgb(72, 97, 86);
+}
+/*--------------검색 영억-------------------------*/
 #topSearch{
-	padding-left:150px;
-	padding-top:9px;
+	padding-left:130px;
 }
 #searchBox{
-	margin-top:4px;
 	height:30px;
 	line-height:30px;
 	background-color:white;
@@ -44,7 +53,7 @@ nav>hr{
 	background-color:rgba(0, 0, 0, 0);
 	border:0px;
 	border-bottom:1px grid gray;
-	color:white;
+	color:rgb(72, 97, 86);
 }
 #searchBox>input:focus{
 	border:none !important;
@@ -57,32 +66,24 @@ nav>hr{
 #searchIcon:hover{
 	cursor: pointer !important;
 }
-/*---------------select 영억---------------------*/
-#topSelect{
-	text-align:center;
- 	width: 150px;
- 	height: 20px;
-  	border-radius: 10px;
-   	padding-top:3px;
-   	font-weight:100;
-   	color:rgb(72, 97, 86);
-}
-#topSelect{
-	
+#iconBtn{
+	border:0;
+	outline:0;
+	background:none;
 }
 /*--------------버튼 영억---------------------*/
 .gridContainer{
 	width:1200px;
 	height:50px;
 	display:grid;
-	grid-template-columns:170px 520px 100px 410px;
+	grid-template-columns:170px 660px 370px;
 }
 .gridContainer img{
 	width:100%;
 }
 /*!!!!!로그인 회원가입 / 마이페이지 로그아웃 버튼!!!!!!!!!!*/
 #gridBtn{
-	margin-left:110px;
+	margin-left:60px;
 }
 .sign{
 	background-color:rgb(213, 218, 212);
@@ -92,6 +93,14 @@ nav>hr{
 .topMenu{
 	font-weight:700;
 	font-size:1.4em;
+}
+.topMenu>div>div{
+	width:25%;
+	letter-spacing:25px;
+}
+.topMenu>div>div>a{
+	text-align:center;
+	color:white;
 }
 .bottom{
    width:100%;
