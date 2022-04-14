@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.semiproject.soboon.dao.AddressDAO">
+	<select id="getLargeAddr" resultType="String">
+		select distinct large from district;
+	</select>
+	<select id="getMediumAddr" resultType="String">
+		select distinct medium from district where large=#{param1}
+	</select>
+	<select id="getSmallAddr" resultType="String">
+		select distinct small from district where large=#{param1} and medium=#{param2}
+	</select>
+</mapper>
