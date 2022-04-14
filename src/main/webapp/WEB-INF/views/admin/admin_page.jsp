@@ -212,8 +212,8 @@ $(function(){
 							pageCount = Math.floor(pageCount);
 								/* alert(pageCount) */
 							//페이지 네비게이션 문자열 만들기
-							let pageStr='<ul class="pagination justify-content-center" id="paging">';	
-								pageStr += '<li class="page-item disabled"><a class="page-link" href="javascript:void(0);" id="prevBtn">Prev</a></li>'
+							let pageStr='<br/><ul class="pagination justify-content-center" id="paging">';
+								pageStr += '<li class="page-item disabled"><a class="page-link" id="prevBtn">Prev</a></li>'
 								for(var p=1; p <= pageCount; p++){
 									pageStr += '<li class="page-item"><a class="page-link"href="javascript:void(0);" onclick="ml('+p+')">' + p + '</a></li>'
 								}
