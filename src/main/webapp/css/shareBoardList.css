@@ -3,7 +3,7 @@
 	margin-bottom:10px;
 }
 
-.sr{
+.sb{
 	margin-bottom:40px;
 	filter : drop-shadow(10px 10px 10px rgb(144, 163, 140));
 }
@@ -16,7 +16,7 @@
 	margin-top:20px;
 }
 
-#shareReqWrite{
+#shareBoardWrite{
 	background-color: rgb(72, 97, 86) ;
 	color:white;
 	padding:10px 30px;
@@ -27,7 +27,7 @@
 	float:right;
 }
 
-#shareAndReqTitle{
+#shareBoardTitle{
 	font-size:1.4em;
 	font-weight:bold;
 	white-space: nowrap;

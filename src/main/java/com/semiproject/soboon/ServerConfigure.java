@@ -13,9 +13,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class ServerConfigure implements WebMvcConfigurer {
 
 	private static final List<String> URL_PATERRNS = Arrays.asList(
-			"/board/shareAndReqWrite","/board/shareAndReqWriteOK",
-			"/board/boardEdit","/board/boardEditOk",
-			"/board/boardDel","/board/joinPlus"
+			"/board/shareBoardWrite","/board/shareBoardWriteOK",
+			"/board/shareBoardEdit","/board/shareBoardEditOk",
+			"/board/shareBoardDel"
 			);
 	
 	public void addInterceptors(InterceptorRegistry registry) {

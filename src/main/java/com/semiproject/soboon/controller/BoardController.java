@@ -40,35 +40,29 @@ public class BoardController {
 	ModelAndView mav = new ModelAndView();
 	ResponseEntity<String> entity = null;
 	
-	@GetMapping("shareAndReqList")
-	public ModelAndView shareAndReqListForm(String category, PagingVO pvo) {
+	@GetMapping("shareBoardList")
+	public ModelAndView shareAndReqListForm(PagingVO pvo) {
 		// 게시판 별 총 레코드 수
-		pvo.setTotalRecord(service.selectTotalRecord(category, pvo));
+		pvo.setTotalRecord(service.selectTotalRecord(pvo));
 		// 게시판 글 DB연결해서 보이기 
-		mav.addObject("list", service.selectList(category, pvo));
-
-
+		mav.addObject("list", service.selectList(pvo));
 		mav.addObject("pvo", pvo);
-		mav.addObject("cvo", service.selectCategory(category));
-		
-		if(category.equals("share")||category.equals("request")) {
-			mav.setViewName("board/shareAndReqList");
-		}
+
+		mav.setViewName("board/shareBoardList");
 		return  mav;
 	}
 
-	@GetMapping("shareAndReqWrite")
-	public ModelAndView shareAndReqWrite(String category) {
-		mav.addObject("category", category);
-		mav.setViewName("board/shareAndReqWrite");
+
+	@GetMapping("shareBoardWrite")
+	public ModelAndView shareAndReqWrite() {
+		mav.setViewName("board/shareBoardWrite");
 		return mav;
 	}
 	
-	@PostMapping("shareAndReqWriteOk")
-	public ModelAndView shareAndReqWriteOk(BoardVO vo, HttpServletRequest request, String category){
+	@PostMapping("shareBoardWriteOk")
+	public ModelAndView shareAndReqWriteOk(BoardVO vo, HttpServletRequest request){
 		// 현재 session에 있는 ID와 카테고리
 		vo.setUserid((String)request.getSession().getAttribute("logId")); 
-		vo.setCategory(category);
 		mav.setViewName("board/BoardWriteSuc");
 		
 		// 파일을 업로드할 폴더 절대경로
@@ -77,7 +71,7 @@ public class BoardController {
 			// 파일 업로드 성공
 			RelateUploadFile.fileRenameAndUpload(vo, path, request);
 			// 업로드 성공(DB에 레코드 등록)
-			int cnt = service.shareAndReqInsert(vo);
+			int cnt = service.boardInsert(vo);
 			mav.addObject("cnt", cnt);
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -91,40 +85,42 @@ public class BoardController {
 		return mav;
 	}
 	
-	@GetMapping("shareAndReqView")
-	public ModelAndView shareAndReqView(int no, String category) {
+	@GetMapping("shareBoardView")
+	public ModelAndView shareAndReqView(int no) {
 		service.updateViews(no);
-		mav.addObject("viewVo", service.selectView(no, category));
-		mav.setViewName("board/shareAndReqView");
+		mav.addObject("viewVo", service.selectView(no));
+		mav.setViewName("board/shareBoardView");
 		return mav;
 	}
 	
 	// 글 수정 폼
-	@GetMapping("shareAndReqEdit")
-	public ModelAndView shareAndReqEdit(int no, String category) {
-		BoardVO bvo = service.selectEditView(no, category);
+	@GetMapping("shareBoardEdit")
+	public ModelAndView shareAndReqEdit(int no) {
+		BoardVO bvo = service.selectEditView(no);
 		// DB에 있는 첨부파일 수 구하기(새로 변경한 파일이 생기면 --해줘야 하기 때문)
 		int totalFile = 0;
-		if(bvo.getThumbnailImg()!=null || bvo.getThumbnailImg()!=""){
-			totalFile++;
-			if(bvo.getImg1()!=null || bvo.getImg1()!="") {
+			if(bvo!=null) {
+			if(bvo.getThumbnailImg()!=null || bvo.getThumbnailImg()!=""){
 				totalFile++;
-				if(bvo.getImg2()!=null || bvo.getImg2()!="") {
+				if(bvo.getImg1()!=null || bvo.getImg1()!="") {
 					totalFile++;
-					if(bvo.getImg3()!=null || bvo.getImg3()!="") {
+					if(bvo.getImg2()!=null || bvo.getImg2()!="") {
 						totalFile++;
+						if(bvo.getImg3()!=null || bvo.getImg3()!="") {
+							totalFile++;
+						}
 					}
 				}
 			}
 		}
 		mav.addObject("totalFile", totalFile);
 		mav.addObject("bvo", bvo);
-		mav.setViewName("board/shareAndReqEdit");
+		mav.setViewName("board/shareBoardEdit");
 		return mav;
 	}
 	
 	// 글 수정 DB연결
-	@PostMapping("shareAndReqEditOk")
+	@PostMapping("shareBoardEditOk")
 	public ModelAndView shareAndReqEditOk(BoardVO vo, HttpServletRequest request){
 		vo.setUserid((String)request.getSession().getAttribute("logId"));
 
@@ -160,7 +156,7 @@ public class BoardController {
 				}
 			}
 			// rename하고 기존 파일 수정하기
-			RelateUploadFile.fileRenameAndUpdate(fileVO, path, fileList, newFileList, request);
+			RelateUploadFile.fileRenameAndUpdate(vo, path, fileList, newFileList, request);
 			
 			// DB 업데이트
 			int cnt = service.updateEditView(vo);
@@ -186,8 +182,8 @@ public class BoardController {
 	
 	
 	// 글 삭제하기
-	@GetMapping("shareAndReqDel")
-	public  ResponseEntity<String>  shareAndReqDel(int no, String category, HttpSession session) {
+	@GetMapping("shareBoardDel")
+	public ResponseEntity<String> shareBoardDel(int no, HttpSession session) {
 		String userid = (String)session.getAttribute("logId");
 		
 		// upload 폴더 경로(삭제 위해)
@@ -200,20 +196,23 @@ public class BoardController {
 			// 삭제하기 위한 레코드의 파일명
 			BoardVO fileVO = service.getFileName(no);
 			// 삭제
-			int result = service.deleteView(no, category, userid);
+			int result = service.deleteView(no, userid);
 			
 			if(result>0) {
-				// 삭제 성공하면 파일도 삭제
-				RelateUploadFile.fileDelete(path, fileVO.getThumbnailImg());
-				RelateUploadFile.fileDelete(path, fileVO.getImg1());
-				RelateUploadFile.fileDelete(path, fileVO.getImg2());
-				RelateUploadFile.fileDelete(path, fileVO.getImg3());
+				
+				if(fileVO!=null) {
+					// 삭제 성공하면 파일도 삭제
+					RelateUploadFile.fileDelete(path, fileVO.getThumbnailImg());
+					RelateUploadFile.fileDelete(path, fileVO.getImg1());
+					RelateUploadFile.fileDelete(path, fileVO.getImg2());
+					RelateUploadFile.fileDelete(path, fileVO.getImg3());
+				}
 				
 				String msg ="<script>alert('글이 삭제되었습니다.');";
-				msg +="location.href='/board/shareAndReqList?category="+category+"';</script>";
+				msg +="location.href='/board/shareBoardList';</script>";
 				entity = new ResponseEntity<String>(msg, headers, HttpStatus.OK);
 			}else {
-				String msg ="<script>alert('글 삭제에 실패했습니다.');</script>;history.back();</script>";
+				String msg ="<script>alert('글 삭제에 실패했습니다.');history.back();</script>";
 				entity = new ResponseEntity<String>(msg, headers, HttpStatus.BAD_REQUEST);
 			}
 
@@ -222,30 +221,6 @@ public class BoardController {
 		}
 				
 		return entity;
-		
-	}
-	
-	//@PostMapping("insetJoin")
-		//public ModelAndView joinPlus(JoinVO vo, @RequestParam("no")int no, @RequestParam("userid")String userid){
-		//	vo.setBrdno(no);
-		//	vo.setUserid(userid);
-		//	int result = 
-		//	return mav;
-		//}
-	
-	@PostMapping("joinPlus")
-	public BoardVO insertJoin(BoardVO bvo,JoinVO jvo,@RequestParam("no")int no, @RequestParam("userid")String userid) {
-		jvo.setBrdno(no);
-		jvo.setUserid(userid);
-		bvo.setNo(jvo.getBrdno());
-		
-		service.updateJoinPlus(bvo); // +1 되면
-		int result = service.insertJoin(jvo); // join테이블에 추가
-		
-		if(result==1) { // 참가 되면 
-			bvo = service.selectJoin(bvo);
-		}
-		return bvo;
 		
 	}
 
