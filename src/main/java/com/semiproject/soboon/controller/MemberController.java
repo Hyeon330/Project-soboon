@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.semiproject.soboon.service.AddressService;
 import com.semiproject.soboon.service.KakaoAPI;
 import com.semiproject.soboon.service.MemberService;
 import com.semiproject.soboon.vo.MemberVO;
@@ -33,7 +34,8 @@ public class MemberController {
 	MemberService service;
 	@Autowired
 	KakaoAPI kakao;
-	
+	@Inject
+	AddressService serviceAddr;
 	
 	@GetMapping("signup")
 	public String memberForm() {
@@ -95,6 +97,8 @@ public class MemberController {
 		return mav;
 	}
 	
+	//=========================================================================
+	//카카오톡관련
 	//카카오톡 로그인
 	@RequestMapping(value="kakao/klogin")
 	public String login(@RequestParam("code") String code, HttpSession session, RedirectAttributes attr) {
@@ -150,14 +154,15 @@ public class MemberController {
 //		int cnt = service.emailCheck(kakao_email);
 //		System.out.println(cnt);
 		if(service.emailCheck(kakao_email)<=0) {
-			System.out.println("유저 회원가입");
+//			System.out.println("유저 회원가입");
 			kakaoVO.setUserid(kakao_email);
 			kakaoVO.setUserpwd("00000000");
 			kakaoVO.setUsername(kakao_nickname);
 			kakaoVO.setNickname(kakao_nickname);
-			kakaoVO.setAddress("소분소분");
+			kakaoVO.setLarge("");
+			kakaoVO.setMedium("");
+			kakaoVO.setSmall("");
 			kakaoVO.setTel("010-1111-1111");
-			kakaoVO.setSocialType("kakao");
 			kakaoVO.setEmail(kakao_email);
 			service.memberInsert(kakaoVO);
 		}
@@ -166,6 +171,7 @@ public class MemberController {
 		
 		return "redirect:/";
 	}
+	//=========================================================================
 	
 	//SMS인증번호
 	@GetMapping("memberTelCheck")
@@ -183,6 +189,28 @@ public class MemberController {
 		return numStr;
 	}
 	
+	//아이디/비밀번호 찾기 폼으로 이동
+	@GetMapping("search_info")
+	public String search_info() {
+		return "/member/search_info";
+	}
+	
+	//아이디찾기
+	//핸드폰번호로
+	@PostMapping("search_info")
+	@ResponseBody
+	public String useridSearch_tel(@RequestParam("searchinfo-name") String username, @RequestParam("searchinfo-tel") String tel) {
+		String result = service.searchid_tel(username,tel);
+		return result;
+	}
+	//이메일로
+//	@PostMapping("/search_info")
+//	@ResponseBody
+//	public String useridSearch_email(@RequestParam("searchinfo-email") String username, @RequestParam() String email) {
+//		String result = service.searchid_email(username,email);
+//		return result;
+//	}
+
 	@PostMapping("memberIdCheck")
 	@ResponseBody
 	public int idCheck(String userid) {

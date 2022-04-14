@@ -3,9 +3,6 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.semiproject.soboon.dao.AddressDAO">
-	<select id="getMyAddr" resultType="AddrVO">
-		select * from member_address where userid=#{param1}
-	</select>
 	<select id="getLargeAddr" resultType="String">
 		select distinct large from district;
 	</select>

@@ -24,6 +24,7 @@ public class AddressController {
 	
 	@GetMapping("getMediumAddr")
 	public List<String> getMediumAddr(String large) {
+		System.out.println("sdfafda");
 		return service.getMediumAddr(large);
 	}
 	

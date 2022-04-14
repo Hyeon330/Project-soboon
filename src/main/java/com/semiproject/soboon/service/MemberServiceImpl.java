@@ -6,6 +6,8 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.json.simple.JSONObject;
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.semiproject.soboon.dao.MemberDAO;
@@ -20,6 +22,9 @@ public class MemberServiceImpl implements MemberService{
 
 	@Inject
 	MemberDAO dao;
+	@Autowired
+	SqlSessionTemplate sql;
+	
 	
 	@Override
 	public int memberInsert(MemberVO vo) {
@@ -62,6 +67,7 @@ public class MemberServiceImpl implements MemberService{
 		return dao.getMembercnt();
 	}
 	
+	//문자인증
 	public void telCheck(String tel, String ckNum) {
 		String api_key = "NCSC9AFRRPOPNXPX";
 		String api_secret = "JN5HV6JCETIXJW1VHMQRIOQOJWZQV3DE";
@@ -83,4 +89,19 @@ public class MemberServiceImpl implements MemberService{
 		}
 	}
 	
+	@Override
+	public String searchid_tel(String username, String tel) {
+		dao = sql.getMapper(dao.getClass());
+		String result = "";
+		result = dao.searchid_tel(username, tel);
+		return result;
+	}
+
+	@Override
+	public String searchid_email(String username, String email) {
+		dao = sql.getMapper(dao.getClass());
+		String result = "";
+		result = dao.searchid_email(username, email);
+		return result;
+	}
 }

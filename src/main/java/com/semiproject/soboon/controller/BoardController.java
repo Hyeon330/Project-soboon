@@ -14,14 +14,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.semiproject.soboon.RelateUploadFile;
 import com.semiproject.soboon.service.BoardService;
 import com.semiproject.soboon.vo.BoardVO;
-import com.semiproject.soboon.vo.JoinVO;
 import com.semiproject.soboon.vo.PagingVO;
 
 @RequestMapping("/board/")
@@ -35,7 +33,7 @@ public class BoardController {
 	ResponseEntity<String> entity = null;
 	
 	@GetMapping("shareBoardList")
-	public ModelAndView shareAndReqListForm(PagingVO pvo) {
+	public ModelAndView shareAndReqListForm(PagingVO pvo, HttpSession session, BoardVO vo) {
 		// 게시판 별 총 레코드 수
 		pvo.setTotalRecord(service.selectTotalRecord(pvo));
 		// 게시판 글 DB연결해서 보이기 
@@ -57,6 +55,7 @@ public class BoardController {
 	public ModelAndView shareAndReqWriteOk(BoardVO vo, HttpServletRequest request){
 		// 현재 session에 있는 ID와 카테고리
 		vo.setUserid((String)request.getSession().getAttribute("logId")); 
+		vo.setCategory("share");
 		mav.setViewName("board/BoardWriteSuc");
 		
 		// 파일을 업로드할 폴더 절대경로
@@ -67,7 +66,7 @@ public class BoardController {
 			// 업로드 성공(DB에 레코드 등록)
 			int cnt = service.boardInsert(vo);
 			mav.addObject("cnt", cnt);
-		}catch(Exception e) {
+		} catch(Exception e) {
 			e.printStackTrace();
 			// 데이터가 DB에 정상적으로 들어가지 않았다면 이미 업로드한 파일은 upload 폴더에 들어갔기 때문에 삭제해야 한다.
 			// 삭제할 파일명은 vo안에 있고, fileDelete 메서드를 이용해서 삭제

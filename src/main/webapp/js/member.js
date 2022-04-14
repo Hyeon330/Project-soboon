@@ -1,3 +1,5 @@
+
+
 function memberCheck(){
 	var reg = /^[a-zA-Z]{1}[a-zA-Z0-9_]{5,11}$/;
 	if($("#userid").val()==""){
@@ -80,11 +82,11 @@ function memberCheck(){
 		return false;
 	}
 	
-	if($("#address").val()==''){
+	/*if($("").val()==''){
 		alert("주소를 입력하세요.");
-		$("#address").focus();
+		$(").focus();
 		return false;
-	}
+	}*/
 }
 $(function() {
 	$("#userid").keyup(function() {
@@ -139,6 +141,48 @@ $(function() {
 			$("#nchk").css("color", "red");
 		}
 	});
+	$.ajax({
+		url: '/addr/getLargeAddr',
+		type: 'get',
+		success: function(result) {
+			$('#addrLarge').html('<option value="">선택안함</option>');
+			result.forEach(largeData => {
+				$('#addrLarge').append('<option value="' + largeData + '">' + largeData + '</option>');
+			})
+		}
+	});
+	$('#addrLarge').on('change', function() {
+		document.getElementById('addrMedium').options.length = 1;
+		document.getElementById('addrSmall').options.length = 1;
+		if ($('#addrLarge').val() != '') {
+			$.ajax({
+				url: '/addr/getMediumAddr',
+				data: 'large=' + $(this).val(),
+				type: 'get',
+				success: function(result) {
+					console.log(result);
+					result.forEach(d => {
+						$('#addrMedium').append('<option value="' + d + '">' + d + '</option>');
+					})
+				}
+			});
+		}
+	});
+	$('#addrMedium').on('change', function() {
+		document.getElementById('addrSmall').options.length = 1;
+		if ($('#addrMedium').val() != '') {
+			$.ajax({
+				url: '/addr/getSmallAddr',
+				data: 'large=' + $('#addrLarge').val() + '&medium=' + $(this).val(),
+				type: 'get',
+				success: function(result) {
+					result.forEach(smallData => {
+						$('#addrSmall').append('<option value="' + smallData + '">' + smallData + '</option>');
+					})
+				}
+			});
+		}
+	});
 });
 
 // SMS문자 인증 ---------------------------------------------------
@@ -180,4 +224,3 @@ $(document).on('click','#sms-btn1',function(){ //sms인증 버튼 클릭했을 �
 		}
 	});
 });
-

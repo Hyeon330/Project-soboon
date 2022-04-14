@@ -10,9 +10,12 @@ public class MemberVO {
 	private String tel2;
 	private String tel3;
 	
+	private String large;
+	private String medium;
+	private String small;
+	
 	private String nickname;
 	private String email;
-	private String address;
 	private int warn;
 	private int verify;
 	private String socialType;
@@ -76,12 +79,6 @@ public class MemberVO {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getAddress() {
-		return address;
-	}
-	public void setAddress(String address) {
-		this.address = address;
-	}
 	public int getWarn() {
 		return warn;
 	}
@@ -102,5 +99,23 @@ public class MemberVO {
 	}
 	public String toString() {
 		return "username="+username;
+	}
+	public String getLarge() {
+		return large;
+	}
+	public void setLarge(String large) {
+		this.large = large;
+	}
+	public String getMedium() {
+		return medium;
+	}
+	public void setMedium(String medium) {
+		this.medium = medium;
+	}
+	public String getSmall() {
+		return small;
+	}
+	public void setSmall(String small) {
+		this.small = small;
 	}
 }

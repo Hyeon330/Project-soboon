@@ -41,7 +41,15 @@
 			<li>이메일</li>
 			<li><input type="text" class="signup-email" name="email" id="email" placeholder="example@naver.com"/></li>
 			<li>주소</li>
-			<li><input type="text" class="signup-addr" name="address" id="address" placeholder="ex) 서울시 광진구" /></li>
+			<li>
+				<select name="large" id="addrLarge"></select>
+				<select name="medium" id="addrMedium">
+					<option value="">선택 없음</option>
+				</select>
+				<select name="small" id="addrSmall">
+					<option value="">선택 없음</option>
+				</select>
+			</li>
 			<li><input type="submit" class="btn signup-btn" id="signSub" value="가입하기" /></li>
 		</ul>
 	</form>
