@@ -59,7 +59,7 @@ $(() => {
 			
 			// 메시지
 			if(data.chat_read == 'n' && data.sender != myNickname){
-				chatList += '<p class="last-chat"><b class="not-read">'+data.sender+": "+d.msg+'</b></p>';
+				chatList += '<p class="last-chat"><b class="not-read">'+data.sender+": "+data.msg+'</b></p>';
 			}else {
 				chatList += '<p class="last-chat">'+data.sender+": "+data.msg+'</p>';
 			}
