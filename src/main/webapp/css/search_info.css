@@ -1,42 +1,65 @@
 @charset "UTF-8";
 .searchinfofrm {
-	width:1000px;
 	text-align:center;
+}
+.search-logo{
+	margin-top:50px;
+}
+.searchId {
+	width:50%;
+	height:100%;
 }
 .searchinfofrm>h1{
 	margin-top:40px;
 }
-.sub_title>h3{
-	margin-top:30px;
-}
+
 .btn-searchinfo{
-	width:30%;
+	width:50%;
 	height:50px;
+	margin:5px;
 }
 .searchinfo_searchtel{
 	margin-top:20px;
 }
-.searchinfo_1,
-.searchinfo_2{
-	width:20%;
+#searchinfo-name{
+	width:60%;
+	margin:30px auto;
 	border:none;
 	border-bottom:2px solid #adadad;
 	outline:none;
 	color:#636e72;
 	font-size:16px;
-	height:25px;
 	background:none;
-	margin-top:40px;
+	text-align:center;
+	
 }
-.input-tel,
-.input-email{
+.searchinfo_1,
+.searchinfo_2{
+	width:60%;
+	margin:30px auto;
+	border:none;
+	border-bottom:2px solid #adadad;
+	outline:none;
+	color:#636e72;
+	font-size:16px;
+	background:none;
+	text-align:center;
+} 
+.searchinfo_1{
 	display:none;
 }
-.searchId-btn{
-	width:30%;
+.searchId-btn,
+.searchPwd-btn{
+	width:50%;
+	height:50px;
 	color:white;
 	background-color:rgb(72, 97, 86);
+	margin-bottom:40px;
 }
 .searchPwd{
-	display:none;
+	width:50%;
+	height:100%;
+}
+.searchPwd-btn{
+	margin-top:8px;
 }

@@ -6,6 +6,8 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.json.simple.JSONObject;
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.semiproject.soboon.dao.MemberDAO;
@@ -20,6 +22,9 @@ public class MemberServiceImpl implements MemberService{
 
 	@Inject
 	MemberDAO dao;
+	@Autowired
+	SqlSessionTemplate sql;
+	
 	
 	@Override
 	public int memberInsert(MemberVO vo) {
@@ -81,6 +86,22 @@ public class MemberServiceImpl implements MemberService{
 			System.out.println(e.getMessage());
 			System.out.println(e.getCode());
 		}
+	}
+
+	@Override
+	public String searchid_tel(String username, String tel) {
+		dao = sql.getMapper(dao.getClass());
+		String result = "";
+		result = dao.searchid_tel(username, tel);
+		return result;
+	}
+
+	@Override
+	public String searchid_email(String username, String email) {
+		dao = sql.getMapper(dao.getClass());
+		String result = "";
+		result = dao.searchid_email(username, email);
+		return result;
 	}
 	
 }

@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="/css/search_info.css" type="text/css"/>
 <script src="/js/search_info.js"></script>
 <script>
-	function search_check(num){
+	/* function search_check(num){
 		if(num == '1'){
 			$(".searchId").css("display","block");
 			$(".searchPwd").css("display","none");
@@ -10,7 +10,7 @@
 			$(".searchId").css("display","none");
 			$(".searchPwd").css("display","block");
 		}
-	}
+	} */
 	$(document).ready(function(){
 		// 모달창 불러오기
 		$(".searchId-btn").click(function(){
@@ -25,6 +25,19 @@
 			if(event.target == $(".background-modal").get(0)){
 				$(".background-modal").hide();
 			}
+		});
+		
+		//휴대폰 번호로 아이디찾기 버튼 클릭시
+		$(".searchinfo_searchtel").on('click',function(){
+			$(".searchinfo_searchemail").css("display","none");
+			$("#searchinfo-tel").css("display","block");
+			$(".searchinfo_searchtel").css("display","none");
+		});
+		//이메일로 아이디찾기 버튼 클릭시
+		$(".searchinfo_searchemail").on('click',function(){
+			$(".searchinfo_searchtel").css("display","none");
+			$("#searchinfo-email").css("display","block");
+			$(".searchinfo_searchemail").css("display","none");
 		});
 	});
 	
@@ -48,75 +61,45 @@
 <div class="container searchinfofrm">
 	<h1><b>로고넣어줘요</b></h1>
 	<div>
-		<div class="sub_title">
-			<h3>아이디/비밀번호 찾기</h3>
-			<hr/>
-			<div class="custom-control custom-radio custom-control-inline">
-				<input type="radio" class="custom-control-input" id="search_1" name="search_id" onclick="search_check(1)" checked="checked">
-				<label class="custom-control-label" for="search_1">아이디 찾기</label>
-			</div>
-			<div class="custom-control custom-radio custom-control-inline">
-				<input type="radio" class="custom-control-input" id="search_2" name="search_pwd" onclick="search_check(2)">
-				<label class="custom-control-label" for="search_2">비밀번호 찾기</label>
-			</div>
-			<div class="searchId">
+		<div class="row">
+			<hr />
+			<div class="col-6 searchId">
 				<div class="form-group">
+					<div class="search-logo"><h4>아이디찾기</h4></div>
 					<div>
-						<input type="text" class="searchinfo_1" id="searchinfo-name"
-							name="searchinfo-name" placeholder="실명을 입력해주세요" />
+						<input type="text" id="searchinfo-name" name="searchinfo-name" placeholder="실명을 입력해주세요" />
 					</div>
-				</div>
-				<div class="form-group">
 					<div>
-						<input type="button" class="btn-searchinfo searchinfo_searchtel"
-							value="휴대폰 번호로 아이디찾기" />
+						<input type="button" class="btn-searchinfo searchinfo_searchtel" value="휴대폰 번호로 아이디찾기" />
+						<input type="text" class="searchinfo_1" id="searchinfo-tel" name="searchinfo-tel" placeholder="(-)를 제외한 휴대폰번호를 입력해주세요" />
 					</div>
-					<div class="input-tel">
-						<input type="text" class="searchinfo_1" id="searchinfo-tel"
-							name="searchinfo-tel" placeholder="(-)를 제외한 휴대폰번호를 입력해주세요" />
-					</div>
-				</div>
-
-				<div class="form-group">
 					<div>
 						<input type="button" class="btn-searchinfo searchinfo_searchemail" value="이메일로 아이디찾기" />
-					</div>
-					<div class='input-email'>
 						<input type="text" class="searchinfo_1" id="searchinfo-email" name="searchinfo-email" placeholder="이메일을 입력해주세요" />
 					</div>
-				</div>
-				<br />
-				<div class="form-group">
-					<input type="button" class="btn searchId-btn" onclick="searchinfo_idClick()" value="아이디찾기" />
+				</div><br/>
+				<input type="button" class="btn searchId-btn" onclick="searchinfo_idClick()" value="아이디찾기" />
+				<div>
 					<!-- 찾는 아이디 모달 띄우기!!!  -->
 					<div class="background-modal">
 						<div class="modal-content">
 							<h4 class="modal-title"><b>찾으시는 아이디는</b></h4>
-							<button type="button" class="close" data-dismiss="modal">×</button>
-							<br />
-							<h2 id="id_value"></h2>
-							<br />
+							<h2 id="id_value"></h2><br/>
 							<button type="button" class="btn btn-close" data-dismiss="modal">Close</button>
 						</div>
 					</div>
 				</div>
 			</div>
 
-			<div class="searchPwd">
+			<div class="col-6 searchPwd">
 				<div class="form-group">
+					<div class="search-logo"><h4>비밀번호찾기</h4></div>
 					<div>
-						<input type="text" class="searchinfo_2" id="searchinfo-id" name="searchinfo-id" placeholder="아이디를 입력해주세요"/>
+						<input type="text" class="searchinfo_2" id="searchinfo-id" name="searchinfo-id" placeholder="아이디를 입력해주세요" />
+						<input type="text" class="searchinfo_2" id="searchinfo-email2" name="searchinfo-email2" placeholder="이메일을 입력해주세요" />
 					</div>
 				</div>
-				<div class="form-group">
-					<div>
-						<input type="text" class="searchinfo_2" id="searchinfo-email2" name="searchinfo-email2" placeholder="이메일을 입력해주세요"/>
-					</div>
-				</div>
-				<br/>
-				<div class="form-group">
-					<input type="button" class="btn searchPwd-btn" value="비밀번호찾기" />
-				</div>
+				<input type="button" class="btn searchPwd-btn" value="비밀번호찾기" />
 			</div>
 		</div>
 	</div>

@@ -192,6 +192,22 @@ public class MemberController {
 		return "/member/search_info";
 	}
 	
+	//아이디찾기
+	//핸드폰번호로
+	@PostMapping("/search_info")
+	@ResponseBody
+	public String useridSearch_tel(@RequestParam("searchinfo-name") String username, @RequestParam("searchinfo-tel") String tel) {
+		String result = service.searchid_tel(username,tel);
+		return result;
+	}
+	//이메일로
+//	@PostMapping("/search_info")
+//	@ResponseBody
+//	public String useridSearch_email(@RequestParam("searchinfo-email") String username, @RequestParam() String email) {
+//		String result = service.searchid_email(username,email);
+//		return result;
+//	}
+	
 	@PostMapping("memberIdCheck")
 	@ResponseBody
 	public int idCheck(String userid) {
