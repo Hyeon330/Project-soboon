@@ -199,10 +199,11 @@ public class MemberController {
 	//핸드폰번호로
 	@PostMapping("search_info")
 	@ResponseBody
-	public String useridSearch_tel(@RequestParam("searchinfo-name") String username, @RequestParam("searchinfo-tel") String tel) {
+	public String useridSearch_tel(@RequestParam("username") String username, @RequestParam("tel") String tel) {
 		String result = service.searchid_tel(username,tel);
 		return result;
 	}
+	
 	//이메일로
 //	@PostMapping("/search_info")
 //	@ResponseBody

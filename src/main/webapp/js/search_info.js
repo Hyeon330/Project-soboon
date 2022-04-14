@@ -8,18 +8,29 @@ $(document).ready(function(){
 			$(".background-modal").hide();
 		});
 		
+		
 		//아이디찾기 버튼 클릭시
 		
 		//휴대폰 번호로 아이디찾기 버튼 클릭시
 		$(".searchinfo_searchtel").on('click',function(){
+			if($("#username").val()==''){
+				alert("이름을 먼저 입력해주세요.");
+				$("#username").focus();
+				return false;
+			}
 			$(".searchinfo_searchemail").css("display","none");
-			$("#searchinfo-tel").css("display","block");
+			$("#tel").css("display","block");
 			$(".searchinfo_searchtel").css("display","none");
 		});
 		//이메일로 아이디찾기 버튼 클릭시
 		$(".searchinfo_searchemail").on('click',function(){
+			if($("#username").val()==''){
+				alert("이름을 먼저 입력해주세요.");
+				$("#username").focus();
+				return false;
+			}
 			$(".searchinfo_searchtel").css("display","none");
-			$("#searchinfo-email").css("display","block");
+			$("#email").css("display","block");
 			$(".searchinfo_searchemail").css("display","none");
 		});
 		
@@ -29,13 +40,13 @@ $(document).ready(function(){
 	var searchinfo_idClick = function(){
 		$.ajax({
 			type:'post',
-			url:'/member/search_info?searchinfo-name='+$("#searchinfo-name").val()
-					+'&searchinfo-tel='+$("#searchinfo-tel").val(),
+			url:'/member/search_info?username='+$("#username").val()
+					+'&tel='+$("#tel").val(),
 			success:function(res){
 				if(res==0){
-					$("#id_value").text("회원정보를 확인해주세요.");
+					$("#userid").text("회원정보를 확인해주세요.");
 				} else{
-					$("#id_value").text(res);
+					$("#userid").text(res);
 					id = res;
 				}
 			}
