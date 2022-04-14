@@ -1,6 +1,6 @@
 $(() => {
 	//닉네임 중복검사 (클릭시)
-	$('#button_overlapCheck').click(() => {
+	$('#button_overlapCheck').click((event) => {
 		event.preventDefault();
 		var nickname = $('#nickname').val();
 		var exNickname = $('#VO_nickname_hidden').text();
