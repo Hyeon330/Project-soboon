@@ -1,6 +1,8 @@
 package com.semiproject.soboon.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -28,8 +30,18 @@ public class AdminController {
 		return mav;
 	}
 	@GetMapping("admin/memberMgr")
-	public List<MemberVO> adminMgr(PagingVO pVO) {
+	public Map<String, Object> adminMgr(PagingVO pVO) {
+		pVO.setRecordPerPage(10); // 출력수 jsp랑 동일하게 설정
+		pVO.calc(); //페이지 연산 처리
+		Map<String, Object> map=new HashMap<>();
+		//전체 회원수 가져오기
+		int cnt = service.getMembercnt();
+		//페이지에 해당하는 회원 목록
 		List<MemberVO> list=service.memberList(pVO);
-		return list;
+		
+		map.put("cnt", cnt);
+		map.put("userList", list);
+		
+		return map;
 	}
 }

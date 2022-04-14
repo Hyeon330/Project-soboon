@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+<link rel="stylesheet" href="/css/mypage.css" type="text/css"/>
 <script>
 	var pageSubmitFn = function(menu) {
 		if(menu === 'editForm') {
@@ -34,18 +34,6 @@
 	});
 
 </script>
-
-
-<style>
-	#sideMenu>li {
-		background-color: RGB(241, 232, 223);
-	}
-	#sideMenuFrm>hr {
-		height: 5px; background: #ddd; border-style: none;
-	}
-	.active_sub {font-size:1.5em; background-color:orange !important; border-style: none !important;}
-</style>
-
 
 <div id= "sideMenuFrm"style="width:30%; height:100%;">
 		<h1>마이페이지</h1>

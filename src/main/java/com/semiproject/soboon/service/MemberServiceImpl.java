@@ -56,6 +56,11 @@ public class MemberServiceImpl implements MemberService{
 	public int emailCheck(String email) {
 		return dao.emailCheck(email);
 	}
+
+	@Override
+	public int getMembercnt() {
+		return dao.getMembercnt();
+	}
 	
 	public void telCheck(String tel, String ckNum) {
 		String api_key = "NCSC9AFRRPOPNXPX";
