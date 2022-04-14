@@ -5,7 +5,7 @@
 <script src="/js/shareBoardWrite.js"></script>
 <div class="container">
 	<br/>
-	<form class="form-group" method="post" action="/board/shareBoardWriteOk" id="shareReqForm" enctype="multipart/form-data">
+	<form class="form-group" method="post" action="/board/shareBoardWriteOk?category=share" id="shareReqForm" enctype="multipart/form-data">
 		<table class="table table-striped" style="text-align:center; border:1px solid #dddddd">
 			<thead>
 				<tr>

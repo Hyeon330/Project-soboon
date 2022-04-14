@@ -78,7 +78,7 @@
 			</div>
 			<hr/>
 			<div id="productIcon">
-				<div class="btn" id="pick">찜하기</div>
+				<input type="button" class="btn" id="pick" value="찜하기">
 				<div class="proIcon"><i class="fa fa-eye fa-lg"></i><span class="iconValue">${viewVo.views}</span></div>
 				<div class="proIcon"><i class="fa fa-clock fa-lg"></i><span class="iconValue">${viewVo.createdate}</span></div>
 				<div class="btn" id="proWarn"><i class="fa fa-bell"></i><span class="iconValue">신고하기</span></div>
@@ -88,7 +88,7 @@
 				<div><i class="fa fa-user fa-5x"></i></div>
 				<div id="userinfoInner">
 					<div id="viewNickname">${viewVo.nickname}</div>
-					<div>${viewVo.address}</div>
+					<div></div>
 				</div>
 			</div>
 			<hr/>

@@ -104,11 +104,11 @@ $(() => {
 		}
 
 		//주소
-		if ($('#address').val() === '') {
+		/*if ($('#address').val() === '') {
 			alert('주소를 입력해주세요.');
 			$('#address').focus();
 			return false;
-		}
+		}*/
 
 		return true;
 	});

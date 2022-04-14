@@ -18,16 +18,16 @@
      								<img src="/img/share.jpg" class="embed-responsive-item">
      							</c:if>
      							<c:if test="${listVo.thumbnailImg!=null}">
-     								<img src="/upload/${listVo.thumbnailImg}" class="embed-responsive-item">${listVo.thumbnailImg}
+     								<img src="/upload/${listVo.thumbnailImg}" class="embed-responsive-item">
      							</c:if>
     						<span id="heart" class="card-img-overlay"><i class="fa fa-heart fa-lg"></i><span class="iconValue">${listVo.pick}</span></span>
     					</a>
 	    			</div>
 					<div class="card-body cb">
 						<ul>
-							<li>${listVo.userid}</li>
+							<li>${listVo.nickname}</li>
 							<li id="shareBoardTitle"><a href="/board/shareBoardView?no=${listVo.no}">${listVo.title}</a></li>
-							<li><i class="fa fa-location-arrow fa-lg"></i><span class="iconValue">${listVo.address}</span></li>
+							<li><i class="fa fa-location-arrow fa-lg"></i><span class="iconValue"></span></li>
 							<li>${listVo.createdate}<span id="views"><i class="fa fa-eye fa-lg"></i><span class="iconValue">${listVo.views}</span></span></li>
 						</ul>
 					</div>
