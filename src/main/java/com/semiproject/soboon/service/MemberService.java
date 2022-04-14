@@ -13,4 +13,5 @@ public interface MemberService {
 	public MemberVO loginCheck(MemberVO vo);
 	public int totalRecord(PagingVO pVO);
 	public List<MemberVO> memberList(PagingVO pVO);
+	public int getMembercnt();
 }

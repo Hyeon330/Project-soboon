@@ -20,4 +20,5 @@ public interface MemberDAO {
 	public List<MemberVO> MemberList(PagingVO pVO);
 	public int memberDelete(String userid);
 	public int memberMultiDelte(MemberVO vo);
+	public int getMembercnt();
 }
