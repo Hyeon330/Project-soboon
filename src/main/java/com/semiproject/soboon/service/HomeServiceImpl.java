@@ -18,5 +18,4 @@ public class HomeServiceImpl implements HomeService {
 	public List<HomeVO> selectList() {
 		return dao.selectList();
 	}
-
 }

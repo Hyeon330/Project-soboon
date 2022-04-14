@@ -5,6 +5,11 @@ public class BoardVO {
 	private String userid;
 	private String title;
 	private String content;
+	
+	private String large;
+	private String medium;
+	private String small;
+
 	private int views;
 	private int pick;
 	private int warn;
@@ -116,6 +121,24 @@ public class BoardVO {
 	}
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
+	}
+	public String getLarge() {
+		return large;
+	}
+	public void setLarge(String large) {
+		this.large = large;
+	}
+	public String getMedium() {
+		return medium;
+	}
+	public void setMedium(String medium) {
+		this.medium = medium;
+	}
+	public String getSmall() {
+		return small;
+	}
+	public void setSmall(String small) {
+		this.small = small;
 	}
 	
 }
