@@ -37,7 +37,7 @@
 		
 		//--------------------내가 쓴 게시글 -----------------------
 		// 체크박스 전체선택 ---> 하위 체크박스 체크
-		$("#cbx_chk_mypageAll_mypage").click(function() {
+		$(document).on('click', "#cbx_chk_mypageAll_mypage", function() {
 			if ($("#cbx_chk_mypageAll_mypage").is(":checked"))
 				$("input[name=chk_mypage]").prop("checked", true);
 			else
@@ -53,7 +53,25 @@
 			else
 				$("#cbx_chk_mypageAll_mypage").prop("checked", true);
 		});
-	});//$(documnt).onload
+		
+		/*$('#multiDel').click(function(){
+			let cnt = 0;
+			$(".chk").each(function(i,obj){
+				if(obj.checked){
+					cnt++;//checkbox가 체크상태일 때...
+				}
+			});
+			if(cnt<=0){
+				alert("목록을 선택후 삭제하세요..");
+				return false;
+			}
+			$('#listFrm').submit();
+		});*/
+		// 선택한 체크박스를 삭제하기 ajax버전
+		$
+	});
+	
+	//$(documnt).onload
 	// ajax로 보내기
 	 function ajaxSend_mp(idx) {
 		let url = "";
@@ -125,7 +143,7 @@
 		$.each(dataArr, function(i, data){
 			//db에 가져올 데이터들
 			str += "<ul>";
-			str += "<li><input type='checkbox' name='chk_mypage' /></li>";
+			str += "<li><input type='checkbox' name='chk_mypage' value='"+data.no+"'/></li>";
 			str += "<li>"+data.no+"</li>";
 			str += "<li>"+data.title+"</li>";
 			str += "<li>"+data.content+"</li>";
@@ -198,6 +216,7 @@
 					<h1>tab1</h1>
 					<!-- 페이징 목록 -->
 					<div id="inTab1"></div>
+					<div><button id="delPost">삭제하기</button></div>
 				</div>
 			</div>
 			<!-- tab1 -->

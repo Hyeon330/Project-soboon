@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.semiproject.soboon.RelateUploadFile;
 import com.semiproject.soboon.service.EditService;
 import com.semiproject.soboon.vo.BoardVO;
 import com.semiproject.soboon.vo.MemberVO;
@@ -83,9 +84,14 @@ public class mypageController {
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Content-Type", "text/html;charset=utf-8");
 		String userid = (String) session.getAttribute("logId");
-		try {
+		try {	
+//				BoardVO fileVO = service.getFileName(no);
 				int result = service.delMember(userid);
 				if(result>0) {//회원 삭제 완료
+//					RelateUploadFile.fileDelete(path, fileVO.getThumbnailImg());
+//					RelateUploadFile.fileDelete(path, fileVO.getImg1());
+//					RelateUploadFile.fileDelete(path, fileVO.getImg2());
+//					RelateUploadFile.fileDelete(path, fileVO.getImg3());					
 					session.invalidate();
 					String msg = "<script>alert('회원 삭제를 성공했습니다.\\n홈페이지로 이동합니다.');location.href='/';</script>";
 					entity = new ResponseEntity<String>(msg, headers, HttpStatus.OK);
