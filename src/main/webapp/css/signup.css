@@ -1,39 +1,70 @@
 @charset "UTF-8";
-
+.container{
+	width:700px;
+	margin:0 auto;
+}
+#signup-logo{
+	font-weight:900;
+	text-align:center;
+	padding:40px;
+}
 #memberFrm li{
 	float:left;
 	height:50px;
 	line-height:30px;
 	width:20%;
 	text-align:center;
-	
 }
 #memberFrm li:nth-child(2n+1){
 	text-align:left;
-	font-weight:bold;
-	margin-left:30px;
+	font-weight:700;
+	margin-left:50px;
 	padding:5px;
+	font-size:1.2em;
+	padding-bottom:10px;
 }
 #memberFrm li:nth-child(2n){
-	width:70%;
+	width:60%;
+	float:right;
+	padding-right:50px;
+	padding-bottom:10px;
 }
 #memberFrm li:last-of-type{
 	text-align:center;
 	width:100%;
 	margin-top:50px;
 }
-#signup-logo{
-	margin:50px;
-	text-align:center;
-}
-.signup-id,
 .signup-pwd,
 .signup-name,
 .signup-email,
-.signup-nickname,
-.signup-tel,
-.signup-addr{
-	width:30%;
+.signup-addr,
+.signup-sms{
+	width:68%;
+	border:none;
+	border-bottom:2px solid #adadad;
+	outline:none;
+	color:#636e72;
+	font-size:16px;
+	height:25px;
+	background:none;
+	float:left;
+}
+.signup-id, .signup-nickname{
+	width:68%;
+	border:none;
+	border-bottom:2px solid #adadad;
+	outline:none;
+	color:#636e72;
+	font-size:16px;
+	height:25px;
+	background:none;
+	float:left;
+}
+.sms{
+	display:none;
+}
+.signup-tel{
+	width:60px;
 	border:none;
 	border-bottom:2px solid #adadad;
 	outline:none;
@@ -42,17 +73,11 @@
 	height:25px;
 	background:none;
 }
-.signup-id, .signup-nickname{
-	width:22%;
-	margin-right:20px;
-}
-.signup-tel{
-	width:49px;
-}
 #tel-btn{
-	margin-left:20px;
+	margin-left:45px;
 	width:60px;
 }
 .signup-btn{
-	background-color:rgb(254, 224, 180);
+	background-color:rgb(72, 97, 86);
+	color:white;
 }

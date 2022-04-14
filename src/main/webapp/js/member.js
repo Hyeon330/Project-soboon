@@ -59,7 +59,15 @@ function memberCheck(){
 		$("#tel1").focus();
 		return false;
 	}
-	
+	if($("#smsCode").val()==''){
+		alert("핸드폰 인증을 해주세요!");
+		$("#tel1").focus();
+		return false;
+	}
+	if($("#sms-btn2").prop("disabled")==false){
+		alert("인증번호를 작성 후 인증 버튼을 눌러주세요.");
+		return false;
+	}
 	reg=/([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;	
 	if($("#email").val()==''){
 		alert('이메일을 입력하세요.');
@@ -78,57 +86,98 @@ function memberCheck(){
 		return false;
 	}
 }
-$(function(){
-		$("#userid").keyup(function(){
-			var userid = $("#userid").val();
-			if(userid!='' && userid.length>=6){
-				var url = "/member/memberIdCheck";
-				$.ajax({
-					url:url,
-					data:"userid="+userid,
-					type:"post",
-					success:function(res){
-						if(res>0){
-							$("#chk").html("사용불가합니다.");
-							$("#idChk").val('N');
-							$("#chk").css("color","red");
-						} else{
-							$("#chk").html("사용가능합니다.");
-							$("#idChk").val('Y');
-							$("#chk").css("color","green");
-						}
+$(function() {
+	$("#userid").keyup(function() {
+		var userid = $("#userid").val();
+		if (userid != '' && userid.length >= 6) {
+			var url = "/member/memberIdCheck";
+			$.ajax({
+				url: url,
+				data: "userid=" + userid,
+				type: "post",
+				success: function(res) {
+					if (res > 0) {
+						$("#chk").html("사용불가합니다.");
+						$("#idChk").val('N');
+						$("#chk").css("color", "red");
+					} else {
+						$("#chk").html("사용가능합니다.");
+						$("#idChk").val('Y');
+						$("#chk").css("color", "green");
 					}
-				});
-			} else{
-				$("#chk").html("사용불가합니다.");
-				$("#idChk").val('N');
-				$("#chk").css("color","red");
-			}
-		});
-		$("#nickname").keyup(function(){
-			var nickname = $("#nickname").val();
-			if(nickname!=''){
-				var url = "/member/memberNicknameCheck";
-				$.ajax({
-					url:url,
-					data:"nickname="+nickname,
-					type:"post",
-					success:function(res){
-						if(res>0){
-							$("#nchk").html("사용불가합니다.");
-							$("#nickChk").val('N');
-							$("#nchk").css("color","red");
-						} else{
-							$("#nchk").html("사용가능합니다.");
-							$("#nickChk").val('Y');
-							$("#nchk").css("color","green");
-						}
-					}
-				});
-			} else{
-				$("#nchk").html("사용불가합니다.");
-				$("#nickChk").val('N');
-				$("#nchk").css("color","red");
-			}
-		});
+				}
+			});
+		} else {
+			$("#chk").html("사용불가합니다.");
+			$("#idChk").val('N');
+			$("#chk").css("color", "red");
+		}
 	});
+	$("#nickname").keyup(function() {
+		var nickname = $("#nickname").val();
+		if (nickname != '') {
+			var url = "/member/memberNicknameCheck";
+			$.ajax({
+				url: url,
+				data: "nickname=" + nickname,
+				type: "post",
+				success: function(res) {
+					if (res > 0) {
+						$("#nchk").html("사용불가합니다.");
+						$("#nickChk").val('N');
+						$("#nchk").css("color", "red");
+					} else {
+						$("#nchk").html("사용가능합니다.");
+						$("#nickChk").val('Y');
+						$("#nchk").css("color", "green");
+					}
+				}
+			});
+		} else {
+			$("#nchk").html("사용불가합니다.");
+			$("#nickChk").val('N');
+			$("#nchk").css("color", "red");
+		}
+	});
+});
+
+// SMS문자 인증 ---------------------------------------------------
+$(document).on('click','#sms-btn1',function(){ //sms인증 버튼 클릭했을 때
+	let tel = $("#tel1").val() + $("#tel2").val() + $("#tel3").val(); //사용자가 입력한 번호
+	var authCode = $("#authCode");
+
+	//사용자가 입력한 전화번호가 공백이 아니고, 11자리 이상일 경우
+	if(tel != '' && tel.length>10){
+		$.ajax({
+			url:'/member/memberTelCheck',
+			method:'get',
+			data:{'tel':tel},
+			success:function(res){
+				authCode.attr('value', res);
+				$(".sms").css("display","block");
+				$("#smsCode").attr("disabled", false);
+				
+				alert('인증번호가 발송 되었습니다.\n휴대폰에서 인증번호 확인을 해주십시오.');
+				$(".signup-tel").attr("readonly",true);
+				$("#sms-btn1").attr("disabled",true);
+			}, error:function(){
+				alert('인증번호 발송에 실패하였습니다.\n잠시 후 다시 시도해주시기 바랍니다.');
+			}
+		});
+	}else{
+		alert("휴대폰 번호를 입력해 주세요");
+	}
+	
+	// 인증번호 확인
+	$("#sms-btn2").click(function() {
+		if ($("#smsCode").val() == $("#authCode").val()) {
+			$("#smsCode").attr("disabled", true);
+			alert("인증 완료되었습니다.");
+			$("#sms-btn2").attr("disabled",true);
+		} else {
+			alert("인증번호가 일치하지 않습니다. 다시 확인해주시기 바랍니다.");
+			$("#smsCode").attr("autofocus", true);
+		}
+	});
+});
+

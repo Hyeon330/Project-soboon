@@ -23,16 +23,22 @@ io.sockets.on('connection', (socket) => {
         var insertMsgSql = 'insert into chat(sender, receiver, msg) values (?, ?, ?)';
 
         conn.execute(insertMsgSql, [data.sender, data.receiver, data.msg], (err, result) => {
-            if(result) {
+            if(err){
+                console.log(err);
+            }else {
                 var selectMsgSql = 'select * from chat ';
                 selectMsgSql += 'where chatno=( ';
                 selectMsgSql += 'select max(chatno) from chat ';
                 selectMsgSql += 'where (sender=? and receiver=?))';
 
                 conn.execute(selectMsgSql, [data.sender, data.receiver], (err, result) => {
-                    var chatDateTimeArr = String(result[0].chat_datetime).split(' ');
-                    result[0].chat_datetime = chatDateTimeArr[3]+'-0'+(result[0].chat_datetime.getMonth()+1)+'-'+result[0].chat_datetime.getDate()+' '+chatDateTimeArr[4];
-                    io.emit('receive-msg', result[0]);
+                    if(err){
+                        console.log(err);
+                    }else {
+                        var chatDateTimeArr = String(result[0].chat_datetime).split(' ');
+                        result[0].chat_datetime = chatDateTimeArr[3]+'-0'+(result[0].chat_datetime.getMonth()+1)+'-'+result[0].chat_datetime.getDate()+' '+chatDateTimeArr[4];
+                        io.emit('receive-msg', result[0]);
+                    }
                 });
             }
         })

@@ -13,14 +13,6 @@ $(function(){
 		totalFile--;
 	});
 	
-	$("#uploadBtn").click(function(){
-		if($("#innerFiles").css("display")=='none'){
-			$("#innerFiles").show();
-		}else{
-			$("#innerFiles").hide();
-		};
-	});
-	
 	$("#shareReqForm").submit(function(){
 		if($("#shareAndReqTitle").val()==''){
 			alert("🚫 제목을 입력해주세요");

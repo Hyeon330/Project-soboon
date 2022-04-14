@@ -14,6 +14,7 @@
 	<select id="getAllMessage" resultType="ChatVO">
 		select * from chat
 		where (sender=#{param1} and receiver=#{param2})
-		or (sender=#{param2} and receiver=#{param1});
+		or (sender=#{param2} and receiver=#{param1})
+		order by chatno;
 	</select>
 </mapper>

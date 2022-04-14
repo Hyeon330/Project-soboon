@@ -90,13 +90,13 @@
 }
 
 /*버튼*/
-#joinPlus, #joinChat, #shareEdit {
+#joinChat, #shareAndReqEdit{
 	background-color: rgb(72, 97, 86);
 	color:white;
 	padding:10px 30px;
 }
 
-#joinMinus, #shareAndReqDel{
+#shareAndReqDel{
 	background-color: gray;
 	color:white;
 	padding:10px 30px;
@@ -109,6 +109,7 @@
 .pb{
 	margin:20px;
 }
+
 .shareAndReqComent{
 	padding: 12px;
 	border: none;
@@ -119,19 +120,41 @@
 	background-color:#FAF6F3;
 	margin:20px 20px 0 0;
 }
-
+/*댓글*/
 #commentLine {
 	display:flex;
 	position:relative;
 }
 
-#replyInsert {
+#replyInsert{
 	background-color: rgb(72, 97, 86);
 	color:white;
+	margin-top:100px;
 }
 
-#replyInsert {
-	position:absolute;
-	left:750px; 
-	bottom:0px;
+
+#replyList {
+	background-color:#FAF6F3;
+	margin:20px 20px 0 0;
+	border-radius:5px;
+	padding: 15px;
+	padding-top:25px;
+	padding-left:25px;
 }
+
+#replyList textarea{
+	padding: 12px;
+	border: none;
+	border-radius:10px;
+	outline:none;
+	resize:none;
+	font-size: 16px;
+	background-color:rgb(213, 218, 212);
+	margin:20px 20px 0 0;
+	width:500px; height:100px;
+}
+
+ #replyList input[value='수정하기']{
+ 	background-color: rgb(72, 97, 86);
+	color:white;
+ }
