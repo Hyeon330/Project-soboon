@@ -36,12 +36,6 @@ $(function(){
 		});
 	}
 
-	// 수정버튼 누르면 수정폼 보이게 하기
-	$(document).on('click','#replyList input[value=수정]',function(){ // 수정버튼을 누르면      
-		$(this).parent().css("display","none");                    // 댓글 폼 안보이게
-		$(this).parent().parent().next().css("display", "block");  // 수정폼 보이게
-	});
-
 	// 댓글 등록하기
 	$("#replyForm").on('submit', function(event){
 		event.preventDefault();
@@ -66,6 +60,11 @@ $(function(){
 	});
 		
 
+	// 수정버튼 누르면 수정폼 보이게 하기
+	$(document).on('click','#replyList input[value=수정]',function(){ // 수정버튼을 누르면      
+		$(this).parent().css("display","none");                    // 댓글 폼 안보이게
+		$(this).parent().parent().next().css("display", "block");  // 수정폼 보이게
+	});
 	
 	// 수정하기 DB연결
 	$(document).on('submit','#replyList form',function(){

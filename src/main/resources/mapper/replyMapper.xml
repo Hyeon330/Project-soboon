@@ -7,7 +7,7 @@
 		insert into reply(no, userid, nickname, coment) 
 		values(${no}, #{userid}, #{nickname}, #{coment})
 	</insert>
-	<select id="selectReplyList" resultType="com.semiproject.soboon.vo.ReplyVO">
+	<select id="selectReplyList" resultType="ReplyVO">
 		select replyno, no, nickname, coment, 
 		date_format(createdate, "%m/%d %H:%i")createdate
 		from reply 

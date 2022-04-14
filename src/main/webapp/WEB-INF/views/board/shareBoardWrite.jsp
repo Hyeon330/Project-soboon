@@ -1,26 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<link rel="stylesheet" href="/css/shareAndReqWrite.css" type="text/css"/>
+<link rel="stylesheet" href="/css/shareBoardWrite.css" type="text/css"/>
 <script src="//cdn.ckeditor.com/4.17.2/full/ckeditor.js"></script>
-<script src="/js/shareAndReqWrite.js"></script>
+<script src="/js/shareBoardWrite.js"></script>
 <div class="container">
 	<br/>
-	<form class="form-group" method="post" action="/board/shareAndReqWriteOk?category=${category}" id="shareReqForm" enctype="multipart/form-data">
+	<form class="form-group" method="post" action="/board/shareBoardWriteOk" id="shareReqForm" enctype="multipart/form-data">
 		<table class="table table-striped" style="text-align:center; border:1px solid #dddddd">
 			<thead>
 				<tr>
-					<c:if test="${category=='share'}">
-						<th><h1 style="text-align:center;">나눔 게시판 글 작성하기</h1></th>
-					</c:if>
-					<c:if test="${category=='request'}">
-						<th><h1 style="text-align:center;">요청 게시판 글 작성 폼</h1></th>
-					</c:if>
+					<th><h1 style="text-align:center;">나눔 게시판 글 작성하기</h1></th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
 					<td id="tbBody">
-						<input type="text" class="form-control" id="shareAndReqTitle" placeholder="글 제목을 입력하세요."  name="title" maxlength="16"/>
+						<input type="text" class="form-control" id="shareBoardTitle" placeholder="글 제목을 입력하세요."  name="title" maxlength="16"/>
 					</td>
 				</tr>
 				<tr>
