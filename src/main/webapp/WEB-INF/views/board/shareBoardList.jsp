@@ -27,7 +27,7 @@
 						<ul>
 							<li>${listVo.nickname}</li>
 							<li id="shareBoardTitle"><a href="/board/shareBoardView?no=${listVo.no}">${listVo.title}</a></li>
-							<li><i class="fa fa-location-arrow fa-lg"></i><span class="iconValue">${listVo.address}</span></li>
+							<li><i class="fa fa-location-arrow fa-lg"></i><span class="iconValue"></span></li>
 							<li>${listVo.createdate}<span id="views"><i class="fa fa-eye fa-lg"></i><span class="iconValue">${listVo.views}</span></span></li>
 						</ul>
 					</div>

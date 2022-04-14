@@ -9,7 +9,9 @@ public class AdminVO {
 	private String nickname;
 	private String tel;
 	private String email;
-	private String address;
+	private String large;
+	private String medium;
+	private String small;
 	
 	public String getUserid() {
 		return userid;
@@ -53,12 +55,25 @@ public class AdminVO {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getAddress() {
-		return address;
+	public String getLarge() {
+		return large;
 	}
-	public void setAddress(String address) {
-		this.address = address;
+	public void setLarge(String large) {
+		this.large = large;
 	}
+	public String getMedium() {
+		return medium;
+	}
+	public void setMedium(String medium) {
+		this.medium = medium;
+	}
+	public String getSmall() {
+		return small;
+	}
+	public void setSmall(String small) {
+		this.small = small;
+	}
+	
 	
 }
 

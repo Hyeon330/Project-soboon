@@ -67,6 +67,7 @@ public class MemberServiceImpl implements MemberService{
 		return dao.getMembercnt();
 	}
 	
+	//문자인증
 	public void telCheck(String tel, String ckNum) {
 		String api_key = "NCSC9AFRRPOPNXPX";
 		String api_secret = "JN5HV6JCETIXJW1VHMQRIOQOJWZQV3DE";
@@ -87,7 +88,7 @@ public class MemberServiceImpl implements MemberService{
 			System.out.println(e.getCode());
 		}
 	}
-
+	
 	@Override
 	public String searchid_tel(String username, String tel) {
 		dao = sql.getMapper(dao.getClass());
@@ -103,5 +104,4 @@ public class MemberServiceImpl implements MemberService{
 		result = dao.searchid_email(username, email);
 		return result;
 	}
-	
 }

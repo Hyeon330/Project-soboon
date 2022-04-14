@@ -65,7 +65,7 @@
 										<li id="shareAndReqTitle"><a href="/board/shareAndReqView?no=${listVo.no}&category=${listVo.category}">${listVo.title}</a></li>
 										<hr/>
 										<li>${listVo.nickname}</li>
-										<li><i class="fa fa-location-arrow fa-lg"></i><span class="iconValue">${listVo.address}</span></li>
+										<li><i class="fa fa-location-arrow fa-lg"></i><span class="iconValue"></span></li>
 									</ul>
 								</div>
 							</div>

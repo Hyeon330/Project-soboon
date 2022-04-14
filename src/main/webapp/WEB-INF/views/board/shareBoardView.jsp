@@ -88,7 +88,7 @@
 				<div><i class="fa fa-user fa-5x"></i></div>
 				<div id="userinfoInner">
 					<div id="viewNickname">${viewVo.nickname}</div>
-					<div>${viewVo.address}</div>
+					<div></div>
 				</div>
 			</div>
 			<hr/>

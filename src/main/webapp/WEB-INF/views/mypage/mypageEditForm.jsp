@@ -82,8 +82,8 @@
 						<div style="width: 20%">주소</div>
 						<div style="width: 5%;"></div>
 						<div style="width: 75%">
-							<input type="text" id="address" name="address"
-								value="${VO.address }" />
+							<!-- <input type="text" id="address" name="address"
+								value="${VO.address }" /> -->
 						</div>
 					</li>
 				</ul>

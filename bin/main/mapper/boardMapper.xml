@@ -9,7 +9,7 @@
 	</insert>
 	<select id="selectList" resultType="BoardVO">
 		select b.no, b.title, b.category, date_format(b.createdate, "%m/%d %H:%i") createdate,
-		b.thumbnailImg, b.pick, b.views, b.price, m.address, m.nickname
+		b.thumbnailImg, b.pick, b.views, b.price, m.nickname
 		from board b join member m on b.userid=m.userid order by no desc 
 		limit ${recordPerPage} offset ${offsetIndex}
 	</select>
@@ -21,7 +21,7 @@
 	</select>
 	<select id="selectView" resultType="BoardVO">
 		select b.no, m.nickname, m.userid, b.category, b.title, b.views, date_format(b.createdate, "%m/%d %H:%i")createdate,
-		b.thumbnailImg, b.img1, b.img2, b.img3, m.address, b.price, b.content 
+		b.thumbnailImg, b.img1, b.img2, b.img3, b.price, b.content 
 		from board b join member m on b.userid=m.userid
 		where no=${no} order by b.no desc;
 	</select>

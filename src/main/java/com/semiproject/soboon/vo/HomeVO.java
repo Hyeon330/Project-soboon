@@ -4,7 +4,9 @@ public class HomeVO {
 	private int no;
 	private String title;
 	private String category;
-	private String address;
+	private String large;
+	private String medium;
+	private String small;
 	private String thumbnailImg;
 	
 	private String nickname;
@@ -33,12 +35,28 @@ public class HomeVO {
 		this.category = category;
 	}
 
-	public String getAddress() {
-		return address;
+	public String getLarge() {
+		return large;
 	}
 
-	public void setAddress(String address) {
-		this.address = address;
+	public void setLarge(String large) {
+		this.large = large;
+	}
+
+	public String getMedium() {
+		return medium;
+	}
+
+	public void setMedium(String medium) {
+		this.medium = medium;
+	}
+
+	public String getSmall() {
+		return small;
+	}
+
+	public void setSmall(String small) {
+		this.small = small;
 	}
 
 	public String getThumbnailImg() {

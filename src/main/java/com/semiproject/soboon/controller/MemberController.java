@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.semiproject.soboon.service.AddressService;
 import com.semiproject.soboon.service.KakaoAPI;
 import com.semiproject.soboon.service.MemberService;
 import com.semiproject.soboon.vo.MemberVO;
@@ -33,7 +34,8 @@ public class MemberController {
 	MemberService service;
 	@Autowired
 	KakaoAPI kakao;
-	
+	@Inject
+	AddressService serviceAddr;
 	
 	@GetMapping("signup")
 	public String memberForm() {
@@ -152,14 +154,15 @@ public class MemberController {
 //		int cnt = service.emailCheck(kakao_email);
 //		System.out.println(cnt);
 		if(service.emailCheck(kakao_email)<=0) {
-			System.out.println("유저 회원가입");
+//			System.out.println("유저 회원가입");
 			kakaoVO.setUserid(kakao_email);
 			kakaoVO.setUserpwd("00000000");
 			kakaoVO.setUsername(kakao_nickname);
 			kakaoVO.setNickname(kakao_nickname);
-			kakaoVO.setAddress("소분소분");
+			kakaoVO.setLarge("");
+			kakaoVO.setMedium("");
+			kakaoVO.setSmall("");
 			kakaoVO.setTel("010-1111-1111");
-			kakaoVO.setSocialType("kakao");
 			kakaoVO.setEmail(kakao_email);
 			service.memberInsert(kakaoVO);
 		}
@@ -194,7 +197,7 @@ public class MemberController {
 	
 	//아이디찾기
 	//핸드폰번호로
-	@PostMapping("/search_info")
+	@PostMapping("search_info")
 	@ResponseBody
 	public String useridSearch_tel(@RequestParam("searchinfo-name") String username, @RequestParam("searchinfo-tel") String tel) {
 		String result = service.searchid_tel(username,tel);
@@ -207,7 +210,7 @@ public class MemberController {
 //		String result = service.searchid_email(username,email);
 //		return result;
 //	}
-	
+
 	@PostMapping("memberIdCheck")
 	@ResponseBody
 	public int idCheck(String userid) {
