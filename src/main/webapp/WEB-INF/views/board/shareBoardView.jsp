@@ -3,6 +3,7 @@
 <link rel="stylesheet" href="/css/shareBoardView.css" type="text/css"/>
 <script src="https://kit.fontawesome.com/76aefe2b67.js" crossorigin="anonymous"></script>
 <script src="/js/shareBoardView.js"></script>
+<script src="/js/shareBoardViewReply.js"></script>
 <script>
 	let nickname = "${nickName}";
 
@@ -10,8 +11,10 @@
 		$("#shareBoardDel").click(function(){
 			if(confirm("삭제하시겠어요?")){
 				location.href="/board/shareBoardDel?no=${viewVo.no}";
-			}
+			}	
 		});
+		
+
 	});
 </script>
 <div class="container">
@@ -73,12 +76,13 @@
 		
 		<div class="col-6 sb">
 			<div id="productTitle">
-				<span id="category">나눔</span>
+				<span id="category" title="${viewVo.no}">나눔</span>
 				<h2><span id="titleInner">${viewVo.title}</span></h2>
 			</div>
 			<hr/>
 			<div id="productIcon">
-				<input type="button" class="btn" id="pick" value="찜하기">
+				<input type="button" class="btn" id="pick1" value="찜하기"/>
+				<input type="button" class="btn" id="pick2" value="찜하기"/>
 				<div class="proIcon"><i class="fa fa-eye fa-lg"></i><span class="iconValue">${viewVo.views}</span></div>
 				<div class="proIcon"><i class="fa fa-clock fa-lg"></i><span class="iconValue">${viewVo.createdate}</span></div>
 				<div class="btn" id="proWarn"><i class="fa fa-bell"></i><span class="iconValue">신고하기</span></div>
@@ -88,7 +92,7 @@
 				<div><i class="fa fa-user fa-5x"></i></div>
 				<div id="userinfoInner">
 					<div id="viewNickname">${viewVo.nickname}</div>
-					<div>${viewVo.address}</div>
+					<div>address</div>
 				</div>
 			</div>
 			<hr/>
