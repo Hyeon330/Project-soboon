@@ -19,12 +19,5 @@ public class HomeController {
 		mav.setViewName("home");
 		return mav;
 	}
-	
-	@GetMapping("/areaSelect")
-	public ModelAndView areaSelectForm() {
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("areaSelect");
-		return mav;
-	}
 }
 
