@@ -4,14 +4,12 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.semiproject.soboon.dao.BoardDAO">
 	<insert id="boardInsert">
-		insert into board(userid, title, content, thumbnailImg, img1, img2, img3, img4, category)
-		value(#{userid},#{title},#{content}, #{thumbnailImg}, #{img1}, #{img2}, #{img3}, #{img4}, #{category})
+		insert into board(userid, nickname, title, content, thumbnailImg, img1, img2, img3, img4, category, large, medium, small)
+		value(#{userid}, #{nickname},#{title},#{content}, #{thumbnailImg}, #{img1}, #{img2}, #{img3}, #{img4}, #{category}, #{large}, #{medium}, #{small})
 	</insert>
 	<select id="selectList" resultType="BoardVO">
-		select b.no, b.title, b.category, date_format(b.createdate, "%m/%d %H:%i") createdate,
-		b.thumbnailImg, b.img1, b.pick, b.views, b.price, m.nickname
-		from board b join member m on b.userid=m.userid order by no desc 
-		limit ${recordPerPage} offset ${offsetIndex}
+		select * from board where category = #{param2.category} and small = #{param2.small} 
+		order by no desc limit ${param1.recordPerPage} offset ${param1.offsetIndex}
 	</select>
 	<select id="selectTotalRecord" resultType="int">
 		select count(no) count from board

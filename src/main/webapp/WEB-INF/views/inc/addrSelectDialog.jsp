@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<script src="/js/addrDialog.js"></script>
+
 <link rel="stylesheet" href="/css/addrDialog.css">
 <div id="addrSelectDialog">
 	<form id="addrSelectBox">
-		<select id="largeAddrSelect" name="large" default="${addrLarge}"></select>
-		<select id="mediumAddrSelect" name="medium" default="${addrMedium}"></select>
-		<select id="smallAddrSelect" name="small" default="${addrSmall}"></select>
+		<select class="largeAddrSelect" name="large" default="${addrLarge}"></select>
+		<select class="mediumAddrSelect" name="medium" default="${addrMedium}"></select>
+		<select class="smallAddrSelect" name="small" default="${addrSmall}"></select>
 	</form>
 </div>

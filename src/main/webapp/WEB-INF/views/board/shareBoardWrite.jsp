@@ -12,6 +12,15 @@
 			</thead>
 			<tbody>
 				<tr>
+					<td>
+						<div>
+							<select class="largeAddrSelect" name="large" default="${addrLarge}"></select>
+							<select class="mediumAddrSelect" name="medium" default="${addrMedium}"></select>
+							<select class="smallAddrSelect" name="small" default="${addrSmall}"></select>
+						</div>
+					</td>
+				</tr>
+				<tr>
 					<td id="tbBody">
 						<input type="text" class="form-control" id="shareBoardTitle" placeholder="글 제목을 입력하세요."  name="title" maxlength="16"/>
 					</td>

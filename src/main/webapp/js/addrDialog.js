@@ -5,23 +5,23 @@ $(function() {
 		async: false,
 		success: function(result) {
 			result.forEach(largeData => {
-				$('#largeAddrSelect').append('<option value="'+largeData+'">'+largeData+'</option>');
+				$('.largeAddrSelect').append('<option value="'+largeData+'">'+largeData+'</option>');
 			});
 		}
 	});
 	
 	const setMedium = () => {
-		document.getElementById('mediumAddrSelect').options.length = 0;
-		document.getElementById('smallAddrSelect').options.length = 0;
-		if($('#largeAddrSelect').val()!=''){
+		document.querySelector('.mediumAddrSelect').options.length = 0;
+		document.querySelector('.smallAddrSelect').options.length = 0;
+		if($('.largeAddrSelect').val()!=''){
 			$.ajax({
 				url: '/addr/getMediumAddr',
-				data: 'large='+$('#largeAddrSelect').val(),
+				data: 'large='+$('.largeAddrSelect').val(),
 				type: 'get',
 				async: false,
 				success: function(result) {
 					result.forEach(d => {
-						$('#mediumAddrSelect').append('<option value="'+d+'">'+d+'</option>');
+						$('.mediumAddrSelect').append('<option value="'+d+'">'+d+'</option>');
 					})
 				}
 			});
@@ -29,36 +29,36 @@ $(function() {
 	}
 	
 	const setSmall = () => {
-		document.getElementById('smallAddrSelect').options.length = 0;
-		if($('#mediumAddrSelect').val()!=''){
+		document.querySelector('.smallAddrSelect').options.length = 0;
+		if($('.mediumAddrSelect').val()!=''){
 			$.ajax({
 				url: '/addr/getSmallAddr',
-				data: 'large='+$('#largeAddrSelect').val()+'&medium='+$('#mediumAddrSelect').val(),
+				data: 'large='+$('.largeAddrSelect').val()+'&medium='+$('.mediumAddrSelect').val(),
 				type: 'get',
 				async: false,
 				success: function(result) {
 					result.forEach(smallData => {
-						$('#smallAddrSelect').append('<option value="'+smallData+'">'+smallData+'</option>');
+						$('.smallAddrSelect').append('<option value="'+smallData+'">'+smallData+'</option>');
 					});
 				}
 			});
 		}
 	}
 	
-	$('#largeAddrSelect').on('change', function() {
+	$('.largeAddrSelect').on('change', function() {
 		setMedium();
 		setSmall();
 	});
-	$('#mediumAddrSelect').on('change', function() {
+	$('.mediumAddrSelect').on('change', function() {
 		setSmall();
 	});
 	
-	const myAddrReset = () => {
-		$('#largeAddrSelect').val($('#largeAddrSelect').attr('default')).prop('selected');
+	const myAddrReset = (largeClass, mediumClass, smallClass) => {
+		largeClass.val(largeClass.attr('default')).prop('selected');
 		setMedium();
-		$('#mediumAddrSelect').val($('#mediumAddrSelect').attr('default')).prop('selected');
+		mediumClass.val(mediumClass.attr('default')).prop('selected');
 		setSmall();
-		$('#smallAddrSelect').val($('#smallAddrSelect').attr('default')).prop('selected');s
+		smallClass.val(smallClass.attr('default')).prop('selected');
 	}
 	
 	$('#addrSelectDialogOpen').click(function(){
@@ -78,17 +78,19 @@ $(function() {
 					type: 'post'
 				});
 				$("#addrSelectDialog").dialog('close');
-				$('#largeAddrSelect').attr('default', $('#largeAddrSelect').val());
-				$('#mediumAddrSelect').attr('default', $('#mediumAddrSelect').val());
-				$('#smallAddrSelect').attr('default', $('#smallAddrSelect').val());
-				myAddrReset();
+				$('.largeAddrSelect').attr('default', $('.largeAddrSelect').val());
+				$('.mediumAddrSelect').attr('default', $('.mediumAddrSelect').val());
+				$('.smallAddrSelect').attr('default', $('.smallAddrSelect').val());
+				myAddrReset($('.largeAddrSelect'),$('.mediumAddrSelect'),$('.smallAddrSelect'));
 			},
-			초기화 : myAddrReset,
+			초기화 : function(){
+				  myAddrReset($('.largeAddrSelect'),$('.mediumAddrSelect'),$('.smallAddrSelect'));
+			},
 			취소: function() {
 				$("#addrSelectDialog").dialog('close');
-				myAddrReset();
+				myAddrReset($('.largeAddrSelect'),$('.mediumAddrSelect'),$('.smallAddrSelect'));
 			}
 		}
 	});
-	myAddrReset();
+	myAddrReset($('.largeAddrSelect'),$('.mediumAddrSelect'),$('.smallAddrSelect'));
 });
