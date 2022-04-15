@@ -19,4 +19,7 @@
 	<delete id="deleteReply">
 		delete from reply where replyno=#{param1} and nickname=#{param2}
 	</delete>
+	<insert id="insertPick">
+		insert into pick (no, userid) values (${no}, #{userid})
+	</insert>
 </mapper>

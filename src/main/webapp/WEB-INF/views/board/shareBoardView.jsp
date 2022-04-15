@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <link rel="stylesheet" href="/css/shareBoardView.css" type="text/css"/>
-<script src="https://kit.fontawesome.com/76aefe2b67.js" crossorigin="anonymous"></script>
 <script src="/js/shareBoardView.js"></script>
 <script src="/js/shareBoardViewReply.js"></script>
 <script>
@@ -20,56 +19,55 @@
 	<div class="row">
 
 		<div class="col-6 sbi">
-			<div id="demo" class="carousel slide">
-				<!-- Indicators -->
-				<ul class="carousel-indicators">
-					<li data-target="#demo" data-slide-to="0"></li>
-					<li data-target="#demo" data-slide-to="1"></li>
-					<li data-target="#demo" data-slide-to="2"></li>
-					<li data-target="#demo" data-slide-to="3"></li>
-				</ul>
-				<!-- The slideshow -->
-				<div class="carousel-inner">
+			<div id="demo" class="carousel slide" data-ride="carousel">
+			
+			  <!-- Indicators -->
+			  	<ul class="carousel-indicators">
+			  		<li data-target="#demo" data-slide-to="0" class="active"></li>
+			   		<li data-target="#demo" data-slide-to="1"></li>
+			 	  	<li data-target="#demo" data-slide-to="2"></li>
+			 	  	<li data-target="#demo" data-slide-to="3"></li>
+				 </ul>
+			 
+			 
+			 <!-- The slideshow -->
+				 <div class="carousel-inner">
 					<c:choose>
-						<c:when test="${viewVo.thumbnailImg!=null}">
-							<div id="carousel-item active">
-								<img src="/upload/${viewVo.thumbnailImg}"/>
-							</div>
-						</c:when>
-						<c:when test="${viewVo.img1!=null}">
-							<div id="carousel-item active">
-								<img src="/upload/${viewVo.img1}"/>
-							</div>
-						</c:when>
-						<c:when test="${viewVo.img2!=null}">
-							<div id="carousel-item active">
-								<img src="/upload/${viewVo.img2}"/>
-							</div>
-						</c:when>
-						<c:when test="${viewVo.img3!=null}">
-							<div id="carousel-item active">
-								<img src="/upload/${viewVo.img3}"/>
-							</div>
+						<c:when test="${viewVo.thumbnailImg==null}">
+							<img src="/img/share.jpg">
 						</c:when>
 						<c:otherwise>
-							<div id="carousel-item active">
-								<img src="/img/share.jpg"/>
-							</div>
+							<input type="file" name="fileImg" id="img1" />
+							<input type="file" name="fileImg" id="img2" />
+							<input type="file" name="fileImg" id="img3" />
+							<input type="file" name="fileImg" id="img4" />
 						</c:otherwise>
 					</c:choose>
-				</div>
-				<!-- Left and right controls -->
-				<c:choose>
-					<c:when test="${viewVo.thumbnailImg=null}">
-						<a class="carousel-control-prev" href="#demo" data-slide="prev">
-							<span class="carousel-control-prev-icon" style="background:yellow"></span>
-						</a> 
-						<a class="carousel-control-next" href="#demo" data-slide="next">
-							<span class="carousel-control-next-icon"></span>
-						</a>
-					</c:when>
-				</c:choose>
-				
+					
+					<c:choose>
+				 		<c:when test="${viewVo.img1!=null}">
+				 			<div class="carousel-item active">
+					    		<img src="/upload/${viewVo.img1}">
+					   		</div>
+				 		</c:when>
+				 		<c:when test="${viewVo.img2!=null}">
+					 		<div class="carousel-item active">
+						    	<img src="/upload/${viewVo.img1}">
+						     </div>
+					 		 <div class="carousel-item">
+						    	<img src="/upload/${viewVo.img2}">
+						   	</div>
+				 		</c:when>
+				 	</c:choose>
+				 </div>
+			 
+			 <!-- Left and right controls -->
+				<a class="carousel-control-prev" href="#demo" data-slide="prev">
+					    <span class="carousel-control-prev-icon"></span>
+				</a>
+				<a class="carousel-control-next" href="#demo" data-slide="next">
+					    <span class="carousel-control-next-icon"></span>
+				</a>
 			</div>
 		</div>
 		
@@ -109,16 +107,15 @@
 					</div>
 				</c:if>
 			</div>
-		</div>
-		
-		<!-- 글 내용 -->
-		<div class="col-12 sbc">
-			<hr/><br/>
-			<div>${viewVo.content}</div>
+			<!-- 글내용 -->
+			<div class="shareBrdContent">
+				<hr/>
+				<div>${viewVo.content}</div>
+			</div>
 		</div>
 		
 		<!-- 댓글 -->
-		<div class="col-12">
+		<div class="col-12 rp">
 			<hr/>
 			<div><i class="fa fa-comment fa-lg"></i><span class="iconValue">댓글</span></div>
 				<form method="post" id="replyForm">
