@@ -6,7 +6,7 @@
 		});
 		
 		$('#addrSelectDialog').dialog({
-			autoOpen: true,
+			autoOpen: false,
 			modal: true,
 			buttons: {
 				등록: function() {
