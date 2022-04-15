@@ -17,11 +17,11 @@
 		delete from member where userid=#{param1}
 	</delete>
 	<select id="mypostList" resultType="BoardVO">
-	select no, title, content, date_format(createdate, '%Y-%m-%d') createdate, views
-	from board
-	where  userid = #{param1}
-	order by no desc
-	limit ${param2.onePageRecord} offset ${param2.offsetIndex}
+		select no, title, content, date_format(createdate, '%Y-%m-%d') createdate, views
+		from board
+		where  userid = #{param1}
+		order by no desc
+		limit ${param2.onePageRecord} offset ${param2.offsetIndex}
 	</select>
 	<select id="mypostCount" resultType="int">
 		select count(no) from board where userid = #{param1}

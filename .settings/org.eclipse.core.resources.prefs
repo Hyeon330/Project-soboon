@@ -5,6 +5,7 @@ eclipse.preferences.version=1
 encoding//src/main/webapp/WEB-INF/views/admin/admin_page.jsp=UTF-8
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -12,6 +13,11 @@ encoding//src/main/webapp/WEB-INF/views/board/shareBoardView.jsp=UTF-8
 =======
 <<<<<<< HEAD
 encoding//src/main/webapp/WEB-INF/views/board/shareBoardView.jsp=UTF-8
+=======
+encoding//src/main/webapp/WEB-INF/views/board/shareBoardView.jsp=UTF-8
+=======
+>>>>>>> main
+>>>>>>> index_seongeun
 =======
 >>>>>>> main
 >>>>>>> index_seongeun
