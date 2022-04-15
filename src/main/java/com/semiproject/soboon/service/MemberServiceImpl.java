@@ -34,7 +34,7 @@ public class MemberServiceImpl implements MemberService{
 		return dao.idCheck(userid);
 	}
 
-	@Override
+	@Override	
 	public int nicknameCheck(String nickname) {
 		return dao.nicknameCheck(nickname);
 	}
@@ -94,5 +94,10 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public String searchid_email(String email) {
 		return dao.searchid_email(email);
+	}
+	
+	@Override
+	public void updateMyAddr(MemberVO vo) {
+		dao.updateMyAddr(vo);
 	}
 }

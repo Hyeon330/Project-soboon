@@ -8,7 +8,7 @@
 		values (#{username},#{userid},#{userpwd},#{nickname},#{tel},#{large},#{medium},#{small},#{email})
 	</insert>
 	<select id="loginCheck" resultType="MemberVO">
-		select userid, username, verify, nickname from member
+		select userid, username, verify, nickname, large, medium, small from member
 		where userid=#{userid} and userpwd=#{userpwd}
 	</select>
 	<select id="idCheck" resultType="int">
@@ -32,5 +32,10 @@
 	</select>
 	<select id="searchid_email" parameterType="String" resultType="String">
 		select userid from member where email=#{email}
-	</select>
-</mapper>		
+	</select>	
+	<update id="updateMyAddr">
+		update member
+		set large=#{large}, medium=#{medium}, small=#{small}
+		where userid=#{userid}
+	</update>
+</mapper>

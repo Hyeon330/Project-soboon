@@ -54,10 +54,8 @@ public class MemberController {
 	
 	//로그인폼가기
 	@GetMapping("login")
-	public ModelAndView loginForm() {
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("member/login");
-		return mav;
+	public String loginForm() {
+		return "member/login";
 	}
 	
 	//로그인
@@ -73,8 +71,9 @@ public class MemberController {
 			session.setAttribute("logId", vo2.getUserid());
 			session.setAttribute("logName", vo2.getUsername());
 			session.setAttribute("nickName", vo2.getNickname());
-			session.setAttribute("logStatus", "Y");
 			session.setAttribute("logAdmin", vo2.getVerify());
+			session.setAttribute("logStatus", "Y");
+			setSessionAddr(vo2, session);
 			String msg = "<script>location.href='/';</script>";
 			
 			entity = new ResponseEntity<String>(msg, headers, HttpStatus.OK);
@@ -236,5 +235,20 @@ public class MemberController {
 	public int emailCheck(String email) {
 		int cnt = service.emailCheck(email);
 		return cnt;
+	}
+	
+	@PostMapping("updateMyAddr")
+	@ResponseBody
+	public void updateMyAddr(MemberVO vo, HttpSession session) {
+		vo.setUserid((String)session.getAttribute("logId"));
+		setSessionAddr(vo, session);
+		service.updateMyAddr(vo);
+	}
+	
+	// 세션에 주소를 넣어주는 함수
+	void setSessionAddr(MemberVO vo, HttpSession session) {
+		session.setAttribute("addrLarge", vo.getLarge());
+		session.setAttribute("addrMedium", vo.getMedium());
+		session.setAttribute("addrSmall", vo.getSmall());
 	}
 }

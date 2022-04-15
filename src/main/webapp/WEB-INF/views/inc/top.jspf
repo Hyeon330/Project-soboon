@@ -19,6 +19,10 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="/css/top.css" type="text/css"/>
 <link rel="stylesheet" href="/css/base.css" type="text/css"/>
+<!-- Board icons cdn -->
+<script src="https://kit.fontawesome.com/76aefe2b67.js" crossorigin="anonymous"></script>
+<!-- Board checkeditors cdn -->
+<script src="//cdn.ckeditor.com/4.17.2/full/ckeditor.js"></script>
 <script>
 	
 </script>

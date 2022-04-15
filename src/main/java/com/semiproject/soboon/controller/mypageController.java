@@ -42,6 +42,7 @@ public class mypageController {
 		mav.setViewName("mypage/mypageEditForm");
 		return mav;
 	}
+	
 	@PostMapping("nicknameCheck")
 	@ResponseBody
 	public int nicknameCheck(String nickname) {

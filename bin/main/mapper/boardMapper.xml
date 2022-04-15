@@ -4,12 +4,12 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.semiproject.soboon.dao.BoardDAO">
 	<insert id="boardInsert">
-		insert into board(userid, title, content, thumbnailImg, img1, img2, img3, category)
-		value(#{userid},#{title},#{content}, #{thumbnailImg}, #{img1}, #{img2}, #{img3}, #{category})
+		insert into board(userid, title, content, thumbnailImg, img1, img2, img3, img4, category)
+		value(#{userid},#{title},#{content}, #{thumbnailImg}, #{img1}, #{img2}, #{img3}, #{img4}, #{category})
 	</insert>
 	<select id="selectList" resultType="BoardVO">
 		select b.no, b.title, b.category, date_format(b.createdate, "%m/%d %H:%i") createdate,
-		b.thumbnailImg, b.pick, b.views, b.price, m.nickname
+		b.thumbnailImg, b.img1, b.pick, b.views, b.price, m.nickname
 		from board b join member m on b.userid=m.userid order by no desc 
 		limit ${recordPerPage} offset ${offsetIndex}
 	</select>
@@ -21,7 +21,7 @@
 	</select>
 	<select id="selectView" resultType="BoardVO">
 		select b.no, m.nickname, m.userid, b.category, b.title, b.views, date_format(b.createdate, "%m/%d %H:%i")createdate,
-		b.thumbnailImg, b.img1, b.img2, b.img3, b.price, b.content 
+		b.thumbnailImg, b.img1, b.img2, b.img3, b.img4, b.price, b.content 
 		from board b join member m on b.userid=m.userid
 		where no=${no} order by b.no desc;
 	</select>
@@ -34,7 +34,7 @@
 	</select>
 	<update id="updateEditView">
 		update board set title=#{title}, content=#{content}, 
-		thumbnailImg=#{thumbnailImg}, img1=#{img1}, img2=#{img2}, img3=#{img3}
+		img1=#{img1}, img2=#{img2}, img3=#{img3}, img4=#{img4}
 		where no=${no} and userid=#{userid}
 	</update>
 	<select id="getFileName" resultType="BoardVO">
@@ -43,4 +43,5 @@
 	<delete id="deleteView">
 		delete from board where no=#{param1} and userid=#{param2}
 	</delete>
+
 </mapper>

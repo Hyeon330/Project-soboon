@@ -8,7 +8,7 @@
 		values (#{username},#{userid},#{userpwd},#{nickname},#{tel},#{large},#{medium},#{small},#{email})
 	</insert>
 	<select id="loginCheck" resultType="MemberVO">
-		select userid, username, verify, nickname from member
+		select userid, username, verify, nickname, large, medium, small from member
 		where userid=#{userid} and userpwd=#{userpwd}
 	</select>
 	<select id="idCheck" resultType="int">
@@ -26,6 +26,7 @@
 	<select id="getMembercnt" resultType="int">
 		select count(userid) cnt from member
 	</select>
+<<<<<<< HEAD
 	<!-- 아이디찾기 -->
 	<select id="searchid_tel" parameterType="String" resultType="String">
 		select userid from member where tel=#{tel}
@@ -34,3 +35,11 @@
 		select userid from member where email=#{email}
 	</select>
 </mapper>		
+=======
+	<update id="updateMyAddr">
+		update member
+		set large=#{large}, medium=#{medium}, small=#{small}
+		where userid=#{userid}
+	</update>
+</mapper>
+>>>>>>> main

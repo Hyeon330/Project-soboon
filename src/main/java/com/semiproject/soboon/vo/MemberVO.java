@@ -19,6 +19,15 @@ public class MemberVO {
 	private int warn;
 	private int verify;
 	
+	@Override
+	public String toString() {
+		return "MemberVO [getUserid()=" + getUserid() + ", getUserpwd()=" + getUserpwd() + ", getUsername()="
+				+ getUsername() + ", getTel()=" + getTel() + ", getTel1()=" + getTel1() + ", getTel2()=" + getTel2()
+				+ ", getTel3()=" + getTel3() + ", getNickname()=" + getNickname() + ", getEmail()=" + getEmail()
+				+ ", getWarn()=" + getWarn() + ", getVerify()=" + getVerify() + ", getLarge()=" + getLarge()
+				+ ", getMedium()=" + getMedium() + ", getSmall()=" + getSmall() + "]";
+	}
+	
 	public String getUserid() {
 		return userid;
 	}

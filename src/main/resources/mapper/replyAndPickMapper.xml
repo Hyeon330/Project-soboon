@@ -2,12 +2,12 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.semiproject.soboon.dao.ReplyDAO">
+<mapper namespace="com.semiproject.soboon.dao.ReplyAndPickDAO">
 	<insert id="insertReply">
 		insert into reply(no, userid, nickname, coment) 
 		values(${no}, #{userid}, #{nickname}, #{coment})
 	</insert>
-	<select id="selectReplyList" resultType="ReplyVO">
+	<select id="selectReplyList" resultType="ReplyAndPickVO">
 		select replyno, no, nickname, coment, 
 		date_format(createdate, "%m/%d %H:%i")createdate
 		from reply 
@@ -19,4 +19,7 @@
 	<delete id="deleteReply">
 		delete from reply where replyno=#{param1} and nickname=#{param2}
 	</delete>
+	<insert id="insertPick">
+		insert into pick (no, userid) values (${no}, #{userid})
+	</insert>
 </mapper>

@@ -5,25 +5,27 @@ public class BoardVO {
 	private String userid;
 	private String title;
 	private String content;
+	
 	private String large;
 	private String medium;
 	private String small;
+
 	private int views;
 	private int pick;
-	private int joinno;
 	private int warn;
 	private String createdate;
 	private String thumbnailImg;
 	private String img1;
 	private String img2;
 	private String img3;
+	private String img4;
 	private String category;
 	private String price;
 	private String nickname;
 	
 	// 삭제할 파일을 담을 변수
 	private String deleteFile[];
-	
+		
 	public int getNo() {
 		return no;
 	}
@@ -60,12 +62,7 @@ public class BoardVO {
 	public void setPick(int pick) {
 		this.pick = pick;
 	}
-	public int getJoinno() {
-		return joinno;
-	}
-	public void setJoinno(int joinno) {
-		this.joinno = joinno;
-	}
+
 	public int getWarn() {
 		return warn;
 	}
@@ -101,6 +98,12 @@ public class BoardVO {
 	}
 	public void setImg3(String img3) {
 		this.img3 = img3;
+	}
+	public String getImg4() {
+		return img4;
+	}
+	public void setImg4(String img4) {
+		this.img4 = img4;
 	}
 	public String getCategory() {
 		return category;

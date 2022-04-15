@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <link rel="stylesheet" href="/css/shareBoardEdit.css" type="text/css"/>
-<script src="//cdn.ckeditor.com/4.17.2/full/ckeditor.js"></script>
 <script src="/js/shareBoardEdit.js"></script>
 <div class="container">
 	<br/>
@@ -26,20 +24,10 @@
 		<div id="fileList">
 			<div id="innerFiles" class="totalFile">
 			<c:choose>
-				<c:when test="${bvo.thumbnailImg!=null && bvo.thumbnailImg!=''}">
-					<div>${bvo.thumbnailImg}  &nbsp; <span class="btn xbtn">X</span></div>
-					<input type="hidden" name="" value="${bvo.thumbnailImg}"/>
-					<input type="hidden" name="fileImg" id="thumbnailImg"/>
-					<c:choose>
-						<c:when test="${bvo.img1!=null && bvo.img1!=''}">
-							<div>${bvo.img1}  &nbsp; <span class="btn xbtn">X</span></div>
-							<input type="hidden" name="" value="${bvo.img1}"/>
-							<input type="hidden" name="fileImg" id="bvoImg1"/>
-						</c:when>
-						<c:otherwise>
-							<input type="file" name="fileImg" id="img1"/>
-						</c:otherwise>
-					</c:choose>
+				<c:when test="${bvo.img1!=null && bvo.img1!=''}">
+					<div>${bvo.img1}  &nbsp; <span class="btn xbtn">X</span></div>
+					<input type="hidden" name="" value="${bvo.img1}"/>
+					<input type="hidden" name="fileImg" id="bvoImg1"/>
 					<c:choose>
 						<c:when test="${bvo.img2!=null && bvo.img2!=''}">
 							<div>${bvo.img2}  &nbsp; <span class="btn xbtn">X</span></div>
@@ -60,12 +48,22 @@
 							<input type="file" name="fileImg" id="img3"/>
 						</c:otherwise>
 					</c:choose>
+					<c:choose>
+						<c:when test="${bvo.img4!=null && bvo.img4!=''}">
+							<div>${bvo.img4}  &nbsp; <span class="btn xbtn">X</span></div>
+							<input type="hidden" name="" value="${bvo.img4}"/>
+							<input type="hidden" name="fileImg" id="bvoImg4"/>
+						</c:when>
+						<c:otherwise>
+							<input type="file" name="fileImg" id="img4"/>
+						</c:otherwise>
+					</c:choose>
 				</c:when>
 				<c:otherwise>
-					<input type="file" name="fileImg" id="thumbnailImg"/>
 					<input type="file" name="fileImg" id="img1"/>
 					<input type="file" name="fileImg" id="img2"/>
 					<input type="file" name="fileImg" id="img3"/>
+					<input type="file" name="fileImg" id="img4"/>
 				</c:otherwise>
 			</c:choose>
   			</div>
