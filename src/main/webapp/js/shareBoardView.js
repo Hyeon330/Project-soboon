@@ -10,7 +10,7 @@ $(function(){
 			data: 'no='+$('#category').attr('title'),
 			type: 'get',
 			success: function() {
-				alert("찜했습니다.");
+				alert("찜했습니다!!");
 			}
 		});
 	});
@@ -22,7 +22,16 @@ $(function(){
 		$(this).prev().css("display", "block");
 		
 		if(confirm("이미 찜한 게시글입니다. 찜하기를 취소시겠습니까?")){
-			
+			$.ajax({
+				url:'/pick/deletePick',
+				data:'no='+$('#category').attr('title'),
+				type:'get',
+				success: function() {
+					alert("찜하기가 취소되었습니다!!");
+				},error: function() {
+					
+				}
+			});
 		}
 	});
 

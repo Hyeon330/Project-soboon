@@ -14,7 +14,7 @@
 		where no=${param1} order by replyno desc
 	</select>
 	<update id="updateReply">
-		update reply set coment=#{coment} wshere replyno=${replyno} and nickname=#{nickname}
+		update reply set coment=#{coment} where replyno=${replyno} and nickname=#{nickname}
 	</update>
 	<delete id="deleteReply">
 		delete from reply where replyno=#{param1} and nickname=#{param2}
@@ -22,7 +22,13 @@
 	<insert id="insertPick">
 		insert into pick (no, userid) values (${param1}, #{param2})
 	</insert>
-	<update id="updateBoardPick">
+	<update id="plusBoardPick">
 		update board set pick=pick+1 where no=#{param1}
+	</update>
+	<delete id="deletePick">
+		delete from pick where no=#{param1} and userid=#{param2}
+	</delete>
+	<update id="minusBoardPick">
+		update board set pick=pick-1 where no=#{param1}
 	</update>
 </mapper>

@@ -15,7 +15,8 @@ public class ServerConfigure implements WebMvcConfigurer {
 	private static final List<String> URL_PATERRNS = Arrays.asList(
 			"/board/shareBoardWrite","/board/shareBoardWriteOK",
 			"/board/shareBoardEdit","/board/shareBoardEditOk",
-			"/board/shareBoardDel","/admin", "/pick/insertPick"
+			"/board/shareBoardDel","/admin", "/pick/insertPick",
+			"/pick/deletePick"
 			
 			);
 	private static final List<String> URL_PATERRNS_ADMIN = Arrays.asList(			

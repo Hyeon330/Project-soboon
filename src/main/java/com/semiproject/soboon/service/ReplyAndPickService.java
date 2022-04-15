@@ -21,8 +21,14 @@ public interface ReplyAndPickService {
 	// 찜하기 등록하기
 	public int insertPick(int no, String userid);
 	
-	// 찜하기 board DB 연결
-	public int updateBoardPick(int no);
+	// 찜하기 등록 board DB 연결
+	public int plusBoardPick(int no);
+	
+	// 찜하기 취소하기
+	public int deletePick(int no, String userid);
+	
+	// 찜하기 취소 board DB 연결
+	public int minusBoardPick(int no);
 	
 }
 

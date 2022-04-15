@@ -53,9 +53,14 @@ public class ReplyAndPickController {
 	// 찜하기 등록하기
 	@GetMapping("/pick/insertPick")
 	public int insertPick(int no, HttpSession session) {
-		System.out.println(no);
 		service.insertPick(no, ((String)session.getAttribute("logId")));
-		return service.updateBoardPick(no);
+		return service.plusBoardPick(no);
 	}
 	
+	// 찜하기 취소하기
+	@GetMapping("/pick/deletePick")
+	public int deletePick (int no, HttpSession session) {
+		service.deletePick(no, ((String)session.getAttribute("logId")));
+		return service.minusBoardPick(no);
+	}
 }

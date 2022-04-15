@@ -7,8 +7,6 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.semiproject.soboon.dao.ReplyAndPickDAO;
-import com.semiproject.soboon.vo.BoardVO;
-import com.semiproject.soboon.vo.PickVO;
 import com.semiproject.soboon.vo.ReplyVO;
 
 @Service
@@ -43,8 +41,18 @@ public class ReplyAndPickServiceImpl implements ReplyAndPickService {
 	}
 
 	@Override
-	public int updateBoardPick(int no) {
-		return dao.updateBoardPick(no);
+	public int plusBoardPick(int no) {
+		return dao.plusBoardPick(no);
+	}
+
+	@Override
+	public int deletePick(int no, String userid) {
+		return dao.deletePick(no, userid);
+	}
+
+	@Override
+	public int minusBoardPick(int no) {
+		return dao.minusBoardPick(no);
 	}
 	
 	
