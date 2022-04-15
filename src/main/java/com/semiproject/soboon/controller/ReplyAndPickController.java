@@ -10,19 +10,19 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.semiproject.soboon.service.ReplyService;
-import com.semiproject.soboon.vo.ReplyVO;
+import com.semiproject.soboon.service.ReplyAndPickService;
+import com.semiproject.soboon.vo.ReplyAndPickVO;
 
 @RestController
 @RequestMapping("/reply/")
-public class ReplyController {
+public class ReplyAndPickController {
 	
 	@Inject
-	ReplyService service;
+	ReplyAndPickService service;
 	
 	// 댓글 등록하기
 	@PostMapping("writeOk")
-	public int writeOk(ReplyVO vo, HttpSession session) {
+	public int writeOk(ReplyAndPickVO vo, HttpSession session) {
 		vo.setUserid((String)session.getAttribute("logId"));
 		vo.setNickname((String)session.getAttribute("nickName"));
 		return service.insertReply(vo);
@@ -30,13 +30,13 @@ public class ReplyController {
 	
 	// 댓글 목록보이기
 	@GetMapping("replyList")
-	public List<ReplyVO> replyList(int no){
+	public List<ReplyAndPickVO> replyList(int no){
 		return service.selectReplyList(no);
 	}
 	
 	// 댓글 수정하기
 	@PostMapping("editOk")
-	public int updateReply(ReplyVO vo, HttpSession session) {
+	public int updateReply(ReplyAndPickVO vo, HttpSession session) {
 		vo.setNickname((String)session.getAttribute("nickName"));
 		return service.updateReply(vo);
 	}
