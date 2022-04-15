@@ -88,6 +88,13 @@ nav>hr{
 .sign{
 	background-color:rgb(213, 218, 212);
 	font-weight:500px;
+	color:rgb(72, 97, 86);
+	font-weight:700;
+	transition:0.2s;
+}
+.sign:hover{
+	background-color:rgb(142, 158, 139);
+	color:white;
 }
 /*==================Top 2행==========================*/
 .topMenu{
@@ -104,10 +111,12 @@ nav>hr{
 	color:rgb(72, 97, 86) !important;
 	border-top-left-radius:20px;
 	border-top-right-radius:20px;
+	margin-top:5px;
 }
 .topMenu>div>div>a{
 	text-align:center;
 	color:white;
+	margin-top:5px;
 }
 .bottom{
    width:100%;
