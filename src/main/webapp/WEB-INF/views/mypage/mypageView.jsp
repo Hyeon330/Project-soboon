@@ -53,6 +53,11 @@
 			else
 				$("#cbx_chk_mypageAll_mypage").prop("checked", true);
 		});
+	});//$(documnt).onload
+	// ajax로 보내기
+	 function ajaxSend_mp(idx) {
+		let url = "";
+		url = "/mypage";
 		
 		/*$('#multiDel').click(function(){
 			let cnt = 0;
