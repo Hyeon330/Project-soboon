@@ -84,18 +84,4 @@ public class MemberServiceImpl implements MemberService{
 			System.out.println(e.getCode());
 		}
 	}
-	
-	@Override
-	public String searchid_tel(String username, String tel) {
-		String result = "";
-		result = dao.searchid_tel(username, tel);
-		return result;
-	}
-
-	@Override
-	public String searchid_email(String username, String email) {
-		String result = "";
-		result = dao.searchid_email(username, email);
-		return result;
-	}
 }
