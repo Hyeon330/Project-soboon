@@ -35,9 +35,9 @@
 
 </script>
 
-<div id= "sideMenuFrm"style="width:30%; height:100%;">
-		<h1>마이페이지</h1>
-		<hr/>
+<div id= "sideMenuFrm"style="width:20%; height:100%;">
+		<h3>마이페이지</h3>
+		<br/>
 		<ul id="sideMenu"  class="list-group list-group-flush">
 			<li class="list-group-item" id="showView"><a href="#" class="sidebarMenu">내가 쓴 글보기</a></li>
 			<li class="list-group-item" id="editForm"><a href="#"  class="sidebarMenu">개인정보수정</a></li>

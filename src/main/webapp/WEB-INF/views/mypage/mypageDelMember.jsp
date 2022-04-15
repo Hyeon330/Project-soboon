@@ -37,7 +37,7 @@ $(function() {
 });
 </script>
 
-<div class="container" id="mypageContainer">
+<div id="mypageContainer">
 <!--   사이드 메뉴 (include) -->
 	<%@ include file="/WEB-INF/views/inc/mypageSideBar.jsp" %>
 

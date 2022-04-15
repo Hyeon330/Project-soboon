@@ -2,9 +2,12 @@
 
 /*공통부분*/
 #mypageContainer {
+	width:1200px;
+	min-height:717px;
+	margin:0px auto;
+	background-color:rgb(213, 218, 212);
 	height: 500px;
 	margin-top: 50px;
-	background-color: RGB(241, 232, 223);
 }
 
 #mypageContainer>div {
@@ -14,7 +17,7 @@
 /*----------------------------------------------------------------------------*/
 /*사이드메뉴*/
 #sideMenu>li {
-	background-color: RGB(241, 232, 223);
+	background-color: white;
 }
 
 #sideMenuFrm>hr {
@@ -25,8 +28,9 @@
 
 .active_sub {
 	font-size: 1.5em;
-	background-color: orange !important;
+	background-color: rgb(72, 97, 86) !important;
 	border-style: none !important;
+	color:white !important;
 }
 /*---------------------------내가 쓴 글 보기-----------------------------------*/
 /*----------------------------------------------------------------------------*/
@@ -44,6 +48,12 @@
 #button_overlapCheck, .btn-last {
 	background: rgb(239, 136, 105) !important;
 	border-style: none !important;
+}
+.viewPage-mypage{
+	
+}
+.viewPage-mypage>h3 {
+	font-weight:700;
 }
 
 .viewPage-mypage>hr {
@@ -96,7 +106,7 @@
 	width: 80px;
 	height: 50px;
 	line-height: 50px;
-	background-color: orange;
+	background-color: rgb(72, 97, 86);
 	border-radius: 5px;
 	font-size: 20px;
 	margin-top: 10px;
