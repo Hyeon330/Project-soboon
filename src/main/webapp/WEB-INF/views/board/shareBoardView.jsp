@@ -82,6 +82,7 @@
 				<div class="proIcon"><i class="fa fa-eye fa-lg"></i><span class="iconValue">${viewVo.views}</span></div>
 				<div class="proIcon"><i class="fa fa-clock fa-lg"></i><span class="iconValue">${viewVo.createdate}</span></div>
 				<div class="btn" id="proWarn"><i class="fa fa-bell"></i><span class="iconValue">신고하기</span></div>
+				<%@ include file="/WEB-INF/views/inc/report.jsp" %>
 			</div>
 			<hr/>
 			<div id="userInfo">
