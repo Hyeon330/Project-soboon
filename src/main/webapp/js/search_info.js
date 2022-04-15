@@ -35,7 +35,7 @@ $(function(){
 			}
 			reg = /^(010)[-][0-9]{3,4}[-][0-9]{4}$/;
 			if (!reg.test($("#searchinfo_tel").val())) {
-				alert("휴대폰 번호를 잘못 입력하였습니다. \n예시)01011111111");
+				alert("휴대폰 번호를 잘못 입력하였습니다. \n예시)010-xxxx-xxxx");
 				$("#searchinfo_tel").focus();
 				return false;
 			}

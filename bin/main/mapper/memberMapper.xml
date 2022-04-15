@@ -26,20 +26,16 @@
 	<select id="getMembercnt" resultType="int">
 		select count(userid) cnt from member
 	</select>
-<<<<<<< HEAD
 	<!-- 아이디찾기 -->
 	<select id="searchid_tel" parameterType="String" resultType="String">
 		select userid from member where tel=#{tel}
 	</select>
 	<select id="searchid_email" parameterType="String" resultType="String">
 		select userid from member where email=#{email}
-	</select>
-</mapper>		
-=======
+	</select>	
 	<update id="updateMyAddr">
 		update member
 		set large=#{large}, medium=#{medium}, small=#{small}
 		where userid=#{userid}
 	</update>
 </mapper>
->>>>>>> main
