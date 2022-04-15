@@ -16,7 +16,16 @@ $(function(){
 				$("#searchinfo_email").focus();
 				return false;
 			}
-			alert($("#searchinfo_email").val()+" 확인!!!!");
+			$.ajax({
+				data:{
+					email:$("#searchinfo_email").val()
+				}, url:'/member/searchid_email',
+				type:'post',
+				success:function(res){
+					alert("찾으시는 아이디는 " + res);
+					location.href="/member/search_info";
+				}
+			})
 		}
 		if($("#searchinfo_tel").css("display")=='block'){
 			if($("#searchinfo_tel").val()==''){
@@ -24,13 +33,22 @@ $(function(){
 				$("#search_tel").focus();
 				return false;
 			}
-			reg = /^(010)[0-9]{3,4}[0-9]{4}$/;
+			reg = /^(010)[-][0-9]{3,4}[-][0-9]{4}$/;
 			if (!reg.test($("#searchinfo_tel").val())) {
 				alert("휴대폰 번호를 잘못 입력하였습니다. \n예시)01011111111");
 				$("#searchinfo_tel").focus();
 				return false;
 			}
-			alert($("#searchinfo_tel").val()+"확인");
+			$.ajax({
+				data:{
+					tel:$("#searchinfo_tel").val()
+				}, url:'/member/searchid_tel',
+				type:'post',
+				success:function(res){
+					alert("찾으시는 아이디는 "+res);
+					location.href="/member/search_info";
+				}
+			})
 		}
 	});
 
