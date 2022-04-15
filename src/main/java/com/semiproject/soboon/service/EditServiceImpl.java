@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import com.semiproject.soboon.dao.EditDAO;
 import com.semiproject.soboon.vo.BoardVO;
 import com.semiproject.soboon.vo.MemberVO;
-import com.semiproject.soboon.vo.MypagePagingVO;
+import com.semiproject.soboon.vo.PagingVO;
 
 @Service
 public class EditServiceImpl implements EditService {
@@ -37,7 +37,7 @@ public class EditServiceImpl implements EditService {
 	}
 
 	@Override
-	public List<BoardVO> mypostList(String userid, MypagePagingVO pVO) {
+	public List<BoardVO> mypostList(String userid, PagingVO pVO) {
 		return dao.mypostList(userid, pVO);
 	}
 
@@ -49,6 +49,11 @@ public class EditServiceImpl implements EditService {
 	@Override
 	public int myreplyCount(String userid) {
 		return dao.myreplyCount(userid);
+	}
+
+	@Override
+	public List<BoardVO> mypostList2(String userid) {
+		return dao.mypostList2(userid);
 	}
 
 	

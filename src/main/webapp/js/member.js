@@ -82,11 +82,21 @@ function memberCheck(){
 		return false;
 	}
 	
-	/*if($("").val()==''){
-		alert("주소를 입력하세요.");
-		$(").focus();
+	if($("#addrLarge").val()==''){
+		alert("시를 선택하세요.");
+		$("#addrLarge").focus();
 		return false;
-	}*/
+	}
+	if($("#addrMedium").val()==''){
+		alert("구를 선택하세요.");
+		$("#addrMedium").focus();
+		return false;
+	}
+	if($("#addrSmall").val()==''){
+		alert("동을 선택하세요.");
+		$("#addrSmall").focus();
+		return false;
+	}
 }
 $(function() {
 	$("#userid").keyup(function() {

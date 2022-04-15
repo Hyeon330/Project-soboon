@@ -16,7 +16,6 @@
 					<br />
 					<div class="tab-pane fade show active" id="memberMgr">
 						<div style="float: left" id="membercnt"></div>
-						<button type="button" id="multiDel" class="btn btn-danger" style="float: right">선택 삭제</button>
 						<br />
 						<!-- 회원관리 -->
 						<ul class="memberList">
