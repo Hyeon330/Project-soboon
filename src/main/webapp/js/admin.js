@@ -103,10 +103,10 @@ $(function() {
 		})
 	}
 	
-	/* =================신고관리================= */
+	/* =================신고관리================= 
 	function showReport(dataArr, tab){			
 		var str='<h3>신고관리</h3><table>';
-		/* alert('총회원수: '+dataArr.cnt) */
+		/* alert('총회원수: '+dataArr.cnt) 
 		//헤더 
 		str +="<li><input type='checkbox' id='checkALL'></li>";
 		str +="<li>아이디</li>";
@@ -135,7 +135,7 @@ $(function() {
 		pageCount = Math.floor(pageCount);
 			/* alert(pageCount) */
 		//페이지 네비게이션 문자열 만들기
-		let pageStr='<br/><ul class="pagination justify-content-center" id="paging">';
+		/*let pageStr='<br/><ul class="pagination justify-content-center" id="paging">';
 			pageStr += '<li class="page-item disabled"><a class="page-link" id="prevBtn">Prev</a></li>'
 			for(var p=1; p <= pageCount; p++){
 				pageStr += '<li class="page-item"><a class="page-link"href="javascript:void(0);" onclick="ml('+p+')">' + p + '</a></li>'
@@ -143,7 +143,7 @@ $(function() {
 			pageStr += '<li class="page-item"><a class="page-link" id="nextBtn">Next</a></li>'
 				
 		pageStr +='</ul>';
-		/* alert(pageStr) */
+		/* alert(pageStr) 
 		$('.memberList').html(str);
 		$('#page').html(pageStr);
 	}
@@ -157,7 +157,7 @@ $(function() {
 				showReport(dataArr, 'tab2')								
 			}			
 		})
-	}
+	}*/
 	/* $.ajax({ 
 		type: "GET", 
 							url: url, 
