@@ -23,8 +23,8 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public List<BoardVO> selectList(PagingVO pvo) {
-		return dao.selectList(pvo);
+	public List<BoardVO> selectList(PagingVO pvo, BoardVO vo) {
+		return dao.selectList(pvo, vo);
 	}
 
 	@Override

@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletResponse;
 
 import org.json.simple.JSONObject;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -85,6 +86,16 @@ public class MemberServiceImpl implements MemberService{
 		}
 	}
 
+	@Override
+	public String searchid_tel(String tel) {
+		return dao.searchid_tel(tel);
+	}
+
+	@Override
+	public String searchid_email(String email) {
+		return dao.searchid_email(email);
+	}
+	
 	@Override
 	public void updateMyAddr(MemberVO vo) {
 		dao.updateMyAddr(vo);

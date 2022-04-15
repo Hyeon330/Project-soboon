@@ -188,12 +188,34 @@ public class MemberController {
 		return numStr;
 	}
 	
+	//---------------------------------------------------------------------
 	//아이디/비밀번호 찾기 폼으로 이동
 	@GetMapping("search_info")
 	public String search_info() {
 		return "/member/search_info";
 	}
-
+	
+	//아이디찾기(휴대폰번호로)
+	@PostMapping("searchid_tel")
+	@ResponseBody
+	public String searchid_tel(String tel) {
+		String result = service.searchid_tel(tel);
+		return result;
+	}
+	
+	//아이디찾기(이메일로)
+	@PostMapping("searchid_email")
+	@ResponseBody
+	public String searchid_email(String email) {
+		System.out.println(email);
+		String result = service.searchid_email(email);
+		return result;
+	}
+	
+	//비밀번호찾기(이메일인증)
+	
+	
+	//---------------------------------------------------------------------
 	@PostMapping("memberIdCheck")
 	@ResponseBody
 	public int idCheck(String userid) {

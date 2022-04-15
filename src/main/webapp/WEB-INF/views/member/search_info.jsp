@@ -11,7 +11,7 @@
 					<div class="search-logo"><h4>아이디찾기</h4></div>
 					<div>
 						<input type="button" class="btn-searchinfo searchinfo_searchtel" value="휴대폰 번호로 아이디찾기" />
-						<input type="text" class="searchinfo_1 searchinfo_tel" id="searchinfo_tel" name="tel" placeholder="(-)를 제외한 휴대폰번호를 입력해주세요" />
+						<input type="text" class="searchinfo_1 searchinfo_tel" id="searchinfo_tel" name="tel" placeholder="(-)를 사용하여 휴대폰번호를 입력해주세요" />
 					</div>
 					<div>
 						<input type="button" class="btn-searchinfo searchinfo_searchemail" value="이메일로 아이디찾기" />

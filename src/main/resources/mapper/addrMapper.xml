@@ -4,12 +4,13 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.semiproject.soboon.dao.AddressDAO">
 	<select id="getLargeAddr" resultType="String">
-		select distinct large from district;
+		select distinct large from district order by large asc
 	</select>
 	<select id="getMediumAddr" resultType="String">
-		select distinct medium from district where large=#{param1}
+		select distinct medium from district where large=#{param1} order by medium asc
 	</select>
 	<select id="getSmallAddr" resultType="String">
 		select distinct small from district where large=#{param1} and medium=#{param2}
+		order by small asc
 	</select>
 </mapper>
