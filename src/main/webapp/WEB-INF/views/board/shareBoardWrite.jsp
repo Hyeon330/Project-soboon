@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <link rel="stylesheet" href="/css/shareBoardWrite.css" type="text/css"/>
 <script src="/js/shareBoardWrite.js"></script>
+<script src="/js/boardaddrDialog.js"></script>
 <div class="container">
 	<br/>
 	<form class="form-group" method="post" action="/board/shareBoardWriteOk?category=share" id="shareReqForm" enctype="multipart/form-data">
@@ -14,9 +15,9 @@
 				<tr>
 					<td>
 						<div>
-							<select class="largeAddrSelect" name="large" default="${addrLarge}"></select>
-							<select class="mediumAddrSelect" name="medium" default="${addrMedium}"></select>
-							<select class="smallAddrSelect" name="small" default="${addrSmall}"></select>
+							<select id="boardlargeAddrSelect" name="large" default="${addrLarge}"></select>
+							<select id="boardmediumAddrSelect" name="medium" default="${addrMedium}"></select>
+							<select id="boardsmallAddrSelect" name="small" default="${addrSmall}"></select>
 						</div>
 					</td>
 				</tr>
