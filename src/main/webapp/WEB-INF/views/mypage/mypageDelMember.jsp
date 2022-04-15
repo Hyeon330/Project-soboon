@@ -11,7 +11,7 @@ $(function() {
 	      $('.div1').hide();
 	    }
 	  }); 
-	  
+	  // 삭제 버튼 클릭시
 	  $('#delFrm').submit(function(){
 		  var reason = $('#selectBoxForDel>option:selected').val();
 		  if(reason === '') {
@@ -31,7 +31,10 @@ $(function() {
 			  $('#pwdForCheck').focus();
 			  return false;
 		  } 
-		  return true;
+		  if(confirm('회원삭제를 하시겠습니까?')) {
+			  return true;
+		  }
+		  return false;
 	  });
 
 });
