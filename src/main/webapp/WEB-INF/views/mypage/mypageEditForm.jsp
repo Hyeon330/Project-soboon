@@ -78,14 +78,7 @@
 							<input type="email" id="email" name="email" value="${VO.email }" />
 						</div>
 					</li>
-					<li>
-						<div style="width: 20%">주소</div>
-						<div style="width: 5%;"></div>
-						<div style="width: 75%">
-							<!-- <input type="text" id="address" name="address"
-								value="${VO.address }" /> -->
-						</div>
-					</li>
+
 				</ul>
 			</div>
 			<div style="width: 100%; height: 90px;">

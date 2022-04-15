@@ -5,7 +5,6 @@
 	width:1200px;
 	min-height:717px;
 	margin:0px auto;
-	background-color:rgb(213, 218, 212);
 	height: 500px;
 	margin-top: 50px;
 }
@@ -38,7 +37,7 @@
 #mypageContainer {
 	height: 500px;
 	margin-top: 50px;
-	background-color: RGB(241, 232, 223);
+
 }
 
 #mypageContainer>div {
@@ -301,7 +300,10 @@
 	text-overflow: ellipsis; 
 	white-space: nowrap;
 }
-#intTab1>ul>li:nth-of-(3){
-	width: 17.5%; background-color: blue;
+#inTab1>ul>li:nth-of-type(3){
+	background-color: orange;
+}
+.pagingwrap {
+	display:flex; justify-content: center;
 }
 

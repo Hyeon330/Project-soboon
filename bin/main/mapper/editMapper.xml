@@ -10,24 +10,34 @@
 		select count(nickname) from member where nickname=#{param1}
 	</select>
 	<update id="editUpdate">
+<<<<<<< HEAD
 		update member set userpwd = #{userpwd}, nickname = #{nickname}, username = #{username}, email = #{email}, tel = #{tel}
+=======
+		update member set userpwd = #{userpwd}, nickname = #{nickname}, username = #{username}, email = #{email},tel = #{tel}
+>>>>>>> main
 		where userid = #{userid}
 	</update> 
 	<delete id="delMember">
 		delete from member where userid=#{param1}
 	</delete>
 	<select id="mypostList" resultType="BoardVO">
-	select no, title, content, date_format(createdate, '%Y-%m-%d') createdate, views
-	from board
-	where  userid = #{param1}
-	order by no desc
-	limit ${param2.onePageRecord} offset ${param2.offsetIndex}
+		select no, title, content, date_format(createdate, '%Y-%m-%d') createdate, views
+		from board
+		where  userid = #{param1}
+		order by no desc
+		limit ${param2.recordPerPage} offset ${param2.offsetIndex}
 	</select>
 	<select id="mypostCount" resultType="int">
 		select count(no) from board where userid = #{param1}
 	</select>
 	<select id="myreplyCount" resultType="int">
 		select count(replyno) from reply where userid = #{param1}
+	</select>
+	<select id="mypostList2" resultType="BoardVO">
+	select no, title, content, date_format(createdate, '%Y-%m-%d') createdate, views
+	from board
+	where  userid = #{param1}
+	order by no desc
 	</select>
 </mapper>
 <!-- 

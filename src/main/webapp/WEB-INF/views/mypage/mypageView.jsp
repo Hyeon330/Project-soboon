@@ -37,7 +37,7 @@
 		
 		//--------------------내가 쓴 게시글 -----------------------
 		// 체크박스 전체선택 ---> 하위 체크박스 체크
-		$("#cbx_chk_mypageAll_mypage").click(function() {
+		$(document).on('click', "#cbx_chk_mypageAll_mypage", function() {
 			if ($("#cbx_chk_mypageAll_mypage").is(":checked"))
 				$("input[name=chk_mypage]").prop("checked", true);
 			else
@@ -53,7 +53,25 @@
 			else
 				$("#cbx_chk_mypageAll_mypage").prop("checked", true);
 		});
-	});//$(documnt).onload
+		
+		/*$('#multiDel').click(function(){
+			let cnt = 0;
+			$(".chk").each(function(i,obj){
+				if(obj.checked){
+					cnt++;//checkbox가 체크상태일 때...
+				}
+			});
+			if(cnt<=0){
+				alert("목록을 선택후 삭제하세요..");
+				return false;
+			}
+			$('#listFrm').submit();
+		});*/
+		// 선택한 체크박스를 삭제하기 ajax버전
+		$
+	});
+	
+	//$(documnt).onload
 	// ajax로 보내기
 	 function ajaxSend_mp(idx) {
 		let url = "";
@@ -122,10 +140,10 @@
 		str += "<li>작성일</li>";
 		str += "</ul>";
 		//본문
-		$.each(dataArr, function(i, data){
+		$.each(dataArr.plist, function(i, data){
 			//db에 가져올 데이터들
 			str += "<ul>";
-			str += "<li><input type='checkbox' name='chk_mypage' /></li>";
+			str += "<li><input type='checkbox' name='chk_mypage' value='"+data.no+"'/></li>";
 			str += "<li>"+data.no+"</li>";
 			str += "<li>"+data.title+"</li>";
 			str += "<li>"+data.content+"</li>";
@@ -133,8 +151,41 @@
 			str += "<li>"+data.createdate+"</li>";
 			str += "</ul>";
 		});
+		let onePagePerRecord=10; // 한 페이지당 10명 기준
+		let totalCount=Number(dataArr.cnt); //총인원수 integer로 가져옴
+		let pageCount=0;
+		//페이지수 구하기 pageCount ==> 연산하는 로직 보면서 구하기
+		if(totalCount%onePagePerRecord==0) {
+			pageCount = totalCount/onePageRecord;
+		}else {
+			pageCount = totalCount/onePagePerRecord+1;
+		}
+		pageCount = Math.floor(pageCount);
+		console.log(pageCount);
+		//페이지 네비게이션 문자열 만들기
+		let pageStr = "<br/>";
+		pageStr+='<ul class="pagination" id="paging-mp">';
+		pageStr+='<li class="page-item disabled"><a class="page-link" id="prevBtn">Prev</a></li>';
+		for(var p=1; p <= pageCount; p++){
+			pageStr += '<li class="page-item"><a class="page-link"href="javascript:void(0);" onclick="ml('+p+')">' + p + '</a></li>'
+		}
+		pageStr += '<li class="page-item"><a class="page-link" id="nextBtn">Next</a></li>'
+		pageStr +='</ul>';
+		console.log(pageStr);
 		$('#inTab1').html(str);
-	}//showPost
+		$('.pagingwrap').html(pageStr);	
+	}//showPost in sucess in ajax
+	function ml(p) {
+		console.log(p);
+		let url = "/mypage/mypost?currentPage"+p+"&recordPerPage=10"; 
+		$.ajax({
+			url: url,
+			dateType:'json',
+			success:function(dataArr){
+				showMyPost(dataArr);
+			}
+		});
+	}
 </script>
 
 <div id="mypageContainer">
@@ -199,7 +250,11 @@
 					<h1>tab1</h1>
 					<!-- 페이징 목록 -->
 					<div id="inTab1"></div>
-				</div>
+					<div class="pagingwrap">
+						
+					</div>
+					<div><button id="delPost">삭제하기</button></div>
+				</div><!-- innerTab -->
 			</div>
 			<!-- tab1 -->
 			<div id="tab2" class="tab-pane fade">

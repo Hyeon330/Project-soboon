@@ -27,21 +27,16 @@
 	height: 40px;
 	line-height: 40px;
 	border-bottom: 1px solid white;
-	width: 8%;
+	width: 10.2%;
 	text-overflow: ellipsis;
-	overflow: hidden;
-}
-#clientManage>li:nth-child(8n+6){
-	width:15%;
-}
-#clientManage>li:nth-child(8n+7) {
-	width:20%;
-} 
-#clientManage>li:nth-child(8n) { 
-	width: 25%;
 	white-space: nowrap; /*줄안바꿈*/
 	overflow: hidden; /*넘친 내용 숨기기*/
-	text-overflow: ellipsis; /*넘친 내용 있으면 ... 표시*/
+}
+#clientManage>li:nth-child(7n+6){
+	width:23%;
+}
+#clientManage>li:nth-child(7n) { 
+	width: 25%;
 }
 
 #prevBtn, #nextBtn{
