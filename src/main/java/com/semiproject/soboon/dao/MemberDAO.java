@@ -22,4 +22,5 @@ public interface MemberDAO {
 	public int memberDelete(String userid);
 	public int memberMultiDelte(MemberVO vo);
 	public int getMembercnt();
+	public void updateMyAddr(MemberVO vo);
 }

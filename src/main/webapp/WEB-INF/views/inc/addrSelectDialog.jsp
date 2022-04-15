@@ -4,61 +4,92 @@
 		$('#addrSelectDialogOpen').click(function(){
 			$('#addrSelectDialog').dialog('open');
 		});
-		$('#addrSelectDialog').dialog({
-			title: "지역선택",
-			autoOpen: false,
-			modal: true,
-			buttons: {
-				등록: function() {
-					alert('등록');
-				},
-				취소: function() {
-					$("#addrSelectDialog").dialog('close');
-				}
-			}
-		});
+		
 		$.ajax({
 			url: '/addr/getLargeAddr',
 			type: 'get',
+			async: false,
 			success: function(result) {
-				$('#largeAddrSelect').html('<option value="">선택안함</option>');
 				result.forEach(largeData => {
 					$('#largeAddrSelect').append('<option value="'+largeData+'">'+largeData+'</option>');
-				})
+				});
 			}
 		});
-		$('#largeAddrSelect').on('change', function() {
-			document.getElementById('mediumAddrSelect').options.length = 1;
-			document.getElementById('smallAddrSelect').options.length = 1;
+		
+		const setMedium = (large) => {
+			document.getElementById('mediumAddrSelect').options.length = 0;
+			document.getElementById('smallAddrSelect').options.length = 0;
 			if($('#largeAddrSelect').val()!=''){
 				$.ajax({
 					url: '/addr/getMediumAddr',
-					data: 'large='+$(this).val(),
+					data: 'large='+large,
 					type: 'get',
+					async: false,
 					success: function(result) {
-						console.log(result);
 						result.forEach(d => {
 							$('#mediumAddrSelect').append('<option value="'+d+'">'+d+'</option>');
 						})
 					}
 				});
 			}
-		});
-		$('#mediumAddrSelect').on('change', function() {
-			document.getElementById('smallAddrSelect').options.length = 1;
+		}
+		
+		const setSmall = (large, medium) => {
+			document.getElementById('smallAddrSelect').options.length = 0;
 			if($('#mediumAddrSelect').val()!=''){
 				$.ajax({
 					url: '/addr/getSmallAddr',
-					data: 'large='+$('#largeAddrSelect').val()+'&medium='+$(this).val(),
+					data: 'large='+large+'&medium='+medium,
 					type: 'get',
+					async: false,
 					success: function(result) {
 						result.forEach(smallData => {
 							$('#smallAddrSelect').append('<option value="'+smallData+'">'+smallData+'</option>');
-						})
+						});
 					}
 				});
 			}
+		}
+		
+		$('#largeAddrSelect').on('change', function() {
+			setMedium($('#largeAddrSelect').val());
+			setSmall($('#largeAddrSelect').val(), $('#mediumAddrSelect').val());
 		});
+		$('#mediumAddrSelect').on('change', function() {
+			setSmall($('#largeAddrSelect').val(), $('#mediumAddrSelect').val());
+		});
+		
+		const myAddrReset = () => {
+			$('#largeAddrSelect').val('${addrLarge}').prop('selected');
+			setMedium('${addrLarge}');
+			$('#mediumAddrSelect').val('${addrMedium}').prop('selected');
+			setSmall('${addrLarge}', '${addrMedium}');
+			$('#smallAddrSelect').val('${addrSmall}').prop('selected');
+		}
+		
+		$('#addrSelectDialog').dialog({
+			title: "지역선택",
+			autoOpen: false,
+			modal: true,
+			buttons: {
+				등록: function() {
+					let data = $('#addrSelectBox').serialize();
+					$.ajax({
+						url: '/member/updateMyAddr',
+						data: data,
+						type: 'post'
+					});
+					$("#addrSelectDialog").dialog('close');
+				},
+				초기화 : myAddrReset,
+				취소: function() {
+					$("#addrSelectDialog").dialog('close');
+					myAddrReset();
+				}
+			}
+		});
+		
+		myAddrReset();
 	});
 </script>
 <style>
@@ -74,15 +105,10 @@
 	}
 </style>
 <div id="addrSelectDialog">
-	<div id="addrSelectBox">
-		<select id="largeAddrSelect" name="large">
-			<option value="">선택 없음</option>
-		</select>
-		<select id="mediumAddrSelect" name="medium">
-			<option value="">선택 없음</option>
-		</select>
-		<select id="smallAddrSelect">
-			<option value="">선택 없음</option>
-		</select>
-	</div>
+	${addrLarge}
+	<form id="addrSelectBox">
+		<select id="largeAddrSelect" name="large"></select>
+		<select id="mediumAddrSelect" name="medium"></select>
+		<select id="smallAddrSelect" name="small"></select>
+	</form>
 </div>

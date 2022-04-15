@@ -2,7 +2,6 @@ package com.semiproject.soboon.service;
 
 import java.util.List;
 
-
 import com.semiproject.soboon.vo.BoardVO;
 import com.semiproject.soboon.vo.PagingVO;
 import com.semiproject.soboon.vo.PickVO;
