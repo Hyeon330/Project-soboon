@@ -1,25 +1,3 @@
-$(function(){
-	$("#checkAll").click(function() {
-		$("input[name=check]").prop("checked", $("#checkAll").prop("checked"));
-	});
-	$("input[name=check]").click(function(){
-		let total = $("input[name=check]").length;
-		let checked = $("input[name=check]:checked").length;
-		
-		if(total != checked) $("#checkAll").prop("checked", false);
-		else $("#checkAll").prop("checked", true);
-	});
-	
-	// 선택한 레코드 삭제
-	$("#delMember").click(function() {
-		if($("input[name=noList]:checked").length==0) 
-			return false;
-		if(!confirm("선택한 레코드를 삭제하시겠습니까?")) 
-			return false;
-		$("#checkFrm").submit();
-	});
-});
-
 $(function() {
 		ajaxsend('tab1')
 			$('ul#tab li').click(function() {
@@ -68,7 +46,7 @@ $(function() {
 		$("#membercnt").html("현재인원 :" +dataArr.cnt +"명")
 		/* alert('총회원수: '+dataArr.cnt) */
 		//헤더 
-		var str ="<br/><ul id='clientManage'><li><input type='checkbox' id='checkALL'></li>";
+		var str ="<br/><ul id='clientManage'>";
 		str +="<li>아이디</li>";
 		str +="<li>경고회수</li>";
 		str +="<li>이름</li>";
@@ -79,14 +57,13 @@ $(function() {
 		
 		$.each(dataArr.userList, function(i, data){
 			//DB에서 가져올 데이터들
-			str+="<li><input type='checkbox'></li>";
 			str+="<li>"+data.userid+"</li>";
 			str+="<li>"+data.warn+ "회"+"</li>";
 			str+="<li>"+data.username+"</li>";
 			str+="<li>"+data.nickname+"</li>";
 			str+="<li>"+data.tel+"</li>";
 			str+="<li>"+data.email+"</li>";
-			str+="<li>"+data.address+"</li>";
+			str+="<li>"+data.large +" "+data.medium +" "+ data.small+"</li>";
 			
 		})
 		str+="</ul>";
