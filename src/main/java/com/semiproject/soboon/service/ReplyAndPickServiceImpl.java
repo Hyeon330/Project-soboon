@@ -6,27 +6,27 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
-import com.semiproject.soboon.dao.ReplyDAO;
-import com.semiproject.soboon.vo.ReplyVO;
+import com.semiproject.soboon.dao.ReplyAndPickDAO;
+import com.semiproject.soboon.vo.ReplyAndPickVO;
 
 @Service
-public class ReplyServiceImpl implements ReplyService {
+public class ReplyAndPickServiceImpl implements ReplyAndPickService {
 
 	@Inject
-	ReplyDAO dao;
+	ReplyAndPickDAO dao;
 	
 	@Override
-	public int insertReply(ReplyVO vo) {
+	public int insertReply(ReplyAndPickVO vo) {
 		return dao.insertReply(vo);
 	}
 
 	@Override
-	public List<ReplyVO> selectReplyList(int no) {
+	public List<ReplyAndPickVO> selectReplyList(int no) {
 		return dao.selectReplyList(no);
 	}
 
 	@Override
-	public int updateReply(ReplyVO vo) {
+	public int updateReply(ReplyAndPickVO vo) {
 		return dao.updateReply(vo);
 	}
 

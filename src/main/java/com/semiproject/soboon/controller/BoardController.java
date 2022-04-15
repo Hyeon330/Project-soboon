@@ -33,7 +33,7 @@ public class BoardController {
 	ResponseEntity<String> entity = null;
 	
 	@GetMapping("shareBoardList")
-	public ModelAndView shareAndReqListForm(PagingVO pvo, HttpSession session, BoardVO vo) {
+	public ModelAndView shareAndReqListForm(PagingVO pvo, BoardVO vo) {
 		// 게시판 별 총 레코드 수
 		pvo.setTotalRecord(service.selectTotalRecord(pvo));
 		// 게시판 글 DB연결해서 보이기 
@@ -70,10 +70,10 @@ public class BoardController {
 			e.printStackTrace();
 			// 데이터가 DB에 정상적으로 들어가지 않았다면 이미 업로드한 파일은 upload 폴더에 들어갔기 때문에 삭제해야 한다.
 			// 삭제할 파일명은 vo안에 있고, fileDelete 메서드를 이용해서 삭제
-			RelateUploadFile.fileDelete(path, vo.getThumbnailImg());
 			RelateUploadFile.fileDelete(path, vo.getImg1());
 			RelateUploadFile.fileDelete(path, vo.getImg2());
 			RelateUploadFile.fileDelete(path, vo.getImg3());
+			RelateUploadFile.fileDelete(path, vo.getImg4());
 		}
 		return mav;
 	}
@@ -93,13 +93,13 @@ public class BoardController {
 		// DB에 있는 첨부파일 수 구하기(새로 변경한 파일이 생기면 --해줘야 하기 때문)
 		int totalFile = 0;
 			if(bvo!=null) {
-			if(bvo.getThumbnailImg()!=null || bvo.getThumbnailImg()!=""){
+			if(bvo.getImg1()!=null || bvo.getImg1()!=""){
 				totalFile++;
-				if(bvo.getImg1()!=null || bvo.getImg1()!="") {
+				if(bvo.getImg2()!=null || bvo.getImg2()!="") {
 					totalFile++;
-					if(bvo.getImg2()!=null || bvo.getImg2()!="") {
+					if(bvo.getImg3()!=null || bvo.getImg3()!="") {
 						totalFile++;
-						if(bvo.getImg3()!=null || bvo.getImg3()!="") {
+						if(bvo.getImg4()!=null || bvo.getImg4()!="") {
 							totalFile++;
 						}
 					}
@@ -131,15 +131,15 @@ public class BoardController {
 			
 			// DB 리스트에 기존 파일명 넣기
 			if(fileVO!=null) {
-				if(fileVO.getThumbnailImg()!=null || fileVO.getThumbnailImg()!="") {
+				if(fileVO.getImg1()!=null || fileVO.getImg1()!="") {
 					fileVO = service.getFileName(vo.getNo());
-					fileList.add(fileVO.getThumbnailImg());
-				}else if(fileVO.getImg1()!=null || fileVO.getImg1()!="") {
 					fileList.add(fileVO.getImg1());
 				}else if(fileVO.getImg2()!=null || fileVO.getImg2()!="") {
 					fileList.add(fileVO.getImg2());
 				}else if(fileVO.getImg3()!=null || fileVO.getImg3()!="") {
 					fileList.add(fileVO.getImg3());
+				}else if(fileVO.getImg4()!=null || fileVO.getImg4()!="") {
+					fileList.add(fileVO.getImg4());
 				}
 			}
 			// 삭제된 파일이 있으면(사용자가 x버튼을 누르면) List에서 deleteFile[]과 같은 파일명을 지운다.
@@ -195,10 +195,10 @@ public class BoardController {
 				
 				if(fileVO!=null) {
 					// 삭제 성공하면 파일도 삭제
-					RelateUploadFile.fileDelete(path, fileVO.getThumbnailImg());
 					RelateUploadFile.fileDelete(path, fileVO.getImg1());
 					RelateUploadFile.fileDelete(path, fileVO.getImg2());
 					RelateUploadFile.fileDelete(path, fileVO.getImg3());
+					RelateUploadFile.fileDelete(path, fileVO.getImg4());
 				}
 				
 				String msg ="<script>alert('글이 삭제되었습니다.');";

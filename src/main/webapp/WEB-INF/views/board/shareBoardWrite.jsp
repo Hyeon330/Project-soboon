@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <link rel="stylesheet" href="/css/shareBoardWrite.css" type="text/css"/>
-<script src="//cdn.ckeditor.com/4.17.2/full/ckeditor.js"></script>
 <script src="/js/shareBoardWrite.js"></script>
 <div class="container">
 	<br/>
@@ -26,10 +24,10 @@
 		<div id="fileList">
 			<button type="button" class="btn" id="uploadBtn">첨부파일 선택</button>
 			<div id="innerFiles">
-     			<input type="file" name="fileImg" id="thumbnailImg"/>
      			<input type="file" name="fileImg" id="img1"/>
      			<input type="file" name="fileImg" id="img2"/>
      			<input type="file" name="fileImg" id="img3"/>
+     			<input type="file" name="fileImg" id="img4"/>
   			</div>
   		</div>
   		<div class="col-12 text-center">
