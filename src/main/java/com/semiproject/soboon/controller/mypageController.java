@@ -1,7 +1,9 @@
 package com.semiproject.soboon.controller;
 
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
@@ -17,11 +19,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.semiproject.soboon.RelateUploadFile;
 import com.semiproject.soboon.service.EditService;
 import com.semiproject.soboon.vo.BoardVO;
 import com.semiproject.soboon.vo.MemberVO;
-import com.semiproject.soboon.vo.MypagePagingVO;
+import com.semiproject.soboon.vo.PagingVO;
 
 @RequestMapping("/mypage/")
 @Controller
@@ -119,11 +120,21 @@ public class mypageController {
 	}
 	@GetMapping("mypost")
 	@ResponseBody
-	public List<BoardVO> mypost(MypagePagingVO pVO, HttpSession session) {
+	public Map<String, Object> mypost(PagingVO pVO, HttpSession session) {
 		String userid = (String) session.getAttribute("logId"); 
-		System.out.println(userid);
+		pVO.setRecordPerPage(10);// 출력 수 jsp랑 동일하게 설정한다.
+		pVO.calc(); // 페이지 연산처리
+		Map<String, Object> map = new HashMap<String, Object>();
+		// 현재 로그인된 아이디가 쓴 게시글 수 가져오기
+		int cnt = service.mypostCount(userid);
+		// 페이지에 해당하는 로그인된 회원이 쓴 게시글 목록
 		List<BoardVO> list = service.mypostList(userid, pVO);
-		return list;
+		System.out.println(list.size());
+		System.out.println(list.toString());
+		map.put("cnt", cnt);
+		map.put("plist", list);
+		System.out.println(map.toString());
+		return map;
 		
 	}
 }//controller
