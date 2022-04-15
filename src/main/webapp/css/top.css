@@ -99,15 +99,15 @@ nav>hr{
 	letter-spacing:25px;
 	transition: 0.5s;
 }
-.topMenu>div>div>a{
-	text-align:center;
-	color:white;
-}
 .topMenu>div>div:hover{
 	background:rgb(213, 218, 212);
 	color:rgb(72, 97, 86) !important;
 	border-top-left-radius:20px;
 	border-top-right-radius:20px;
+}
+.topMenu>div>div>a{
+	text-align:center;
+	color:white;
 }
 .bottom{
    width:100%;
