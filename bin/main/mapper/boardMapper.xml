@@ -16,9 +16,6 @@
 	<select id="selectTotalRecord" resultType="int">
 		select count(no) count from board
 	</select>
-	<select id="selectCategory" resultType="BoardVO">
-		select category from board where category=#{param1} limit 1
-	</select>
 	<select id="selectView" resultType="BoardVO">
 		select b.no, m.nickname, m.userid, b.category, b.title, b.views, date_format(b.createdate, "%m/%d %H:%i")createdate,
 		b.thumbnailImg, b.img1, b.img2, b.img3, b.img4, b.price, b.content 
