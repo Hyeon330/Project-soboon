@@ -104,4 +104,9 @@ public class MemberServiceImpl implements MemberService{
 		result = dao.searchid_email(username, email);
 		return result;
 	}
+
+	@Override
+	public int updateMyAddr(MemberVO vo) {
+		return dao.updateMyAddr(vo);
+	}
 }

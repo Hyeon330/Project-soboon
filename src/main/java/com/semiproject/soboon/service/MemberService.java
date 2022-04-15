@@ -17,5 +17,6 @@ public interface MemberService {
 	public int totalRecord(PagingVO pVO);
 	public List<MemberVO> memberList(PagingVO pVO);
 	public int getMembercnt();
+	public int updateMyAddr(MemberVO vo);
 }
 
