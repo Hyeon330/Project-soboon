@@ -45,13 +45,15 @@ $(function() {
 	<%@ include file="/WEB-INF/views/inc/mypageSideBar.jsp" %>
 
 <!--  view -->
-	<div id="delMemberView" style="width:65%; height:100%;"class="viewPage-mypage" >
-		<h1>회원 탈퇴</h1>
+	<div id="delMemberView" style="width:75%; height:100%;"class="viewPage-mypage" >
+		<h3>회원 탈퇴</h3>
 		<hr/>
 		<form id="delFrm" method="post" action="/mypage/delMemberOk" class="formFrm-YES">
 			<div style="width:100%; height: 80%;">
 				<ul>
-					<li><span>회원 탈퇴 신청 전, 반드시 확인해주세요.</span></li>
+					<br/>
+					<li><span>※ 회원 탈퇴 신청 전, 반드시 확인해주세요.</span></li>
+					<br/>
 					<li>
 						<select name="selectBoxForDel" id="selectBoxForDel">
 							<option value="" selected disabled>탈퇴사유를 선택해주시기 바랍니다.</option>
@@ -67,14 +69,16 @@ $(function() {
 					<li class="div1"><input type="text" id="directReason" placeholder="탈퇴사유 직업입력(기타)"/></li>
 				</ul>
 				<ul>
-					<li><span>마지막으로, 회원탈퇴를 위한 고객님의 비밀번호를 입력해주세요.</span></li>
+					<br/>
+					<li><span>※ 마지막으로, 회원탈퇴를 위한 고객님의 비밀번호를 입력해주세요.</span></li>
+					<br/>
 					<li>
 						<input type="password" id="pwdForCheck" name="pwdForCheck" placeholder="PASSWORD"/>	
 					</li>
 					
 				</ul>
 			</div>
-			<div style="width:100%; height: 90px;"><input type="submit" class="btn btn-success btn-last" value="탈퇴" id="btn_delMember"/></div>
+			<div style="width:100%; height: 90px;"><input type="submit" class="btn" value="회원탈퇴" id="btn_delMember"/></div>
 		</form>
 	</div>
 </div>

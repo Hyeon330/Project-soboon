@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.semiproject.soboon.dao.HomeDAO;
+import com.semiproject.soboon.vo.BoardVO;
 import com.semiproject.soboon.vo.HomeVO;
 
 @Service
@@ -15,7 +16,7 @@ public class HomeServiceImpl implements HomeService {
 	HomeDAO dao;
 	
 	@Override
-	public List<HomeVO> selectList() {
-		return dao.selectList();
+	public List<HomeVO> selectList(BoardVO vo) {
+		return dao.selectList(vo);
 	}
 }
