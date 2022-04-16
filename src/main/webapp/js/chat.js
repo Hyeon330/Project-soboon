@@ -1,3 +1,4 @@
+
 $(() => {
 	// 채팅 리스트 나타내고 없어지는 애니메이션
 	$('#chatBtn').click(function() {
@@ -208,14 +209,13 @@ $(() => {
 	// 보내기 버튼 클릭시 sendMessage함수 실행
 	$('.msg-send-btn').click(() => {
 		message = $('.msg-textarea').val().replace(/\n/g, '<br>');
-		if(message != '<br>' && message!=''){
+		if(!message.startsWith('<br>') && message!=''){
 			sendMessage(message);
 		}
 		$('.msg-textarea').val('');
 	});
 	$('.msg-textarea').keydown((e)=>{
-		message = $('.msg-textarea').val().replace(/\n/g, '<br>');
-		if(message!='' && e.keyCode === 13 && !e.shiftKey){
+		if(e.keyCode === 13 && !e.shiftKey){
 			$('.msg-send-btn').click();
 		}
 	});
@@ -226,18 +226,28 @@ $(() => {
 	});
 	
 	// 소켓 서버에서 메시지 데이터 받기
-	socket.on('receive-msg', (data) => {
+	var audio = new Audio('/notice/iponealert.mp3');
+	audio.volume = 0.3;
+	socket.on('receive-msg', function(data){
 		if($('#msgPopup').css('display')=='block' && data.receiver==myNickname && data.sender==$('#oppNickName').text()){
 			$.ajax({
 				url: '/chat/updateChatRead',
 				type: 'post',
 				async: false
 			});
+		}else if($('#msgPopup').css('display')=='none' && data.receiver==myNickname && !($('#chatPopup').css('height').substring(0,$('#chatPopup').css('height').length-2)>0)) {
+			audio.pause();
+			audio.currentTime = 0.5;
+			audio.play();
+			setTimeout(function() {
+				audio.pause();
+			},1500);
 		}
 		chatListsReload();
 		openMsgPopupReload();
 		setMessage(data);
     });
+    
     
     // 보드 뷰에서 '채팅 보내기' 버튼 클릭시
     $('#joinChat').click(() => {

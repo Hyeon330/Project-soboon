@@ -23,7 +23,6 @@
 <script src="https://kit.fontawesome.com/76aefe2b67.js" crossorigin="anonymous"></script>
 <!-- Board checkeditors cdn -->
 <script src="//cdn.ckeditor.com/4.17.2/full/ckeditor.js"></script>
-<script src="/js/addrDialog.js"></script>
 <script>
 	
 </script>
