@@ -88,13 +88,13 @@ nav>hr{
 .sign{
 	background-color:rgb(213, 218, 212);
 	font-weight:500px;
-	color:rgb(72, 97, 86);
+ 	color:rgb(72, 97, 86) !important; 
 	font-weight:700;
 	transition:0.2s;
 }
 .sign:hover{
 	background-color:rgb(142, 158, 139);
-	color:white;
+	color:white !important;
 }
 /*==================Top 2행==========================*/
 .topMenu{

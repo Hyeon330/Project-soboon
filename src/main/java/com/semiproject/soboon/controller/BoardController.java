@@ -34,8 +34,13 @@ public class BoardController {
 	ResponseEntity<String> entity = null;
 	
 	@GetMapping("shareBoardList")
-	public ModelAndView shareAndReqListForm(PagingVO pvo, BoardVO vo, HttpSession session) {
-		vo.setCategory("share");
+	public ModelAndView shareAndReqListForm(PagingVO pvo, BoardVO vo, HttpSession session, String category, String title) {
+		if(category!=null) {
+			vo.setCategory(category);
+		}else {
+			vo.setCategory("share");
+		}
+		vo.setTitle(title);
 		vo.setSmall((String)session.getAttribute("addrSmall"));
 		// 게시판 별 총 레코드 수
 		pvo.setTotalRecord(service.selectTotalRecord(pvo));

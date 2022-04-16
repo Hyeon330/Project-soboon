@@ -204,12 +204,12 @@ $(document).ready(function() {
 </script>
 
 
-<div class="container" id="mypageContainer">
+<div id="mypageContainer">
 	<!--   사이드 메뉴 (include) -->
 	<%@ include file="/WEB-INF/views/inc/mypageSideBar.jsp"%>
 
 	<!--  view -->
-	<div style="width: 65%; height: 100%;" class="viewPage-mypage">
+	<div style="width: 75%; height: 100%;" class="viewPage-mypage">
 		<h1>내가 쓴 글보기</h1>
 		<hr />
 		<div class="topMemu-mypageView" style="width: 100%; height: 150px">

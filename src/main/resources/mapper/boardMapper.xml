@@ -9,6 +9,9 @@
 	</insert>
 	<select id="selectList" resultType="BoardVO">
 		select * from board where category = #{param2.category} and small = #{param2.small} 
+		<if test="#{param2.title}!=null">
+			and title like '%${param2.title}%'
+		</if>
 		order by no desc limit ${param1.recordPerPage} offset ${param1.offsetIndex}
 	</select>
 	<select id="selectTotalRecord" resultType="int">
