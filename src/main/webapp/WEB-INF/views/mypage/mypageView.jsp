@@ -174,6 +174,7 @@
 		$(document).on('click', "#allCheck", function() {
 			$(".chk").prop("checked", $("#allCheck").prop("checked"));
 		});
+	
 	});
 </script>
 

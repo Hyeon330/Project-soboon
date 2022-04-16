@@ -1,7 +1,6 @@
 package com.semiproject.soboon.service;
 
 import java.util.List;
-import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -9,9 +8,8 @@ import org.springframework.stereotype.Service;
 
 import com.semiproject.soboon.dao.BoardDAO;
 import com.semiproject.soboon.vo.BoardVO;
-import com.semiproject.soboon.vo.JoinVO;
-import com.semiproject.soboon.vo.MemberVO;
 import com.semiproject.soboon.vo.PagingVO;
+import com.semiproject.soboon.vo.PickVO;
 
 @Service
 public class BoardServiceImpl implements BoardService {
@@ -25,18 +23,13 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public List<BoardVO> selectList(PagingVO pvo) {
-		return dao.selectList(pvo);
+	public List<BoardVO> selectList(PagingVO pvo, BoardVO vo) {
+		return dao.selectList(pvo, vo);
 	}
 
 	@Override
 	public int selectTotalRecord(PagingVO pvo) {
 		return dao.selectTotalRecord(pvo);
-	}
-	
-	@Override
-	public BoardVO selectCategory(String category) {
-		return dao.selectCategory(category);
 	}
 
 	@Override
@@ -69,6 +62,12 @@ public class BoardServiceImpl implements BoardService {
 		return dao.deleteView(no, userid);
 	}
 
+	@Override
+	public int insertPick(PickVO vo) {
+		return dao.insertPick(vo);
+	}
+
+	
 
 
 

@@ -18,7 +18,15 @@ public class MemberVO {
 	private String email;
 	private int warn;
 	private int verify;
-	private String socialType;
+	
+	@Override
+	public String toString() {
+		return "MemberVO [getUserid()=" + getUserid() + ", getUserpwd()=" + getUserpwd() + ", getUsername()="
+				+ getUsername() + ", getTel()=" + getTel() + ", getTel1()=" + getTel1() + ", getTel2()=" + getTel2()
+				+ ", getTel3()=" + getTel3() + ", getNickname()=" + getNickname() + ", getEmail()=" + getEmail()
+				+ ", getWarn()=" + getWarn() + ", getVerify()=" + getVerify() + ", getLarge()=" + getLarge()
+				+ ", getMedium()=" + getMedium() + ", getSmall()=" + getSmall() + "]";
+	}
 	
 	public String getUserid() {
 		return userid;
@@ -90,15 +98,6 @@ public class MemberVO {
 	}
 	public void setVerify(int verify) {
 		this.verify = verify;
-	}
-	public String getSocialType() {
-		return socialType;
-	}
-	public void setSocialType(String socialType) {
-		this.socialType = socialType;
-	}
-	public String toString() {
-		return "username="+username;
 	}
 	public String getLarge() {
 		return large;

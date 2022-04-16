@@ -15,11 +15,17 @@ public class ServerConfigure implements WebMvcConfigurer {
 	private static final List<String> URL_PATERRNS = Arrays.asList(
 			"/board/shareBoardWrite","/board/shareBoardWriteOK",
 			"/board/shareBoardEdit","/board/shareBoardEditOk",
-			"/board/shareBoardDel"
+			"/board/shareBoardDel","/admin", "/pick/insertPick",
+			"/pick/deletePick"
+			
+			);
+	private static final List<String> URL_PATERRNS_ADMIN = Arrays.asList(			
+			"/admin/**"
 			);
 	
 	public void addInterceptors(InterceptorRegistry registry) {
 		registry.addInterceptor(new LoginInterceptor()).addPathPatterns(URL_PATERRNS);
+		registry.addInterceptor(new AdminInterceptor()).addPathPatterns(URL_PATERRNS_ADMIN);
 	}
 	
 	@Bean

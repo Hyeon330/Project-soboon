@@ -54,10 +54,8 @@ public class MemberController {
 	
 	//로그인폼가기
 	@GetMapping("login")
-	public ModelAndView loginForm() {
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("member/login");
-		return mav;
+	public String loginForm() {
+		return "member/login";
 	}
 	
 	//로그인
@@ -73,8 +71,9 @@ public class MemberController {
 			session.setAttribute("logId", vo2.getUserid());
 			session.setAttribute("logName", vo2.getUsername());
 			session.setAttribute("nickName", vo2.getNickname());
-			session.setAttribute("logStatus", "Y");
 			session.setAttribute("logAdmin", vo2.getVerify());
+			session.setAttribute("logStatus", "Y");
+			setSessionAddr(vo2, session);
 			String msg = "<script>location.href='/';</script>";
 			
 			entity = new ResponseEntity<String>(msg, headers, HttpStatus.OK);
@@ -189,28 +188,34 @@ public class MemberController {
 		return numStr;
 	}
 	
+	//---------------------------------------------------------------------
 	//아이디/비밀번호 찾기 폼으로 이동
 	@GetMapping("search_info")
 	public String search_info() {
 		return "/member/search_info";
 	}
 	
-	//아이디찾기
-	//핸드폰번호로
-	@PostMapping("search_info")
+	//아이디찾기(휴대폰번호로)
+	@PostMapping("searchid_tel")
 	@ResponseBody
-	public String useridSearch_tel(@RequestParam("searchinfo-name") String username, @RequestParam("searchinfo-tel") String tel) {
-		String result = service.searchid_tel(username,tel);
+	public String searchid_tel(String tel) {
+		String result = service.searchid_tel(tel);
 		return result;
 	}
-	//이메일로
-//	@PostMapping("/search_info")
-//	@ResponseBody
-//	public String useridSearch_email(@RequestParam("searchinfo-email") String username, @RequestParam() String email) {
-//		String result = service.searchid_email(username,email);
-//		return result;
-//	}
-
+	
+	//아이디찾기(이메일로)
+	@PostMapping("searchid_email")
+	@ResponseBody
+	public String searchid_email(String email) {
+		System.out.println(email);
+		String result = service.searchid_email(email);
+		return result;
+	}
+	
+	//비밀번호찾기(이메일인증)
+	
+	
+	//---------------------------------------------------------------------
 	@PostMapping("memberIdCheck")
 	@ResponseBody
 	public int idCheck(String userid) {
@@ -230,5 +235,20 @@ public class MemberController {
 	public int emailCheck(String email) {
 		int cnt = service.emailCheck(email);
 		return cnt;
+	}
+	
+	@PostMapping("updateMyAddr")
+	@ResponseBody
+	public void updateMyAddr(MemberVO vo, HttpSession session) {
+		vo.setUserid((String)session.getAttribute("logId"));
+		setSessionAddr(vo, session);
+		service.updateMyAddr(vo);
+	}
+	
+	// 세션에 주소를 넣어주는 함수
+	void setSessionAddr(MemberVO vo, HttpSession session) {
+		session.setAttribute("addrLarge", vo.getLarge());
+		session.setAttribute("addrMedium", vo.getMedium());
+		session.setAttribute("addrSmall", vo.getSmall());
 	}
 }

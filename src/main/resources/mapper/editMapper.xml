@@ -10,7 +10,7 @@
 		select count(nickname) from member where nickname=#{param1}
 	</select>
 	<update id="editUpdate">
-		update member set userpwd = #{userpwd}, nickname = #{nickname}, username = #{username}, email = #{email},tel = #{tel}
+		update member set userpwd = #{userpwd}, nickname = #{nickname}, username = #{username}, email = #{email}, tel = #{tel}
 		where userid = #{userid}
 	</update> 
 	<delete id="delMember">

@@ -7,11 +7,10 @@ import org.springframework.stereotype.Repository;
 
 import com.semiproject.soboon.vo.BoardVO;
 import com.semiproject.soboon.vo.HomeVO;
-import com.semiproject.soboon.vo.PagingVO;
 
 @Mapper
 @Repository
 public interface HomeDAO {
-	public List<HomeVO> selectList();
+	public List<HomeVO> selectList(BoardVO vo);
 	
 }

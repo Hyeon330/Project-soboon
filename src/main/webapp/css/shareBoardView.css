@@ -19,9 +19,11 @@
 /*상세페이지*/
 #category{
 	float:left;
-	border: 4px solid rgb(72, 97, 86) ;
-	padding : 6px;
-	color : rgb(72, 97, 86);
+	border: 4px solid rgb(72, 97, 86);
+	background : rgb(72, 97, 86);
+	padding : 6px 10px;
+	color : white;
+	border-radius:4px;
 }
 /*제목*/
 #productTitle{
@@ -43,10 +45,18 @@
 	margin-top:10px;
 }
 
-#pick{
- 	background-color: rgb(72, 97, 86);
+#pick1{
+ 	background-color: transparent;
+	border:4px solid rgb(72, 97, 86);
+}
+
+#pick2{
+	display:none;
+	border:4px solid rgb(72, 97, 86);
+	background:rgb(72, 97, 86);
 	color:white;
 }
+
 
 #proWarn{
 	background-color: gray;
@@ -109,6 +119,10 @@
 	margin:20px 20px 0 0;
 }
 /*댓글*/
+.rp{
+	margin-top:60px;
+}
+
 #commentLine {
 	display:flex;
 	position:relative;
@@ -146,3 +160,21 @@
  	background-color: rgb(72, 97, 86);
 	color:white;
  }
+ #sharetag{
+	background:rgb(213, 218, 212);
+	color:rgb(72, 97, 86);
+	border-top-left-radius:20px;
+	border-top-right-radius:20px;
+	margin-top:5px;
+}
+#renttag, #saletag, #requesttag{
+	height:50px;
+}
+#renttag:hover, #saletag:hover, #requesttag:hover{
+	background:rgb(142, 158, 139) !important;
+	color:rgb(72, 97, 86);
+	border-top-left-radius:20px;
+	border-top-right-radius:20px;
+	height:45px;
+	margin-top:5px;
+}

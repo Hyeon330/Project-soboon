@@ -1,15 +1,13 @@
 package com.semiproject.soboon.dao;
 
 import java.util.List;
-import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 import com.semiproject.soboon.vo.BoardVO;
-import com.semiproject.soboon.vo.JoinVO;
-import com.semiproject.soboon.vo.MemberVO;
 import com.semiproject.soboon.vo.PagingVO;
+import com.semiproject.soboon.vo.PickVO;
 
 @Mapper 
 @Repository
@@ -19,15 +17,12 @@ public interface BoardDAO {
 	public int boardInsert(BoardVO vo); 
 	
 	// 글 리스트 보이기
-	public List<BoardVO> selectList(PagingVO pvo);
+	public List<BoardVO> selectList(PagingVO pvo, BoardVO vo);
 	
 	// 게시판의 레코드 개수 가져오기(페이징)
 	public int selectTotalRecord(PagingVO pvo);
-	
-	// 카테고리 가져오기
-	public BoardVO selectCategory(String category);
 
-	// 나눔,요청 상세페이지(뷰)
+	// 상세페이지(뷰)
 	public BoardVO selectView(int no);
 	
 	// 조회수 증가
@@ -44,5 +39,8 @@ public interface BoardDAO {
 	
 	// 상세페이지 삭제 
 	public int deleteView(int no, String userid);
+	
+	// 찜하기 버튼 클릭 시 DB 삽입
+	public int insertPick(PickVO vo);
 	
 }

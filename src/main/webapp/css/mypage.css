@@ -15,21 +15,44 @@
 /*---------------------------------사이드메뉴--------------------------*/
 /*----------------------------------------------------------------------------*/
 /*사이드메뉴*/
-#sideMenu>li {
-	background-color:transparent;
+
+#emptySpace{
+	width:3%;
+	height:100%;
+}
+#sideMenuFrm {
+	background-color:rgba(255, 255, 255, 80%);
+	border-radius:20px;
+	width:22%;
+	height:90%;
+	filter : drop-shadow(0px 0px 10px rgb(144, 163, 140));
+	position:relative;	
 }
 
-#sideMenuFrm>hr {
+#sideMenuFrm>hr{
 	height: 5px;
 	background: #ddd;
 	border-style: none;
+	margin:5px;
+}
+
+#sideMenuFrm>h3{
+	font-weight:700;
+	padding-top:20px;
+	padding-left:15px;
+	padding-bottom:8px;
+}
+
+#sideMenu>li{
+	background-color:transparent;
+	color:white !important;
 }
 
 .active_sub {
 	font-size: 1.5em;
-	background-color: rgb(72, 97, 86) !important;
+	background-color: rgba(72, 97, 86, 80%) !important;
 	border-style: none !important;
-	color:white !important;
+	
 }
 /*---------------------------내가 쓴 글 보기-----------------------------------*/
 /*----------------------------------------------------------------------------*/
@@ -37,7 +60,6 @@
 #mypageContainer {
 	height: 500px;
 	margin-top: 50px;
-
 }
 
 #mypageContainer>div {
@@ -49,10 +71,16 @@
 	border-style: none !important;
 }
 .viewPage-mypage{
-	
+	height:90% !important;
+	background-color:rgba(255, 255, 255, 80%);
+	border-radius:3%;
+	padding:15px;
+	filter : drop-shadow(0px 0px 10px rgb(144, 163, 140));
 }
 .viewPage-mypage>h3 {
 	font-weight:700;
+	padding-top:5px;
+	padding-left:15px;
 }
 
 .viewPage-mypage>hr {
@@ -162,16 +190,26 @@
 .active {
 	/*tab클릭시 해당 메뉴 하이라이트 css*/	
 }
-
+.tab-content{
+	padding-left:30px;
+}
 
 /*---------------------------------개인 정보 수정--------------------------*/
 /*----------------------------------------------------------------------------*/
 /*개인정보수정*/
-#button_overlapCheck, #button_editSubmit {
-	background: rgb(239, 136, 105) !important;
-	border-style: none !important;
-}
 
+#editView{
+	height:90% !important;
+	background-color:rgba(255, 255, 255, 80%);
+	border-radius:3%;
+	padding:15px;
+	filter : drop-shadow(0px 0px 10px rgb(144, 163, 140));
+}
+#editView>h3{
+	font-weight:700;
+	padding-top:3px;
+	padding-left:15px;
+}
 #editView>hr {
 	height: 5px;
 	background: #ddd;
@@ -187,14 +225,12 @@
 	background-color: transparent;
 	border-bottom: 2px solid #ddd;
 }
-
-#editFrm>li>div {
-	float: left;
+#editFrm{
+	padding-left:30px;
+	font-size:1.1em;
+	font-weight:700;
 }
 
-#editView>form>div {
-	float: left;
-}
 
 #editView>form>div:last-of-type {
 	display: flex;
@@ -215,8 +251,9 @@
 }
 
 /*myDelMember.jsp ---> 회원 탈퇴 */
-#button_overlapCheck, .btn-last {
-	background: rgb(239, 136, 105) !important;
+#button_overlapCheck, #button_editSubmit {
+	background: rgba(72, 97, 86, 80%) !important;
+	color:white;
 	border-style: none !important;
 }
 
@@ -236,19 +273,37 @@
 	border-bottom: 2px solid #ddd;
 }
 
+/*---------------------------------회원탈퇴--------------------------*/
+/*----------------------------------------------------------------------------*/
+/*회원탈퇴*/
+#delMemberView>h3{
+	font-weight:700;
+	padding-top:5px;
+	padding-left:15px;
+}
+#delFrm{
+	padding-left:30px;
+}
 #delFrm span {
-	font-size: 1.1em;
+	font-size: 1.2em;
+	font-weight:400;;
 }
 
 #delFrm ul {
 	margin-bottom: 30px;
 }
-/*---------------------------------회원탈퇴--------------------------*/
-/*----------------------------------------------------------------------------*/
-/*회원탈퇴*/
-#button_overlapCheck, #button_editSubmit {
-	background: rgb(239, 136, 105) !important;
-	border-style: none !important;
+
+#delMemberView{
+	height:90% !important;
+	background-color:rgba(255, 255, 255, 80%);
+	border-radius:3%;
+	padding:15px;
+	filter : drop-shadow(0px 0px 10px rgb(144, 163, 140));
+}
+
+#btn_delMember{
+	background-color:rgba(72, 97, 86, 80%);
+	color:white;
 }
 
 #editView>form>div>ul>li>div {

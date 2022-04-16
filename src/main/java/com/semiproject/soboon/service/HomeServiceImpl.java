@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import com.semiproject.soboon.dao.HomeDAO;
 import com.semiproject.soboon.vo.BoardVO;
 import com.semiproject.soboon.vo.HomeVO;
-import com.semiproject.soboon.vo.PagingVO;
 
 @Service
 public class HomeServiceImpl implements HomeService {
@@ -17,7 +16,7 @@ public class HomeServiceImpl implements HomeService {
 	HomeDAO dao;
 	
 	@Override
-	public List<HomeVO> selectList() {
-		return dao.selectList();
+	public List<HomeVO> selectList(BoardVO vo) {
+		return dao.selectList(vo);
 	}
 }

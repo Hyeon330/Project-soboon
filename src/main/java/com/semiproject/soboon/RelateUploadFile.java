@@ -60,13 +60,13 @@ public class RelateUploadFile {
 					// 파일 업로드 하기
 					mpf.transferTo(f); // 업로드 발생
 					if (cnt == 1)
-						vo.setThumbnailImg(orgFileName);
-					if (cnt == 2)
 						vo.setImg1(orgFileName);
-					if (cnt == 3)
+					if (cnt == 2)
 						vo.setImg2(orgFileName);
-					if (cnt == 4)
+					if (cnt == 3)
 						vo.setImg3(orgFileName);
+					if (cnt == 4)
+						vo.setImg4(orgFileName);
 					cnt++;
 				}
 			}
@@ -124,13 +124,13 @@ public class RelateUploadFile {
 		for (int fl = 0; fl < fileList.size(); fl++) {
 			if(vo!=null) {
 				if (fl == 0)
-					vo.setThumbnailImg(fileList.get(fl));
-				if (fl == 1)
 					vo.setImg1(fileList.get(fl));
-				if (fl == 2)
+				if (fl == 1)
 					vo.setImg2(fileList.get(fl));
-				if (fl == 3)
+				if (fl == 2)
 					vo.setImg3(fileList.get(fl));
+				if (fl == 3)
+					vo.setImg4(fileList.get(fl));
 			}
 		}
 	}
