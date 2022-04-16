@@ -16,7 +16,7 @@
 /*----------------------------------------------------------------------------*/
 /*사이드메뉴*/
 #sideMenu>li {
-	background-color: white;
+	background-color:transparent;
 }
 
 #sideMenuFrm>hr {
@@ -304,6 +304,13 @@
 	background-color: orange;
 }
 .pagingwrap {
-	display:flex; justify-content: center;
+	display:flex; justify-content: center; margin-top : 20px;
 }
-
+.innerTab {
+	margin-top:15px;
+	
+}
+.tabTopMenu {
+	display: flex; align-items: center; text-align: center;
+	justify-content: space-between;
+}

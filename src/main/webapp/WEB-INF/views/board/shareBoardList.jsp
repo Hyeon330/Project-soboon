@@ -65,6 +65,6 @@
 							onclick="goNext(${pvo.currentPage})">Next</a></li>
 				</c:if>
 			</ul>
-		</div>	
+		</div><!-- row -->
 	<br/>
 </div>

@@ -243,3 +243,73 @@
 							})
 						}
 
+---------------------------------------------------------------------------------------------------------------------
+
+<div class="row">
+			<ul class="pagination justify-content-center" id="paging">
+				<c:if test="${pvo.currentPage==1}">
+					<li class="page-item disabled"><a class="page-link" id="prevBtn">Prev</a></li>
+				</c:if>
+				<c:if test="${pvo.currentPage>1}">
+					<li class="page-item"><a class="page-link" href="javascript:void(0);" id="prevBtn" 
+							onclick="goPrev(${pvo.currentPage})">Prev</a></li>
+				</c:if>
+				<c:forEach var="p" begin="${pvo.startPage}" end="${pvo.totalPage}">
+					<c:if test="${p<=pvo.totalPage}">
+						<c:choose>
+							<c:when test="${p==pvo.currentPage}">
+								<li class="page-item disabled"><a class="page-link">${p}</a></li>
+							</c:when>
+							<c:when test="${p!=pvo.currentPage}">
+								<li class="page-item"><a class="page-link"href="javascript:void(0);"
+										onclick="goPage(${p})">${p}</a></li>
+							</c:when>
+						</c:choose>
+					</c:if>
+				</c:forEach>
+				<c:if test="${pvo.currentPage==pvo.totalPage}">
+					<li class="page-item disabled"><a class="page-link" id="nextBtn">Next</a></li>
+				</c:if>
+				<c:if test="${pvo.currentPage<pvo.totalPage}">
+					<li class="page-item"><a class="page-link" href="javascript:void(0);" id="nextBtn"
+							onclick="goNext(${pvo.currentPage})">Next</a></li>
+				</c:if>
+			</ul>
+		</div><!-- row -->
+		
+-------------------------------------------------------------------------------------------------------------------------
+function goPrev(gp){
+   let goPrev = gp-1;
+   location.href="/board/shareBoardList?currentPage="+goPrev+"";
+}
+
+function goPage(p){
+   location.href="/board/shareBoardList?currentPage="+p+"";
+}
+
+function goNext(gn){
+   let goNext = gn+1;
+   location.href="/board/shareBoardList?currentPage="+goNext+"";
+}
+
+--------------------------------------------------------------------------------------------------------------------
+
+		//String recordPerPage,
+//		int recordPerpageNum = Integer.parseInt(recordPerPage);
+
+
+------------------------------------------------------------------------------------------
+//		pVO.setRecordPerPage(recordPerpageNum);// 출력 수 jsp랑 동일하게 설정한다.
+//		pVO.setRecordPerPage(10);
+
+
+
+---------------------------------------------------------------------------------------------
+			str += "<ul>";
+			str += "<li><input type='checkbox' name='chk_mypage' value='"+data.no+"'/></li>";
+			str += "<li>"+data.no+"</li>";
+			str += "<li>"+data.title+"</li>";
+			str += "<li>"+data.content+"</li>";
+			str += "<li>"+data.views+"</li>";
+			str += "<li>"+data.createdate+"</li>";
+			str += "</ul>";

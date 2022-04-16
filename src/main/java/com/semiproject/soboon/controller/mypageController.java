@@ -1,6 +1,7 @@
 package com.semiproject.soboon.controller;
 
 
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,7 +23,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.semiproject.soboon.service.EditService;
 import com.semiproject.soboon.vo.BoardVO;
 import com.semiproject.soboon.vo.MemberVO;
-import com.semiproject.soboon.vo.PagingVO;
+import com.semiproject.soboon.vo.myPagingVO;
+
 
 @RequestMapping("/mypage/")
 @Controller
@@ -120,22 +122,19 @@ public class mypageController {
 	}
 	@GetMapping("mypost")
 	@ResponseBody
-	public Map<String, Object> mypost(PagingVO pVO, HttpSession session) {
-		String userid = (String) session.getAttribute("logId"); 
-		pVO.setRecordPerPage(10);// 출력 수 jsp랑 동일하게 설정한다.
-		pVO.calc(); // 페이지 연산처리
+	public Map<String, Object> mypost(myPagingVO pVO, HttpSession session) {
+		String userid = (String) session.getAttribute("logId");
+		System.out.println("pVO.onePageRecord ---->" + pVO.getOnePageRecord());
 		Map<String, Object> map = new HashMap<String, Object>();
 		// 현재 로그인된 아이디가 쓴 게시글 수 가져오기
-		int cnt = service.mypostCount(userid);
+		pVO.setTotalRecord(service.mypostCount(userid));
+		System.out.println("pVO.totalReocrd--->"+pVO.getTotalRecord());
+		
 		// 페이지에 해당하는 로그인된 회원이 쓴 게시글 목록
 		List<BoardVO> list = service.mypostList(userid, pVO);
-		System.out.println(list.size());
-		System.out.println(list.toString());
-		map.put("cnt", cnt);
+		map.put("pVO", pVO);
 		map.put("plist", list);
-		System.out.println(map.toString());
-		return map;
-		
+		return map;	
 	}
 }//controller
 

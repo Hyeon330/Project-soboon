@@ -72,6 +72,22 @@
 						</div>
 					</li>
 					<li>
+						<div style="width: 20%">주소</div>
+						<div style="width: 5%;"></div>
+						<div style="width: 24%">
+							<input type="text" id="tel1" name="tel1" style="width: 80%"
+								value="${VO.tel1 }" />&nbsp;&nbsp;-
+						</div>
+						<div style="width: 24%">
+							<input type="text" id="tel2" name="tel2" style="width: 80%"
+								value="${VO.tel2 }" />&nbsp;&nbsp;-
+						</div>
+						<div style="width: 24%">
+							<input type="text" id="tel3" name="tel3" style="width: 80%"
+								value="${VO.tel3 }" />
+						</div>
+					</li>
+					<li>
 						<div style="width: 20%">이메일</div>
 						<div style="width: 5%;"></div>
 						<div style="width: 75%">
