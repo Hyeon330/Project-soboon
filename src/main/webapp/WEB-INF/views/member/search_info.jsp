@@ -10,6 +10,9 @@
 				<div class="form-group">
 					<div class="search-logo"><h4>아이디찾기</h4></div>
 					<div>
+						<input type="text" class="searchinfo_1 searchinfo_name" id="searchinfo_name" name="username" placeholder="이름을 입력해주세요."/> 
+					</div>
+					<div>
 						<input type="button" class="btn-searchinfo searchinfo_searchtel" value="휴대폰 번호로 아이디찾기" />
 						<input type="text" class="searchinfo_1 searchinfo_tel" id="searchinfo_tel" name="tel" placeholder="(-)를 사용하여 휴대폰번호를 입력해주세요" />
 					</div>
@@ -18,7 +21,8 @@
 						<input type="text" class="searchinfo_1 searchinfo_email" id="searchinfo_email" name="email" placeholder="이메일을 입력해주세요" />
 					</div>
 				</div><br/>
-				<input type="button" class="btn searchId-btn" value="아이디찾기" />
+				<input type="button" class="col-4 btn searchId-btn" value="아이디찾기" />
+				<input type="button" class="col-4 btn searchId-cancel" value="취   소"/>
 			</div>
 
 			<div class="col-6 searchPwd">

@@ -87,13 +87,13 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public String searchid_tel(String tel) {
-		return dao.searchid_tel(tel);
+	public String searchid_tel(String username,String tel) {
+		return dao.searchid_tel(username,tel);
 	}
 
 	@Override
-	public String searchid_email(String email) {
-		return dao.searchid_email(email);
+	public String searchid_email(String username,String email) {
+		return dao.searchid_email(username,email);
 	}
 	
 	@Override

@@ -198,17 +198,19 @@ public class MemberController {
 	//아이디찾기(휴대폰번호로)
 	@PostMapping("searchid_tel")
 	@ResponseBody
-	public String searchid_tel(String tel) {
-		String result = service.searchid_tel(tel);
+	public String searchid_tel(String username,String tel) {
+		System.out.println("username="+ username + "\ntel=" + tel);
+		String result = service.searchid_tel(username, tel);
+		
 		return result;
 	}
 	
 	//아이디찾기(이메일로)
 	@PostMapping("searchid_email")
 	@ResponseBody
-	public String searchid_email(String email) {
-		System.out.println(email);
-		String result = service.searchid_email(email);
+	public String searchid_email(String username, String email) {
+		System.out.println("username="+ username + "\nemail=" + email);
+		String result = service.searchid_email(username,email);
 		return result;
 	}
 	
