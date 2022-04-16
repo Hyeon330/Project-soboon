@@ -17,6 +17,7 @@
 	border-width: 1px 1px 0px 1px;
 	border-style: solid;
 	border-color: #888;
+	border-radius: 5px 5px 0 0;
 }
 .chat-icon {
 	font-size: 20px;
@@ -28,7 +29,7 @@
 	background-color: red;
 	border-radius: 100%;
 	top: 3px;
-	right: 8px;
+	right: 3px;
 	z-index: 20;
 }
 #chatPopup {

@@ -2,13 +2,14 @@
 $(() => {
 	// 채팅 리스트 나타내고 없어지는 애니메이션
 	$('#chatBtn').click(function() {
+		$('.chat-icon').remove();
 		if($('#chatPopup').css('height').substring(0,$('#chatPopup').css('height').length-2)>0){
-			$('#chatBtn').html('<i class="bi bi-chat-square-text chat-icon"></i>');
+			$('#chatBtn').append('<i class="bi bi-chat-square-text chat-icon"></i>');
 			$('#chatPopup').animate({
 				height: '0'
 			}, 150);
 		}else {
-			$('#chatBtn').html('<i class="bi bi-x-lg chat-icon"></i>');
+			$('#chatBtn').append('<i class="bi bi-x-lg chat-icon"></i>');
 			$('#chatPopup').animate({
 				height: window.innerHeight-120+'px'
 			}, 150);
@@ -91,7 +92,7 @@ $(() => {
 			success: function (result){
 				setChatLists(result);
 				if(notRead>0){
-					$('#chatBlock').append('<div class=chat-notice-point></div>');
+					$('#chatBtn').prepend('<div class=chat-notice-point></div>');
 				}else {
 					$('.chat-notice-point').remove();
 				}
