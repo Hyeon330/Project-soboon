@@ -40,10 +40,15 @@ $(() => {
 	
 	var myNickname = $('#myNickName').text();
 	var todayTime = new Date();
+	var notRead = 0;
 	// 채팅 리스트 리로드
 	const setChatLists = function(result){
 		$('#chatLists').empty();
+		notRead = 0;
 		result.forEach(data => {
+			if(data.chat_read=='n' && data.receiver==myNickname){
+				notRead++;
+			}
 			var chatDateArr = data.chat_datetime.split(' ')[0].split('-');
 			var chatTimeArr = data.chat_datetime.split(' ')[1].split(':');
 			var chatDate = new Date(chatDateArr[0], chatDateArr[1], chatDateArr[2]);
@@ -85,6 +90,11 @@ $(() => {
 			async: false,
 			success: function (result){
 				setChatLists(result);
+				if(notRead>0){
+					$('#chatBlock').append('<div class=chat-notice-point></div>');
+				}else {
+					$('.chat-notice-point').remove();
+				}
 			}
 		});
 	};
@@ -235,13 +245,10 @@ $(() => {
 				type: 'post',
 				async: false
 			});
-		}else if($('#msgPopup').css('display')=='none' && data.receiver==myNickname && !($('#chatPopup').css('height').substring(0,$('#chatPopup').css('height').length-2)>0)) {
+		}else if($('#msgPopup').css('display')=='none' && data.receiver==myNickname /*&& !($('#chatPopup').css('height').substring(0,$('#chatPopup').css('height').length-2)>0)*/) {
 			audio.pause();
 			audio.currentTime = 0.5;
 			audio.play();
-			setTimeout(function() {
-				audio.pause();
-			},1500);
 		}
 		chatListsReload();
 		openMsgPopupReload();
@@ -260,8 +267,6 @@ $(() => {
 	});
 	
 	// 채팅 한정 개수 100개로 하고 스크롤 최상단으로 올렸을시 리로드
-	
-	// 채팅 받았을 경우 버튼위에 빨간점
 	
 	// 페이지 이동시 현상 유지
     

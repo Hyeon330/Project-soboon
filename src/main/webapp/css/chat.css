@@ -21,14 +21,14 @@
 .chat-icon {
 	font-size: 20px;
 }
-.chat-alert-point{
+.chat-notice-point{
 	position: absolute;
 	width: 10px;
 	height: 10px;
 	background-color: red;
 	border-radius: 100%;
 	top: 3px;
-	right: 10px;
+	right: 8px;
 	z-index: 20;
 }
 #chatPopup {
