@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <link rel="stylesheet" href="/css/shareBoardView.css" type="text/css"/>
-<script src="/js/shareBoardView.js"></script>
+
 <script src="/js/shareBoardViewReply.js"></script>
+<script src="/js/shareBoardView.js"></script>
 <script>
 	let nickname = "${nickName}";
 
@@ -78,11 +79,18 @@
 			</div>
 			<hr/>
 			<div id="productIcon">
+			<c:if test="${logId!=viewVo.userid}">
 				<input type="button" class="btn" id="pick1" value="찜하기"/>
 				<input type="button" class="btn" id="pick2" value="찜하기"/>
+			</c:if>
+			<c:if test="${logId==viewVo.userid}">
+				<div class="proIcon"><i class="fa fa-heart fa-lg"></i><span class="iconValue">${viewVo.pick}</span></div>
+			</c:if>
 				<div class="proIcon"><i class="fa fa-eye fa-lg"></i><span class="iconValue">${viewVo.views}</span></div>
 				<div class="proIcon"><i class="fa fa-clock fa-lg"></i><span class="iconValue">${viewVo.createdate}</span></div>
+			<c:if test="${logId!=viewVo.userid}">
 				<div class="btn" id="proWarn"><i class="fa fa-bell"></i><span class="iconValue">신고하기</span></div>
+			</c:if>
 				<%@ include file="/WEB-INF/views/inc/report.jsp" %>
 			</div>
 			<hr/>
