@@ -284,14 +284,11 @@ $(() => {
 	});
 	
 	// 채팅 한정 개수 100개로 하고 스크롤 최상단으로 올렸을시 리로드
-	$('.msg-lists').on('mousewheel', function(e) {
+	/*$('.msg-lists').on('mousewheel', function(e) {
 		var wheel = e.originalEvent.wheelDelta;
 		console.log($(this).scrollTop());
 		console.log('휠 : '+wheel);
-	});
-	$('#chatLists').on('mousewheel', function() {
-		console.log($(this).scrollTop());
-	});
+	});*/
     
     setInterval(() => {
 		if($('#chatSearch').val()==''){
