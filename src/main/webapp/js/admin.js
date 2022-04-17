@@ -69,6 +69,7 @@ $(function() {
 		str+="</ul>";
 		let onePageRecord=10;	//한 페이지당 10명 기준
 		let totalCount=Number(dataArr.cnt)	//총 인원수 integer로 가져옴
+		/*let totalCount=Number(dataArr.pVO.get)	//총 인원수 integer로 가져옴*/
 		
 		//페이지수 구하기 pageCount ==> 연산하는 로직 보면서 구하기
 		if(totalCount%onePageRecord == 0){
@@ -85,7 +86,7 @@ $(function() {
 				pageStr += '<li class="page-item"><a class="page-link"href="javascript:void(0);" onclick="ml('+p+')">' + p + '</a></li>'
 			}
 			pageStr += '<li class="page-item"><a class="page-link" id="nextBtn">Next</a></li>'
-				
+			/*pageStr += '<li class="page-item"><a class="page-link" id="nextBtn" onclick=nexttpg('+(dataArr.pVO.currentPage+1)+')>Next</a></li>'*/
 		pageStr +='</ul>';
 		/* alert(pageStr) */
 		$('.memberList').html(str);

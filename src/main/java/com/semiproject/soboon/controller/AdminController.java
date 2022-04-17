@@ -40,6 +40,7 @@ public class AdminController {
 		List<MemberVO> list=service.memberList(pVO);
 		
 		map.put("cnt", cnt);
+		/* map.put("pVO", pVO); */
 		map.put("userList", list);
 		
 		return map;
