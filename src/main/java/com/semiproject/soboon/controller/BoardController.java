@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -33,11 +34,18 @@ public class BoardController {
 	ResponseEntity<String> entity = null;
 	
 	@GetMapping("shareBoardList")
-	public ModelAndView shareAndReqListForm(PagingVO pvo, BoardVO vo) {
+	public ModelAndView shareAndReqListForm(PagingVO pvo, BoardVO vo, HttpSession session, String category, String title) {
+		if(category!=null) {
+			vo.setCategory(category);
+		}else {
+			vo.setCategory("share");
+		}
+		vo.setTitle(title);
+		vo.setSmall((String)session.getAttribute("addrSmall"));
 		// 게시판 별 총 레코드 수
 		pvo.setTotalRecord(service.selectTotalRecord(pvo));
 		// 게시판 글 DB연결해서 보이기 
-		mav.addObject("list", service.selectList(pvo));
+		mav.addObject("list", service.selectList(pvo, vo));
 		mav.addObject("pvo", pvo);
 
 		mav.setViewName("board/shareBoardList");
@@ -55,6 +63,7 @@ public class BoardController {
 	public ModelAndView shareAndReqWriteOk(BoardVO vo, HttpServletRequest request){
 		// 현재 session에 있는 ID와 카테고리
 		vo.setUserid((String)request.getSession().getAttribute("logId")); 
+		vo.setNickname((String)request.getSession().getAttribute("nickName")); 
 		vo.setCategory("share");
 		mav.setViewName("board/BoardWriteSuc");
 		

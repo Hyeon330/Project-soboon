@@ -1,6 +1,6 @@
 package com.semiproject.soboon.vo;
 
-public class ReplyAndPickVO {
+public class ReplyVO {
 
 	private int replyno;
 	private int warn;

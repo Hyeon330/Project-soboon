@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <link rel="stylesheet" href="/css/shareBoardWrite.css" type="text/css"/>
 <script src="/js/shareBoardWrite.js"></script>
+<script src="/js/boardaddrDialog.js"></script>
 <div class="container">
 	<br/>
 	<form class="form-group" method="post" action="/board/shareBoardWriteOk?category=share" id="shareReqForm" enctype="multipart/form-data">
@@ -11,6 +12,15 @@
 				</tr>
 			</thead>
 			<tbody>
+				<tr>
+					<td>
+						<div>
+							<select id="boardlargeAddrSelect" name="large" default="${addrLarge}"></select>
+							<select id="boardmediumAddrSelect" name="medium" default="${addrMedium}"></select>
+							<select id="boardsmallAddrSelect" name="small" default="${addrSmall}"></select>
+						</div>
+					</td>
+				</tr>
 				<tr>
 					<td id="tbBody">
 						<input type="text" class="form-control" id="shareBoardTitle" placeholder="글 제목을 입력하세요."  name="title" maxlength="16"/>

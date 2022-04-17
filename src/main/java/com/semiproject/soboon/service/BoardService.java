@@ -12,7 +12,7 @@ public interface BoardService {
 	public int boardInsert(BoardVO vo);
 	
 	// 글 리스트 보이기
-	public List<BoardVO> selectList(PagingVO pvo);
+	public List<BoardVO> selectList(PagingVO pvo, BoardVO vo);
 	
 	// 게시판의 레코드 개수 가져오기(페이징)
 	public int selectTotalRecord(PagingVO pvo);

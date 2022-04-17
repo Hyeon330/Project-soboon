@@ -23,9 +23,6 @@
 <script src="https://kit.fontawesome.com/76aefe2b67.js" crossorigin="anonymous"></script>
 <!-- Board checkeditors cdn -->
 <script src="//cdn.ckeditor.com/4.17.2/full/ckeditor.js"></script>
-<script>
-	
-</script>
 </head>
 <body>
 <nav>
@@ -34,7 +31,7 @@
 				<div><a href="/"><img src="/img/logowhite.png"/></a></div>
 				<div id="topSearch">
 				<!--검색 기능  -->
-					<form class="form-inline" name="edit" method="get" action="/board/shareAndReqList">
+					<form class="form-inline" name="edit" method="get" action="/board/shareBoardList">
 						<select id="topSelect" name="category" >
 							<option>항목 선택</option>
 							<option value="share">나눔</option>
@@ -50,18 +47,18 @@
 				</div>
 				<div id="gridBtn">
 					<c:if test="${logStatus!='Y'}">
-						<a href="/member/login" class="btn sign" style="color:rgb(72, 97, 86); font-weight:700;">로그인</a>&nbsp;&nbsp;&nbsp;
-						<a href="/member/signup" class="btn sign" style="color:rgb(72, 97, 86); font-weight:700;">회원가입</a>
+						<a href="/member/login" class="btn sign">로그인</a>&nbsp;&nbsp;&nbsp;
+						<a href="/member/signup" class="btn sign">회원가입</a>
 					</c:if>
 					<c:if test="${logStatus=='Y'}">
 						<c:if test="${logAdmin==9}">
-							<a href="/admin" class="btn sign" style="color:rgb(72, 97, 86)">관리자모드</a>&nbsp;&nbsp;&nbsp;
-							<a href="/member/logout" class="btn sign" style="color:rgb(72, 97, 86); font-weight:700;">로그아웃</a>
+							<a href="/admin" class="btn sign">관리자모드</a>&nbsp;&nbsp;&nbsp;
+							<a href="/member/logout" class="btn sign">로그아웃</a>
 						</c:if>
 						<c:if test="${logAdmin!=9}">
-							<button id="addrSelectDialogOpen" class="btn sign" style="color:rgb(72, 97, 86); font-weight:700;">지역선택</button>&nbsp;&nbsp;&nbsp;
-							<a href="/mypage/showView?pageName=showView" class="btn sign" style="color:rgb(72, 97, 86); font-weight:700;">마이페이지</a>&nbsp;&nbsp;&nbsp;
-							<a href="/member/logout" class="btn sign" style="color:rgb(72, 97, 86); font-weight:700;">로그아웃</a>
+							<button id="addrSelectDialogOpen" class="btn sign">지역선택</button>&nbsp;&nbsp;&nbsp;
+							<a href="/mypage/showView?pageName=showView" class="btn sign">마이페이지</a>&nbsp;&nbsp;&nbsp;
+							<a href="/member/logout" class="btn sign">로그아웃</a>
 							<%@ include file="/WEB-INF/views/inc/addrSelectDialog.jsp" %>
 						</c:if>
 					</c:if>
@@ -71,10 +68,10 @@
 	<hr/>
 <div class="topMenu">
 		<div class="row">
-			<div class="col-lg-3"><a href="/board/shareBoardList" style="color:white">나눔</a></div>
-			<div class="col-lg-3"><a href="/board/rentBoardList" style="color:white">대여</a></div>
-			<div class="col-lg-3"><a href="/board/saleBoardList" style="color:white">판매</a></div>
-			<div class="col-lg-3"><a href="/board/reqeustBoardList" style="color:white">요청</a></div>
+			<div class="col-lg-3" id="sharetag"><a href="/board/shareBoardList">나눔</a></div>
+			<div class="col-lg-3" id="renttag"><a href="/board/rentBoardList">대여</a></div>
+			<div class="col-lg-3" id="saletag"><a href="/board/saleBoardList">판매</a></div>
+			<div class="col-lg-3" id="requesttag"><a href="/board/reqeustBoardList">요청</a></div>
 		</div>
 	</div>
 </nav>
