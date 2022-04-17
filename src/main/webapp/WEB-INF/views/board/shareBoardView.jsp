@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <link rel="stylesheet" href="/css/shareBoardView.css" type="text/css"/>
-
 <script src="/js/shareBoardViewReply.js"></script>
 <script src="/js/shareBoardView.js"></script>
 <script>
@@ -22,55 +21,121 @@
 		<div class="col-6 sbi">
 			<div id="demo" class="carousel slide" data-ride="carousel">
 			
-			  <!-- Indicators -->
-			  	<ul class="carousel-indicators">
-			  		<li data-target="#demo" data-slide-to="0" class="active"></li>
-			   		<li data-target="#demo" data-slide-to="1"></li>
-			 	  	<li data-target="#demo" data-slide-to="2"></li>
-			 	  	<li data-target="#demo" data-slide-to="3"></li>
-				 </ul>
-			 
-			 
-			 <!-- The slideshow -->
-				 <div class="carousel-inner">
-					<c:choose>
-						<c:when test="${viewVo.thumbnailImg==null}">
-							<img src="/img/share.jpg">
-						</c:when>
-						<c:otherwise>
-							<input type="file" name="fileImg" id="img1" />
-							<input type="file" name="fileImg" id="img2" />
-							<input type="file" name="fileImg" id="img3" />
-							<input type="file" name="fileImg" id="img4" />
-						</c:otherwise>
-					</c:choose>
-					
-					<c:choose>
-				 		<c:when test="${viewVo.img1!=null}">
-				 			<div class="carousel-item active">
+			  <c:choose>
+			  		<c:when test="${viewVo.img4!=null}">
+			  			<!-- Indicators -->
+			  			<div class="carousel-inner">
+			  			</div>
+					  	<ul class="carousel-indicators">
+					  		<li data-target="#demo" data-slide-to="0" class="active"></li>
+					   		<li data-target="#demo" data-slide-to="1"></li>
+					   		<li data-target="#demo" data-slide-to="2"></li>
+			 	  			<li data-target="#demo" data-slide-to="3"></li>
+						</ul>
+						<!-- The slideshow -->
+						<div class="carousel-inner">
+							<div class="carousel-item active">
 					    		<img src="/upload/${viewVo.img1}">
 					   		</div>
-				 		</c:when>
-				 		<c:when test="${viewVo.img2!=null}">
-					 		<div class="carousel-item active">
-						    	<img src="/upload/${viewVo.img1}">
-						     </div>
-					 		 <div class="carousel-item">
-						    	<img src="/upload/${viewVo.img2}">
-						   	</div>
-				 		</c:when>
-				 	</c:choose>
-				 </div>
-			 
-			 <!-- Left and right controls -->
-				<a class="carousel-control-prev" href="#demo" data-slide="prev">
-					    <span class="carousel-control-prev-icon"></span>
-				</a>
-				<a class="carousel-control-next" href="#demo" data-slide="next">
-					    <span class="carousel-control-next-icon"></span>
-				</a>
+					   		<div class="carousel-item ">
+					    		<img src="/upload/${viewVo.img2}">
+					   		</div>
+					   		<div class="carousel-item ">
+					    		<img src="/upload/${viewVo.img3}">
+					   		</div>
+					   		<div class="carousel-item ">
+					    		<img src="/upload/${viewVo.img4}">
+					   		</div>
+				   		</div>
+						 <!-- Left and right controls -->
+							<a class="carousel-control-prev" href="#demo" data-slide="prev">
+								  <span class="carousel-control-prev-icon"></span>
+							</a>
+							<a class="carousel-control-next" href="#demo" data-slide="next">
+								  <span class="carousel-control-next-icon"></span>
+							</a>
+			  		</c:when>
+			  		<c:otherwise>
+			  			<c:choose>
+			  				<c:when test="${viewVo.img3!=null}">
+			  					<!-- Indicators -->
+			  					<ul class="carousel-indicators">
+							  		<li data-target="#demo" data-slide-to="0" class="active"></li>
+							   		<li data-target="#demo" data-slide-to="1"></li>
+							   		<li data-target="#demo" data-slide-to="2"></li>
+								</ul>
+								<!-- The slideshow -->
+								<div class="carousel-inner">
+									<div class="carousel-item active">
+							    		<img src="/upload/${viewVo.img1}">
+							   		</div>
+							   		<div class="carousel-item ">
+							    		<img src="/upload/${viewVo.img2}">
+							   		</div>
+							   		<div class="carousel-item ">
+							    		<img src="/upload/${viewVo.img3}">
+							   		</div>
+						   		</div>
+								<!-- Left and right controls -->
+								<a class="carousel-control-prev" href="#demo" data-slide="prev">
+									  <span class="carousel-control-prev-icon"></span>
+								</a>
+								<a class="carousel-control-next" href="#demo" data-slide="next">
+									  <span class="carousel-control-next-icon"></span>
+								</a>
+			  				</c:when>
+			  				<c:otherwise>
+			  					<c:choose>
+			  						<c:when test="${viewVo.img2!=null}">
+			  							<!-- Indicators -->
+			  							<ul class="carousel-indicators">
+									  		<li data-target="#demo" data-slide-to="0" class="active"></li>
+									   		<li data-target="#demo" data-slide-to="1"></li>
+										</ul>
+										<!-- The slideshow -->
+										<div class="carousel-inner">
+											<div class="carousel-item active">
+									    		<img src="/upload/${viewVo.img1}">
+									   		</div>
+									   		<div class="carousel-item ">
+									    		<img src="/upload/${viewVo.img2}">
+									   		</div>
+								   		</div>
+										<!-- Left and right controls -->
+										<a class="carousel-control-prev" href="#demo" data-slide="prev">
+											  <span class="carousel-control-prev-icon"></span>
+										</a>
+										<a class="carousel-control-next" href="#demo" data-slide="next">
+											  <span class="carousel-control-next-icon"></span>
+										</a>
+			  						</c:when>
+			  						<c:otherwise>
+			  							<c:choose>
+			  								<c:when test="${viewVo.img1!=null}">
+			  									<div class="carousel-inner">
+							  					 	<div class="carousel-item active">
+														<img src="/upload/${viewVo.img1}">
+													</div>
+						  					 	</div>
+			  								</c:when>
+			  								<c:otherwise>
+			  									<div class="carousel-inner">
+							  					 	<div class="carousel-item active">
+														<img src="/img/share.jpg">
+													</div>
+						  					 </div>
+			  								</c:otherwise>
+			  							</c:choose>
+			  						</c:otherwise>
+			  					</c:choose>
+			  				</c:otherwise>
+				  		</c:choose>
+			  		</c:otherwise>
+			  </c:choose>
+
 			</div>
 		</div>
+				
 		
 		<div class="col-6 sb">
 			<div id="productTitle">
@@ -80,8 +145,14 @@
 			<hr/>
 			<div id="productIcon">
 			<c:if test="${logId!=viewVo.userid}">
-				<input type="button" class="btn" id="pick1" value="찜하기"/>
-				<input type="button" class="btn" id="pick2" value="찜하기"/>
+				<div id="pickDiv">
+					<c:if test="${alrPick.userid==null}">
+						<input type="button" class="btn" id="pick1" value="찜하기"/>
+					</c:if>
+					<c:if test="${alrPick.userid==logId}">
+						<input type="button" class="btn" id="pick2" value="찜하기"/>
+					</c:if>
+				</div>
 			</c:if>
 			<c:if test="${logId==viewVo.userid}">
 				<div class="proIcon"><i class="fa fa-heart fa-lg"></i><span class="iconValue">${viewVo.pick}</span></div>

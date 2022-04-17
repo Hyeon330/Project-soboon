@@ -10,14 +10,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.semiproject.soboon.service.ReplyAndPickService;
+import com.semiproject.soboon.service.ReplyService;
 import com.semiproject.soboon.vo.ReplyVO;
 
 @RestController
-public class ReplyAndPickController {
+public class ReplyController {
 	
 	@Inject
-	ReplyAndPickService service;
+	ReplyService service;
 	
 	// 댓글 등록하기
 	@PostMapping("/reply/writeOk")
@@ -49,18 +49,5 @@ public class ReplyAndPickController {
 	public int deleteReply(int replyno, HttpSession session) {
 		return service.deleteReply(replyno, (String)session.getAttribute("nickName"));
 	}
-	
-	// 찜하기 등록하기
-	@GetMapping("/pick/insertPick")
-	public int insertPick(int no, HttpSession session) {
-		service.insertPick(no, ((String)session.getAttribute("logId")));
-		return service.plusBoardPick(no);
-	}
-	
-	// 찜하기 취소하기
-	@GetMapping("/pick/deletePick")
-	public int deletePick (int no, HttpSession session) {
-		service.deletePick(no, ((String)session.getAttribute("logId")));
-		return service.minusBoardPick(no);
-	}
+
 }
