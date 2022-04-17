@@ -29,8 +29,26 @@ public class AdminController {
 		mav.setViewName("admin/admin_page");
 		return mav;
 	}
+	
 	@GetMapping("admin/memberMgr")
 	public Map<String, Object> adminMgr(PagingVO pVO) {
+		pVO.setRecordPerPage(10); // 출력수 jsp랑 동일하게 설정
+		pVO.calc(); //페이지 연산 처리
+		Map<String, Object> map=new HashMap<>();
+		//전체 회원수 가져오기
+		int cnt = service.getMembercnt();
+		//페이지에 해당하는 회원 목록
+		List<MemberVO> list=service.memberList(pVO);
+		
+		map.put("cnt", cnt);
+		/* map.put("pVO", pVO); */
+		map.put("userList", list);
+		
+		return map;
+	}
+	
+	@GetMapping("admin/reportMgr")
+	public Map<String, Object> adminMgr1(PagingVO pVO) {
 		pVO.setRecordPerPage(10); // 출력수 jsp랑 동일하게 설정
 		pVO.calc(); //페이지 연산 처리
 		Map<String, Object> map=new HashMap<>();
