@@ -6,14 +6,14 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
-import com.semiproject.soboon.dao.ReplyAndPickDAO;
+import com.semiproject.soboon.dao.ReplyDAO;
 import com.semiproject.soboon.vo.ReplyVO;
 
 @Service
-public class ReplyAndPickServiceImpl implements ReplyAndPickService {
+public class ReplyServiceImpl implements ReplyService {
 
 	@Inject
-	ReplyAndPickDAO dao;
+	ReplyDAO dao;
 	
 	@Override
 	public int insertReply(ReplyVO vo) {
@@ -34,27 +34,5 @@ public class ReplyAndPickServiceImpl implements ReplyAndPickService {
 	public int deleteReply(int replyno, String nickname) {
 		return dao.deleteReply(replyno, nickname);
 	}
-
-	@Override
-	public int insertPick(int no, String userid) {
-		return dao.insertPick(no, userid);
-	}
-
-	@Override
-	public int plusBoardPick(int no) {
-		return dao.plusBoardPick(no);
-	}
-
-	@Override
-	public int deletePick(int no, String userid) {
-		return dao.deletePick(no, userid);
-	}
-
-	@Override
-	public int minusBoardPick(int no) {
-		return dao.minusBoardPick(no);
-	}
-	
-	
 
 }

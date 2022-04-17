@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.semiproject.soboon.dao.ReplyAndPickDAO">
+<mapper namespace="com.semiproject.soboon.dao.ReplyDAO">
 	<insert id="insertReply">
 		insert into reply(no, userid, nickname, coment) 
 		values(${no}, #{userid}, #{nickname}, #{coment})
@@ -19,16 +19,4 @@
 	<delete id="deleteReply">
 		delete from reply where replyno=#{param1} and nickname=#{param2}
 	</delete>
-	<insert id="insertPick">
-		insert into pick (no, userid) values (${param1}, #{param2})
-	</insert>
-	<update id="plusBoardPick">
-		update board set pick=pick+1 where no=#{param1}
-	</update>
-	<delete id="deletePick">
-		delete from pick where no=#{param1} and userid=#{param2}
-	</delete>
-	<update id="minusBoardPick">
-		update board set pick=pick-1 where no=#{param1}
-	</update>
 </mapper>

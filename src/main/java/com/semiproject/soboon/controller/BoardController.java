@@ -22,6 +22,7 @@ import com.semiproject.soboon.RelateUploadFile;
 import com.semiproject.soboon.service.BoardService;
 import com.semiproject.soboon.vo.BoardVO;
 import com.semiproject.soboon.vo.PagingVO;
+import com.semiproject.soboon.vo.PickVO;
 
 @RequestMapping("/board/")
 @RestController
@@ -29,6 +30,7 @@ public class BoardController {
 	
 	@Inject
 	BoardService service;
+	
 	
 	ModelAndView mav = new ModelAndView();
 	ResponseEntity<String> entity = null;
@@ -88,11 +90,36 @@ public class BoardController {
 	}
 	
 	@GetMapping("shareBoardView")
-	public ModelAndView shareAndReqView(int no) {
+	public ModelAndView shareAndReqView(int no, String userid, HttpSession session) {
+
+		// 조회수 증가
 		service.updateViews(no);
+		
+		// 상세페이지 보이기(뷰 보이기)
 		mav.addObject("viewVo", service.selectView(no));
 		mav.setViewName("board/shareBoardView");
+		// 이미 글에 찜한 유저 구하기
+		mav.addObject("alrPick", service.selectAlreadyPick(no, (String)session.getAttribute("logId")));
 		return mav;
+	}
+	
+	
+	// 찜하기 등록하기
+	@GetMapping("insertPick")
+	public PickVO insertPick(int no, HttpSession session) {
+		String userid = ((String)session.getAttribute("logId"));
+		service.insertPick(no, userid);
+		service.plusBoardPick(no);
+		return service.selectAlreadyPick(no, userid);
+	}
+	
+	// 찜하기 취소하기
+	@GetMapping("deletePick")
+	public PickVO deletePick (int no, HttpSession session) {
+		String userid = ((String)session.getAttribute("logId"));
+		service.deletePick(no, userid);
+		service.minusBoardPick(no);
+		return service.selectAlreadyPick(no, userid);
 	}
 	
 	// 글 수정 폼
@@ -221,11 +248,7 @@ public class BoardController {
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
-				
 		return entity;
-		
 	}
-
-
 
 }

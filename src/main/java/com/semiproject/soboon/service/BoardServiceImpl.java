@@ -61,10 +61,30 @@ public class BoardServiceImpl implements BoardService {
 	public int deleteView(int no, String userid) {
 		return dao.deleteView(no, userid);
 	}
+	
+	@Override
+	public int insertPick(int no, String userid) {
+		return dao.insertPick(no, userid);
+	}
 
 	@Override
-	public int insertPick(PickVO vo) {
-		return dao.insertPick(vo);
+	public int plusBoardPick(int no) {
+		return dao.plusBoardPick(no);
+	}
+
+	@Override
+	public int deletePick(int no, String userid) {
+		return dao.deletePick(no, userid);
+	}
+
+	@Override
+	public int minusBoardPick(int no) {
+		return dao.minusBoardPick(no);
+	}
+	
+	@Override
+	public PickVO selectAlreadyPick(int no, String userid) {
+		return dao.selectAlreadyPick(no, userid);
 	}
 
 	

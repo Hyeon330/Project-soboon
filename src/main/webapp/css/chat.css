@@ -51,6 +51,13 @@
 	background-color: #eee;
 	font-weight: bold;
 }
+.notice-bell{
+	float: right;
+	margin: 0 3px;
+}
+.notice-bell:hover{
+	cursor: pointer;
+}
 
 /* 채팅 검색 */
 .chat-search{

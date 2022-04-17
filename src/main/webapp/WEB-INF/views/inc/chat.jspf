@@ -19,7 +19,7 @@
 		</div>
 		
 		<ul id="chatLists">
-			<!-- <li class="chat-list">
+			<li class="chat-list">
 				<div>
 					<div class="chat-info">
 						<p class="chat-name">HyeonSu Lee</p>
@@ -27,7 +27,151 @@
 					</div>
 					<p class="chat-date">12월 31일</p>
 				</div>
-			</li>-->
+			</li>
+			<li class="chat-list">
+				<div>
+					<div class="chat-info">
+						<p class="chat-name">HyeonSu Lee</p>
+						<p class="last-chat">안녕하세요~~</p>
+					</div>
+					<p class="chat-date">12월 31일</p>
+				</div>
+			</li>
+			<li class="chat-list">
+				<div>
+					<div class="chat-info">
+						<p class="chat-name">HyeonSu Lee</p>
+						<p class="last-chat">안녕하세요~~</p>
+					</div>
+					<p class="chat-date">12월 31일</p>
+				</div>
+			</li>
+			<li class="chat-list">
+				<div>
+					<div class="chat-info">
+						<p class="chat-name">HyeonSu Lee</p>
+						<p class="last-chat">안녕하세요~~</p>
+					</div>
+					<p class="chat-date">12월 31일</p>
+				</div>
+			</li>
+			<li class="chat-list">
+				<div>
+					<div class="chat-info">
+						<p class="chat-name">HyeonSu Lee</p>
+						<p class="last-chat">안녕하세요~~</p>
+					</div>
+					<p class="chat-date">12월 31일</p>
+				</div>
+			</li>
+			<li class="chat-list">
+				<div>
+					<div class="chat-info">
+						<p class="chat-name">HyeonSu Lee</p>
+						<p class="last-chat">안녕하세요~~</p>
+					</div>
+					<p class="chat-date">12월 31일</p>
+				</div>
+			</li>
+			<li class="chat-list">
+				<div>
+					<div class="chat-info">
+						<p class="chat-name">HyeonSu Lee</p>
+						<p class="last-chat">안녕하세요~~</p>
+					</div>
+					<p class="chat-date">12월 31일</p>
+				</div>
+			</li>
+			<li class="chat-list">
+				<div>
+					<div class="chat-info">
+						<p class="chat-name">HyeonSu Lee</p>
+						<p class="last-chat">안녕하세요~~</p>
+					</div>
+					<p class="chat-date">12월 31일</p>
+				</div>
+			</li>
+			<li class="chat-list">
+				<div>
+					<div class="chat-info">
+						<p class="chat-name">HyeonSu Lee</p>
+						<p class="last-chat">안녕하세요~~</p>
+					</div>
+					<p class="chat-date">12월 31일</p>
+				</div>
+			</li>
+			<li class="chat-list">
+				<div>
+					<div class="chat-info">
+						<p class="chat-name">HyeonSu Lee</p>
+						<p class="last-chat">안녕하세요~~</p>
+					</div>
+					<p class="chat-date">12월 31일</p>
+				</div>
+			</li>
+			<li class="chat-list">
+				<div>
+					<div class="chat-info">
+						<p class="chat-name">HyeonSu Lee</p>
+						<p class="last-chat">안녕하세요~~</p>
+					</div>
+					<p class="chat-date">12월 31일</p>
+				</div>
+			</li>
+			<li class="chat-list">
+				<div>
+					<div class="chat-info">
+						<p class="chat-name">HyeonSu Lee</p>
+						<p class="last-chat">안녕하세요~~</p>
+					</div>
+					<p class="chat-date">12월 31일</p>
+				</div>
+			</li>
+			<li class="chat-list">
+				<div>
+					<div class="chat-info">
+						<p class="chat-name">HyeonSu Lee</p>
+						<p class="last-chat">안녕하세요~~</p>
+					</div>
+					<p class="chat-date">12월 31일</p>
+				</div>
+			</li>
+			<li class="chat-list">
+				<div>
+					<div class="chat-info">
+						<p class="chat-name">HyeonSu Lee</p>
+						<p class="last-chat">안녕하세요~~</p>
+					</div>
+					<p class="chat-date">12월 31일</p>
+				</div>
+			</li>
+			<li class="chat-list">
+				<div>
+					<div class="chat-info">
+						<p class="chat-name">HyeonSu Lee</p>
+						<p class="last-chat">안녕하세요~~</p>
+					</div>
+					<p class="chat-date">12월 31일</p>
+				</div>
+			</li>
+			<li class="chat-list">
+				<div>
+					<div class="chat-info">
+						<p class="chat-name">HyeonSu Lee</p>
+						<p class="last-chat">안녕하세요~~</p>
+					</div>
+					<p class="chat-date">12월 31일</p>
+				</div>
+			</li>
+			<li class="chat-list">
+				<div>
+					<div class="chat-info">
+						<p class="chat-name">HyeonSu Lee</p>
+						<p class="last-chat">안녕하세요~~</p>
+					</div>
+					<p class="chat-date">12월 31일</p>
+				</div>
+			</li>
 		</ul>
 	</div>
 </div>
