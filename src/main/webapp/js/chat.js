@@ -313,8 +313,6 @@ $(() => {
 		console.log($(this).scrollTop());
 		console.log('휠 : '+wheel);
 	});*/
-	
-	// 벨 on off
     
     setInterval(() => {
 		if($('#chatSearch').val()==''){
