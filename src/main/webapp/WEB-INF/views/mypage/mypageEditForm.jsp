@@ -2,16 +2,16 @@
 	pageEncoding="UTF-8"%>
 <link rel="stylesheet" href="/css/mypage.css" type="text/css"/>
 <script src="/js/memberEdit.js"></script>
-<div class="container" id="mypageContainer">
+<div id="mypageContainer">
 	<!--   사이드 메뉴 (include) -->
 	<%@ include file="/WEB-INF/views/inc/mypageSideBar.jsp"%>
 
 	<!--  view -->
-	<div id="editView" style="width: 65%; height: 100%;">
-		<h1>개인정보수정</h1>
+	<div id="editView" style="width:75%; height: 100%;">
+		<h3>개인정보수정</h3>
 		<hr />
 		<form id="editFrm" method="post" action="/mypage/mypageEditOk">
-			<div style="width: 100%; height: 80%;">
+			<div style="width: 90%; height: 80%;">
 				<ul id="editFrm">
 					<li>
 						<div style="width: 20%;">아이디</div>
@@ -51,7 +51,7 @@
 								value="${VO.nickname }" />
 						</div>
 						<div style="width: 40%">
-							<button class="btn btn-success" id="button_overlapCheck">중복확인</button>
+							<button class="btn" id="button_overlapCheck">중복확인</button>
 						</div> <input type="hidden" id="nicknameCheck" />
 						<div id="VO_nickname_hidden">${VO.nickname }</div>
 					</li>
@@ -82,7 +82,7 @@
 				</ul>
 			</div>
 			<div style="width: 100%; height: 90px;">
-				<input type="submit" class="btn btn-success" value="수정"
+				<input type="submit" class="btn" value="수정"
 					id="button_editSubmit" />
 			</div>
 		</form>

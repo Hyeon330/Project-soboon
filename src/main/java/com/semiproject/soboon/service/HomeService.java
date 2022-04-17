@@ -2,8 +2,9 @@ package com.semiproject.soboon.service;
 
 import java.util.List;
 
+import com.semiproject.soboon.vo.BoardVO;
 import com.semiproject.soboon.vo.HomeVO;
 
 public interface HomeService {
-	public List<HomeVO> selectList();
+	public List<HomeVO> selectList(BoardVO vo);
 }

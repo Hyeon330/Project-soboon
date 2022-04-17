@@ -35,16 +35,16 @@
 
 </script>
 
-<div id= "sideMenuFrm"style="width:20%; height:100%;">
+<div id= "sideMenuFrm">
 		<h3>마이페이지</h3>
-		<br/>
+		<hr/>
 		<ul id="sideMenu"  class="list-group list-group-flush">
-			<li class="list-group-item" id="showView"><a href="#" class="sidebarMenu">내가 쓴 글보기</a></li>
-			<li class="list-group-item" id="editForm"><a href="#"  class="sidebarMenu">개인정보수정</a></li>
-			<li class="list-group-item" id="delMember"><a href="#" class="sidebarMenu">회원탈퇴</a></li>
+			<li class="list-group-item" id="showView"><a href="#">내가 쓴 글보기</a></li>
+			<li class="list-group-item" id="editForm"><a href="#" >개인정보수정</a></li>
+			<li class="list-group-item" id="delMember"><a href="#">회원탈퇴</a></li>
 		</ul>
 </div>
-<div style="width:5%; height:100%"></div>
+<div id="emptySpace"></div>
 </body>
 
 

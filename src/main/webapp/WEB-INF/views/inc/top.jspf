@@ -23,10 +23,6 @@
 <script src="https://kit.fontawesome.com/76aefe2b67.js" crossorigin="anonymous"></script>
 <!-- Board checkeditors cdn -->
 <script src="//cdn.ckeditor.com/4.17.2/full/ckeditor.js"></script>
-<script src="/js/addrDialog.js"></script>
-<script>
-	
-</script>
 </head>
 <body>
 <nav>
@@ -35,7 +31,7 @@
 				<div><a href="/"><img src="/img/logowhite.png"/></a></div>
 				<div id="topSearch">
 				<!--검색 기능  -->
-					<form class="form-inline" name="edit" method="get" action="/board/shareAndReqList">
+					<form class="form-inline" name="edit" method="get" action="/board/shareBoardList">
 						<select id="topSelect" name="category" >
 							<option>항목 선택</option>
 							<option value="share">나눔</option>
