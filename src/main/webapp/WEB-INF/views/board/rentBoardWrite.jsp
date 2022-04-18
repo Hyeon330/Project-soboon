@@ -5,7 +5,7 @@
 <div class="container">
 	<br/>
 	<form class="form-group" method="post" action="/board/rentBoardWriteOk?category=rent" id="rentForm" enctype="multipart/form-data">
-		<table class="table table-striped" style="text-align:center; border:1px solid #dddddd">
+		<table class="table table-striped" style="text-align:center;">
 			<thead>
 				<tr>
 					<th><h1 style="text-align:center;">대여 게시판 글 작성하기</h1></th>
@@ -24,7 +24,7 @@
 				<tr>
 					<td id="tbBody">
 						<input type="text" class="form-control col-7" id="rentBoardTitle" placeholder="글 제목을 입력하세요."  name="title" maxlength="16"/>
-						<span class="form-control col-2">금&nbsp;&nbsp;액</span>
+						<span class="form-control col-2" id="pricetag">금&nbsp;&nbsp;액</span>
 						<input type="number" class="form-control col-3" name="price" placeholder="금액을 입력하세요."/>
 					</td>
 				</tr>

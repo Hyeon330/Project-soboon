@@ -5,11 +5,14 @@
 .table td, .table th{
 	border:none !important;
 }
-#shareReqForm h1{
+#shareForm h1{
 	text-align:center;
 	font-weight:700;
 	color:rgb(72, 97, 86);
 } 
+#shareForm table{
+	text-align:center;
+}
 #shareBoardTitle{
 	margin-right:10px;
 }

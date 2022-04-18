@@ -24,10 +24,8 @@ $(function() {
 <div id="reportReason">
 	<form id="reportSubmit">
 		<ul>
-			<li>신고제목</li>
-			<li><input type="text" name="reportTitle" id="reportTitle"></li>
 			<li>신고내용</li>
-			<li><textarea cols="30" rows="5" id="reportContent" name="reportContent"></textarea></li>
+			<li><textarea cols="30" rows="3" maxlength="30"; placeholder="30자 내외로 입력하세요"  "id="reportContent" name="reportContent"></textarea></li>
 		</ul>
 	</form>
 </div>
