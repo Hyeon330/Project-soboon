@@ -111,18 +111,18 @@ $(function() {
 		//헤더 
 		var str ="<br/><ul id='reportManage'>"
 		str +="<li>  </li>"
-		str +="<li>신고한사람</li>";
-		str +="<li>신고당한사람</li>";
-		str +="<li>내용</li>";
-		str +="<li>처분</li>";
-		
+		str +="<li>신고한사람</li>"
+		str +="<li>신고당한사람</li>"
+		str +="<li>신고사유</li>"
+		str +="<li>처분</li>"
+	
 		$.each(dataArr.userList, function(i, data){
 			//DB에서 가져올 데이터들
 			str +="<li><input type='checkbox'></li>"
-			str+="<li>"+data.reporter+"</li>";
-			str+="<li>"+data.suspect+ "회"+"</li>";
-			str+="<li>"+data.report_content+"</li>";
-			str+="<li>"+data.board_no+"</li>";
+			str+="<li>"+data.reporter+"</li>"
+			str+="<li>"+data.suspect+ "회"+"</li>"
+			str+="<li><a href=http://localhost:9000/board/shareBoardView?no=194>[스팸글 작성했습니다.] 제목 : 수정</a></li>"
+			str+="<li>"+data.board_no+"</li>"
 			
 			
 		})

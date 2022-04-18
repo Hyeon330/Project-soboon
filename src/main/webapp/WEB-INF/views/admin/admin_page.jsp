@@ -27,6 +27,8 @@
 					<!-- 신고관리 -->
 					<div class="tab-pane fade" id="reportMgr">
 					<div style="float: left" id="reportcnt"></div>
+					<div><button type="button" class="btn btn-outline-danger" style=float:right;>삭제</button></div>
+					<br/>
 						<ul class="reportList">
 						<!-- <li><input type="checkbox" id="checkAll"></li>
 							<li>아이디</li>
