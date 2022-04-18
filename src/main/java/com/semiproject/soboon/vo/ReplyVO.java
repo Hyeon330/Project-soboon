@@ -9,6 +9,7 @@ public class ReplyVO {
 	private String nickname;
 	private String coment;
 	private String createdate;
+	private String title;
 	
 	public int getReplyno() {
 		return replyno;
@@ -51,6 +52,12 @@ public class ReplyVO {
 	}
 	public void setCreatedate(String createdate) {
 		this.createdate = createdate;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
 	}
 	
 }

@@ -29,6 +29,12 @@
 	<select id="myreplyCount" resultType="int">
 		select count(replyno) from reply where userid = #{param1}
 	</select>
+	<select id="mypickCount" resultType="int">
+		select count(pickno) from pick  where userid = #{param1}
+	</select>
+	<select id="myInfo" resultType="MemberVO">
+		select userid, username, email, large, medium, small from member where userid = #{param1}
+	</select>
 	<select id="mypostList2" resultType="BoardVO">
 	select no, title, content, date_format(createdate, '%Y-%m-%d') createdate, views
 	from board
@@ -41,19 +47,14 @@
   			<foreach item="item" collection="noList" open="no in (" separator="," close=")">
   				#{item}
   			</foreach>
-  			and userid=#{userid}
+  			and userid = #{userid}
   		</where>
 	</delete>
+	<select id="myReplyList" resultType="ReplyVO">
+		select r.no, r.replyno, r.nickname, r.coment, date_format(r.createdate, '%Y-%m-%d') createdate, (select title from board where no=r.no) title 
+		from reply r 
+		where r.userid = #{param1}
+		order by r.replyno desc
+		limit ${param2.onePageRecord} offset ${param2.offsetIndex}
+	</select>
 </mapper>
-<!-- 
-<select id="boardList" resultType="com.campus.myapp.vo.BoardVO">
-  		select no, subject, userid, hit, date_format(writedate, '%m-%d %H:%i') writedate
-  		from board
-  		<if test='searchWord != null'>
-  			where ${searchKey} like '%${searchWord}%'
-  		</if> 
-  		order by no desc 
-  		limit ${onePageRecord} offset ${offsetIndex}
-  	</select>
-  	
-  -->
