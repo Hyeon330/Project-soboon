@@ -4,7 +4,7 @@
 <script src="/js/login.js"></script>
 <div class="container">
 	<div id="login">
-		<h1>로그인</h1>
+		<div id="logoBox"><a href="/"><img src="/img/로고6.png" id="loginLogo"/></a></div>
 		<form method="post" action="/member/loginOk" id="loginFrm" onsubmit="return loginFrmCheck()">
 			<ul>
 				<li><input type="text" class="login-id" name="userid" id="userid" placeholder="ID" /></li>
