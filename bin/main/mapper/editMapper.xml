@@ -21,7 +21,7 @@
 		from board
 		where  userid = #{param1}
 		order by no desc
-		limit ${param2.recordPerPage} offset ${param2.offsetIndex}
+		limit ${param2.onePageRecord} offset ${param2.offsetIndex}
 	</select>
 	<select id="mypostCount" resultType="int">
 		select count(no) from board where userid = #{param1}
@@ -35,6 +35,15 @@
 	where  userid = #{param1}
 	order by no desc
 	</select>
+	<delete id="mypostMultiDelete">
+		delete from board
+  		<where>
+  			<foreach item="item" collection="noList" open="no in (" separator="," close=")">
+  				#{item}
+  			</foreach>
+  			and userid=#{userid}
+  		</where>
+	</delete>
 </mapper>
 <!-- 
 <select id="boardList" resultType="com.campus.myapp.vo.BoardVO">

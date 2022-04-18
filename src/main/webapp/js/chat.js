@@ -37,6 +37,30 @@ $(() => {
 		}
 	});
 	
+	// 알람 끄기/켜기
+	if(localStorage.getItem('notice-off')==null){
+		$('.notice-bell').remove();
+		$('.chat-head').append('<i class="bi bi-bell notice-bell"></i>');
+	}else {
+		$('.notice-bell').remove();
+		$('.chat-head').append('<i class="bi bi-bell-slash notice-bell"></i>');
+	}
+	const noticeOnOff = () => {
+		$('.notice-bell').click(function () {
+			if(localStorage.getItem('notice-off')==null){
+				localStorage.setItem('notice-off', 1);
+				$('.notice-bell').remove();
+				$('.chat-head').append('<i class="bi bi-bell-slash notice-bell"></i>');
+			}else {
+				localStorage.removeItem('notice-off');
+				$('.notice-bell').remove();
+				$('.chat-head').append('<i class="bi bi-bell notice-bell"></i>');
+			}
+			noticeOnOff();
+		});
+	}
+	noticeOnOff();
+	
 	// 채팅 검색창 자연스러운 테두리 나타내기
 	$('.chat-search-text').focus(function(){
 		$('.chat-search-box').css('border','2px solid #666');
@@ -262,7 +286,7 @@ $(() => {
 				type: 'post',
 				async: false
 			});
-		}else if($('#msgPopup').css('display')=='none' && data.receiver==myNickname /*&& !($('#chatPopup').css('height').substring(0,$('#chatPopup').css('height').length-2)>0)*/) {
+		}else if($('#msgPopup').css('display')=='none' && data.receiver==myNickname && localStorage.getItem('notice-off')==null) {
 			audio.pause();
 			audio.currentTime = 0.5;
 			audio.play();
