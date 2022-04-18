@@ -19,7 +19,13 @@ public class ServerConfigure implements WebMvcConfigurer {
 			"/pick/insertPick", "/pick/deletePick",
 			"/board/rentBoardList", "/board/rentBoardWrite",
 			"/board/rentBoardWriteOk", "/board/rentBoardEdit",
-			"/board/rentBoardEditOk", "/board/rentBoardDel"
+			"/board/rentBoardEditOk", "/board/rentBoardDel",
+			"/board/saleBoardList", "/board/saleBoardWrite",
+			"/board/saleBoardWriteOk", "/board/saleBoardEdit", 
+			"/board/saleBoardEditOk", "/board/saleBoardDel", 
+			"/board/reqBoardList", "/board/reqBoardWrite",
+			"/board/reqBoardWriteOk", "/board/reqBoardEdit",
+			"/board/reqBoardEditOk", "/board/reqBoardDel"
 			
 			);
 	private static final List<String> URL_PATERRNS_ADMIN = Arrays.asList(			
