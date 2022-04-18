@@ -23,7 +23,7 @@
 }
 .searchinfo_1,
 .searchinfo_2{
-	width:60%;
+	width:70%;
 	margin:30px auto;
 	border:none;
 	border-bottom:2px solid #adadad;
@@ -33,11 +33,16 @@
 	background:none;
 	text-align:center;
 } 
+.searchinfo_searchtel,
+.searchinfo_searchemail{
+	margin:10px auto;
+}
 #searchinfo_tel,
 #searchinfo_email{
 	display:none;
 }
 .searchId-btn,
+.searchId-cancel,
 .searchPwd-btn{
 	width:50%;
 	height:50px;
