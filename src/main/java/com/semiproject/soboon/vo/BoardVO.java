@@ -1,5 +1,7 @@
 package com.semiproject.soboon.vo;
 
+import java.util.List;
+
 public class BoardVO {
 	private int no;
 	private String userid;
@@ -25,7 +27,10 @@ public class BoardVO {
 	
 	// 삭제할 파일을 담을 변수
 	private String deleteFile[];
-		
+	
+	// 여러 개 체크박스를 담을 변수
+	private List<Integer> noList;
+	
 	public int getNo() {
 		return no;
 	}
@@ -146,6 +151,12 @@ public class BoardVO {
 	}
 	public void setSmall(String small) {
 		this.small = small;
+	}
+	public List<Integer> getNoList() {
+		return noList;
+	}
+	public void setNoList(List<Integer> noList) {
+		this.noList = noList;
 	}
 	
 }

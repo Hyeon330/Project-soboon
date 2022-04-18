@@ -2,111 +2,61 @@
 	pageEncoding="UTF-8"%>
 <link rel="stylesheet" href="/css/mypage.css" type="text/css" />
 
-<script>
+<script>	
+	//전역변수
+	let idx=1;
+	let areaNum = 10;
+	/*------------------------------on load----------------------------------------*/
 	$(function() {
-		/*
-		//when page loads....
-		$('.tab_content').hide() // 모든 콘텐츠를 숨김.
-		$('ul.tabs li:first').add("active-tabs").show();//첫번째 탭 활성화
-		$('.tab_content:first').show(); //첫번째 탭 콘텐츠 보여줌.
-
-		//On click Event
-		$('.tabs>li').click(function() {
-			var idx = $('.tabs>li').index(this);
-			var activeTab = $(this).attr('id');
-			console.log(activeTab);
-			console.log('event');
-			$('.tabs li').removeClass('active-tabs') // active클래스 사전에 모두 제거
-			console.log('event2');
-			$(this).addClass('active-tabs')// 선택된 탭에 active클래스 추가함.
-			$('.tab_content').hide(); // 모든 탭 콘텐츠를 숨김
-			console.log($('.tabs>li'));
-
-			$('.tab_content').eq(idx).fadeIn('linear'); // Fade in the active ID content
-
-			return false;
-		});*/
+	
 		/*-----------------------------------on load-------------------------------------*/
-		ajaxSend_mp(1); 
+		ajaxSend_mp(idx, areaNum); 
 		/*--------------------------------------tab 클릭시-----------------------------------------*/
 		$('.nav-item').click(function(){
-			var idx = $(this).index()+1;
-			console.log(idx);
-			ajaxSend_mp(idx); 
+			idx = $(this).index()+1;
+			ajaxSend_mp(idx, areaNum); 
 		});
 		
-		//--------------------내가 쓴 게시글 -----------------------
-		// 체크박스 전체선택 ---> 하위 체크박스 체크
-		$(document).on('click', "#cbx_chk_mypageAll_mypage", function() {
-			if ($("#cbx_chk_mypageAll_mypage").is(":checked"))
-				$("input[name=chk_mypage]").prop("checked", true);
-			else
-				$("input[name=chk_mypage]").prop("checked", false);
-		});
-
-		$("input[name=chk_mypage]").click(function() {
-			var total = $("input[name=chk_mypage]").length;
-			var checked = $("input[name=chk_mypage]:checked").length;
-
-			if (total != checked)
-				$("#cbx_chk_mypageAll_mypage").prop("checked", false);
-			else
-				$("#cbx_chk_mypageAll_mypage").prop("checked", true);
-		});
-	});//$(documnt).onload
-	// ajax로 보내기
-	 function ajaxSend_mp(idx) {
-		let url = "";
-		url = "/mypage";
+		/*--------------------------------------select 클릭시 범위 설정변경--------------------------------*/
 		
-		/*$('#multiDel').click(function(){
-			let cnt = 0;
-			$(".chk").each(function(i,obj){
-				if(obj.checked){
-					cnt++;//checkbox가 체크상태일 때...
-				}
-			});
-			if(cnt<=0){
-				alert("목록을 선택후 삭제하세요..");
-				return false;
-			}
-			$('#listFrm').submit();
-		});*/
-		// 선택한 체크박스를 삭제하기 ajax버전
-		$
+		$('#mypostSelect').change(function(){
+			areaNum = Number($(this).val());
+			console.log('areaNum--->',areaNum);
+			ajaxSend_mp(idx, areaNum); 
+		});
+		
 	});
-	
 	//$(documnt).onload
+	
+	// javascript 함수 작성
 	// ajax로 보내기
-	 function ajaxSend_mp(idx) {
+	 function ajaxSend_mp(idx, num) {
 		let url = "";
 		url = "/mypage";
 		
-		console.log('>>>>>0');
 		if (idx === 1) {
 			url += "/mypost";
-			console.log(idx+">>>>>"+url);
 
 		} else if (idx === 2) {
 			url += '/mycomment';
-			console.log(idx+">>>>>"+url);
-;
 		} else {
 			url += '/myfavorite';
-			console.log(idx+">>>>>"+url);
 		}
-		console.log(url);//mypage/myfavorite
+		console.log('ajax돌입', num);
 		$.ajax({
 			url : url,
-			data : 'json',
+			type : 'GET',
+			data :  {
+				onePageRecord : num
+			},
 			success : function(dataArr) {
-				if (idx == '1') {
-					console.log('>>>>>> cofirm.')
-					showMyPost(dataArr);
-				} else if (idx == '2') {
-					showMyComment(dataArr);
+				if (idx === 1) {
+					console.log('######### idx=1 통과######');
+					showMyPost(dataArr, num);
+				} else if (idx === 2) {
+					showMyComment(dataArr, num);
 				} else {
-					showMyFavorite(dataArr);
+					showMyFavorite(dataArr, num);
 				}
 				
 			},
@@ -118,7 +68,7 @@
 		});//$.ajax
 	}//jaxToss
 	
-	function showMyPost(dataArr) {
+	function showMyPost(dataArr, num) {
 		var str = "";
 		/*<ul>
 			<li><input type="checkbox" id="cbx_chk_mypageAll_mypage" />전체선택</li>
@@ -134,10 +84,11 @@
 			<li>2022.04.28</li>
 			<li>30</li>
 		</ul>*/
-		
+		// form - enter
+		// 프로필 카운터(mypost-board)
 		//헤더
 		str += "<ul>";
-		str += "<li><input type='checkbox' id='cbx_chk_mypageAll_mypage'/> 전책선택</li>";
+		str += "<li><input type='checkbox' id='allCheck'/> 전책선택</li>";
 		str += "<li>&nbsp;</li>";
 		str += "<li>제목</li>";
 		str += "<li>내용</li>";
@@ -148,7 +99,7 @@
 		$.each(dataArr.plist, function(i, data){
 			//db에 가져올 데이터들
 			str += "<ul>";
-			str += "<li><input type='checkbox' name='chk_mypage' value='"+data.no+"'/></li>";
+			str += "<li><input type='checkbox' name='noList' value='"+data.no+"' class='chk'/></li>";
 			str += "<li>"+data.no+"</li>";
 			str += "<li>"+data.title+"</li>";
 			str += "<li>"+data.content+"</li>";
@@ -156,41 +107,118 @@
 			str += "<li>"+data.createdate+"</li>";
 			str += "</ul>";
 		});
-		let onePagePerRecord=10; // 한 페이지당 10명 기준
-		let totalCount=Number(dataArr.cnt); //총인원수 integer로 가져옴
-		let pageCount=0;
-		//페이지수 구하기 pageCount ==> 연산하는 로직 보면서 구하기
-		if(totalCount%onePagePerRecord==0) {
-			pageCount = totalCount/onePageRecord;
-		}else {
-			pageCount = totalCount/onePagePerRecord+1;
-		}
-		pageCount = Math.floor(pageCount);
-		console.log(pageCount);
+		// form - exit
+		// 한 페이지당 10명 기준
+		 
+		console.log('totalRecord--->'+ dataArr.pVO.totalRecord);
+		console.log('totalPage----->'+ dataArr.pVO.totalPage);
+		
+		
 		//페이지 네비게이션 문자열 만들기
-		let pageStr = "<br/>";
+		let pageStr = "";
 		pageStr+='<ul class="pagination" id="paging-mp">';
-		pageStr+='<li class="page-item disabled"><a class="page-link" id="prevBtn">Prev</a></li>';
-		for(var p=1; p <= pageCount; p++){
-			pageStr += '<li class="page-item"><a class="page-link"href="javascript:void(0);" onclick="ml('+p+')">' + p + '</a></li>'
+		// 이전 페이지
+		if(dataArr.pVO.pageNum<=1) {
+			pageStr+='<li class="page-item disabled"><a class="page-link" id="prevBtn" href="javascript:void(0)">Prev</a></li>';	
 		}
-		pageStr += '<li class="page-item"><a class="page-link" id="nextBtn">Next</a></li>'
+		else {
+		pageStr+='<li class="page-item"><a class="page-link" href="javascript:void(0)" id="prevBtn" onclick="ml2('+(dataArr.pVO.pageNum-1)+', '+num+')">Prev</a></li>';
+		}
+		//페이지
+		for(var p=dataArr.pVO.startPage; p < dataArr.pVO.onePageCount; p++){
+			// 총 페이지수보다 출력할 페이지 번호가 작을 때
+			if(p<=dataArr.pVO.totalPage) {
+				if(p===dataArr.pVO.pageNum) {
+					pageStr += '<li class="page-item active"><a class="page-link" href="javascript:void(0)" onclick="ml2('+p+', '+num+')">' + p + '</a></li>';
+				}else {
+					pageStr += '<li class="page-item"><a class="page-link" href="javascript:void(0)" onclick="ml2('+p+', '+num+')">' + p + '</a></li>';
+				}//if~else2	
+			}//if1
+		}//for
+		
+		//다음 페이지
+		if(dataArr.pVO.pageNum >= dataArr.pVO.totalPage) {
+			pageStr += '<li class="page-item disabled"><a class="page-link" id="nextBtn" href="javascript:void(0)" >Next</a></li>';
+		} else {
+			pageStr += '<li class="page-item"><a class="page-link" id="nextBtn" href="javascript:void(0)" onclick="ml2('+(dataArr.pVO.pageNum+1)+', '+num+')">Next</a></li>';
+		}
+		
 		pageStr +='</ul>';
-		console.log(pageStr);
-		$('#inTab1').html(str);
+		
+/*-----------------------출력(print)----------------------------------------------------*/
+		$('#myPostCnt').html(dataArr.pVO.totalRecord);
+		$('#printFrm1').html(str);
 		$('.pagingwrap').html(pageStr);	
 	}//showPost in sucess in ajax
-	function ml(p) {
-		console.log(p);
-		let url = "/mypage/mypost?currentPage"+p+"&recordPerPage=10"; 
+
+/*------------------------function----------------------------------------------------------*/
+	function ml2(p, num) {
+		let url = "/mypage/mypost" 
+		data = {
+				pageNum : p,
+				onePageRecord : num	
+		}
+		console.log("data.onePageRecord",data.onePageRecord);
+
 		$.ajax({
 			url: url,
 			dateType:'json',
+			data : data,
 			success:function(dataArr){
-				showMyPost(dataArr);
+				showMyPost(dataArr, num);
 			}
 		});
 	}
+	function nextpg() {
+		let url = "/mypage/mypost"
+		data = {
+				currentPage : p + 1
+		}
+	}
+	
+	
+	$(function(){
+		$(document).on('click', "#allCheck", function() {
+			$(".chk").prop("checked", $("#allCheck").prop("checked"));
+		});
+/*-------------------------------------------------------------------------*/		
+		$(document).on('click','#delPost',function() {
+			let cnt = 0;
+			$(".chk").each(function(i, obj){			
+				if(obj.checked) {
+					cnt++; // checkbox가 체크상태일 떄
+				}
+			});
+			if(cnt<=0) {
+				alert('목록을 선택 후 선택해주세요.');
+				return false;
+			}
+			let params = $('#printFrm1').serialize();
+			let url = "/mypage/multiDel";
+			if(confirm('선택한 목록을 삭제하시겠습니까?')){
+				$.ajax({
+					data:params,
+					method:"POST",
+					url: url,
+					success: function(result){
+						if(result<=0) {
+							conole.log('데이터 목록 삭제를 싶해하였습니다.');
+							alert("데이터 목록 삭제를 싶해하였습니다.");
+						}else {
+							ajaxSend_mp(idx, areaNum);
+						}
+					},
+					error:function(e){
+						console.log(e);
+						alert('데이터 교환 중 오류발생');
+					}
+						
+				});//ajax
+			}//if confirm
+		});
+		
+	
+	});
 </script>
 
 <div id="mypageContainer">
@@ -218,7 +246,7 @@
 				<div>
 					<div>
 						<div>작성글</div>
-						<div>${mpCnt }</div>
+						<div id="myPostCnt">${mpCnt }</div>
 					</div>
 				</div>
 				<div>
@@ -252,13 +280,27 @@
 			<!-- Content -->
 			<div id="tab1" class="tab-pane fade show active">
 				<div class="innerTab">
-					<h1>tab1</h1>
-					<!-- 페이징 목록 -->
-					<div id="inTab1"></div>
-					<div class="pagingwrap">
-						
+					
+					<div class="tabTopMenu">
+						<h1>tab1</h1>
+	<!-- ------------------------------------------------------------------------------------- -->
+						<select name="boardArea-mp" id="mypostSelect">
+							<option value="5" >5개</option>
+							<option value="10" selected>10개</option>
+						</select>
+	<!-- ------------------------------------------------------------------------------------- -->
+					</div>					
+					<div id="inTab1">
+						<!-- 데이터 출력 -->
+						<form method="post" action="/mypage/multiDel" id="printFrm1"></form>
 					</div>
-					<div><button id="delPost">삭제하기</button></div>
+	<!-- --------------------------------------------------------------------------------------- -->
+					<!-- 페이징 목록 -->
+					<div class="bottom-myView">
+						<div class="pagingwrap"></div>
+						<div><button id="delPost">삭제하기</button></div>
+					</div>
+	<!-- --------------------------------------------------------------------------------------- -->
 				</div><!-- innerTab -->
 			</div>
 			<!-- tab1 -->

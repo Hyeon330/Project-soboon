@@ -8,13 +8,19 @@ $(() => {
 			$('#chatPopup').animate({
 				height: '0'
 			}, 150);
+			sessionStorage.removeItem('chatListsHeight');
 		}else {
 			$('#chatBtn').append('<i class="bi bi-x-lg chat-icon"></i>');
 			$('#chatPopup').animate({
 				height: window.innerHeight-120+'px'
 			}, 150);
+			sessionStorage.setItem('chatListsHeight', 1);
 		}
 	});
+	// 페이지 이동시 chatlist 팝업 상태유지
+	if(sessionStorage.getItem('chatListsHeight')!=null){
+		$('#chatPopup').css('height', window.innerHeight-120+'px');
+	}
 	
 	// 화면크기에 따라 채팅 리스트 일정한 크기 유지
 	const resizeChatLists = () => {
@@ -31,6 +37,30 @@ $(() => {
 		}
 	});
 	
+	// 알람 끄기/켜기
+	if(localStorage.getItem('notice-off')==null){
+		$('.notice-bell').remove();
+		$('.chat-head').append('<i class="bi bi-bell notice-bell"></i>');
+	}else {
+		$('.notice-bell').remove();
+		$('.chat-head').append('<i class="bi bi-bell-slash notice-bell"></i>');
+	}
+	const noticeOnOff = () => {
+		$('.notice-bell').click(function () {
+			if(localStorage.getItem('notice-off')==null){
+				localStorage.setItem('notice-off', 1);
+				$('.notice-bell').remove();
+				$('.chat-head').append('<i class="bi bi-bell-slash notice-bell"></i>');
+			}else {
+				localStorage.removeItem('notice-off');
+				$('.notice-bell').remove();
+				$('.chat-head').append('<i class="bi bi-bell notice-bell"></i>');
+			}
+			noticeOnOff();
+		});
+	}
+	noticeOnOff();
+	
 	// 채팅 검색창 자연스러운 테두리 나타내기
 	$('.chat-search-text').focus(function(){
 		$('.chat-search-box').css('border','2px solid #666');
@@ -43,6 +73,7 @@ $(() => {
 	var todayTime = new Date();
 	var notRead = 0;
 	// 채팅 리스트 리로드
+	
 	const setChatLists = function(result){
 		$('#chatLists').empty();
 		notRead = 0;
@@ -74,7 +105,7 @@ $(() => {
 			
 			// 시간
 			if(chatDate.getTime() === today.getTime()){
-				chatList += '<p class="chat-date">'+Number(chatTimeArr[0])+':'+Number(chatTimeArr[1])+'</p>';
+				chatList += '<p class="chat-date">'+Number(chatTimeArr[0])+':'+chatTimeArr[1]+'</p>';
 			}else {
 				chatList += '<p class="chat-date">'+Number(chatDateArr[1])+'월 '+Number(chatDateArr[2])+'일'+'</p>';
 			}
@@ -193,18 +224,27 @@ $(() => {
 	// 메시지 창 열고 닫기
 	$('.msg-close').click(() => {
 		$('#msgPopup').css('display', 'none');
+		sessionStorage.removeItem('msgPopup');
 	});
 	const openMsgPopupReload = () => {
 		$('.chat-list').on('click', function(){
-			if($(this).find('.chat-name').text()!=$('#oppNickName').text()){
+			let oppNickname = $(this).find('.chat-name').text();
+			if(oppNickname!=$('#oppNickName').text()){
 				$('.msg-textarea').val('');
 			}
-			msgLoad($(this).find('.chat-name').text());
+			msgLoad(oppNickname);
 			chatListsReload();
 			openMsgPopupReload();
+			sessionStorage.setItem('msgPopup', 1);
+			sessionStorage.setItem('oppNickname', oppNickname);
 		});
 	}
 	openMsgPopupReload();
+	// 페이지 이동시 msg팝업 상태유지
+	if(sessionStorage.getItem('msgPopup')!=null){
+		$('#msgPopup').css('display', 'block');
+		msgLoad(sessionStorage.getItem('oppNickname'));
+	}
 	
 	// 메시지 데이터 소켓 서버로 보내기
 	const sendMessage = (msg) => {
@@ -246,7 +286,7 @@ $(() => {
 				type: 'post',
 				async: false
 			});
-		}else if($('#msgPopup').css('display')=='none' && data.receiver==myNickname /*&& !($('#chatPopup').css('height').substring(0,$('#chatPopup').css('height').length-2)>0)*/) {
+		}else if($('#msgPopup').css('display')=='none' && data.receiver==myNickname && localStorage.getItem('notice-off')==null) {
 			audio.pause();
 			audio.currentTime = 0.5;
 			audio.play();
@@ -268,8 +308,11 @@ $(() => {
 	});
 	
 	// 채팅 한정 개수 100개로 하고 스크롤 최상단으로 올렸을시 리로드
-	
-	// 페이지 이동시 현상 유지
+	/*$('.msg-lists').on('mousewheel', function(e) {
+		var wheel = e.originalEvent.wheelDelta;
+		console.log($(this).scrollTop());
+		console.log('휠 : '+wheel);
+	});*/
     
     setInterval(() => {
 		if($('#chatSearch').val()==''){

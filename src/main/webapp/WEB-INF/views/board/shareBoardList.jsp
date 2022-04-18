@@ -7,6 +7,7 @@
 		<h1 id="shareBrd">나눔 게시판</h1>
 		<br/>
 		<a href="/board/shareBoardWrite" class="btn" id="shareBoardWrite">글 작성하기</a>
+		<span id="addressInfo">${addrSmall}</span>
 		<div class="row">
 			<c:forEach var="listVo" items="${list}">
 			<div class="col-sm-4 sb">
@@ -38,11 +39,11 @@
 		<div class="row">
 			<ul class="pagination justify-content-center" id="paging">
 				<c:if test="${pvo.currentPage==1}">
-					<li class="page-item disabled"><a class="page-link" id="prevBtn">Prev</a></li>
+					<li class="page-item disabled"><a class="page-link" id="prevBtn"><i class="fa fa-angle-left"></i></a></li>
 				</c:if>
 				<c:if test="${pvo.currentPage>1}">
 					<li class="page-item"><a class="page-link" href="javascript:void(0);" id="prevBtn" 
-							onclick="goPrev(${pvo.currentPage})">Prev</a></li>
+							onclick="goPrev(${pvo.currentPage})"><i class="fa fa-angle-left"></i></a></li>
 				</c:if>
 				<c:forEach var="p" begin="${pvo.startPage}" end="${pvo.totalPage}">
 					<c:if test="${p<=pvo.totalPage}">
@@ -58,13 +59,13 @@
 					</c:if>
 				</c:forEach>
 				<c:if test="${pvo.currentPage==pvo.totalPage}">
-					<li class="page-item disabled"><a class="page-link" id="nextBtn">Next</a></li>
+					<li class="page-item disabled"><a class="page-link" id="nextBtn"><i class="fa-solid fa-angle-right"></i></a></li>
 				</c:if>
 				<c:if test="${pvo.currentPage<pvo.totalPage}">
 					<li class="page-item"><a class="page-link" href="javascript:void(0);" id="nextBtn"
-							onclick="goNext(${pvo.currentPage})">Next</a></li>
+							onclick="goNext(${pvo.currentPage})"><i class="fa fa-angle-right"></i></a></li>
 				</c:if>
 			</ul>
-		</div>	
+		</div><!-- row -->
 	<br/>
 </div>
