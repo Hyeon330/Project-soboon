@@ -144,9 +144,9 @@ $(() => {
 	$(".pwd_control i").on('click',function(){
 		$("input").toggleClass('active');
 		if($("input").hasClass('active')){
-			$(this).attr('class',"fa fa-eye-slash fa-md").prev('input').attr('type','text');
+			$(this).attr('class',"fa fa-eye fa-md").prev('input').attr('type','text');
 		} else{
-			$(this).attr('class',"fa fa-eye fa-md").prev('input').attr('type',"password");
+			$(this).attr('class',"fa fa-eye-slash fa-md").prev('input').attr('type',"password");
 		}
 	});
 });
