@@ -39,8 +39,20 @@ public interface BoardDAO {
 	
 	// 상세페이지 삭제 
 	public int deleteView(int no, String userid);
+
+	// 찜하기 등록하기
+	public int insertPick(int no, String userid);
 	
-	// 찜하기 버튼 클릭 시 DB 삽입
-	public int insertPick(PickVO vo);
+	// 찜하기 등록 board DB 연결
+	public int plusBoardPick(int no);
+	
+	// 찜하기 취소하기
+	public int deletePick(int no, String userid);
+	
+	// 찜하기 취소 board DB 연결
+	public int minusBoardPick(int no);
+	
+	// 이미 찜한유저를 구해서 찜하기 취소 버튼 보이기
+	public PickVO selectAlreadyPick(int no, String userid);
 	
 }

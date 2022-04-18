@@ -8,7 +8,9 @@
 		value(#{userid}, #{nickname},#{title},#{content}, #{thumbnailImg}, #{img1}, #{img2}, #{img3}, #{img4}, #{category}, #{large}, #{medium}, #{small})
 	</insert>
 	<select id="selectList" resultType="BoardVO">
-		select * from board where category = #{param2.category} and small = #{param2.small} 
+		select no, thumbnailImg, img1, pick, nickname, title,
+		views, small, category, date_format(createdate, "%m/%d %H:%i")createdate
+		from board where category = #{param2.category} and small = #{param2.small} 
 		order by no desc limit ${param1.recordPerPage} offset ${param1.offsetIndex}
 	</select>
 	<select id="selectTotalRecord" resultType="int">
@@ -38,5 +40,20 @@
 	<delete id="deleteView">
 		delete from board where no=#{param1} and userid=#{param2}
 	</delete>
-
+		<insert id="insertPick">
+		insert into pick (no, userid) values (${param1}, #{param2})
+	</insert>
+	<update id="plusBoardPick">
+		update board set pick=pick+1 where no=#{param1}
+	</update>
+	<delete id="deletePick">
+		delete from pick where no=#{param1} and userid=#{param2}
+	</delete>
+	<update id="minusBoardPick">
+		update board set pick=pick-1 where no=#{param1}
+	</update>
+	<select id="selectAlreadyPick" resultType="PickVO">
+		select no, userid from pick 
+		where no=#{param1} and userid=#{param2}
+	</select>
 </mapper>

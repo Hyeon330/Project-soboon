@@ -17,18 +17,19 @@
 	border-width: 1px 1px 0px 1px;
 	border-style: solid;
 	border-color: #888;
+	border-radius: 5px 5px 0 0;
 }
 .chat-icon {
 	font-size: 20px;
 }
-.chat-alert-point{
+.chat-notice-point{
 	position: absolute;
 	width: 10px;
 	height: 10px;
 	background-color: red;
 	border-radius: 100%;
 	top: 3px;
-	right: 10px;
+	right: 3px;
 	z-index: 20;
 }
 #chatPopup {
@@ -49,6 +50,13 @@
 	padding: 0 10px;
 	background-color: #eee;
 	font-weight: bold;
+}
+.notice-bell{
+	float: right;
+	margin: 0 3px;
+}
+.notice-bell:hover{
+	cursor: pointer;
 }
 
 /* 채팅 검색 */
