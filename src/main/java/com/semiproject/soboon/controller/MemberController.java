@@ -1,6 +1,7 @@
 package com.semiproject.soboon.controller;
 
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 import javax.inject.Inject;
@@ -12,6 +13,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,8 +24,10 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.semiproject.soboon.service.AddressService;
+import com.semiproject.soboon.service.EmailService;
 import com.semiproject.soboon.service.KakaoAPI;
 import com.semiproject.soboon.service.MemberService;
+import com.semiproject.soboon.vo.EmailVO;
 import com.semiproject.soboon.vo.MemberVO;
 
 @Controller
@@ -36,6 +40,8 @@ public class MemberController {
 	KakaoAPI kakao;
 	@Inject
 	AddressService serviceAddr;
+	@Inject
+	EmailService serviceEmail;
 	
 	@GetMapping("signup")
 	public String memberForm() {
@@ -105,7 +111,7 @@ public class MemberController {
 		String access_Token = kakao.getAccessToken(code);
 //		System.out.println("controller access_token:" + access_Token);
 		HashMap<String, Object> userInfo = kakao.getUserInfo(access_Token);
-		System.out.println("login Controller: " + userInfo);
+//		System.out.println("login Controller: " + userInfo);
 		
 //		// 클라이언트의 이메일이 존재할 때 세션에 해당 이메일과 토큰 등록
 //		System.out.println(kakao.getUserInfo("email"));
@@ -118,7 +124,7 @@ public class MemberController {
 		}
 		attr.addFlashAttribute("code",access_Token);
 		
-		System.out.println(session.getAttribute("logStatus"));
+//		System.out.println(session.getAttribute("logStatus"));
 		return "redirect:/?code="+access_Token;
 	}
 	
@@ -161,7 +167,7 @@ public class MemberController {
 			kakaoVO.setLarge("");
 			kakaoVO.setMedium("");
 			kakaoVO.setSmall("");
-			kakaoVO.setTel("010-1111-1111");
+			kakaoVO.setTel("010-0000-0000");
 			kakaoVO.setEmail(kakao_email);
 			service.memberInsert(kakaoVO);
 		}
@@ -214,8 +220,7 @@ public class MemberController {
 		return result;
 	}
 	
-	//비밀번호찾기(이메일인증)
-	
+	//비밀번호찾기(이메일로 임시 비밀번호 보내기)
 	
 	//---------------------------------------------------------------------
 	@PostMapping("memberIdCheck")
