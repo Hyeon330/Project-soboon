@@ -132,7 +132,7 @@ $(function() {
 			$("#searchinfo-email2").focus();
 			return false;
 		}
-		$.ajax({
+		/*$.ajax({
 			data: {
 				userid: $("#searchinfo-id").val(),
 				email: $("#searchinfo-email2").val()
@@ -144,7 +144,7 @@ $(function() {
 						if (OK) {
 							$.ajax({
 								type: "POST",
-								url: "/member/searchpwd/sendemail",
+								url: "/member/sendemail",
 								data: {
 									userid: $("#searchinfo-id").val(),
 									email: $("#searchinfo-email2").val()
@@ -158,6 +158,6 @@ $(function() {
 					alert("일치하는 정보가 없습니다. 입력한 내용을 확인해주세요.");
 				}
 			}
-		});
+		});*/
 	});
 });

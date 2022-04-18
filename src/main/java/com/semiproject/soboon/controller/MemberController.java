@@ -24,7 +24,6 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.semiproject.soboon.service.AddressService;
-import com.semiproject.soboon.service.EmailService;
 import com.semiproject.soboon.service.KakaoAPI;
 import com.semiproject.soboon.service.MemberService;
 import com.semiproject.soboon.vo.EmailVO;
@@ -40,8 +39,6 @@ public class MemberController {
 	KakaoAPI kakao;
 	@Inject
 	AddressService serviceAddr;
-	@Inject
-	EmailService serviceEmail;
 	
 	@GetMapping("signup")
 	public String memberForm() {
@@ -221,7 +218,10 @@ public class MemberController {
 	}
 	
 	//비밀번호찾기(이메일로 임시 비밀번호 보내기)
-	
+	@PostMapping("sendemail")
+	public String sendEmail() {
+		return "";
+	}
 	//---------------------------------------------------------------------
 	@PostMapping("memberIdCheck")
 	@ResponseBody

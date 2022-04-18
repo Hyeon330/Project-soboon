@@ -35,9 +35,12 @@
 		select lpad(substring(userid,char_length(userid)*0.5),char_length(userid),"*")
 		from member where username=#{param1} and email=#{param2}
 	</select>	
+	<!-- ///////////////////////////////////////////////////////////////////////////// -->
 	<update id="updateMyAddr">
 		update member
 		set large=#{large}, medium=#{medium}, small=#{small}
 		where userid=#{userid}
 	</update>
+	<!-- 비밀번호 -->
+	
 </mapper>
