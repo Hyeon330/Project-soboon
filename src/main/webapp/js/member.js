@@ -1,5 +1,3 @@
-
-
 function memberCheck(){
 	var reg = /^[a-zA-Z]{1}[a-zA-Z0-9_]{5,11}$/;
 	if($("#userid").val()==""){
@@ -29,6 +27,7 @@ function memberCheck(){
 		$("#userpwd2").focus();
 		return false;
 	}
+	
 	reg = /^[a-zA-Z가-힣]{2,7}$/;
 	if($("#username").val()==''){
 		alert("이름을 입력하세요.");
@@ -217,6 +216,16 @@ $(function() {
 					})
 				}
 			});
+		}
+	});
+	
+	//눈 아이콘 눌러서 비밀번호 확인하기
+	$(".pwd_control i").on('click',function(){
+		$("input").toggleClass('active');
+		if($("input").hasClass('active')){
+			$(this).attr('class',"fa fa-eye-slash fa-lg").prev('input').attr('type','text');
+		} else{
+			$(this).attr('class',"fa fa-eye fa-lg").prev('input').attr('type',"password");
 		}
 	});
 });
