@@ -13,17 +13,18 @@
 	color:white;
 	padding:10px 30px;
 }
-#resetBtn, .xbtn{
+#backList, .xbtn{
 	background-color: gray;
 	color:white;
 }
-#resetBtn{
+#backList{
 	padding:10px 30px;
 }
 
 .xbtn{
 	padding:3px 5px;
 }
+
 #innerFiles{
 	display:flex;
 	flex:left;

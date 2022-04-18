@@ -29,6 +29,7 @@
 							<li id="shareBoardTitle"><a href="/board/shareBoardView?no=${listVo.no}">${listVo.title}</a></li>
 							<li><i class="fa fa-location-arrow fa-lg"></i><span class="iconValue">${listVo.small}</span></li>
 							<li>${listVo.createdate}<span id="views"><i class="fa fa-eye fa-lg"></i><span class="iconValue">${listVo.views}</span></span></li>
+							<li>${pvo.totalRecord}</li>
 						</ul>
 					</div>
 				</div>
@@ -58,7 +59,7 @@
 					</c:if>
 				</c:forEach>
 				<c:if test="${pvo.currentPage==pvo.totalPage}">
-					<li class="page-item disabled"><a class="page-link" id="nextBtn"><i class="fa-solid fa-angle-right"></i></a></li>
+					<li class="page-item disabled"><a class="page-link" id="nextBtn"><i class="fa fa-angle-right"></i></a></li>
 				</c:if>
 				<c:if test="${pvo.currentPage<pvo.totalPage}">
 					<li class="page-item"><a class="page-link" href="javascript:void(0);" id="nextBtn"
