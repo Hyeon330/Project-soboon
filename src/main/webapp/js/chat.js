@@ -227,7 +227,7 @@ $(() => {
 		sessionStorage.removeItem('msgPopup');
 	});
 	const openMsgPopupReload = () => {
-		$('.chat-list').on('click', function(){
+		$('.chat-list').on('click', function(e){
 			let oppNickname = $(this).find('.chat-name').text();
 			if(oppNickname!=$('#oppNickName').text()){
 				$('.msg-textarea').val('');
@@ -237,31 +237,50 @@ $(() => {
 			openMsgPopupReload();
 			sessionStorage.setItem('msgPopup', 1);
 			sessionStorage.setItem('oppNickname', oppNickname);
+			
+		});
+		$('.chat-list').on('contextmenu', function(e) {
+			var x = e.clientX;
+			var y = e.clientY;
+			chatRightClickOppNickname= $(this).find('.chat-name').text();
+			$('#chatRightClick').css('top', (y+2)+'px').css('left', (x+2)+'px').css('display', 'block');
+			return false;
 		});
 	}
 	openMsgPopupReload();
+	var chatRightClickOppNickname = '';
+	$('.chat-remove').click(function() {
+		var data = {
+			sender: myNickname,
+			receiver: chatRightClickOppNickname,
+			msg: '상대방이 채팅을 종료하였습니다',
+			chat_read: 'end'
+		};
+		socket.emit('send-msg', data);
+	});
+	$(document).click(function() {
+		$('#chatRightClick').css('display', 'none');
+	});
+	
 	// 페이지 이동시 msg팝업 상태유지
 	if(sessionStorage.getItem('msgPopup')!=null){
 		$('#msgPopup').css('display', 'block');
 		msgLoad(sessionStorage.getItem('oppNickname'));
 	}
 	
-	// 메시지 데이터 소켓 서버로 보내기
-	const sendMessage = (msg) => {
-		var data = {
-			sender: myNickname,
-			receiver: $('#oppNickName').text(),
-			msg: msg
-		};
-		socket.emit('send-msg', data);
-	}
 	
 	var message = '';
 	// 보내기 버튼 클릭시 sendMessage함수 실행
 	$('.msg-send-btn').click(() => {
 		message = $('.msg-textarea').val().replace(/\n/g, '<br>');
 		if(!message.startsWith('<br>') && message!=''){
-			sendMessage(message);
+			var data = {
+				sender: myNickname,
+				receiver: $('#oppNickName').text(),
+				msg: message
+			};
+			// 메시지 데이터 소켓 서버로 보내기
+			socket.emit('send-msg', data);
 		}
 		$('.msg-textarea').val('');
 	});
