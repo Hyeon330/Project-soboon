@@ -32,7 +32,7 @@ public class AdminController {
 	
 	@GetMapping("admin/memberMgr")
 	public Map<String, Object> adminMgr(PagingVO pVO) {
-		pVO.setRecordPerPage(10); // 출력수 jsp랑 동일하게 설정
+		pVO.setRecordPerPage(10); // 출력수 jsp랑 동일하게 설정 리스트출력담당
 		pVO.calc(); //페이지 연산 처리
 		Map<String, Object> map=new HashMap<>();
 		//전체 회원수 가져오기

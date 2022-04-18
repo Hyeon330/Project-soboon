@@ -67,7 +67,7 @@ $(function() {
 			
 		})
 		str+="</ul>";
-		let onePageRecord=10;	//한 페이지당 10명 기준
+		let onePageRecord=10;	//totalrecord/onepagerecord=페이지수계산 ex) 5개일때 출력되는 페이지수계산
 		let totalCount=Number(dataArr.cnt)	//총 인원수 integer로 가져옴
 		/*let totalCount=Number(dataArr.pVO.get)	//총 인원수 integer로 가져옴*/
 		
@@ -106,6 +106,7 @@ $(function() {
 	
 	 /*=================신고관리=================*/ 
 	function showReport(dataArr, tab){ //showReport로 변경했음.
+		$("#reportcnt").html("리폿 갯수 :" +dataArr.cnt +"명")
 		/* alert('총회원수: '+dataArr.cnt) */
 		//헤더 
 		var str ="<br/><ul id='reportManage'>"
@@ -126,7 +127,7 @@ $(function() {
 			
 		})
 		str+="</ul>";
-		let onePageRecord=10;	//한 페이지당 10명 기준
+		let onePageRecord=10;	//한 페이지당 10명 기준 ex)14개기준으로 5를하면 3페이지가나옴
 		let totalCount=Number(dataArr.cnt)	//총 인원수 integer로 가져옴
 		/*let totalCount=Number(dataArr.pVO.get)	//총 인원수 integer로 가져옴*/
 		

@@ -10,7 +10,7 @@
 				<ul class="nav nav-tabs" id="tab">
 					<li class="nav-item" id='tab1'><a class="nav-link active"	data-toggle="tab" href="#memberMgr">회원관리</a></li>
 					<li class="nav-item" id='tab2'><a class="nav-link" data-toggle="tab" href="#reportMgr">신고관리</a></li>
-					<li class="nav-item" id='tab3'><a class="nav-link" data-toggle="tab" href="#boardMgr">게시글 현황</a></li>
+					<!-- <li class="nav-item" id='tab3'><a class="nav-link" data-toggle="tab" href="#boardMgr">게시글 현황</a></li> -->
 				</ul>
 				
 				<div class="tab-content">
@@ -26,6 +26,7 @@
 				
 					<!-- 신고관리 -->
 					<div class="tab-pane fade" id="reportMgr">
+					<div style="float: left" id="reportcnt"></div>
 						<ul class="reportList">
 						<!-- <li><input type="checkbox" id="checkAll"></li>
 							<li>아이디</li>
@@ -34,7 +35,7 @@
 							<li>신고처리</li>
 						</ul> -->
 					</div>
-						<!-- 게시글 현황 -->
+					<!-- 	 게시글 현황
 					<div class="tab-pane fade" id="boardMgr">
 						<ul class="listupList">
 							<ul class="nav nav-tabs">
@@ -42,7 +43,7 @@
 								<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#months">월</a></li>
 							</ul>
 						</ul>
-					</div>
+					</div> -->
 				</div>
 			</div>
 		</div>

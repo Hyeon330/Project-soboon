@@ -7,6 +7,7 @@
 		<h1 id="shareBrd">나눔 게시판</h1>
 		<br/>
 		<a href="/board/shareBoardWrite" class="btn" id="shareBoardWrite">글 작성하기</a>
+		<span id="addressInfo">${addrSmall}</span>
 		<div class="row">
 			<c:forEach var="listVo" items="${list}">
 			<div class="col-sm-4 sb">
