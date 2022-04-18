@@ -15,7 +15,7 @@
 	    			<div class="embed-responsive embed-responsive-4by3">
      					<a href="/board/saleBoardView?no=${listVo.no}">
      							<c:if test="${listVo.thumbnailImg==null}">
-     								<img src="/img/share.jpg" class="embed-responsive-item">
+     								<img src="/img/sale.jpg" class="embed-responsive-item">
      							</c:if>
      							<c:if test="${listVo.img1!=null}">
      								<img src="/upload/${listVo.img1}" class="embed-responsive-item">
