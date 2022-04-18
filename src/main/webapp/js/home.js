@@ -56,8 +56,6 @@ function selectMyAccessToken(){
 		contentType:"application/json; charset=UTF-8",
 		success:function(){
 			location.href="/mypage/editForm"; //연동 성공시 마이페이지로 이동
-		},error:function(){
-			location.href="/";
 		}
 	})
 }
