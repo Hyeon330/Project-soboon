@@ -137,6 +137,14 @@ public class mypageController {
 		map.put("plist", list);
 		return map;	
 	}
+	
+	@PostMapping("multiDel")
+	@ResponseBody
+	public int mypostMultiDelete(BoardVO vo, HttpSession session) {
+		vo.setUserid((String)session.getAttribute("logId"));
+		int result = service.mypostMultiDelete(vo);
+		return  result;
+	}
 }//controller
 
 

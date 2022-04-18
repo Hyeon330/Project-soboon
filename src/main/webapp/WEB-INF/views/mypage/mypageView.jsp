@@ -2,17 +2,19 @@
 	pageEncoding="UTF-8"%>
 <link rel="stylesheet" href="/css/mypage.css" type="text/css" />
 
-<script>
-	let idx=1; // 전역변수
+<script>	
+	//전역변수
+	let idx=1;
+	let areaNum = 10;
 	/*------------------------------on load----------------------------------------*/
 	$(function() {
 	
 		/*-----------------------------------on load-------------------------------------*/
-		ajaxSend_mp(idx, 10); 
+		ajaxSend_mp(idx, areaNum); 
 		/*--------------------------------------tab 클릭시-----------------------------------------*/
 		$('.nav-item').click(function(){
 			idx = $(this).index()+1;
-			ajaxSend_mp(idx, 10); 
+			ajaxSend_mp(idx, areaNum); 
 		});
 		
 		/*--------------------------------------select 클릭시 범위 설정변경--------------------------------*/
@@ -83,7 +85,7 @@
 			<li>30</li>
 		</ul>*/
 		// form - enter
-		
+		// 프로필 카운터(mypost-board)
 		//헤더
 		str += "<ul>";
 		str += "<li><input type='checkbox' id='allCheck'/> 전책선택</li>";
@@ -97,7 +99,7 @@
 		$.each(dataArr.plist, function(i, data){
 			//db에 가져올 데이터들
 			str += "<ul>";
-			str += "<li><input type='checkbox' name='nolist' value='"+data.no+"' class='chk'/></li>";
+			str += "<li><input type='checkbox' name='noList' value='"+data.no+"' class='chk'/></li>";
 			str += "<li>"+data.no+"</li>";
 			str += "<li>"+data.title+"</li>";
 			str += "<li>"+data.content+"</li>";
@@ -113,18 +115,43 @@
 		
 		
 		//페이지 네비게이션 문자열 만들기
-		let pageStr = "<br/>";
+		let pageStr = "";
 		pageStr+='<ul class="pagination" id="paging-mp">';
-		pageStr+='<li class="page-item"><a class="page-link" id="prevBtn">Prev</a></li>';
-		for(var p=1; p <= dataArr.pVO.onePageCount; p++){
-			pageStr += '<li class="page-item"><a class="page-link"href="javascript:void(0);" onclick="ml2('+p+', '+num+')">' + p + '</a></li>'
+		// 이전 페이지
+		if(dataArr.pVO.pageNum<=1) {
+			pageStr+='<li class="page-item disabled"><a class="page-link" id="prevBtn" href="javascript:void(0)">Prev</a></li>';	
 		}
-		pageStr += '<li class="page-item"><a class="page-link" id="nextBtn" onclick=nextpg('+(dataArr.pVO.currentPage+1)+')>Next</a></li>'
+		else {
+		pageStr+='<li class="page-item"><a class="page-link" href="javascript:void(0)" id="prevBtn" onclick="ml2('+(dataArr.pVO.pageNum-1)+', '+num+')">Prev</a></li>';
+		}
+		//페이지
+		for(var p=dataArr.pVO.startPage; p < dataArr.pVO.onePageCount; p++){
+			// 총 페이지수보다 출력할 페이지 번호가 작을 때
+			if(p<=dataArr.pVO.totalPage) {
+				if(p===dataArr.pVO.pageNum) {
+					pageStr += '<li class="page-item active"><a class="page-link" href="javascript:void(0)" onclick="ml2('+p+', '+num+')">' + p + '</a></li>';
+				}else {
+					pageStr += '<li class="page-item"><a class="page-link" href="javascript:void(0)" onclick="ml2('+p+', '+num+')">' + p + '</a></li>';
+				}//if~else2	
+			}//if1
+		}//for
+		
+		//다음 페이지
+		if(dataArr.pVO.pageNum >= dataArr.pVO.totalPage) {
+			pageStr += '<li class="page-item disabled"><a class="page-link" id="nextBtn" href="javascript:void(0)" >Next</a></li>';
+		} else {
+			pageStr += '<li class="page-item"><a class="page-link" id="nextBtn" href="javascript:void(0)" onclick="ml2('+(dataArr.pVO.pageNum+1)+', '+num+')">Next</a></li>';
+		}
+		
 		pageStr +='</ul>';
-		$('#inTab1').html(str);
+		
+/*-----------------------출력(print)----------------------------------------------------*/
+		$('#myPostCnt').html(dataArr.pVO.totalRecord);
+		$('#printFrm1').html(str);
 		$('.pagingwrap').html(pageStr);	
 	}//showPost in sucess in ajax
-	
+
+/*------------------------function----------------------------------------------------------*/
 	function ml2(p, num) {
 		let url = "/mypage/mypost" 
 		data = {
@@ -149,31 +176,47 @@
 		}
 	}
 	
-	/*$(function(){
-		//--------------------내가 쓴 게시글 -----------------------
-		// 체크박스 전체선택 ---> 하위 체크박스 체크
-		$(document).on('click', "#cbx_chk_mypageAll_mypage", function() {
-			if ($("#cbx_chk_mypageAll_mypage").is(":checked"))
-				$("input[name=chk_mypage]").prop("checked", true);
-			else
-				$("input[name=chk_mypage]").prop("checked", false);
-		});
-
-		$("input[name=chk_mypage]").click(function() {
-			var total = $("input[name=chk_mypage]").length;
-			var checked = $("input[name=chk_mypage]:checked").length;
-
-			if (total != checked)
-				$("#cbx_chk_mypageAll_mypage").prop("checked", false);
-			else
-				$("#cbx_chk_mypageAll_mypage").prop("checked", true);
-		});
-	});*/
 	
 	$(function(){
 		$(document).on('click', "#allCheck", function() {
 			$(".chk").prop("checked", $("#allCheck").prop("checked"));
 		});
+/*-------------------------------------------------------------------------*/		
+		$(document).on('click','#delPost',function() {
+			let cnt = 0;
+			$(".chk").each(function(i, obj){			
+				if(obj.checked) {
+					cnt++; // checkbox가 체크상태일 떄
+				}
+			});
+			if(cnt<=0) {
+				alert('목록을 선택 후 선택해주세요.');
+				return false;
+			}
+			let params = $('#printFrm1').serialize();
+			let url = "/mypage/multiDel";
+			if(confirm('선택한 목록을 삭제하시겠습니까?')){
+				$.ajax({
+					data:params,
+					method:"POST",
+					url: url,
+					success: function(result){
+						if(result<=0) {
+							conole.log('데이터 목록 삭제를 싶해하였습니다.');
+							alert("데이터 목록 삭제를 싶해하였습니다.");
+						}else {
+							ajaxSend_mp(idx, areaNum);
+						}
+					},
+					error:function(e){
+						console.log(e);
+						alert('데이터 교환 중 오류발생');
+					}
+						
+				});//ajax
+			}//if confirm
+		});
+		
 	
 	});
 </script>
@@ -203,7 +246,7 @@
 				<div>
 					<div>
 						<div>작성글</div>
-						<div>${mpCnt }</div>
+						<div id="myPostCnt">${mpCnt }</div>
 					</div>
 				</div>
 				<div>
@@ -246,13 +289,18 @@
 							<option value="10" selected>10개</option>
 						</select>
 	<!-- ------------------------------------------------------------------------------------- -->
+					</div>					
+					<div id="inTab1">
+						<!-- 데이터 출력 -->
+						<form method="post" action="/mypage/multiDel" id="printFrm1"></form>
 					</div>
+	<!-- --------------------------------------------------------------------------------------- -->
 					<!-- 페이징 목록 -->
-					<div id="inTab1"></div>
-					<div class="pagingwrap">
-						
+					<div class="bottom-myView">
+						<div class="pagingwrap"></div>
+						<div><button id="delPost">삭제하기</button></div>
 					</div>
-					<div><button id="delPost">삭제하기</button></div>
+	<!-- --------------------------------------------------------------------------------------- -->
 				</div><!-- innerTab -->
 			</div>
 			<!-- tab1 -->

@@ -313,3 +313,26 @@ function goNext(gn){
 			str += "<li>"+data.views+"</li>";
 			str += "<li>"+data.createdate+"</li>";
 			str += "</ul>";
+			
+			
+----------------------------------------------------------------------------------------------
+/*$(function(){
+		//--------------------내가 쓴 게시글 -----------------------
+		// 체크박스 전체선택 ---> 하위 체크박스 체크
+		$(document).on('click', "#cbx_chk_mypageAll_mypage", function() {
+			if ($("#cbx_chk_mypageAll_mypage").is(":checked"))
+				$("input[name=chk_mypage]").prop("checked", true);
+			else
+				$("input[name=chk_mypage]").prop("checked", false);
+		});
+
+		$("input[name=chk_mypage]").click(function() {
+			var total = $("input[name=chk_mypage]").length;
+			var checked = $("input[name=chk_mypage]:checked").length;
+
+			if (total != checked)
+				$("#cbx_chk_mypageAll_mypage").prop("checked", false);
+			else
+				$("#cbx_chk_mypageAll_mypage").prop("checked", true);
+		});
+	});*/

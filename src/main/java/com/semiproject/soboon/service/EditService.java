@@ -15,4 +15,5 @@ public interface EditService {
 	public int mypostCount(String userid);
 	public int myreplyCount(String userid);
 	public List<BoardVO> mypostList2(String userid);
+	public int mypostMultiDelete(BoardVO vo);
 }

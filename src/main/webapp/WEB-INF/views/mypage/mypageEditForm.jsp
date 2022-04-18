@@ -21,17 +21,15 @@
 								value="${VO.userid }" readonly="readonly" />
 						</div>
 					</li>
-					<li>
-						<div style="width: 20%;">비밀번호</div>
-						<div style="width: 5%;"></div>
-						<div style="width: 75%">
+					<li id="passwordCSS">
+						<div>비밀번호</div>
+						<div>
 							<input type="password" id="userpwd1" name="userpwd" />
 						</div>
 					</li>
-					<li>
-						<div style="width: 20%;">비밀번호 확인</div>
-						<div style="width: 5%;"></div>
-						<div style="width: 75%">
+					<li id="passowrdCheckCSS">
+						<div>비밀번호 확인</div>
+						<div>
 							<input type="password" id="userpwd2" />
 						</div>
 					</li>
@@ -56,25 +54,9 @@
 						<div id="VO_nickname_hidden">${VO.nickname }</div>
 					</li>
 					<li>
-						<div style="width: 20%">전화번호</div>
-						<div style="width: 5%;"></div>
-						<div style="width: 24%">
-							<input type="text" id="tel1" name="tel1" style="width: 80%"
-								value="${VO.tel1 }" />&nbsp;&nbsp;-
-						</div>
-						<div style="width: 24%">
-							<input type="text" id="tel2" name="tel2" style="width: 80%"
-								value="${VO.tel2 }" />&nbsp;&nbsp;-
-						</div>
-						<div style="width: 24%">
-							<input type="text" id="tel3" name="tel3" style="width: 80%"
-								value="${VO.tel3 }" />
-						</div>
-					</li>
-					<li>
-						<div style="width: 20%">주소</div>
-						<div style="width: 5%;"></div>
-						<div style="width: 24%">
+						<div style="width:100px;">전화번호</div>
+						<div></div>
+						<div>
 							<input type="text" id="tel1" name="tel1" style="width: 80%"
 								value="${VO.tel1 }" />&nbsp;&nbsp;-
 						</div>

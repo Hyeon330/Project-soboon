@@ -56,5 +56,10 @@ public class EditServiceImpl implements EditService {
 		return dao.mypostList2(userid);
 	}
 
+	@Override
+	public int mypostMultiDelete(BoardVO vo) {
+		return dao.mypostMultiDelete(vo);
+	}
+
 	
 }

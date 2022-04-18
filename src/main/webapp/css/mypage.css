@@ -229,6 +229,11 @@
 	padding-left:30px;
 	font-size:1.1em;
 	font-weight:700;
+	display:flex; 
+	align-items:flex-start;
+	flex-direction:column;
+	flex-wrap:nowrap; 
+	float: none;
 }
 
 
@@ -271,6 +276,15 @@
 	background-color: transparent;
 	border-style: none;
 	border-bottom: 2px solid #ddd;
+}
+#passwordCSS,#passowrdCheckCSS {
+	 width:100%;
+}
+#passwordCSS>div, #passowrdCheckCSS>div {
+	/*비빌번호 비밀번호 체크 div*/
+}
+#passwordCSS>div:first-child, #passowrdCheckCSS>div:first-child {
+	margin-right: 5%;
 }
 
 /*---------------------------------회원탈퇴--------------------------*/
@@ -342,11 +356,11 @@
 	display: none;
 }
 /*------------------------tab 내 쓴 글 보기 리스트---------------------------*/
-#inTab1 ul {
+#printFrm1 ul {
 	display: flex; border-bottom: 1px solid #ddd;
 }
 
-#inTab1 li {
+#printFrm1 li {
 	float:left; 
 	border-right: 3px solid red; 
 	width:16%; text-align: center; 
@@ -355,12 +369,10 @@
 	text-overflow: ellipsis; 
 	white-space: nowrap;
 }
-#inTab1>ul>li:nth-of-type(3){
+#printFrm1>ul>li:nth-of-type(3){
 	background-color: orange;
 }
-.pagingwrap {
-	display:flex; justify-content: center; margin-top : 20px;
-}
+
 .innerTab {
 	margin-top:15px;
 	
@@ -368,4 +380,7 @@
 .tabTopMenu {
 	display: flex; align-items: center; text-align: center;
 	justify-content: space-between;
+}
+.bottom-myView {
+	display: flex; justify-content:center;
 }
