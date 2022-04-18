@@ -3,21 +3,22 @@
 #tbBody{
 	display:flex;	
 }
+
 .table td, .table th{
 	border:none !important;
 }
 
-#rentEditForm h1{
+#reqEditForm h1{
 	text-align:center;
 	font-weight:700;
 	color:rgb(72, 97, 86);
 } 
 
-#rentBoardTitle{
+#reqBoardTitle{
 	margin-right:10px;
 }
 #writeBtn{
-	background-color: rgb(72, 97, 86);
+	background-color:  rgb(72, 97, 86);
 	color:white;
 	padding:10px 30px;
 }
@@ -46,14 +47,14 @@
 }
 
 /*top 효과*/
-#shareBoard{
+#requestBoard{
 	border-top-left-radius:10px;
 	border-top-right-radius:10px;
 	background-color:rgb(213, 218, 212);
 	color:rgb(72, 97, 86);
 	margin-top:5px;
 }
-#renttag{
+#requesttag{
 	background:rgb(213, 218, 212);
 	color:rgb(72, 97, 86);
 	border-top-left-radius:20px;

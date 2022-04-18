@@ -13,7 +13,7 @@ $(function(){
 		};
 	});
 	
-	$("#shareorm").submit(function(){
+	$("#saleForm").submit(function(){
 		if($("#shareBoardTitle").val()==''){
 			alert("🚫 제목을 입력해주세요");
 			return false;
@@ -29,6 +29,6 @@ $(function(){
 	});
 	
 	$("#backList").click(function(){
-		location.href="/board/shareBoardList";
+		location.href="/board/saleBoardList";
 	})
 });

@@ -1,59 +1,60 @@
 @charset "UTF-8";
-
 #tbBody{
 	display:flex;	
 }
 .table td, .table th{
 	border:none !important;
 }
-
-#rentEditForm h1{
+#reqForm h1{
 	text-align:center;
 	font-weight:700;
 	color:rgb(72, 97, 86);
 } 
 
-#rentBoardTitle{
+#reqBoardTitle{
 	margin-right:10px;
 }
-#writeBtn{
-	background-color: rgb(72, 97, 86);
-	color:white;
-	padding:10px 30px;
+
+#boardlargeAddrSelect, #boardmediumAddrSelect, #boardsmallAddrSelect{
+	width:125px;
+	height:30px;
+	text-align:center;
+	border:none;
+	border-radius:5px;
 }
-#backList, .xbtn{
-	background-color: gray;
+#writeBtn, #uploadBtn{
+	background-color:  rgb(72, 97, 86);
 	color:white;
-}
-#backList{
 	padding:10px 30px;
 }
 
-.xbtn{
-	padding:3px 5px;
+#resetBtn, #backList {
+	background-color: gray;
+	color:white;
+	padding:10px 30px;
 }
 
 #innerFiles{
 	display:flex;
 	flex:left;
 	margin:30px;
-	display:block;
+	display:none;
 }
 
-#innerFiles input[type=hidden]{
+#innerFiles input[type=file]{
 	width:230px;
 	margin:10px;
 }
 
-/*top 효과*/
-#shareBoard{
+/*top효과*/
+#requestBoard{
 	border-top-left-radius:10px;
 	border-top-right-radius:10px;
 	background-color:rgb(213, 218, 212);
 	color:rgb(72, 97, 86);
 	margin-top:5px;
 }
-#renttag{
+#requesttag{
 	background:rgb(213, 218, 212);
 	color:rgb(72, 97, 86);
 	border-top-left-radius:20px;

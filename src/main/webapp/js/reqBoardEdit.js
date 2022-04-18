@@ -13,8 +13,8 @@ $(function(){
 		totalFile--;
 	});
 	
-	$("#rentEditForm").submit(function(){
-		if($("#rentBoardTitle").val()==''){
+	$("#reqEditForm").submit(function(){
+		if($("#reqBoardTitle").val()==''){
 			alert("🚫 제목을 입력해주세요");
 			return false;
 		}
@@ -25,7 +25,7 @@ $(function(){
 	});
 	
 	$("#backList").click(function(){
-		location.href="/board/rentBoardList";
+		location.href="/board/reqBoardList";
 	})
 	
 });

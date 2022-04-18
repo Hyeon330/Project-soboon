@@ -1,20 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<link rel="stylesheet" href="/css/shareBoardEdit.css" type="text/css"/>
-<script src="/js/shareBoardEdit.js"></script>
+<link rel="stylesheet" href="/css/reqBoardEdit.css" type="text/css"/>
+<script src="/js/reqBoardEdit.js"></script>
 <div class="container">
 	<br/>
-	<form class="form-group" method="post" action="/board/shareBoardEditOk?no=${bvo.no}" id="shareEditForm" enctype="multipart/form-data">
+	<form class="form-group" method="post" action="/board/reqBoardEditOk?no=${bvo.no}" id="reqEditForm" enctype="multipart/form-data">
 		<table class="table table-striped" style="text-align:center">
 			<thead>
 				<tr>
-					<th><h1>나눔 게시판 글 수정 하기</h1></th>
+					<th><h1>요청 게시판 글 수정 하기</h1></th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
 					<td id="tbBody">
-						<input type="text" class="form-control" id="shareBoardTitle" placeholder="글 제목을 입력하세요."  name="title" maxlength="16" value="${bvo.title}"/>
+						<input type="text" class="form-control" id="reqBoardTitle" placeholder="글 제목을 입력하세요."  name="title" maxlength="16" value="${bvo.title}"/>
 					</td>
 				</tr>
 				<tr>

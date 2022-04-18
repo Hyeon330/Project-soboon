@@ -5,12 +5,12 @@
 .table td, .table th{
 	border:none !important;
 }
-#shareReqForm h1{
+#saleForm h1{
 	text-align:center;
 	font-weight:700;
 	color:rgb(72, 97, 86);
 } 
-#shareBoardTitle{
+#saleBoardTitle{
 	margin-right:10px;
 }
 #boardlargeAddrSelect, #boardmediumAddrSelect, #boardsmallAddrSelect{
@@ -41,14 +41,15 @@
 	width:230px;
 	margin:10px;
 }
-#shareBoard{
+/*top*/
+#saleBoard{
 	border-top-left-radius:10px;
 	border-top-right-radius:10px;
 	background-color:rgb(213, 218, 212);
 	color:rgb(72, 97, 86);
 	margin-top:5px;
 }
-#sharetag{
+#saletag{
 	background:rgb(213, 218, 212);
 	color:rgb(72, 97, 86);
 	border-top-left-radius:20px;

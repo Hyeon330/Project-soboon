@@ -1,21 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<link rel="stylesheet" href="/css/saleBoardList.css" type="text/css"/>
-<script src="/js/saleBoardList.js"></script>
+<link rel="stylesheet" href="/css/reqBoardList.css" type="text/css"/>
+<script src="/js/reqBoardList.js"></script>
 <div class="container">
 	<br/>
-		<h1 id="saleBrd">판매 게시판</h1>
+		<h1 id="reqBrd">요청 게시판</h1>
 		<br/>
-		<a href="/board/saleBoardWrite" class="btn" id="saleBoardWrite">글 작성하기</a>
+		<a href="/board/reqBoardWrite" class="btn" id="reqBoardWrite">글 작성하기</a>
 		<span id="addressInfo">${addrSmall}</span>
 		<div class="row">
 			<c:forEach var="listVo" items="${list}">
-			<div class="col-sm-4 sab">
+			<div class="col-sm-4 rqb">
 				<div class="card">
 	    			<div class="embed-responsive embed-responsive-4by3">
-     					<a href="/board/saleBoardView?no=${listVo.no}">
+     					<a href="/board/reqBoardView?no=${listVo.no}">
      							<c:if test="${listVo.thumbnailImg==null}">
-     								<img src="/img/share.jpg" class="embed-responsive-item">
+     								<img src="/img/rent.jpg" class="embed-responsive-item">
      							</c:if>
      							<c:if test="${listVo.img1!=null}">
      								<img src="/upload/${listVo.img1}" class="embed-responsive-item">
@@ -26,9 +26,8 @@
 					<div class="card-body cb">
 						<ul>
 							<li>${listVo.nickname}</li>
-							<li id="saleBoardTitle"><a href="/board/saleBoardView?no=${listVo.no}">${listVo.title}</a></li>
+							<li id="reqBoardTitle"><a href="/board/reqBoardView?no=${listVo.no}">${listVo.title}</a></li>
 							<li><i class="fa fa-location-arrow fa-lg"></i><span class="iconValue">${listVo.small}</span></li>
-							<li><span>${listVo.price}원</span></li>
 							<li>${listVo.createdate}<span id="views"><i class="fa fa-eye fa-lg"></i><span class="iconValue">${listVo.views}</span></span></li>
 						</ul>
 					</div>
@@ -66,6 +65,6 @@
 							onclick="goNext(${pvo.currentPage})"><i class="fa fa-angle-right"></i></a></li>
 				</c:if>
 			</ul>
-		</div><!-- row -->
+		</div>	
 	<br/>
 </div>

@@ -13,8 +13,8 @@ $(function(){
 		};
 	});
 	
-	$("#shareForm").submit(function(){
-		if($("#shareBoardTitle").val()==''){
+	$("#reqForm").submit(function(){
+		if($("#reqBoardTitle").val()==''){
 			alert("🚫 제목을 입력해주세요");
 			return false;
 		}
@@ -29,6 +29,6 @@ $(function(){
 	});
 	
 	$("#backList").click(function(){
-		location.href="/board/shareBoardList";
+		location.href="/board/reqBoardList";
 	})
 });
