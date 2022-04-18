@@ -121,8 +121,8 @@ $(function() {
 			//DB에서 가져올 데이터들
 			str +="<li><input type='checkbox'></li>"
 			str+="<li>"+data.reporter+"</li>"
-			str+="<li>"+data.suspect+ "회"+"</li>"
-			str+="<li>"+data.report_content + " " +data.board_no+"</li>"
+			str+="<li>"+data.suspect+"</li>"
+			str+="<li>"+"<a href='http://localhost:9000/board/shareBoardView?no="+data.board_no+"'>"+data.board_no+"</a>"+ "번 " +data.report_content+"</li>"
 			str+="<li>"+"<div><button type='button' class='btn btn-outline-danger' style=float:center;>허위신고</button></div>"+"</li>"
 			
 			
