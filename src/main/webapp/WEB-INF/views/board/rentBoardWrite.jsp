@@ -24,7 +24,7 @@
 				<tr>
 					<td id="tbBody">
 						<input type="text" class="form-control col-7" id="rentBoardTitle" placeholder="글 제목을 입력하세요."  name="title" maxlength="16"/>
-						<span class="form-control col-2">금&nbsp;&nbsp;액</span>
+						<span class="form-control col-2" id="pricetag">금&nbsp;&nbsp;액</span>
 						<input type="number" class="form-control col-3" name="price" placeholder="금액을 입력하세요."/>
 					</td>
 				</tr>

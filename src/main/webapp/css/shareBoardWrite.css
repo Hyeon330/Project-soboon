@@ -10,6 +10,9 @@
 	font-weight:700;
 	color:rgb(72, 97, 86);
 } 
+#shareForm table{
+	text-align:center;
+}
 #shareBoardTitle{
 	margin-right:10px;
 }

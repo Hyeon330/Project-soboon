@@ -1,6 +1,6 @@
 @charset "UTF-8";
 .ui-dialog{
-	width:450px !important;
+	width:300px !important;
 }
 .ui-dialog-buttonset>button{
 	background-color:rgba(72, 97, 86, 70%);
@@ -10,7 +10,7 @@
 	height:30px;
 }
 #reportReason{
-	width:450px;
+	width:300px;
 }
 #reportSubmit{
 	color:rgb(72, 97, 86);
@@ -20,7 +20,7 @@
 	padding-bottom:20px;
 }
 #reportTitle{
-	width:400px;
+	width:300px;
 	padding-bottom:10px;
 }
 #reportContent{
