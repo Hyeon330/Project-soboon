@@ -31,11 +31,11 @@
 	</select>
 	<!-- 아이디찾기 -->
 	<select id="searchid_tel" parameterType="String" resultType="String">
-		select lpad(substring(userid,char_length(userid)*0.5),char_length(userid),"*") 
+		select rpad(substring(userid,1,char_length(userid)*0.5),char_length(userid),"*") 
 		from member where username=#{param1} and tel=#{param2}
 	</select>
 	<select id="searchid_email" parameterType="String" resultType="String">
-		select lpad(substring(userid,char_length(userid)*0.5),char_length(userid),"*")
+		select rpad(substring(userid,1,char_length(userid)*0.5),char_length(userid),"*")
 		from member where username=#{param1} and email=#{param2}
 	</select>	
 	<!-- 비밀번호 -->
