@@ -81,11 +81,11 @@ $(function() {
 			/* alert(pageCount) */
 		//페이지 네비게이션 문자열 만들기
 		let pageStr='<br/><ul class="pagination justify-content-center" id="paging">';
-			pageStr += '<li class="page-item disabled"><a class="page-link" id="prevBtn">Prev</a></li>'
+			pageStr += '<li class="page-item disabled"><a class="page-link" id="prevBtn"><i class="fa fa-angle-left"></i></a></li>'
 			for(var p=1; p <= pageCount; p++){
 				pageStr += '<li class="page-item"><a class="page-link"href="javascript:void(0);" onclick="ml('+p+')">' + p + '</a></li>'
 			}
-			pageStr += '<li class="page-item"><a class="page-link" id="nextBtn">Next</a></li>'
+			pageStr += '<li class="page-item"><a class="page-link" id="nextBtn"><i class="fa fa-angle-right"></i></a></li>'
 			/*pageStr += '<li class="page-item"><a class="page-link" id="nextBtn" onclick=nexttpg('+(dataArr.pVO.currentPage+1)+')>Next</a></li>'*/
 		pageStr +='</ul>';
 		/* alert(pageStr) */
@@ -141,11 +141,11 @@ $(function() {
 			/* alert(pageCount) */
 		//페이지 네비게이션 문자열 만들기
 		let pageStr='<br/><ul class="pagination justify-content-center" id="paging">';
-			pageStr += '<li class="page-item disabled"><a class="page-link" id="prevBtn">Prev</a></li>'
+			pageStr += '<li class="page-item disabled"><a class="page-link" id="prevBtn"><i class="fa fa-angle-left"></i></a></li>'
 			for(var p=1; p <= pageCount; p++){
 				pageStr += '<li class="page-item"><a class="page-link"href="javascript:void(0);" onclick="ml('+p+')">' + p + '</a></li>'
 			}
-			pageStr += '<li class="page-item"><a class="page-link" id="nextBtn">Next</a></li>'
+			pageStr += '<li class="page-item"><a class="page-link" id="nextBtn"><i class="fa fa-angle-right"></i></a></li>'
 			/*pageStr += '<li class="page-item"><a class="page-link" id="nextBtn" onclick=nexttpg('+(dataArr.pVO.currentPage+1)+')>Next</a></li>'*/
 		pageStr +='</ul>';
 		/* alert(pageStr) */

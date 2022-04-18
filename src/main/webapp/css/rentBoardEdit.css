@@ -3,14 +3,26 @@
 #tbBody{
 	display:flex;	
 }
+.table td, .table th{
+	border:none !important;
+}
+
+#rentEditForm h1{
+	text-align:center;
+	font-weight:700;
+	color:rgb(72, 97, 86);
+} 
+
 #rentBoardTitle{
 	margin-right:10px;
 }
+
 #writeBtn{
-	background-color: rgb(239, 136, 105) ;
+	background-color: rgb(72, 97, 86);
 	color:white;
 	padding:10px 30px;
 }
+
 #backList, .xbtn{
 	background-color: gray;
 	color:white;
@@ -36,7 +48,7 @@
 }
 
 /*top 효과*/
-#shareBoard{
+#rentBoard{
 	border-top-left-radius:10px;
 	border-top-right-radius:10px;
 	background-color:rgb(213, 218, 212);
@@ -50,10 +62,10 @@
 	border-top-right-radius:20px;
 	margin-top:5px;
 }
-#renttag, #saletag, #requesttag{
+#sharetag, #saletag, #requesttag{
 	height:50px;
 }
-#renttag:hover, #saletag:hover, #requesttag:hover{
+#sharetag:hover, #saletag:hover, #requesttag:hover{
 	background:rgb(142, 158, 139) !important;
 	color:rgb(72, 97, 86);
 	border-top-left-radius:20px;

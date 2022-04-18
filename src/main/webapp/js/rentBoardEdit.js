@@ -14,7 +14,7 @@ $(function(){
 	});
 	
 	$("#rentEditForm").submit(function(){
-		if($("#shareAndReqTitle").val()==''){
+		if($("#rentBoardTitle").val()==''){
 			alert("🚫 제목을 입력해주세요");
 			return false;
 		}
@@ -25,7 +25,7 @@ $(function(){
 	});
 	
 	$("#backList").click(function(){
-		location.href="/board/shareBoardList";
+		location.href="/board/rentBoardList";
 	})
 	
 });

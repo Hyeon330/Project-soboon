@@ -5,7 +5,7 @@
 <div class="container">
 	<br/>
 	<form class="form-group" method="post" action="/board/shareBoardWriteOk?category=share" id="shareForm" enctype="multipart/form-data">
-		<table class="table table-striped" style="text-align:center; border:1px solid #dddddd">
+		<table class="table table-striped" style="text-align:center">
 			<thead>
 				<tr>
 					<th><h1>나눔 게시판 글 작성하기</h1></th>

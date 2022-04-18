@@ -1,23 +1,41 @@
 @charset "UTF-8";
-
 #tbBody{
 	display:flex;	
 }
+.table td, .table th{
+	border:none !important;
+}
+#rentForm h1{
+	text-align:center;
+	font-weight:700;
+	color:rgb(72, 97, 86);
+} 
+
 #rentBoardTitle{
 	margin-right:10px;
 }
+
+#boardlargeAddrSelect, #boardmediumAddrSelect, #boardsmallAddrSelect{
+	width:125px;
+	height:30px;
+	text-align:center;
+	border:none;
+	border-radius:5px;
+}
 #writeBtn, #uploadBtn{
-	background-color: rgb(239, 136, 105) ;
+	background-color: rgb(72, 97, 86);
 	color:white;
 	padding:10px 30px;
 }
-
 #resetBtn, #backList {
 	background-color: gray;
 	color:white;
 	padding:10px 30px;
 }
-
+#pricetag{
+	background-color:rgb(72, 97, 86);
+	color:white;
+}
 #innerFiles{
 	display:flex;
 	flex:left;
@@ -45,10 +63,10 @@
 	border-top-right-radius:20px;
 	margin-top:5px;
 }
-#renttag, #saletag, #requesttag{
+#sharetag, #saletag, #requesttag{
 	height:50px;
 }
-#renttag:hover, #saletag:hover, #requesttag:hover{
+#sharetag:hover, #saletag:hover, #requesttag:hover{
 	background:rgb(142, 158, 139) !important;
 	color:rgb(72, 97, 86);
 	border-top-left-radius:20px;

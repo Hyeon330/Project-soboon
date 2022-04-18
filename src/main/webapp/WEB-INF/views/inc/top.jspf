@@ -67,12 +67,12 @@
 			</div>
 		</div>
 	<hr/>
-<div class="topMenu">
+	<div class="topMenu">
 		<div class="row">
 			<div class="col-lg-3" id="sharetag"><a href="/board/shareBoardList">나눔</a></div>
 			<div class="col-lg-3" id="renttag"><a href="/board/rentBoardList">대여</a></div>
 			<div class="col-lg-3" id="saletag"><a href="/board/saleBoardList">판매</a></div>
-			<div class="col-lg-3" id="requesttag"><a href="/board/reqeustBoardList">요청</a></div>
+			<div class="col-lg-3" id="requesttag"><a href="/board/reqBoardList">요청</a></div>
 		</div>
 	</div>
 </nav>
