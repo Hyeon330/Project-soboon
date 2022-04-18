@@ -5,6 +5,7 @@ public class ReportVO {
 	private String reporter;
 	private String suspect;
 	private String report_content;
+	private int board_no;
 	
 	
 	public int getNo() {
@@ -30,6 +31,12 @@ public class ReportVO {
 	}
 	public void setReport_content(String report_content) {
 		this.report_content = report_content;
+	}
+	public int getBoard_no() {
+		return board_no;
+	}
+	public void setBoard_no(int board_no) {
+		this.board_no = board_no;
 	}
 	@Override
 	public String toString() {

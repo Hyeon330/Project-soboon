@@ -106,6 +106,7 @@ $(function() {
 	
 	 /*=================신고관리=================*/ 
 	function showReport(dataArr, tab){ //showReport로 변경했음.
+	/*alert(JSON.stringify(dataArr))*/
 		$("#reportcnt").html("리폿 갯수 :" +dataArr.cnt +"명")
 		/* alert('총회원수: '+dataArr.cnt) */
 		//헤더 
@@ -116,13 +117,13 @@ $(function() {
 		str +="<li>신고사유</li>"
 		str +="<li>처분</li>"
 	
-		$.each(dataArr.userList, function(i, data){
+		$.each(dataArr.reportList, function(i, data){
 			//DB에서 가져올 데이터들
 			str +="<li><input type='checkbox'></li>"
 			str+="<li>"+data.reporter+"</li>"
 			str+="<li>"+data.suspect+ "회"+"</li>"
-			str+="<li><a href=http://localhost:9000/board/shareBoardView?no=194>[스팸글 작성했습니다.] 제목 : 수정</a></li>"
-			str+="<li>"+data.board_no+"</li>"
+			str+="<li>"+data.report_content + " " +data.board_no+"</li>"
+			str+="<li>"+"<div><button type='button' class='btn btn-outline-danger' style=float:center;>허위신고</button></div>"+"</li>"
 			
 			
 		})
