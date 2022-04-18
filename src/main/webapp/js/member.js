@@ -151,6 +151,32 @@ $(function() {
 			$("#nchk").css("color", "red");
 		}
 	});
+	$("#email").keyup(function() {
+		var email = $("#email").val();
+		if (email != '') {
+			var url = "/member/memberEmailCheck";
+			$.ajax({
+				url: url,
+				data: "email=" + email,
+				type: "post",
+				success: function(res) {
+					if (res > 0) {
+						$("#echk").html("사용불가합니다.");
+						$("#emailChk").val('N');
+						$("#echk").css("color", "red");
+					} else {
+						$("#echk").html("사용가능합니다.");
+						$("#emailChk").val('Y');
+						$("#echk").css("color", "green");
+					}
+				}
+			});
+		} else {
+			$("#echk").html("사용불가합니다.");
+			$("#emailChk").val('N');
+			$("#echk").css("color", "red");
+		}
+	});
 	$.ajax({
 		url: '/addr/getLargeAddr',
 		type: 'get',
