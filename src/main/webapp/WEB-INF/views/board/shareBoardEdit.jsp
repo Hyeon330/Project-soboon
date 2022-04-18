@@ -8,7 +8,7 @@
 		<table class="table table-striped" style="text-align:center; border:1px solid #dddddd">
 			<thead>
 				<tr>
-					<th><h1 style="text-align:center;">대여 게시판 글 수정 하기</h1></th>
+					<th><h1 style="text-align:center;">나눔 게시판 글 수정 하기</h1></th>
 				</tr>
 			</thead>
 			<tbody>
