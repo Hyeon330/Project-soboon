@@ -2,7 +2,7 @@
 <script src="/js/chat.js"></script>
 <link rel="stylesheet" href="/css/chat.css">
 <ul id="chatRightClick">
-	<li class="chat-remove">삭제</li>
+	<li class="chat-remove" oncontextmenu="return false;">삭제</li>
 </ul>
 <div id="chatBlock">
 	<button id="chatBtn">

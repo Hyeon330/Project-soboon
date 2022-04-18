@@ -40,7 +40,7 @@ public class ChatController {
 	@PostMapping("searchNickname")
 	public List<ChatVO> searchNickname(String nickNameKeyword, HttpSession session) {
 		String myNickname = (String)session.getAttribute("nickName");
-		return lastMessage(service.searchNickname((String)session.getAttribute("nickName"), nickNameKeyword), myNickname);
+		return lastMessage(service.getLastMessage((String)session.getAttribute("nickName"), nickNameKeyword), myNickname);
 	}
 	
 	List<ChatVO> lastMessage(List<ChatVO> dbMsgList, String myNickname){
