@@ -4,10 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
-import javax.servlet.http.HttpServletResponse;
 
 import org.json.simple.JSONObject;
-import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Service;
 
 import com.semiproject.soboon.dao.MemberDAO;
@@ -27,6 +25,11 @@ public class MemberServiceImpl implements MemberService{
 	public int memberInsert(MemberVO vo) {
 		System.out.println("vo="+vo);
 		return dao.memberInsert(vo);
+	}
+	
+	@Override
+	public MemberVO readMember(String userid) {
+		return dao.readMember(userid);
 	}
 
 	@Override
@@ -87,17 +90,23 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public String searchid_tel(String tel) {
-		return dao.searchid_tel(tel);
+	public String searchid_tel(String username,String tel) {
+		return dao.searchid_tel(username,tel);
 	}
 
 	@Override
-	public String searchid_email(String email) {
-		return dao.searchid_email(email);
+	public String searchid_email(String username,String email) {
+		return dao.searchid_email(username,email);
 	}
 	
 	@Override
 	public void updateMyAddr(MemberVO vo) {
 		dao.updateMyAddr(vo);
 	}
+
+	@Override
+	public int updatePwd(MemberVO vo) {
+		return dao.updatePwd(vo);
+	}
+	
 }

@@ -10,7 +10,7 @@ spring:
     view:
       prefix: /WEB-INF/views/
       suffix: .jsp
-  
+
   datasource: # 마이바티스 dataSource객체 세팅
     driver-class-name: 
     url: jdbc:mysql://1.246.60.149:5000/soboon?characterEncoding=utf-8
@@ -24,6 +24,21 @@ spring:
   session:
     store-type: redis  #session을 redis로 설정
     
+  mail:
+     host: smtp.gmail.com
+     port: 587
+     username: soboonsoboon@gmail.com
+     password: gcelqqspqoeykrrv
+     properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+    
 mybatis:
   type-aliases-package: com.semiproject.soboon.vo
   mapper-locations: mapper/*Mapper.xml
+
+  
+  

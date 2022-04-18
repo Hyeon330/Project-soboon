@@ -38,7 +38,11 @@
 				<input type="button" id="sms-btn2" class="btn signup-btn" value="인증" required/>
 			</li>
 			<li>이메일</li>
-			<li><input type="text" class="signup-email" name="email" id="email" placeholder="example@naver.com"/></li>
+			<li>
+				<input type="text" class="signup-email" name="email" id="email" placeholder="example@naver.com"/>
+				<span id="echk"></span> 
+				<input type="hidden" id="emailChk" value="N" />
+			</li>
 			<li>주소</li>
 			<li>
 				<select name="large" class="signupSelect" id="addrLarge"></select>
