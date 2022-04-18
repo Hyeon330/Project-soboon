@@ -50,7 +50,35 @@ $(() => {
 			}
 		}
 	});
-
+	
+	//이메일 중복검사
+	$("#email").keyup(function() {
+		var email = $("#email").val();
+		if (email != '') {
+			var url = "/member/memberEmailCheck";
+			$.ajax({
+				url: url,
+				data: "email=" + email,
+				type: "post",
+				success: function(res) {
+					if (res > 0) {
+						$("#echk").html("사용불가합니다.");
+						$("#emailChk").val('N');
+						$("#echk").css("color", "red");
+					} else {
+						$("#echk").html("사용가능합니다.");
+						$("#emailChk").val('Y');
+						$("#echk").css("color", "green");
+					}
+				}
+			});
+		} else {
+			$("#echk").html("사용불가합니다.");
+			$("#emailChk").val('N');
+			$("#echk").css("color", "red");
+		}
+	});
+	
 	$('#editFrm').submit(() => {
 		//선언부
 		var reg1 = /^[0-9]{2,3}$/;
@@ -112,4 +140,14 @@ $(() => {
 
 		return true;
 	});
+	//눈 아이콘 눌러서 비밀번호 확인하기
+	$(".pwd_control i").on('click',function(){
+		$("input").toggleClass('active');
+		if($("input").hasClass('active')){
+			$(this).attr('class',"fa fa-eye-slash fa-md").prev('input').attr('type','text');
+		} else{
+			$(this).attr('class',"fa fa-eye fa-md").prev('input').attr('type',"password");
+		}
+	});
+
 });

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<link rel="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 <link rel="stylesheet" href="/css/mypage.css" type="text/css"/>
 <script src="/js/memberEdit.js"></script>
 <div id="mypageContainer">
@@ -23,14 +24,16 @@
 					</li>
 					<li id="passwordCSS">
 						<div>비밀번호</div>
-						<div>
+						<div class="pwd_control">
 							<input type="password" id="userpwd1" name="userpwd" />
+							<i class="fa fa-eye fa-md"></i>
 						</div>
 					</li>
 					<li id="passowrdCheckCSS">
 						<div>비밀번호 확인</div>
-						<div>
+						<div class="pwd_control">
 							<input type="password" id="userpwd2" />
+							<i class="fa fa-eye fa-md"></i>
 						</div>
 					</li>
 					<li>
@@ -74,6 +77,8 @@
 						<div style="width: 5%;"></div>
 						<div style="width: 75%">
 							<input type="email" id="email" name="email" value="${VO.email }" />
+							<span id="echk"></span> 
+							<input type="hidden" id="emailChk" value="N" />
 						</div>
 					</li>
 

@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<link rel="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 <link rel="stylesheet" href="/css/login.css" type="text/css"/>
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 <script src="/js/login.js"></script>
@@ -8,7 +9,10 @@
 		<form method="post" action="/member/loginOk" id="loginFrm" onsubmit="return loginFrmCheck()">
 			<ul>
 				<li><input type="text" class="login-id" name="userid" id="userid" placeholder="ID" /></li>
-				<li><input type="password" class="login-pwd" name="userpwd" id="userpwd" placeholder="PASSWORD" /></li>
+				<li class="pwd_control">
+					<input type="password" class="login-pwd" name="userpwd" id="userpwd" placeholder="PASSWORD">
+					<i class="fa fa-eye fa-lg"></i>
+				</li>
 				<br/>
 				<li><input type="submit" class="btn login-btn" value="로그인">
 				<a href="/member/signup"><input type="button" class="btn login-btn1" id="signupBtn" value="회원가입"></a></li>

@@ -141,7 +141,7 @@ public class MemberController {
 	//카카오톡 연동 정보 조회+DB에 회원 정보 넣기
 	@RequestMapping(value="selectMyAccessToken")
 	public String oauthKakao(@RequestParam(value="code",required=false) String code, HttpServletRequest req) throws Exception{
-		System.out.println("카카오 정보 조회 들어옴");
+//		System.out.println("카카오 정보 조회 들어옴");
 		
 		//발급받은 인가코드를 통해 토큰 발급받기
 //		String access_Token =kakao.getAccessToken(code);
@@ -160,7 +160,7 @@ public class MemberController {
 		if(service.emailCheck(kakao_email)<=0) {
 //			System.out.println("유저 회원가입");
 			kakaoVO.setUserid(kakao_email);
-			kakaoVO.setUserpwd("00000000");
+			kakaoVO.setUserpwd("0000");
 			kakaoVO.setUsername(kakao_nickname);
 			kakaoVO.setNickname(kakao_nickname);
 			kakaoVO.setLarge("");
