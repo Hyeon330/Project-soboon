@@ -23,8 +23,9 @@ nav>hr{
 }
 
 /*!!!!!!!!!!로고!!!!!!!!!!*/
-.topMenu1 img{
-	width:200px;
+#logoImg{
+	width:150%;
+	padding-left:10px;
 }
 /*---------------select 영억---------------------*/
 #topSelect{

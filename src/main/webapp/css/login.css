@@ -2,6 +2,14 @@
 #loginContainer{
 	min-height:800px;
 }
+#logoBox{
+	padding:30px;
+	padding-top:50px;
+	text-align:center;
+}
+#loginLogo{
+	width:30%;
+}
 #login {
 	width: 500px;
 	margin: 0 auto;
