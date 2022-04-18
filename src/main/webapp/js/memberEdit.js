@@ -62,18 +62,18 @@ $(() => {
 				type: "post",
 				success: function(res) {
 					if (res > 0) {
-						$("#echk").html("사용불가합니다.");
+						$("#echk").html("X");
 						$("#emailChk").val('N');
 						$("#echk").css("color", "red");
 					} else {
-						$("#echk").html("사용가능합니다.");
+						$("#echk").html("O");
 						$("#emailChk").val('Y');
 						$("#echk").css("color", "green");
 					}
 				}
 			});
 		} else {
-			$("#echk").html("사용불가합니다.");
+			$("#echk").html("X");
 			$("#emailChk").val('N');
 			$("#echk").css("color", "red");
 		}
