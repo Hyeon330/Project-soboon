@@ -2,12 +2,13 @@ package com.semiproject.soboon.service;
 
 import java.util.List;
 
-import com.semiproject.soboon.vo.EmailVO;
+
 import com.semiproject.soboon.vo.MemberVO;
 import com.semiproject.soboon.vo.PagingVO;
 
 public interface MemberService {
 	public int memberInsert(MemberVO vo);
+	public MemberVO readMember(String userid);
 	public int idCheck(String userid);
 	public int nicknameCheck(String nickname);
 	public int emailCheck(String email);
@@ -21,8 +22,5 @@ public interface MemberService {
 	public String searchid_tel(String username,String tel);
 	public String searchid_email(String username,String email);
 	//임시비밀번호
-//	public EmailVO createNewPwd(String email);
-//	public void updatePwd(String str, String email);
-//	public String getTempPwd();
-//	public void mailSend(EmailVO evo);
+	public int updatePwd(MemberVO vo); //비밀번호업데이트
 }

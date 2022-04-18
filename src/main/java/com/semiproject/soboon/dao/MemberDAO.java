@@ -5,7 +5,6 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
-import com.semiproject.soboon.vo.EmailVO;
 import com.semiproject.soboon.vo.MemberVO;
 import com.semiproject.soboon.vo.PagingVO;
 
@@ -13,6 +12,7 @@ import com.semiproject.soboon.vo.PagingVO;
 @Repository
 public interface MemberDAO {
 	public int memberInsert(MemberVO vo);
+	public MemberVO readMember(String userid);
 	public int idCheck(String userid);
 	public int nicknameCheck(String nickname);
 	public int emailCheck(String email);
@@ -26,9 +26,5 @@ public interface MemberDAO {
 	public int memberMultiDelte(MemberVO vo);
 	public int getMembercnt();
 	public void updateMyAddr(MemberVO vo);
-	// 임시비밀번호
-//	public EmailVO createNewPwd(String email);
-//	public void updatePwd(String str, String email);
-//	public String getTempPwd();
-//	public void mailSend(EmailVO evo);
+	public int updatePwd(MemberVO vo);
 }

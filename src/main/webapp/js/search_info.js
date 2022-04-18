@@ -132,32 +132,24 @@ $(function() {
 			$("#searchinfo-email2").focus();
 			return false;
 		}
-		/*$.ajax({
-			data: {
+		$.ajax({
+			type:'post',
+			url:'/member/sendemail',
+			data:{
 				userid: $("#searchinfo-id").val(),
 				email: $("#searchinfo-email2").val()
-			}, url: '/member/searchpwd',
-			type: 'get',
-			success: function(res) {
-				if (res['check']) {
-					swal("발송 완료!", "입력하신 이메일로 임시비밀번호가 발송되었습니다.", "success").then((OK) => {
-						if (OK) {
-							$.ajax({
-								type: "POST",
-								url: "/member/sendemail",
-								data: {
-									userid: $("#searchinfo-id").val(),
-									email: $("#searchinfo-email2").val()
-								}
-							})
-							location.href = "/member/login";
-						}
-					}
-					)
-				}else{
-					alert("일치하는 정보가 없습니다. 입력한 내용을 확인해주세요.");
+			},
+			dataType:'text',
+			cache:false,
+			success:function(res){
+				if(res== "success"){
+					alert("입력하신 이메일로 임시 비밀번호를 보냈습니다.이메일을 확인해주세요.\n로그인 페이지로 넘어갑니다.");
+					location.href="/member/login";
+				}
+				else if(res=="fail"){
+					alert("아이디나 이메일을 확인해주세요.");
 				}
 			}
-		});*/
+		});
 	});
 });

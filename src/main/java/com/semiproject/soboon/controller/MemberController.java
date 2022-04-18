@@ -1,19 +1,20 @@
 package com.semiproject.soboon.controller;
 
 import java.util.HashMap;
-import java.util.Map;
 import java.util.Random;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,7 +27,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.semiproject.soboon.service.AddressService;
 import com.semiproject.soboon.service.KakaoAPI;
 import com.semiproject.soboon.service.MemberService;
-import com.semiproject.soboon.vo.EmailVO;
 import com.semiproject.soboon.vo.MemberVO;
 
 @Controller
@@ -39,6 +39,8 @@ public class MemberController {
 	KakaoAPI kakao;
 	@Inject
 	AddressService serviceAddr;
+	@Autowired
+	JavaMailSender javaMailSender;
 	
 	@GetMapping("signup")
 	public String memberForm() {
@@ -202,7 +204,6 @@ public class MemberController {
 	@PostMapping("searchid_tel")
 	@ResponseBody
 	public String searchid_tel(String username,String tel) {
-		System.out.println("username="+ username + "\ntel=" + tel);
 		String result = service.searchid_tel(username, tel);
 		
 		return result;
@@ -212,16 +213,49 @@ public class MemberController {
 	@PostMapping("searchid_email")
 	@ResponseBody
 	public String searchid_email(String username, String email) {
-		System.out.println("username="+ username + "\nemail=" + email);
 		String result = service.searchid_email(username,email);
 		return result;
 	}
 	
 	//비밀번호찾기(이메일로 임시 비밀번호 보내기)
 	@PostMapping("sendemail")
-	public String sendEmail() {
-		return "";
+	@ResponseBody
+	public String sendEmail(MemberVO vo, HttpSession session) {
+		MemberVO vo2 = service.readMember(vo.getUserid());
+		
+		if(vo2 == null) {
+			return "fail";
+		}
+		if(vo2.getEmail().equals(vo.getEmail())) {
+			
+			Random random = new Random();
+			String key = ""; // 인증번호
+
+			SimpleMailMessage message = new SimpleMailMessage();
+			message.setTo(vo.getEmail()); // 스크립트에서 보낸 메일을 받을 사용자 이메일 주소
+
+			// 입력키를 위한 코드
+			for (int i = 0; i < 4; i++) {
+				int idx = random.nextInt(25) + 65; // A~Z까지 랜덤 알파벳 생성
+				key += (char) idx; // 4자리 랜덤 정수를 생성
+			}
+			int numIdx = random.nextInt(9999) + 1000; // 4자리 랜덤 정수를 생성
+			key += numIdx;
+
+			message.setSubject("소분소분 임시 비밀번호 보냅니다.");
+			message.setText("임시비밀번호는 " + key + "입니다. 로그인 후 비밀번호 변경을 해주세요.");
+			
+			vo2.setUserpwd(key);
+			service.updatePwd(vo2);
+			
+			javaMailSender.send(message);
+			
+			return "success";
+		}else {
+			return "fail";
+		}
 	}
+	
 	//---------------------------------------------------------------------
 	@PostMapping("memberIdCheck")
 	@ResponseBody
