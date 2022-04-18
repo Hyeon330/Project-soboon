@@ -20,7 +20,7 @@ public interface BoardDAO {
 	public List<BoardVO> selectList(PagingVO pvo, BoardVO vo);
 	
 	// 게시판의 레코드 개수 가져오기(페이징)
-	public int selectTotalRecord(PagingVO pvo);
+	public int selectTotalRecord(PagingVO pvo, BoardVO vo);
 
 	// 상세페이지(뷰)
 	public BoardVO selectView(int no);

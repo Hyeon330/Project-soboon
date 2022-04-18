@@ -4,7 +4,7 @@
 <script src="/js/boardaddrDialog.js"></script>
 <div class="container">
 	<br/>
-	<form class="form-group" method="post" action="/board/shareBoardWriteOk?category=share" id="shareReqForm" enctype="multipart/form-data">
+	<form class="form-group" method="post" action="/board/shareBoardWriteOk?category=share" id="shareForm" enctype="multipart/form-data">
 		<table class="table table-striped" style="text-align:center; border:1px solid #dddddd">
 			<thead>
 				<tr>
@@ -43,6 +43,7 @@
   		<div class="col-12 text-center">
 			<input type="submit" class="btn" id="writeBtn" value="등록"/>
 			<input type="reset" id="resetBtn" class="btn" value="취소"/>
+			<input type="button" class="btn" id="backList" value="리스트로 돌아가기"/>
 		</div>
 	</form>
 </div>

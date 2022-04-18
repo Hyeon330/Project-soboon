@@ -13,7 +13,7 @@ $(function(){
 		totalFile--;
 	});
 	
-	$("#shareReqForm").submit(function(){
+	$("#shareEditForm").submit(function(){
 		if($("#shareAndReqTitle").val()==''){
 			alert("🚫 제목을 입력해주세요");
 			return false;
@@ -23,4 +23,9 @@ $(function(){
 			return false;
 		}
 	});
+	
+	$("#backList").click(function(){
+		location.href="/board/shareBoardList";
+	})
+	
 });

@@ -4,11 +4,11 @@
 <script src="/js/shareBoardEdit.js"></script>
 <div class="container">
 	<br/>
-	<form class="form-group" method="post" action="/board/shareBoardEditOk?no=${bvo.no}" id="shareReqForm" enctype="multipart/form-data">
+	<form class="form-group" method="post" action="/board/shareBoardEditOk?no=${bvo.no}" id="shareEditForm" enctype="multipart/form-data">
 		<table class="table table-striped" style="text-align:center; border:1px solid #dddddd">
 			<thead>
 				<tr>
-					<th><h1 style="text-align:center;">나눔 게시판 글 수정 폼</h1></th>
+					<th><h1 style="text-align:center;">대여 게시판 글 수정 하기</h1></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -71,7 +71,7 @@
   		</div>
   		<div class="col-12 text-center">
 			<input type="submit" class="btn" id="writeBtn" value="수정"/>
-			<input type="reset" id="resetBtn" class="btn" value="취소"/>
+			<input type="button" class="btn" id="backList" value="리스트로 돌아가기"/>
 		</div>
 	</form>
 </div>

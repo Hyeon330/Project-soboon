@@ -28,6 +28,7 @@
 							<li id="shareBoardTitle"><a href="/board/shareBoardView?no=${listVo.no}">${listVo.title}</a></li>
 							<li><i class="fa fa-location-arrow fa-lg"></i><span class="iconValue">${listVo.small}</span></li>
 							<li>${listVo.createdate}<span id="views"><i class="fa fa-eye fa-lg"></i><span class="iconValue">${listVo.views}</span></span></li>
+							<li>${pvo.totalRecord}</li>
 						</ul>
 					</div>
 				</div>

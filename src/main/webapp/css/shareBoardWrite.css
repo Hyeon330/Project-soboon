@@ -12,7 +12,7 @@
 	padding:10px 30px;
 }
 
-#resetBtn{
+#resetBtn, #backList {
 	background-color: gray;
 	color:white;
 	padding:10px 30px;

@@ -13,10 +13,13 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class ServerConfigure implements WebMvcConfigurer {
 
 	private static final List<String> URL_PATERRNS = Arrays.asList(
-			"/board/shareBoardWrite","/board/shareBoardWriteOK",
-			"/board/shareBoardEdit","/board/shareBoardEditOk",
-			"/board/shareBoardDel","/admin", "/pick/insertPick",
-			"/pick/deletePick"
+			"/board/shareBoardList","/board/shareBoardWrite",
+			"/board/shareBoardWriteOK", "/board/shareBoardEdit",
+			"/board/shareBoardEditOk", "/board/shareBoardDel","/admin", 
+			"/pick/insertPick", "/pick/deletePick",
+			"/board/rentBoardList", "/board/rentBoardWrite",
+			"/board/rentBoardWriteOk", "/board/rentBoardEdit",
+			"/board/rentBoardEditOk", "/board/rentBoardDel"
 			
 			);
 	private static final List<String> URL_PATERRNS_ADMIN = Arrays.asList(			
