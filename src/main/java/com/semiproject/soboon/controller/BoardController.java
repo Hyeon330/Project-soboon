@@ -451,5 +451,24 @@ public class BoardController {
 		return entity;
 	}
 	
+	// 판매게시판
+	@GetMapping("saleBoardList")
+	public ModelAndView saleListForm(PagingVO pvo, BoardVO vo, HttpSession session, String category, String title) {
+		if(category!=null) {
+			vo.setCategory(category);
+		}else {
+			vo.setCategory("sale");
+		}
+		vo.setTitle(title);
+		vo.setSmall((String)session.getAttribute("addrSmall"));
+		// 게시판 별 총 레코드 수
+		pvo.setTotalRecord(service.selectTotalRecord(pvo, vo));
+		// 게시판 글 DB연결해서 보이기 
+		mav.addObject("list", service.selectList(pvo, vo));
+		mav.addObject("pvo", pvo);
+
+		mav.setViewName("board/saleBoardList");
+		return  mav;
+	}
 	
 }
