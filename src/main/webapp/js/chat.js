@@ -239,6 +239,7 @@ $(() => {
 			sessionStorage.setItem('oppNickname', oppNickname);
 			
 		});
+		// 메시지 리스트 오른쪽 클릭 삭제 이벤트
 		$('.chat-list').on('contextmenu', function(e) {
 			var x = e.clientX;
 			var y = e.clientY;
@@ -248,6 +249,8 @@ $(() => {
 		});
 	}
 	openMsgPopupReload();
+	
+	// 리스트 삭제
 	var chatRightClickOppNickname = '';
 	$('.chat-remove').click(function() {
 		var data = {
@@ -333,10 +336,10 @@ $(() => {
 		console.log('휠 : '+wheel);
 	});*/
     
-    setInterval(() => {
+    /*setInterval(() => {
 		if($('#chatSearch').val()==''){
 			chatListsReload();
 			openMsgPopupReload();
 		}
-	}, 2000);
+	}, 2000);*/
 });

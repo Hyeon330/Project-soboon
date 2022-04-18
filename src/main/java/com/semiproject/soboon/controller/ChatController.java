@@ -53,7 +53,9 @@ public class ChatController {
 			} else {
 				oppNickName = vo.getSender();
 			}
-			if(!oppNickNameSet.contains(oppNickName)) {
+			if(vo.getSender().equals(myNickname) && vo.getChat_read().equals("end")) {
+				oppNickNameSet.add(oppNickName);
+			}else if(!oppNickNameSet.contains(oppNickName)) {
 				oppNickNameSet.add(oppNickName);
 				resultList.add(vo);
 			}
