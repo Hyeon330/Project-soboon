@@ -24,14 +24,4 @@ public class AdminServiceImpl implements AdminService {
 		return dao.totalRecord(pVO);
 	}
 
-	@Override
-	public int memberDelete(String userid) {
-		return dao.memberDelete(userid);
-	}
-
-	@Override
-	public int memberMultiDelete(MemberVO vo) {
-		return dao.memberMultiDelte(vo);
-	}
-
 }

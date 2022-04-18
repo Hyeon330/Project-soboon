@@ -1,0 +1,63 @@
+@charset "UTF-8";
+
+#tbBody{
+	display:flex;	
+}
+#rentBoardTitle{
+	margin-right:10px;
+}
+#writeBtn{
+	background-color: rgb(239, 136, 105) ;
+	color:white;
+	padding:10px 30px;
+}
+#backList, .xbtn{
+	background-color: gray;
+	color:white;
+}
+#backList{
+	padding:10px 30px;
+}
+
+.xbtn{
+	padding:3px 5px;
+}
+
+#innerFiles{
+	display:flex;
+	flex:left;
+	margin:30px;
+	display:block;
+}
+
+#innerFiles input[type=hidden]{
+	width:230px;
+	margin:10px;
+}
+
+/*top 효과*/
+#shareBoard{
+	border-top-left-radius:10px;
+	border-top-right-radius:10px;
+	background-color:rgb(213, 218, 212);
+	color:rgb(72, 97, 86);
+	margin-top:5px;
+}
+#renttag{
+	background:rgb(213, 218, 212);
+	color:rgb(72, 97, 86);
+	border-top-left-radius:20px;
+	border-top-right-radius:20px;
+	margin-top:5px;
+}
+#renttag, #saletag, #requesttag{
+	height:50px;
+}
+#renttag:hover, #saletag:hover, #requesttag:hover{
+	background:rgb(142, 158, 139) !important;
+	color:rgb(72, 97, 86);
+	border-top-left-radius:20px;
+	border-top-right-radius:20px;
+	height:45px;
+	margin-top:5px;
+}

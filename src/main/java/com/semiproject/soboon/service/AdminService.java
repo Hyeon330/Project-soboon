@@ -10,6 +10,4 @@ public interface AdminService {
 	public List<MemberVO> memberList(PagingVO pVO);
 	
 	public int totalRecord(PagingVO pVO);
-	public int memberDelete(String userid);
-	public int memberMultiDelete (MemberVO vo);
 }

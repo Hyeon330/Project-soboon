@@ -3,8 +3,7 @@
 <link rel="stylesheet" href="/css/signup.css" type="text/css"/>
 <script src="/js/member.js"></script>
 <div class="container">
-	<h1 id="signup-logo">회원가입</h1>
-	<hr/>
+	<div id="signupBox"><a href="/"><img src="/img/로고6.png" id="signupLogo"/></a></div>
 	<form method="post" action="/member/memberOk" id="memberFrm" onsubmit="return memberCheck()">
 		<ul>
 			<li>아이디</li>
@@ -26,7 +25,7 @@
 				<input type="hidden" id="nickChk" value="N" />
 			</li>
 			<li>연락처</li>
-			<li>
+			<li id="telList">
 				<input type="text"  class="signup-tel" name="tel1" id="tel1" maxlength="3" /> - 
 				<input type="text" class="signup-tel" name="tel2" id="tel2" maxlength="4" /> -
 				<input type="text" class="signup-tel" name="tel3" id="tel3" maxlength="4" />
@@ -46,12 +45,12 @@
 			</li>
 			<li>주소</li>
 			<li>
-				<select name="large" id="addrLarge"></select>
-				<select name="medium" id="addrMedium">
-					<option value="">선택 없음</option>
+				<select name="large" class="signupSelect" id="addrLarge"></select>
+				<select name="medium" class="signupSelect" id="addrMedium">
+					<option value="">선택안함</option>
 				</select>
-				<select name="small" id="addrSmall">
-					<option value="">선택 없음</option>
+				<select name="small" class="signupSelect" id="addrSmall">
+					<option value="">선택안함</option>
 				</select>
 			</li>
 			<li><input type="submit" class="btn signup-btn" id="signSub" value="가입하기" /></li>

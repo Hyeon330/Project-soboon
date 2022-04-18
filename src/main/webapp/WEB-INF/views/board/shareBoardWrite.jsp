@@ -4,19 +4,19 @@
 <script src="/js/boardaddrDialog.js"></script>
 <div class="container">
 	<br/>
-	<form class="form-group" method="post" action="/board/shareBoardWriteOk?category=share" id="shareReqForm" enctype="multipart/form-data">
+	<form class="form-group" method="post" action="/board/shareBoardWriteOk?category=share" id="shareForm" enctype="multipart/form-data">
 		<table class="table table-striped" style="text-align:center; border:1px solid #dddddd">
 			<thead>
 				<tr>
-					<th><h1 style="text-align:center;">나눔 게시판 글 작성하기</h1></th>
+					<th><h1>나눔 게시판 글 작성하기</h1></th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
 					<td>
 						<div>
-							<select id="boardlargeAddrSelect" name="large" default="${addrLarge}"></select>
-							<select id="boardmediumAddrSelect" name="medium" default="${addrMedium}"></select>
+							<select id="boardlargeAddrSelect" name="large" default="${addrLarge}"></select>&nbsp;&nbsp;&nbsp;&nbsp;
+							<select id="boardmediumAddrSelect" name="medium" default="${addrMedium}"></select>&nbsp;&nbsp;&nbsp;&nbsp;
 							<select id="boardsmallAddrSelect" name="small" default="${addrSmall}"></select>
 						</div>
 					</td>
@@ -43,6 +43,7 @@
   		<div class="col-12 text-center">
 			<input type="submit" class="btn" id="writeBtn" value="등록"/>
 			<input type="reset" id="resetBtn" class="btn" value="취소"/>
+			<input type="button" class="btn" id="backList" value="리스트로 돌아가기"/>
 		</div>
 	</form>
 </div>

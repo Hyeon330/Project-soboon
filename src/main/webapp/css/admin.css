@@ -19,7 +19,7 @@
 	transition: 0.3s;
 }
 /* =========↓↓↓========회 원 관 리========↓↓↓========= */
-.memberList{
+.clientList{
 	text-align:center;
 }
 #clientManage>li {
@@ -37,6 +37,27 @@
 }
 #clientManage>li:nth-child(7n) { 
 	width: 25%;
+}
+
+/* =========↓↓↓========신 고 관 리========↓↓↓========= */
+.reportList{
+	text-align:center;
+}
+#reportManage>li {
+	float: left;
+	height: 40px;
+	line-height: 40px;
+	border-bottom: 1px solid white;
+	width: 15%;
+	text-overflow: ellipsis;
+	white-space: nowrap; /*줄안바꿈*/
+	overflow: hidden; /*넘친 내용 숨기기*/
+}
+#reportManage>li:nth-child(5n+4){
+	width:50%;
+}
+#reportManage>li:nth-child(5n+1) { 
+	width: 5%;
 }
 
 #prevBtn, #nextBtn{

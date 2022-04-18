@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<link rel="stylesheet" href="/css/report.css" type="text/css"/>
 <script>
 $(function() {
 	$('#proWarn').click(function(){
@@ -22,6 +23,11 @@ $(function() {
 </script>
 <div id="reportReason">
 	<form id="reportSubmit">
-		<textarea cols="45" rows="5"></textarea>
+		<ul>
+			<li>신고제목</li>
+			<li><input type="text" name="reportTitle" id="reportTitle"></li>
+			<li>신고내용</li>
+			<li><textarea cols="30" rows="5" id="reportContent" name="reportContent"></textarea></li>
+		</ul>
 	</form>
 </div>

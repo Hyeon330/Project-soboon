@@ -1,0 +1,87 @@
+@charset "UTF-8";
+.cb>ul>li{
+	margin-bottom:10px;
+}
+
+.rb{
+	margin-bottom:40px;
+	filter : drop-shadow(0px 10px 10px rgb(144, 163, 140));
+}
+.space{
+	padding:20px;
+}
+#addressInfo{
+	font-size:1.3em;
+	font-weight:700;
+	float:right;
+	padding-top:10px;
+	padding-right:20px;
+}
+#rentBrd{
+	text-align:center;
+	font-weight:bold;
+	margin-top:20px;
+}
+
+#rentBoardWrite{
+	background-color: rgb(72, 97, 86) ;
+	color:white;
+	padding:10px 30px;
+	margin-bottom:20px;
+}
+
+#views, #heart{
+	float:right;
+}
+
+#rentBoardTitle{
+	font-size:1.4em;
+	font-weight:bold;
+	white-space: nowrap;
+ 	overflow: hidden;
+ 	text-overflow: ellipsis;
+}
+
+.iconValue{
+	margin-left:10px;
+}
+
+/*페이징*/
+#paging{
+	margin:0 auto;
+}
+
+#prevBtn, #nextBtn{
+	background-color: rgb(72, 97, 86);
+	color:white;
+}
+.page-link{
+	background-color:rgba(72, 97, 86, 20%);
+	color:rgb(72, 97, 86);
+}
+/*top 효과*/
+#shareBoard{
+	border-top-left-radius:10px;
+	border-top-right-radius:10px;
+	background-color:rgb(213, 218, 212);
+	color:rgb(72, 97, 86);
+	margin-top:5px;
+}
+#renttag{
+	background:rgb(213, 218, 212);
+	color:rgb(72, 97, 86);
+	border-top-left-radius:20px;
+	border-top-right-radius:20px;
+	margin-top:5px;
+}
+#renttag, #saletag, #requesttag{
+	height:50px;
+}
+#renttag:hover, #saletag:hover, #requesttag:hover{
+	background:rgb(142, 158, 139) !important;
+	color:rgb(72, 97, 86);
+	border-top-left-radius:20px;
+	border-top-right-radius:20px;
+	height:45px;
+	margin-top:5px;
+}

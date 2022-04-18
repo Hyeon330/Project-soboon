@@ -28,8 +28,8 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public int selectTotalRecord(PagingVO pvo) {
-		return dao.selectTotalRecord(pvo);
+	public int selectTotalRecord(PagingVO pvo, BoardVO vo) {
+		return dao.selectTotalRecord(pvo, vo);
 	}
 
 	@Override
