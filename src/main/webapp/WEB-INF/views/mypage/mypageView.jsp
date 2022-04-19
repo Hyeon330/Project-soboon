@@ -25,7 +25,7 @@
 					<div>${vo.email }</div>
 				</div>
 			</div>
-			<div id="postPoint" style="width: 50%; height: 100%;">
+			<div id="postPoint">
 				<div>
 					<div>
 						<div>작성글</div>
@@ -47,7 +47,6 @@
 			</div>
 		</div>
 		<!-- topMenu-mypageView -->
-		<!-- <div class="listMenuTab"> -->
 		<!-- ------------------------------------------------------------------------------------------------------------------------------------------ -->
 		<!-- 탭메뉴 영역 -->
 		<ul class="tabs nav nav-tabs">
