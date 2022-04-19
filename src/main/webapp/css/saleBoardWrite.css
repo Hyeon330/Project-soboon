@@ -56,14 +56,15 @@
 	border-top-right-radius:20px;
 	margin-top:5px;
 }
-#renttag, #saletag, #requesttag{
+#renttag, #sharetag, #requesttag{
 	height:50px;
 }
-#renttag:hover, #saletag:hover, #requesttag:hover{
+#renttag:hover, #sharetag:hover, #requesttag:hover{
 	background:rgb(142, 158, 139) !important;
 	color:rgb(72, 97, 86);
 	border-top-left-radius:20px;
 	border-top-right-radius:20px;
 	height:45px;
 	margin-top:5px;
+	cursor:pointer;
 }

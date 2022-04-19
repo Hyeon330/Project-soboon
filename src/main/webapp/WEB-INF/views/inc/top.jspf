@@ -32,16 +32,15 @@
 				<div><a href="/"><img src="/img/로고4.png" id="logoImg"/></a></div>
 				<div id="topSearch">
 				<!--검색 기능  -->
-					<form class="form-inline" name="edit" method="get" action="/board/shareBoardList">
+					<form class="form-inline" method="get" id="searchFrm" >
 						<select id="topSelect" name="category" >
-							<option>항목 선택</option>
 							<option value="share">나눔</option>
 							<option value="rent">대여</option>
 							<option value="sale">판매</option>
-							<option value="request">요청</option>						
+							<option value="request">요청</option>
 						</select>&nbsp;&nbsp;&nbsp;&nbsp;
 					    <div id="searchBox">
-						    <input class="form-control mr-sm-12" type="text" id="searchInput" name="title"/>
+						    <input class="form-control mr-sm-12" type="text" id="searchInput" name="keyword" style="width:300px; height:40px;"/>
 						    <button id="iconBtn"><i class="bi bi-search" id="searchIcon"></i></button>
 						</div>
 					</form>

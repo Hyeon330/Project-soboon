@@ -10,13 +10,19 @@
 		#{img1}, #{img2}, #{img3}, #{img4}, #{category}, #{large}, #{medium}, #{small})
 	</insert>
 	<select id="selectList" resultType="BoardVO">
-		select no, thumbnailImg, img1, pick, nickname, title, price,
-		views, small, category, date_format(createdate, "%m/%d %H:%i")createdate
-		from board where category = #{param2.category} and small = #{param2.small} 
+		select no, thumbnailImg, img1, pick, nickname, title, pick,
+		views, small, category, date_format(createdate,"%m/%d %H:%i") createdate
+		from board where category = #{param2.category} and small = #{param2.small}
+		<if test="param3!=null">
+			and title like '%${param3}%'
+		</if>
 		order by no desc limit ${param1.recordPerPage} offset ${param1.offsetIndex}
 	</select>
 	<select id="selectTotalRecord" resultType="int">
 		select count(no) count from board where category = #{param2.category} and small = #{param2.small} 
+		<if test='param3!=null'>
+			and title like '%${param3}%'
+		</if>
 	</select>
 	<select id="selectView" resultType="BoardVO">
 		select b.no, m.nickname, m.userid, b.category, b.title, b.views, 

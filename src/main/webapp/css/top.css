@@ -107,7 +107,7 @@ nav>hr{
 }
 .topMenu>div>div{
 	text-align:center;
-	color:white !important;
+	color:white;
 	margin-top:5px;
 	width:25%;
 	letter-spacing:25px;
