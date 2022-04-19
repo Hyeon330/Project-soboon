@@ -36,4 +36,8 @@ public class ReportServiceImpl implements ReportService {
 	public void delreport(List<Integer> board_nos) {
 		dao.delreport(board_nos);	
 	}
+	@Override
+	public int insertReportContent(ReportVO vo) {
+		return dao.insertReportContent(vo);
+	}
 }

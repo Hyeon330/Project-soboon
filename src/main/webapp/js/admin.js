@@ -129,7 +129,7 @@ $(function() {
 			str +="<li><input type='checkbox' name='noList' value='"+data.no+"'></li>"
 			str+="<li>"+data.reporter+"</li>"
 			str+="<li>"+data.suspect+"</li>"
-			str+="<li>"+"<a href='http://localhost:9000/board/shareBoardView?no="+data.board_no+"'>"+data.board_no+"</a>"+ "번 " +data.report_content+"</li>"
+			str+="<li>"+"<a href='http://localhost:9000/board/shareBoardView?no="+data.board_no+"'>"+data.board_no+"</a>"+ "번 " +data.report_content+"</li>"			
 			str+="<li>"+""+"</li>"
 			
 			

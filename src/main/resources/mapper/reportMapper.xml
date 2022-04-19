@@ -36,4 +36,7 @@
             </foreach>
          </where>
 	</delete>
+	<insert id="insertReportContent">
+		insert into report (reporter,suspect,report_content,board_no) values(#{reporter},(select userid from member where nickname=#{suspect}),#{report_content},#{board_no})
+	</insert>
  </mapper>
