@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<link rel="stylesheet" href="/css/search_info.css" type="text/css"/>
-<script src="/js/search_info.js"></script>
+<link rel="stylesheet" href="/css/member/search_info.css" type="text/css"/>
+<script src="/js/member/search_info.js"></script>
 <div class="container searchinfofrm">
 	<div id="serarchBox"><a href="/"><img src="/img/로고7.png" id="signupLogo"/></a></div>
 	<div>

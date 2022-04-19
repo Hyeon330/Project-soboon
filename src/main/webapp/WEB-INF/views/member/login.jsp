@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <link rel="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
-<link rel="stylesheet" href="/css/login.css" type="text/css"/>
+<link rel="stylesheet" href="/css/member/login.css" type="text/css"/>
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-<script src="/js/login.js"></script>
+<script src="/js/member/login.js"></script>
 <div class="container">
 	<div id="login">
 		<div id="logoBox"><a href="/"><img src="/img/로고6.png" id="loginLogo"/></a></div>
