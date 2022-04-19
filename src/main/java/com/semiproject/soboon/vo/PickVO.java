@@ -1,10 +1,15 @@
 package com.semiproject.soboon.vo;
 
+import java.util.List;
+
 public class PickVO {
 
 	private int pickno;
 	private int no;
 	private String userid;
+	
+	private List<Integer> picknoList;
+	
 	public int getPickno() {
 		return pickno;
 	}
@@ -22,6 +27,12 @@ public class PickVO {
 	}
 	public void setUserid(String userid) {
 		this.userid = userid;
+	}
+	public List<Integer> getPicknoList() {
+		return picknoList;
+	}
+	public void setPicknoList(List<Integer> picknoList) {
+		this.picknoList = picknoList;
 	}
 	
 	

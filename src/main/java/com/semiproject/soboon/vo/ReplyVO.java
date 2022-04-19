@@ -1,5 +1,7 @@
 package com.semiproject.soboon.vo;
 
+import java.util.List;
+
 public class ReplyVO {
 
 	private int replyno;
@@ -9,6 +11,10 @@ public class ReplyVO {
 	private String nickname;
 	private String coment;
 	private String createdate;
+	private String title;
+	
+	// replyno 체크박스 모을 수 있는 리스트 객체 생성
+	private List<Integer> replynoList;
 	
 	public int getReplyno() {
 		return replyno;
@@ -51,6 +57,18 @@ public class ReplyVO {
 	}
 	public void setCreatedate(String createdate) {
 		this.createdate = createdate;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public List<Integer> getReplynoList() {
+		return replynoList;
+	}
+	public void setReplynoList(List<Integer> replynoList) {
+		this.replynoList = replynoList;
 	}
 	
 }

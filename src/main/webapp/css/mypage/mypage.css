@@ -279,9 +279,6 @@
 #passwordCSS,#passowrdCheckCSS {
 	 width:100%;
 }
-#passwordCSS>div, #passowrdCheckCSS>div {
-	/*비빌번호 비밀번호 체크 div*/
-}
 #passwordCSS>div:first-child, #passowrdCheckCSS>div:first-child {
 	margin-right: 5%;
 }
@@ -319,35 +316,85 @@
 	color:white;
 }
 
-#btn_delMember{
-	background-color:rgba(72, 97, 86, 80%);
-	color:white;
+#editView>form>div>ul>li>div {
+	margin-bottom: 13px;
 }
+
+#editView input {
+	border-style: none;
+	background-color: transparent;
+	border-bottom: 2px solid #ddd;
+}
+
+#editFrm>li>div {
+	float: left;
+}
+
+#editView>form>div {
+	float: left;
+}
+
+#editView>form>div:last-of-type {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#button_editSubmit {
+	margin-bottom: 13px;
+}
+
+#button_overlapCheck {
+	font-size: small !important;
+}
+
+#VO_nickname_hidden {
+	display: none;
+}
+/*--------------------tab 출력문 공통--------------------------------------------*/
+.buttonDel {
+	display: flex; 
+	justify-content: flex-end; 
+}
+.pagebox {
+	display: flex; justify-content: center;
+}
+
 /*------------------------tab 내 쓴 글 보기 리스트---------------------------*/
 #printFrm1 ul {
 	display: flex; border-bottom: 1px solid #ddd;
 }
-
+#printFrm1 ul:first-child {
+	background-color: #ddd;
+}
 #printFrm1 li {
-	float:left; 
-	border-right: 3px solid red; 
-	width:16%; text-align: center; 
+	float:left;  
+	width:25%; text-align: center; 
 	height:20px; 
 	overflow: hidden; 
 	text-overflow: ellipsis; 
 	white-space: nowrap;
 }
-#printFrm1>ul>li:nth-of-type(3){
-	background-color: orange;
-}
-
 .innerTab {
-	margin-top:15px;
+	margin-top:10px;
 }
 .tabTopMenu {
 	display: flex; align-items: center; text-align: center;
-	justify-content: space-between;
+	justify-content: flex-end; margin-bottom: 8px;
 }
-.bottom-myView {
-	display: flex; justify-content:center;
+/*---------------------------tab 댓글 쓴 글 보기 리스트 / tab 내가 찜한 글 보기 리스트 -------------------------*/
+#printFrm2 ul, #printFrm3 ul {
+	display: flex; border-bottom: 1px solid #ddd;
 }
+#printFrm2 ul:first-child, #printFrm3 ul:first-child {
+	background-color: #ddd;
+}
+#printFrm2 li, #printFrm3 li  {
+	float:left;  
+	width:25%; text-align: center; 
+	height:20px; 
+	overflow: hidden; 
+	text-overflow: ellipsis; 
+	white-space: nowrap;
+}
+

@@ -27,15 +27,19 @@
 					<!-- 신고관리 -->
 					<div class="tab-pane fade" id="reportMgr">
 					<div style="float: left" id="reportcnt"></div>
-					<div><button type="button" class="btn btn-outline-danger" style=float:right;>삭제</button></div>
+					<div><button type="button" class="btn btn-success" style=float:right;>허위신고</button></div>
+					<div><button type="button" class="btn btn-danger" id="multiDel" style="float:right;margin-right: 7px;">게시물 삭제</button></div>
+					
 					<br/>
+					<form method="post" action="admin/multiDel" id="checkFrm">
 						<ul class="reportList">
 						<!-- <li><input type="checkbox" id="checkAll"></li>
 							<li>아이디</li>
 							<li>누적신고</li>
 							<li>신고내용</li>
-							<li>신고처리</li>
-						</ul> -->
+							<li>신고처리</li>-->
+						</ul> 
+						</form>
 					</div>
 					<!-- 	 게시글 현황
 					<div class="tab-pane fade" id="boardMgr">
@@ -46,6 +50,7 @@
 							</ul>
 						</ul>
 					</div> -->
+					
 				</div>
 			</div>
 		</div>
