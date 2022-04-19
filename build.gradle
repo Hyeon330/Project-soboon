@@ -43,6 +43,9 @@ dependencies {
 	//핸드폰번호 인증 라이브러리
 	// https://mvnrepository.com/artifact/net.nurigo/javaSDK
 	implementation 'net.nurigo:javaSDK:2.2'
+	
+	//이메일보내기
+	implementation 'org.springframework.boot:spring-boot-starter-mail'
 }
 
 tasks.named('test') {

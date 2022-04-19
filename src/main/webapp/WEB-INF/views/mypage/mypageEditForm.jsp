@@ -2,87 +2,71 @@
 	pageEncoding="UTF-8"%>
 <link rel="stylesheet" href="/css/mypage/mypage.css" type="text/css"/>
 <script src="/js/mypage/memberEdit.js"></script>
+
 <div id="mypageContainer">
 	<!--   사이드 메뉴 (include) -->
 	<%@ include file="/WEB-INF/views/inc/mypageSideBar.jsp"%>
 
 	<!--  view -->
-	<div id="editView" style="width:75%; height: 100%;">
+	<div id="editView">
 		<h3>개인정보수정</h3>
 		<hr />
 		<form id="editFrm" method="post" action="/mypage/mypageEditOk">
-			<div style="width: 90%; height: 80%;">
-				<ul id="editFrm">
+			<div id="editArea"style="width: 90%; height: 80%;">
+				<ul>
+					<li>아이디</li>
 					<li>
-						<div style="width: 20%;">아이디</div>
-						<div style="width: 5%;"></div>
-						<div style="width: 75%;">
-							<input type="text" id="userid" name="userid"
-								value="${VO.userid }" readonly="readonly" />
-						</div>
+						<input type="text" id="userid" name="userid" value="${VO.userid }" readonly="readonly" />
 					</li>
-					<li id="passwordCSS">
-						<div>비밀번호</div>
-						<div>
-							<input type="password" id="userpwd1" name="userpwd" />
-						</div>
+					
+					<li id="passwordCSS">비밀번호</li>
+					<li class="pwd_control">
+						<input type="password" id="userpwd1" name="userpwd" />
+						<i class="fa fa-eye-slash fa-md"></i>
 					</li>
-					<li id="passowrdCheckCSS">
-						<div>비밀번호 확인</div>
-						<div>
-							<input type="password" id="userpwd2" />
-						</div>
+					
+					<li id="passowrdCheckCSS">비밀번호 확인</li>
+					<li class="pwd_control">
+						<input type="password" id="userpwd2" />
+						<i class="fa fa-eye-slash      fa-md"></i>
 					</li>
+					
+					<li>이름</li>
 					<li>
-						<div style="width: 20%">이름</div>
-						<div style="width: 5%;"></div>
-						<div style="width: 75%">
-							<input type="text" id="username" name="username"
-								value="${VO.username }" readonly="readonly" />
-						</div>
+						<input type="text" id="username" name="username" value="${VO.username }" readonly="readonly" />
 					</li>
+					
+					<li>닉네임</li>
+					<li>	
+						<input type="text" id="nickname" name="nickname" value="${VO.nickname }" />
+						<button class="btn">중복확인</button>
+						<input type="hidden" id="nicknameCheck"/>
+					</li>
+					
+					<li>전화번호</li>
 					<li>
-						<div style="width: 20%">닉네임</div>
-						<div style="width: 5%"></div>
-						<div style="width: 30%">
-							<input type="text" id="nickname" name="nickname"
-								value="${VO.nickname }" />
-						</div>
-						<div style="width: 40%">
-							<button class="btn" id="button_overlapCheck">중복확인</button>
-						</div> <input type="hidden" id="nicknameCheck" />
-						<div id="VO_nickname_hidden">${VO.nickname }</div>
+						<input type="text" class="edit-tel" id="tel1" name="tel1" value="${VO.tel1 }" />&nbsp;&nbsp;-
+						<input type="text" class="edit-tel" id="tel2" name="tel2" value="${VO.tel2 }" />&nbsp;&nbsp;-
+						<input type="text" class="edit-tel" id="tel3" name="tel3" value="${VO.tel3 }" />
+						<input type="button" id="sms-btn1" class="btn signup-btn" value="SMS인증"/>
 					</li>
+						
+					<li></li>
 					<li>
-						<div style="width:100px;">전화번호</div>
-						<div></div>
-						<div>
-							<input type="text" id="tel1" name="tel1" style="width: 80%"
-								value="${VO.tel1 }" />&nbsp;&nbsp;-
-						</div>
-						<div style="width: 24%">
-							<input type="text" id="tel2" name="tel2" style="width: 80%"
-								value="${VO.tel2 }" />&nbsp;&nbsp;-
-						</div>
-						<div style="width: 24%">
-							<input type="text" id="tel3" name="tel3" style="width: 80%"
-								value="${VO.tel3 }" />
-						</div>
+						<input type="text" class="signup-sms" name="smsCode" id="smsCode" placeholder="인증번호 5자리를 입력하세요" disabled required/>
+						<input type="hidden" id="authCode"/>	
+						<input type="button" id="sms-btn2" class="btn signup-btn" value="인증" required/>
 					</li>
+					
+					<li>이메일</li>
 					<li>
-						<div style="width: 20%">이메일</div>
-						<div style="width: 5%;"></div>
-						<div style="width: 75%">
-							<input type="email" id="email" name="email" value="${VO.email }" />
-						</div>
+						<input type="email" id="mypageEmail" name="email" value="${VO.email }" />
+						<span id="echk"></span> 
+						<input type="hidden" id="emailChk" value="N" />
 					</li>
-
 				</ul>
 			</div>
-			<div style="width: 100%; height: 90px;">
-				<input type="submit" class="btn" value="수정"
-					id="button_editSubmit" />
-			</div>
+			<div id="mypageeditSubmit"><input type="submit" class="btn" id="editSubmit" value="수정"/></div>
 		</form>
 	</div>
 </div>

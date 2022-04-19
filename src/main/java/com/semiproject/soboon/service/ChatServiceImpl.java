@@ -19,6 +19,11 @@ public class ChatServiceImpl implements ChatService {
 	public List<ChatVO> getLastMessage(String myNickname) {
 		return dao.getLastMessage(myNickname);
 	}
+	
+	@Override
+	public List<ChatVO> getLastMessage(String myNickname, String nickNameKeyword) {
+		return dao.getLastMessage(myNickname, nickNameKeyword);
+	}
 
 	@Override
 	public List<ChatVO> getAllMessage(String myUserid, String oppNickname) {
@@ -28,10 +33,5 @@ public class ChatServiceImpl implements ChatService {
 	@Override
 	public int updateChatRead(String myNickname) {
 		return dao.updateChatRead(myNickname);
-	}
-
-	@Override
-	public List<ChatVO> searchNickname(String myNickname, String nickNameKeyword) {
-		return dao.searchNickname(myNickname, nickNameKeyword);
-	}
+	}	
 }

@@ -1,4 +1,8 @@
 @charset "UTF-8";
+#signupLogo{
+	width:40%;
+	padding:40px;
+}
 .searchinfofrm {
 	text-align:center;
 }
@@ -12,7 +16,9 @@
 .searchinfofrm>h1{
 	margin-top:40px;
 }
-
+.searchId h4, .searchPwd h4{
+	font-weight:800;
+}
 .btn-searchinfo{
 	width:50%;
 	height:50px;
@@ -23,8 +29,8 @@
 }
 .searchinfo_1,
 .searchinfo_2{
-	width:60%;
-	margin:30px auto;
+	width:270px;
+	margin:23px auto;
 	border:none;
 	border-bottom:2px solid #adadad;
 	outline:none;
@@ -33,11 +39,16 @@
 	background:none;
 	text-align:center;
 } 
+.searchinfo_searchtel,
+.searchinfo_searchemail{
+	margin:10px auto;
+}
 #searchinfo_tel,
 #searchinfo_email{
 	display:none;
 }
 .searchId-btn,
+.searchId-cancel,
 .searchPwd-btn{
 	width:50%;
 	height:50px;

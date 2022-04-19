@@ -10,7 +10,16 @@
 .space{
 	padding:20px;
 }
-#shareBrd, #requestBrd{
+
+#addressInfo{
+	font-size:1.3em;
+	font-weight:700;
+	float:right;
+	padding-top:10px;
+	padding-right:20px;
+}
+
+#shareBrd{
 	text-align:center;
 	font-weight:bold;
 	margin-top:20px;
@@ -48,6 +57,12 @@
 	background-color: rgb(72, 97, 86);
 	color:white;
 }
+.page-link{
+	background-color:rgba(72, 97, 86, 20%);
+	color:rgb(72, 97, 86);
+}
+
+/*top 효과*/
 #shareBoard{
 	border-top-left-radius:10px;
 	border-top-right-radius:10px;

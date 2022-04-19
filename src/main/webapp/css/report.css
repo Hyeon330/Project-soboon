@@ -1,0 +1,28 @@
+@charset "UTF-8";
+.ui-dialog{
+	width:300px !important;
+}
+.ui-dialog-buttonset>button{
+	background-color:rgba(72, 97, 86, 70%);
+	color:white;
+	border:none;
+	width:60px;
+	height:30px;
+}
+#reportReason{
+	width:300px;
+}
+#reportSubmit{
+	color:rgb(72, 97, 86);
+	font-weight:800;
+}
+#reportSubmit li:nth-child(2n){
+	padding-bottom:20px;
+}
+#reportTitle{
+	width:300px;
+	padding-bottom:10px;
+}
+#reportContent{
+	width:400px;
+}

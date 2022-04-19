@@ -5,12 +5,15 @@ import java.util.Random;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,6 +39,8 @@ public class MemberController {
 	KakaoAPI kakao;
 	@Inject
 	AddressService serviceAddr;
+	@Autowired
+	JavaMailSender javaMailSender;
 	
 	@GetMapping("signup")
 	public String memberForm() {
@@ -105,7 +110,7 @@ public class MemberController {
 		String access_Token = kakao.getAccessToken(code);
 //		System.out.println("controller access_token:" + access_Token);
 		HashMap<String, Object> userInfo = kakao.getUserInfo(access_Token);
-		System.out.println("login Controller: " + userInfo);
+//		System.out.println("login Controller: " + userInfo);
 		
 //		// 클라이언트의 이메일이 존재할 때 세션에 해당 이메일과 토큰 등록
 //		System.out.println(kakao.getUserInfo("email"));
@@ -118,7 +123,7 @@ public class MemberController {
 		}
 		attr.addFlashAttribute("code",access_Token);
 		
-		System.out.println(session.getAttribute("logStatus"));
+//		System.out.println(session.getAttribute("logStatus"));
 		return "redirect:/?code="+access_Token;
 	}
 	
@@ -136,7 +141,7 @@ public class MemberController {
 	//카카오톡 연동 정보 조회+DB에 회원 정보 넣기
 	@RequestMapping(value="selectMyAccessToken")
 	public String oauthKakao(@RequestParam(value="code",required=false) String code, HttpServletRequest req) throws Exception{
-		System.out.println("카카오 정보 조회 들어옴");
+//		System.out.println("카카오 정보 조회 들어옴");
 		
 		//발급받은 인가코드를 통해 토큰 발급받기
 //		String access_Token =kakao.getAccessToken(code);
@@ -155,13 +160,13 @@ public class MemberController {
 		if(service.emailCheck(kakao_email)<=0) {
 //			System.out.println("유저 회원가입");
 			kakaoVO.setUserid(kakao_email);
-			kakaoVO.setUserpwd("00000000");
+			kakaoVO.setUserpwd("0000");
 			kakaoVO.setUsername(kakao_nickname);
 			kakaoVO.setNickname(kakao_nickname);
 			kakaoVO.setLarge("");
 			kakaoVO.setMedium("");
 			kakaoVO.setSmall("");
-			kakaoVO.setTel("010-1111-1111");
+			kakaoVO.setTel("010-0000-0000");
 			kakaoVO.setEmail(kakao_email);
 			service.memberInsert(kakaoVO);
 		}
@@ -198,22 +203,58 @@ public class MemberController {
 	//아이디찾기(휴대폰번호로)
 	@PostMapping("searchid_tel")
 	@ResponseBody
-	public String searchid_tel(String tel) {
-		String result = service.searchid_tel(tel);
+	public String searchid_tel(String username,String tel) {
+		String result = service.searchid_tel(username, tel);
+		
 		return result;
 	}
 	
 	//아이디찾기(이메일로)
 	@PostMapping("searchid_email")
 	@ResponseBody
-	public String searchid_email(String email) {
-		System.out.println(email);
-		String result = service.searchid_email(email);
+	public String searchid_email(String username, String email) {
+		String result = service.searchid_email(username,email);
 		return result;
 	}
 	
-	//비밀번호찾기(이메일인증)
-	
+	//비밀번호찾기(이메일로 임시 비밀번호 보내기)
+	@PostMapping("sendemail")
+	@ResponseBody
+	public String sendEmail(MemberVO vo, HttpSession session) {
+		MemberVO vo2 = service.readMember(vo.getUserid());
+		
+		if(vo2 == null) {
+			return "fail";
+		}
+		if(vo2.getEmail().equals(vo.getEmail())) {
+			
+			Random random = new Random();
+			String key = ""; // 인증번호
+
+			SimpleMailMessage message = new SimpleMailMessage();
+			message.setTo(vo.getEmail()); // 스크립트에서 보낸 메일을 받을 사용자 이메일 주소
+
+			// 입력키를 위한 코드
+			for (int i = 0; i < 4; i++) {
+				int idx = random.nextInt(25) + 65; // A~Z까지 랜덤 알파벳 생성
+				key += (char) idx; // 4자리 랜덤 정수를 생성
+			}
+			int numIdx = random.nextInt(9999) + 1000; // 4자리 랜덤 정수를 생성
+			key += numIdx;
+
+			message.setSubject("소분소분 임시 비밀번호 보냅니다.");
+			message.setText("임시비밀번호는 " + key + "입니다. 로그인 후 비밀번호 변경을 해주세요.");
+			
+			vo2.setUserpwd(key);
+			service.updatePwd(vo2);
+			
+			javaMailSender.send(message);
+			
+			return "success";
+		}else {
+			return "fail";
+		}
+	}
 	
 	//---------------------------------------------------------------------
 	@PostMapping("memberIdCheck")
