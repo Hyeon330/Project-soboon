@@ -4,7 +4,9 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="com.semiproject.soboon.dao.HomeDAO">
   	<select id="selectList" resultType="BoardVO">
-		select * from board where small=#{small}
+		select no, thumbnailImg, img1, pick, nickname, title, price,
+		views, small, category, date_format(createdate, "%m/%d %H:%i")createdate
+		from board where  small = #{small} 
 		order by no desc limit 8;
 	</select>
   </mapper>

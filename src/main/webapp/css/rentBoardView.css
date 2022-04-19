@@ -166,7 +166,7 @@
 }
 
 /*top효과*/
-#shareBoard{
+#rentBoard{
 	border-top-left-radius:10px;
 	border-top-right-radius:10px;
 	background-color:rgb(213, 218, 212);
@@ -191,4 +191,5 @@
 	border-top-right-radius:20px;
 	height:45px;
 	margin-top:5px;
+	cursor:pointer;
 }
