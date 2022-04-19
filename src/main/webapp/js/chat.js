@@ -1,6 +1,7 @@
 
 $(() => {
 	// 채팅 리스트 나타내고 없어지는 애니메이션
+	var chatPopupMaxHeightMinus = 250;
 	$('#chatBtn').click(function() {
 		$('.chat-icon').remove();
 		if($('#chatPopup').css('height').substring(0,$('#chatPopup').css('height').length-2)>0){
@@ -12,27 +13,27 @@ $(() => {
 		}else {
 			$('#chatBtn').append('<i class="bi bi-x-lg chat-icon"></i>');
 			$('#chatPopup').animate({
-				height: window.innerHeight-120+'px'
+				height: window.innerHeight-chatPopupMaxHeightMinus+'px'
 			}, 150);
 			sessionStorage.setItem('chatListsHeight', 1);
 		}
 	});
 	// 페이지 이동시 chatlist 팝업 상태유지
 	if(sessionStorage.getItem('chatListsHeight')!=null){
-		$('#chatPopup').css('height', window.innerHeight-120+'px');
+		$('#chatPopup').css('height', window.innerHeight-chatPopupMaxHeightMinus+'px');
 	}
 	
 	// 화면크기에 따라 채팅 리스트 일정한 크기 유지
 	const resizeChatLists = () => {
 		var chatHeadHeight = Number($('.chat-head').css('height').substring(0,$('.chat-head').css('height').length-2));
 		var chatSearchHeight = Number($('.chat-search').css('height').substring(0,$('.chat-search').css('height').length-2));
-		$('#chatLists').css('height', (window.innerHeight-120-chatHeadHeight-chatSearchHeight-10)+'px');
+		$('#chatLists').css('height', (window.innerHeight-chatPopupMaxHeightMinus-chatHeadHeight-chatSearchHeight-10)+'px');
 	};
 	resizeChatLists();
 	$(window).resize(() => {
 		var chatPopupHeight = $('#chatPopup').css('height').substring(0,$('#chatPopup').css('height').length-2);
 		if(chatPopupHeight != 0){
-			$('#chatPopup').css('height', window.innerHeight-120+'px');
+			$('#chatPopup').css('height', window.innerHeight-chatPopupMaxHeightMinus+'px');
 			resizeChatLists();
 		}
 	});
@@ -336,17 +337,17 @@ $(() => {
 		$('#msgPopup').css('display', 'block');
 	});
 	
-	// 채팅 한정 개수 100개로 하고 스크롤 최상단으로 올렸을시 리로드
+	// 채팅 한정 개수 100개로 하고 스크롤 최상단으로 올렸을시 리로드 (미완)
 	/*$('.msg-lists').on('mousewheel', function(e) {
 		var wheel = e.originalEvent.wheelDelta;
 		console.log($(this).scrollTop());
 		console.log('휠 : '+wheel);
 	});*/
     
-    /*setInterval(() => {
+    setInterval(() => {
 		if($('#chatSearch').val()==''){
 			chatListsReload();
 			openMsgPopupReload();
 		}
-	}, 2000);*/
+	}, 2000);
 });
