@@ -16,9 +16,14 @@
 	</select>
 	<select id="getAllMessage" resultType="ChatVO">
 		select * from chat
-		where (sender=#{param1} and receiver=#{param2})
-		or (sender=#{param2} and receiver=#{param1})
-		order by chatno
+		where ((sender=#{param1} and receiver=#{param2})
+		or (receiver=#{param1} and sender=#{param2}))
+		and chatno > ifnull((
+			select max(chatno) from chat
+			where (sender=#{param1} and receiver=#{param2})
+			and chat_read='end'
+		), 0)
+		order by chatno;
 	</select>
 	<update id="updateChatRead">
 		update chat set chat_read='y'
