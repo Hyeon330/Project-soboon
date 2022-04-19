@@ -15,4 +15,6 @@ public interface ReportDAO {
 	public List<ReportVO> ReportList(PagingVO pVO);
 
 	public int Reportcnt();
+	
+	public int ReportMultiDelete(ReportVO vo);
 }

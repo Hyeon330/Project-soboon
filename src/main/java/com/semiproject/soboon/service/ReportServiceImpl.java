@@ -24,4 +24,8 @@ public class ReportServiceImpl implements ReportService {
 	public int getReportcnt() {
 		return dao.Reportcnt();
 	}
+	@Override
+	public int ReportMultiDelete(ReportVO vo) {
+		return dao.ReportMultiDelete(vo);
+	}
 }

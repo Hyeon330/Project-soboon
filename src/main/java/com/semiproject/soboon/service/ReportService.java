@@ -10,5 +10,7 @@ public interface ReportService {
 	public List<ReportVO> ReportList(PagingVO pVO);
 
 	public int getReportcnt();
+	
+	public int ReportMultiDelete(ReportVO vo);
 }
 

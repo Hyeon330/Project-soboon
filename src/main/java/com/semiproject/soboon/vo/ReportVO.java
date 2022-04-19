@@ -1,5 +1,7 @@
 package com.semiproject.soboon.vo;
 
+import java.util.List;
+
 public class ReportVO {
 	private int no;
 	private String reporter;
@@ -7,7 +9,14 @@ public class ReportVO {
 	private String report_content;
 	private int board_no;
 	
+	private List<Integer> noList;
 	
+	public List<Integer> getNoList() {
+		return noList;
+	}
+	public void setNoList(List<Integer> noList) {
+		this.noList = noList;
+	}
 	public int getNo() {
 		return no;
 	}
