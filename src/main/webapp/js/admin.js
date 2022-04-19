@@ -107,7 +107,7 @@ $(function() {
 	 /*=================신고관리=================*/ 
 	function showReport(dataArr, tab){ //showReport로 변경했음.
 	/*alert(JSON.stringify(dataArr))*/
-		$("#reportcnt").html("리폿 갯수 :" +dataArr.cnt +"명")
+		$("#reportcnt").html("리폿 갯수 :" +dataArr.cnt +"개")
 		$(function(){
 			$("#multiDel").click(function() {
 				if($("input[name=noList]:checked").length==0) return false;
@@ -126,7 +126,7 @@ $(function() {
 	
 		$.each(dataArr.reportList, function(i, data){
 			//DB에서 가져올 데이터들
-			str +="<li><input type='checkbox' name='noList' value='"+data.board_no+"'></li>"
+			str +="<li><input type='checkbox' name='noList' value='"+data.no+"'></li>"
 			str+="<li>"+data.reporter+"</li>"
 			str+="<li>"+data.suspect+"</li>"
 			str+="<li>"+"<a href='http://localhost:9000/board/shareBoardView?no="+data.board_no+"'>"+data.board_no+"</a>"+ "번 " +data.report_content+"</li>"

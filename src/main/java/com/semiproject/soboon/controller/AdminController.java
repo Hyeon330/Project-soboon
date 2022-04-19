@@ -15,7 +15,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.semiproject.soboon.service.MemberService;
 import com.semiproject.soboon.service.ReportService;
-import com.semiproject.soboon.vo.BoardVO;
 import com.semiproject.soboon.vo.MemberVO;
 import com.semiproject.soboon.vo.PagingVO;
 import com.semiproject.soboon.vo.ReportVO;
@@ -78,9 +77,17 @@ public class AdminController {
 		};
 		/* vo.setReporter((String)session.getAttribute("logId")); */
 		System.out.println(vo.getReporter());
-		ModelAndView mav = new ModelAndView();
-		reportservice.ReportMultiDelete(vo);
+	
 		
+		List<Integer> board_nos=reportservice.getBoardNoList(vo);
+		System.out.println(board_nos);
+		//신고목록 삭제
+		reportservice.ReportMultiDelete(vo);
+		/* service. */
+		
+		reportservice.delreport(board_nos);
+		
+		ModelAndView mav = new ModelAndView();
 		mav.setViewName("redirect:/admin");
 		return mav;
 	}

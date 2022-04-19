@@ -17,4 +17,8 @@ public interface ReportDAO {
 	public int Reportcnt();
 	
 	public int ReportMultiDelete(ReportVO vo);
+
+	public List<Integer> getBoardNoList(ReportVO vo);
+	
+	public void delreport(List<Integer> board_nos);
 }
