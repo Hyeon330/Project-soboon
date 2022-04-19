@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<link rel="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 <link rel="stylesheet" href="/css/signup.css" type="text/css"/>
 <script src="/js/member.js"></script>
 <div class="container">
@@ -13,9 +14,15 @@
 				<input type="hidden" id="idChk" value="N" />
 			</li>
 			<li>비밀번호</li>
-			<li><input type="password" class="signup-pwd" name="userpwd" id="userpwd" placeholder="비밀번호" /></li>
+			<li class="pwd_control">
+				<input type="password" class="signup-pwd" name="userpwd" id="userpwd" placeholder="비밀번호">
+				 <i class="fa fa-eye fa-lg"></i>
+			</li>
 			<li>비밀번호확인</li>
-			<li><input type="password" class="signup-pwd" name="userpwd2" id="userpwd2" placeholder="비밀번호확인" /></li>
+			<li class="pwd_control">
+				<input type="password" class="signup-pwd" name="userpwd2" id="userpwd2" placeholder="비밀번호확인" />
+				<i class="fa fa-eye fa-lg"></i>
+			</li>
 			<li>이름</li>
 			<li><input type="text" class="signup-name" name="username" id="username" placeholder="이름" /></li>
 			<li>닉네임</li>

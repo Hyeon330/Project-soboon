@@ -1,17 +1,11 @@
 package com.semiproject.soboon.service;
 
-import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Random;
 
 import javax.inject.Inject;
-import javax.servlet.http.HttpServletResponse;
 
 import org.json.simple.JSONObject;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 import com.semiproject.soboon.dao.MemberDAO;
@@ -26,8 +20,6 @@ public class MemberServiceImpl implements MemberService{
 
 	@Inject
 	MemberDAO dao;
-	@Autowired
-	JavaMailSender javaMailSender;
 	
 	@Override
 	public int memberInsert(MemberVO vo) {

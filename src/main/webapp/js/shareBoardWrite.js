@@ -13,7 +13,7 @@ $(function(){
 		};
 	});
 	
-	$("#shareorm").submit(function(){
+	$("#shareForm").submit(function(){
 		if($("#shareBoardTitle").val()==''){
 			alert("🚫 제목을 입력해주세요");
 			return false;

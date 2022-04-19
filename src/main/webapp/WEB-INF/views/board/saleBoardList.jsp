@@ -13,9 +13,9 @@
 			<div class="col-sm-4 sab">
 				<div class="card">
 	    			<div class="embed-responsive embed-responsive-4by3">
-     					<a href="/board/shareBoardView?no=${listVo.no}">
+     					<a href="/board/saleBoardView?no=${listVo.no}">
      							<c:if test="${listVo.thumbnailImg==null}">
-     								<img src="/img/share.jpg" class="embed-responsive-item">
+     								<img src="/img/sale.jpg" class="embed-responsive-item">
      							</c:if>
      							<c:if test="${listVo.img1!=null}">
      								<img src="/upload/${listVo.img1}" class="embed-responsive-item">
@@ -28,8 +28,8 @@
 							<li>${listVo.nickname}</li>
 							<li id="saleBoardTitle"><a href="/board/saleBoardView?no=${listVo.no}">${listVo.title}</a></li>
 							<li><i class="fa fa-location-arrow fa-lg"></i><span class="iconValue">${listVo.small}</span></li>
+							<li><span>${listVo.price}원</span></li>
 							<li>${listVo.createdate}<span id="views"><i class="fa fa-eye fa-lg"></i><span class="iconValue">${listVo.views}</span></span></li>
-							<li>${pvo.totalRecord}</li>
 						</ul>
 					</div>
 				</div>
@@ -59,7 +59,7 @@
 					</c:if>
 				</c:forEach>
 				<c:if test="${pvo.currentPage==pvo.totalPage}">
-					<li class="page-item disabled"><a class="page-link" id="nextBtn"><i class="fa-solid fa-angle-right"></i></a></li>
+					<li class="page-item disabled"><a class="page-link" id="nextBtn"><i class="fa fa-angle-right"></i></a></li>
 				</c:if>
 				<c:if test="${pvo.currentPage<pvo.totalPage}">
 					<li class="page-item"><a class="page-link" href="javascript:void(0);" id="nextBtn"

@@ -60,7 +60,7 @@
 	color:rgb(72, 97, 86);
 }
 /*top 효과*/
-#shareBoard{
+#rentBoard{
 	border-top-left-radius:10px;
 	border-top-right-radius:10px;
 	background-color:rgb(213, 218, 212);
@@ -74,10 +74,10 @@
 	border-top-right-radius:20px;
 	margin-top:5px;
 }
-#renttag, #saletag, #requesttag{
+#sharetag, #saletag, #requesttag{
 	height:50px;
 }
-#renttag:hover, #saletag:hover, #requesttag:hover{
+#sharetag:hover, #saletag:hover, #requesttag:hover{
 	background:rgb(142, 158, 139) !important;
 	color:rgb(72, 97, 86);
 	border-top-left-radius:20px;

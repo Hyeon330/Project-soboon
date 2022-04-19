@@ -4,11 +4,11 @@
 <script src="/js/boardaddrDialog.js"></script>
 <div class="container">
 	<br/>
-	<form class="form-group" method="post" action="/board/shareBoardWriteOk?category=share" id="shareForm" enctype="multipart/form-data">
-		<table class="table table-striped" style="text-align:center; border:1px solid #dddddd">
+	<form class="form-group" method="post" action="/board/saleBoardWriteOk?category=sale" id="saleForm" enctype="multipart/form-data">
+		<table class="table table-striped" style="text-align:center">
 			<thead>
 				<tr>
-					<th><h1>나눔 게시판 글 작성하기</h1></th>
+					<th><h1>판매 게시판 글 작성하기</h1></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -23,7 +23,9 @@
 				</tr>
 				<tr>
 					<td id="tbBody">
-						<input type="text" class="form-control" id="shareBoardTitle" placeholder="글 제목을 입력하세요."  name="title" maxlength="16"/>
+						<input type="text" class="form-control" id="saleBoardTitle" placeholder="글 제목을 입력하세요."  name="title" maxlength="16"/>
+						<span class="form-control col-2">금&nbsp;&nbsp;액</span>	
+						<input type="number" class="form-control col-3" name="price" placeholder="금액을 입력하세요."/>
 					</td>
 				</tr>
 				<tr>

@@ -5,10 +5,10 @@
 <div class="container">
 	<br/>
 	<form class="form-group" method="post" action="/board/shareBoardEditOk?no=${bvo.no}" id="shareEditForm" enctype="multipart/form-data">
-		<table class="table table-striped" style="text-align:center; border:1px solid #dddddd">
+		<table class="table table-striped" style="text-align:center">
 			<thead>
 				<tr>
-					<th><h1 style="text-align:center;">나눔 게시판 글 수정 하기</h1></th>
+					<th><h1>나눔 게시판 글 수정 하기</h1></th>
 				</tr>
 			</thead>
 			<tbody>

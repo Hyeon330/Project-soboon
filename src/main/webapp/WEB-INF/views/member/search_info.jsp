@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="/css/search_info.css" type="text/css"/>
 <script src="/js/search_info.js"></script>
 <div class="container searchinfofrm">
-	<h1><b>로고넣어줘요</b></h1>
+	<div id="serarchBox"><a href="/"><img src="/img/로고7.png" id="signupLogo"/></a></div>
 	<div>
 		<div class="row">
 			<hr />

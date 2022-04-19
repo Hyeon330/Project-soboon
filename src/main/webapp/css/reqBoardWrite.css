@@ -1,0 +1,74 @@
+@charset "UTF-8";
+#tbBody{
+	display:flex;	
+}
+.table td, .table th{
+	border:none !important;
+}
+#reqForm h1{
+	text-align:center;
+	font-weight:700;
+	color:rgb(72, 97, 86);
+} 
+
+#reqBoardTitle{
+	margin-right:10px;
+}
+
+#boardlargeAddrSelect, #boardmediumAddrSelect, #boardsmallAddrSelect{
+	width:125px;
+	height:30px;
+	text-align:center;
+	border:none;
+	border-radius:5px;
+}
+#writeBtn, #uploadBtn{
+	background-color:  rgb(72, 97, 86);
+	color:white;
+	padding:10px 30px;
+}
+
+#resetBtn, #backList {
+	background-color: gray;
+	color:white;
+	padding:10px 30px;
+}
+
+#innerFiles{
+	display:flex;
+	flex:left;
+	margin:30px;
+	display:none;
+}
+
+#innerFiles input[type=file]{
+	width:230px;
+	margin:10px;
+}
+
+/*top효과*/
+#requestBoard{
+	border-top-left-radius:10px;
+	border-top-right-radius:10px;
+	background-color:rgb(213, 218, 212);
+	color:rgb(72, 97, 86);
+	margin-top:5px;
+}
+#requesttag{
+	background:rgb(213, 218, 212);
+	color:rgb(72, 97, 86);
+	border-top-left-radius:20px;
+	border-top-right-radius:20px;
+	margin-top:5px;
+}
+#renttag, #saletag, #requesttag{
+	height:50px;
+}
+#renttag:hover, #saletag:hover, #requesttag:hover{
+	background:rgb(142, 158, 139) !important;
+	color:rgb(72, 97, 86);
+	border-top-left-radius:20px;
+	border-top-right-radius:20px;
+	height:45px;
+	margin-top:5px;
+}

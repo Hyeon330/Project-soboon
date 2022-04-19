@@ -108,6 +108,28 @@
 .chat-list > div{
 	overflow: auto;
 }
+
+#chatRightClick{
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	display: none;
+	background: #fff;
+	border: 1px solid black;
+	z-index: 999;
+	width: 60px;
+	text-align: center;
+}
+.chat-remove{
+	padding: inherit;
+	height: 30px;
+	line-height: 30px;
+}
+#chatRightClick:hover{
+	background: #eee;
+	cursor: pointer;
+}
+
 .chat-info {
 	float: left;
 	width: 150px;
