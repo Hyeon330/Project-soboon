@@ -23,6 +23,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.semiproject.soboon.service.EditService;
 import com.semiproject.soboon.vo.BoardVO;
 import com.semiproject.soboon.vo.MemberVO;
+import com.semiproject.soboon.vo.MyPageVO;
+import com.semiproject.soboon.vo.PickVO;
 import com.semiproject.soboon.vo.ReplyVO;
 import com.semiproject.soboon.vo.myPagingVO;
 
@@ -141,9 +143,21 @@ public class mypageController {
 	
 	@PostMapping("multiDel")
 	@ResponseBody
-	public int mypostMultiDelete(BoardVO vo, HttpSession session) {
+	public int mypostMultiDelete(BoardVO vo, HttpSession session, ReplyVO rVO, PickVO kVO, int index) {
+		int result = 0;
+		
 		vo.setUserid((String)session.getAttribute("logId"));
-		int result = service.mypostMultiDelete(vo);
+		rVO.setUserid((String)session.getAttribute("logId"));
+		kVO.setUserid((String)session.getAttribute("logId"));
+		
+		if(index==1) {
+			result = service.mypostMultiDelete(vo);
+		}else if(index==2) {
+			result = service.mycommentMultiDelete(rVO);
+		}else if(index==3) {
+			result = service.mypickMultiDelete(kVO);
+		}
+		System.out.println(result);
 		return  result;
 	}
 	@GetMapping("mycomment")
@@ -155,6 +169,18 @@ public class mypageController {
 		// 댓글 coment, 글 no, replyno, title, createdate 가져오기
 		List<ReplyVO> rlist = service.myReplyList(userid, pVO); 
 		map.put("rlist", rlist);
+		map.put("pVO", pVO);
+		return map;
+	}
+	@GetMapping("mypick")
+	@ResponseBody
+	public Map<String,Object> showMyPick(myPagingVO pVO, HttpSession session) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		String userid = (String)session.getAttribute("logId");
+		pVO.setTotalRecord(service.mypickCount(userid));
+		// pickno, no, title, nickname, b.userid writer, createdate 가져오기
+		List<MyPageVO> klist = service.myPickList(userid, pVO);
+		map.put("klist", klist);
 		map.put("pVO", pVO);
 		return map;
 	}

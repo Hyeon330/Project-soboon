@@ -355,6 +355,15 @@
 #VO_nickname_hidden {
 	display: none;
 }
+/*--------------------tab 출력문 공통--------------------------------------------*/
+.buttonDel {
+	display: flex; 
+	justify-content: flex-end; 
+}
+.pagebox {
+	display: flex; justify-content: center;
+}
+
 /*------------------------tab 내 쓴 글 보기 리스트---------------------------*/
 #printFrm1 ul {
 	display: flex; border-bottom: 1px solid #ddd;
@@ -378,6 +387,19 @@
 	display: flex; align-items: center; text-align: center;
 	justify-content: flex-end; margin-bottom: 8px;
 }
-.bottom-myView {
-	display: flex; justify-content:center;
+/*---------------------------tab 댓글 쓴 글 보기 리스트 / tab 내가 찜한 글 보기 리스트 -------------------------*/
+#printFrm2 ul, #printFrm3 ul {
+	display: flex; border-bottom: 1px solid #ddd;
 }
+#printFrm2 ul:first-child, #printFrm3 ul:first-child {
+	background-color: #ddd;
+}
+#printFrm2 li, #printFrm3 li  {
+	float:left;  
+	width:25%; text-align: center; 
+	height:20px; 
+	overflow: hidden; 
+	text-overflow: ellipsis; 
+	white-space: nowrap;
+}
+

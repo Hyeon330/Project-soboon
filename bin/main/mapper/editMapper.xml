@@ -50,11 +50,37 @@
   			and userid = #{userid}
   		</where>
 	</delete>
+	<delete id="mycommentMultiDelete">
+		delete from reply
+  		<where>
+  			<foreach item="item" collection="replynoList" open="replyno in (" separator="," close=")">
+  				#{item}
+  			</foreach>
+  			and userid = #{userid}
+  		</where>
+	</delete>
+	<delete id="mypickMultiDelete">
+		delete from pick
+  		<where>
+  			<foreach item="item" collection="picknoList" open="pickno in (" separator="," close=")">
+  				#{item}
+  			</foreach>
+  			and userid = #{userid}
+  		</where>
+	</delete>
 	<select id="myReplyList" resultType="ReplyVO">
 		select r.no, r.replyno, r.nickname, r.coment, date_format(r.createdate, '%Y-%m-%d') createdate, (select title from board where no=r.no) title 
 		from reply r 
 		where r.userid = #{param1}
 		order by r.replyno desc
+		limit ${param2.onePageRecord} offset ${param2.offsetIndex}
+	</select>
+	<select id="myPickList" resultType="MyPageVO">
+		select pickno, title, date_format(createdate, '%Y-%m-%d') createdate, b.userid writer, nickname, p.no 
+		from board b join pick p 
+		on b.no = p.no 
+		where p.userid = #{param1} 
+		order by pickno desc
 		limit ${param2.onePageRecord} offset ${param2.offsetIndex}
 	</select>
 </mapper>

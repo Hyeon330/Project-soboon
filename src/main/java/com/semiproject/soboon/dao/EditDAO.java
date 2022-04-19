@@ -8,6 +8,8 @@ import org.springframework.stereotype.Repository;
 
 import com.semiproject.soboon.vo.BoardVO;
 import com.semiproject.soboon.vo.MemberVO;
+import com.semiproject.soboon.vo.MyPageVO;
+import com.semiproject.soboon.vo.PickVO;
 import com.semiproject.soboon.vo.ReplyVO;
 import com.semiproject.soboon.vo.myPagingVO;
 
@@ -25,6 +27,10 @@ public interface EditDAO {
 	public MemberVO myInfo(String userid);
 	public List<BoardVO> mypostList2(String userid);
 	public int mypostMultiDelete(BoardVO vo);
+	public int mycommentMultiDelete(ReplyVO rVO);
+	public int mypickMultiDelete(PickVO kVO);
 	public List<ReplyVO> myReplyList(String userid, myPagingVO pVO);
+	public List<MyPageVO> myPickList(String userid, myPagingVO pVO);
+	
 	
 }
