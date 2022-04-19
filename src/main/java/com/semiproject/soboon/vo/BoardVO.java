@@ -1,5 +1,6 @@
 package com.semiproject.soboon.vo;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class BoardVO {
@@ -22,8 +23,20 @@ public class BoardVO {
 	private String img3;
 	private String img4;
 	private String category;
-	private String price;
+	private int price;
 	private String nickname;
+	
+//	@Override
+//	public String toString() {
+//		return "BoardVO [getNo()=" + getNo() + ", getUserid()=" + getUserid() + ", getTitle()=" + getTitle()
+//				+ ", getContent()=" + getContent() + ", getViews()=" + getViews() + ", getPick()=" + getPick()
+//				+ ", getWarn()=" + getWarn() + ", getCreatedate()=" + getCreatedate() + ", getThumbnailImg()="
+//				+ getThumbnailImg() + ", getImg1()=" + getImg1() + ", getImg2()=" + getImg2() + ", getImg3()="
+//				+ getImg3() + ", getImg4()=" + getImg4() + ", getCategory()=" + getCategory() + ", getPrice()="
+//				+ getPrice() + ", getDeleteFile()=" + Arrays.toString(getDeleteFile()) + ", getNickname()="
+//				+ getNickname() + ", getLarge()=" + getLarge() + ", getMedium()=" + getMedium() + ", getSmall()="
+//				+ getSmall() + ", getNoList()=" + getNoList() + "]";
+//	}
 	
 	// 삭제할 파일을 담을 변수
 	private String deleteFile[];
@@ -116,10 +129,10 @@ public class BoardVO {
 	public void setCategory(String category) {
 		this.category = category;
 	}
-	public String getPrice() {
+	public int getPrice() {
 		return price;
 	}
-	public void setPrice(String price) {
+	public void setPrice(int price) {
 		this.price = price;
 	}
 	public String[] getDeleteFile() {

@@ -1,12 +1,13 @@
 package com.semiproject.soboon.controller;
 
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
-import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.http.HttpHeaders;
@@ -15,8 +16,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.semiproject.soboon.RelateUploadFile;
 import com.semiproject.soboon.service.BoardService;
@@ -35,39 +38,96 @@ public class BoardController {
 	ModelAndView mav = new ModelAndView();
 	ResponseEntity<String> entity = null;
 	
+	// 나눔게시판 리스트
 	@GetMapping("shareBoardList")
-	public ModelAndView shareListForm(PagingVO pvo, BoardVO vo, HttpSession session, String category, String title) {
-		if(category!=null) {
-			vo.setCategory(category);
-		}else {
-			vo.setCategory("share");
-		}
-		vo.setTitle(title);
+	public ModelAndView shareListForm(PagingVO pvo, BoardVO vo, String keyword, HttpSession session) {
+		System.out.println("share 컨트롤러 " + keyword);
+		
+		vo.setCategory("share");
 		vo.setSmall((String)session.getAttribute("addrSmall"));
-		// 게시판 별 총 레코드 수
-		pvo.setTotalRecord(service.selectTotalRecord(pvo, vo));
-		// 게시판 글 DB연결해서 보이기 
-		mav.addObject("list", service.selectList(pvo, vo));
+		
+		// 게시판 글 DB연결해서 보이기
+		pvo.setTotalRecord(service.selectTotalRecord(pvo, vo, keyword));
+		mav.addObject("list", service.selectList(pvo, vo, keyword));
+	
 		mav.addObject("pvo", pvo);
-
 		mav.setViewName("board/shareBoardList");
+		
+		return  mav;
+	}
+	
+	// 대여게시판 리스트
+	@GetMapping("rentBoardList")
+	public ModelAndView rentListForm(PagingVO pvo, BoardVO vo, String keyword, HttpSession session) {
+
+		System.out.println("rent 컨트롤러 " + keyword);
+		
+		vo.setCategory("rent");
+		vo.setSmall((String)session.getAttribute("addrSmall"));
+		
+		// 게시판 글 DB연결해서 보이기
+		pvo.setTotalRecord(service.selectTotalRecord(pvo, vo, keyword));
+		mav.addObject("list", service.selectList(pvo, vo, keyword));
+	
+		mav.addObject("pvo", pvo);
+		mav.setViewName("board/rentBoardList");
+		
 		return  mav;
 	}
 
+	// 판매 게시판 리스트
+	@GetMapping("saleBoardList")
+	public ModelAndView saleListForm(PagingVO pvo, BoardVO vo, String keyword, HttpSession session) {
 
+		System.out.println("sale 컨트롤러 " + keyword);
+		
+		vo.setCategory("sale");
+		vo.setSmall((String)session.getAttribute("addrSmall"));
+		
+		// 게시판 글 DB연결해서 보이기
+		pvo.setTotalRecord(service.selectTotalRecord(pvo, vo, keyword));
+		mav.addObject("list", service.selectList(pvo, vo, keyword));
+	
+		mav.addObject("pvo", pvo);
+		mav.setViewName("board/saleBoardList");
+		
+		return  mav;
+	}
+	
+	// 요청 게시판 리스트
+	@GetMapping("reqBoardList")
+	public ModelAndView reqListForm(PagingVO pvo, BoardVO vo, String keyword, HttpSession session) {
+
+		System.out.println("request 컨트롤러 " + keyword);
+		
+		vo.setCategory("request");
+		vo.setSmall((String)session.getAttribute("addrSmall"));
+		
+		// 게시판 글 DB연결해서 보이기
+		pvo.setTotalRecord(service.selectTotalRecord(pvo, vo, keyword));
+		mav.addObject("list", service.selectList(pvo, vo, keyword));
+	
+		mav.addObject("pvo", pvo);
+		mav.setViewName("board/reqBoardList");
+		
+		return  mav;
+	}
+	
+	// 나눔 글등록 폼
 	@GetMapping("shareBoardWrite")
 	public ModelAndView shareBoardWrite() {
 		mav.setViewName("board/shareBoardWrite");
 		return mav;
 	}
 	
+	// 나눔 글등록 DB연결
 	@PostMapping("shareBoardWriteOk")
 	public ModelAndView shareWriteOk(BoardVO vo, HttpServletRequest request){
 		// 현재 session에 있는 ID와 카테고리
 		vo.setUserid((String)request.getSession().getAttribute("logId")); 
 		vo.setNickname((String)request.getSession().getAttribute("nickName")); 
 		vo.setCategory("share");
-		mav.setViewName("board/BoardWriteSuc");
+		mav.setViewName("board/boardWriteSuc");
 		
 		// 파일을 업로드할 폴더 절대경로
 		String path = request.getSession().getServletContext().getRealPath("/upload");
@@ -89,6 +149,7 @@ public class BoardController {
 		return mav;
 	}
 	
+	// 나눔 뷰(상세페이지)
 	@GetMapping("shareBoardView")
 	public ModelAndView shareView(int no, String userid, HttpSession session) {
 
@@ -122,7 +183,7 @@ public class BoardController {
 		return service.selectAlreadyPick(no, userid);
 	}
 	
-	// 글 수정 폼
+	// 나눔 글 수정 폼
 	@GetMapping("shareBoardEdit")
 	public ModelAndView shareEdit(int no) {
 		BoardVO bvo = service.selectEditView(no);
@@ -149,7 +210,7 @@ public class BoardController {
 		return mav;
 	}
 	
-	// 글 수정 DB연결
+	// 나눔 글 수정 DB연결
 	@PostMapping("shareBoardEditOk")
 	public ModelAndView shareEditOk(BoardVO vo, HttpServletRequest request){
 		vo.setUserid((String)request.getSession().getAttribute("logId"));
@@ -200,7 +261,7 @@ public class BoardController {
 			}
 			mav.addObject("cnt", cnt);
 			mav.addObject("vo", vo);
-			mav.setViewName("board/BoardEditSuc");
+			mav.setViewName("board/boardEditSuc");
 		}catch(Exception e) {
 			e.printStackTrace();
 			// DB수정 실패(새로 올라간 파일 삭제)
@@ -211,7 +272,7 @@ public class BoardController {
 		return mav;
 	}
 	
-	// 글 삭제하기
+	// 나눔 글 삭제하기
 	@GetMapping("shareBoardDel")
 	public ResponseEntity<String> shareBoardDel(int no, HttpSession session) {
 		String userid = (String)session.getAttribute("logId");
@@ -252,39 +313,23 @@ public class BoardController {
 		return entity;
 	}
 
-	// 대여 게시판
-	@GetMapping("rentBoardList")
-	public ModelAndView rentListForm(PagingVO pvo, BoardVO vo, HttpSession session, String category, String title) {
-		if(category!=null) {
-			vo.setCategory(category);
-		}else {
-			vo.setCategory("rent");
-		}
-		vo.setTitle(title);
-		vo.setSmall((String)session.getAttribute("addrSmall"));
-		// 게시판 별 총 레코드 수
-		pvo.setTotalRecord(service.selectTotalRecord(pvo, vo));
-		// 게시판 글 DB연결해서 보이기 
-		mav.addObject("list", service.selectList(pvo, vo));
-		mav.addObject("pvo", pvo);
 
-		mav.setViewName("board/rentBoardList");
-		return  mav;
-	}
 	
+	// 대여 글등록 폼
 	@GetMapping("rentBoardWrite")
 	public ModelAndView rentBoardWrite() {
 		mav.setViewName("board/rentBoardWrite");
 		return mav;
 	}
 	
+	// 대여 글등록 DB연결
 	@PostMapping("rentBoardWriteOk")
 	public ModelAndView rentWriteOk(BoardVO vo, HttpServletRequest request){
 		// 현재 session에 있는 ID와 카테고리
 		vo.setUserid((String)request.getSession().getAttribute("logId")); 
 		vo.setNickname((String)request.getSession().getAttribute("nickName")); 
 		vo.setCategory("rent");
-		mav.setViewName("board/BoardWriteSuc");
+		mav.setViewName("board/boardWriteSuc");
 		// 파일을 업로드할 폴더 절대경로
 		String path = request.getSession().getServletContext().getRealPath("/upload");
 		try { 
@@ -306,7 +351,7 @@ public class BoardController {
 		return mav;
 	}
 	
-	// 상세페이지 뷰 보이기
+	// 대여 상세페이지 뷰
 	@GetMapping("rentBoardView")
 	public ModelAndView rentView(int no, String userid, HttpSession session) {
 		
@@ -321,7 +366,7 @@ public class BoardController {
 		return mav;
 	}
 
-    // 글 수정 폼
+    // 대여 글 수정 폼
 	@GetMapping("rentBoardEdit")
 	public ModelAndView rentEdit(int no) {
 		BoardVO bvo = service.selectEditView(no);
@@ -398,7 +443,7 @@ public class BoardController {
 			}
 			mav.addObject("cnt", cnt);
 			mav.addObject("vo", vo);
-			mav.setViewName("board/BoardEditSuc");
+			mav.setViewName("board/boardEditSuc");
 		}catch(Exception e) {
 			e.printStackTrace();
 			// DB수정 실패(새로 올라간 파일 삭제)
@@ -409,7 +454,7 @@ public class BoardController {
 		return mav;
 	}
 	
-	// 글 삭제하기
+	// 대여 글 삭제하기
 	@GetMapping("rentBoardDel")
 	public ResponseEntity<String> rentBoardDel(int no, HttpSession session) {
 		String userid = (String)session.getAttribute("logId");
@@ -450,39 +495,23 @@ public class BoardController {
 		return entity;
 	}
 	
-	// 판매게시판
-	@GetMapping("saleBoardList")
-	public ModelAndView saleListForm(PagingVO pvo, BoardVO vo, HttpSession session, String category, String title) {
-		if(category!=null) {
-			vo.setCategory(category);
-		}else {
-			vo.setCategory("sale");
-		}
-		vo.setTitle(title);
-		vo.setSmall((String)session.getAttribute("addrSmall"));
-		// 게시판 별 총 레코드 수
-		pvo.setTotalRecord(service.selectTotalRecord(pvo, vo));
-		// 게시판 글 DB연결해서 보이기 
-		mav.addObject("list", service.selectList(pvo, vo));
-		mav.addObject("pvo", pvo);
 
-		mav.setViewName("board/saleBoardList");
-		return  mav;
-	}
 	
+	// 판매 글등록 폼
 	@GetMapping("saleBoardWrite")
 	public ModelAndView saleBoardWrite() {
 		mav.setViewName("board/saleBoardWrite");
 		return mav;
 	}
 	
+	// 판매 글 등록 DB연결
 	@PostMapping("saleBoardWriteOk")
 	public ModelAndView saleWriteOk(BoardVO vo, HttpServletRequest request){
 		// 현재 session에 있는 ID와 카테고리
 		vo.setUserid((String)request.getSession().getAttribute("logId")); 
 		vo.setNickname((String)request.getSession().getAttribute("nickName")); 
 		vo.setCategory("sale");
-		mav.setViewName("board/BoardWriteSuc");
+		mav.setViewName("board/boardWriteSuc");
 		// 파일을 업로드할 폴더 절대경로
 		String path = request.getSession().getServletContext().getRealPath("/upload");
 		try { 
@@ -504,7 +533,7 @@ public class BoardController {
 		return mav;
 	}
 	
-	// 상세페이지 뷰 보이기
+	// 판매 상세페이지 뷰
 	@GetMapping("saleBoardView")
 	public ModelAndView saleView(int no, String userid, HttpSession session) {
 		
@@ -519,7 +548,7 @@ public class BoardController {
 		return mav;
 	}
 
-    // 글 수정 폼
+    // 판매 글 수정 폼
 	@GetMapping("saleBoardEdit")
 	public ModelAndView saleEdit(int no) {
 		BoardVO bvo = service.selectEditView(no);
@@ -546,7 +575,7 @@ public class BoardController {
 		return mav;
 	}
 	
-	// 대여 글 수정 DB연결
+	// 판매 글 수정 DB연결
 	@PostMapping("saleBoardEditOk")
 	public ModelAndView saleEditOk(BoardVO vo, HttpServletRequest request){
 		vo.setUserid((String)request.getSession().getAttribute("logId"));
@@ -596,7 +625,7 @@ public class BoardController {
 			}
 			mav.addObject("cnt", cnt);
 			mav.addObject("vo", vo);
-			mav.setViewName("board/BoardEditSuc");
+			mav.setViewName("board/boardEditSuc");
 		}catch(Exception e) {
 			e.printStackTrace();
 			// DB수정 실패(새로 올라간 파일 삭제)
@@ -607,7 +636,7 @@ public class BoardController {
 		return mav;
 	}
 	
-	// 글 삭제하기
+	// 판매 글 삭제하기
 	@GetMapping("saleBoardDel")
 	public ResponseEntity<String> saleBoardDel(int no, HttpSession session) {
 		String userid = (String)session.getAttribute("logId");
@@ -648,39 +677,23 @@ public class BoardController {
 		return entity;
 	}
 	
-	// 요청 게시판
-	@GetMapping("reqBoardList")
-	public ModelAndView reqListForm(PagingVO pvo, BoardVO vo, HttpSession session, String category, String title) {
-		if(category!=null) {
-			vo.setCategory(category);
-		}else {
-			vo.setCategory("request");
-		}
-		vo.setTitle(title);
-		vo.setSmall((String)session.getAttribute("addrSmall"));
-		// 게시판 별 총 레코드 수
-		pvo.setTotalRecord(service.selectTotalRecord(pvo, vo));
-		// 게시판 글 DB연결해서 보이기 
-		mav.addObject("list", service.selectList(pvo, vo));
-		mav.addObject("pvo", pvo);
 
-		mav.setViewName("board/reqBoardList");
-		return  mav;
-	}
 	
+	// 요청 글 등록 폼
 	@GetMapping("reqBoardWrite")
 	public ModelAndView reqBoardWrite() {
 		mav.setViewName("board/reqBoardWrite");
 		return mav;
 	}
 	
+	// 요청 글 등록 DB연결
 	@PostMapping("reqBoardWriteOk")
 	public ModelAndView reqWriteOk(BoardVO vo, HttpServletRequest request){
 		// 현재 session에 있는 ID와 카테고리
 		vo.setUserid((String)request.getSession().getAttribute("logId")); 
 		vo.setNickname((String)request.getSession().getAttribute("nickName")); 
 		vo.setCategory("request");
-		mav.setViewName("board/BoardWriteSuc");
+		mav.setViewName("board/boardWriteSuc");
 		// 파일을 업로드할 폴더 절대경로
 		String path = request.getSession().getServletContext().getRealPath("/upload");
 		try { 
@@ -702,7 +715,7 @@ public class BoardController {
 		return mav;
 	}
 	
-	// 상세페이지 뷰 보이기
+	// 요청 상세페이지 뷰
 	@GetMapping("reqBoardView")
 	public ModelAndView reqView(int no, String userid, HttpSession session) {
 		
@@ -717,7 +730,7 @@ public class BoardController {
 		return mav;
 	}
 
-    // 글 수정 폼
+    // 요청 글 수정 폼
 	@GetMapping("reqBoardEdit")
 	public ModelAndView reqEdit(int no) {
 		BoardVO bvo = service.selectEditView(no);
@@ -794,7 +807,7 @@ public class BoardController {
 			}
 			mav.addObject("cnt", cnt);
 			mav.addObject("vo", vo);
-			mav.setViewName("board/BoardEditSuc");
+			mav.setViewName("board/boardEditSuc");
 		}catch(Exception e) {
 			e.printStackTrace();
 			// DB수정 실패(새로 올라간 파일 삭제)
@@ -805,7 +818,7 @@ public class BoardController {
 		return mav;
 	}
 	
-	// 글 삭제하기
+	// 요청 글 삭제하기
 	@GetMapping("reqBoardDel")
 	public ResponseEntity<String> reqBoardDel(int no, HttpSession session) {
 		String userid = (String)session.getAttribute("logId");

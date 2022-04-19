@@ -23,13 +23,13 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public List<BoardVO> selectList(PagingVO pvo, BoardVO vo) {
-		return dao.selectList(pvo, vo);
+	public List<BoardVO> selectList(PagingVO pvo, BoardVO vo, String keyword) {
+		return dao.selectList(pvo, vo, keyword);
 	}
-
+	
 	@Override
-	public int selectTotalRecord(PagingVO pvo, BoardVO vo) {
-		return dao.selectTotalRecord(pvo, vo);
+	public int selectTotalRecord(PagingVO pvo, BoardVO vo, String keyword ) {
+		return dao.selectTotalRecord(pvo, vo, keyword);
 	}
 
 	@Override
