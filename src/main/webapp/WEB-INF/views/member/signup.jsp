@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <link rel="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
-<link rel="stylesheet" href="/css/signup.css" type="text/css"/>
-<script src="/js/member.js"></script>
+<link rel="stylesheet" href="/css/member/signup.css" type="text/css"/>
+<script src="/js/member/member.js"></script>
 <div class="container">
 	<div id="signupBox"><a href="/"><img src="/img/로고6.png" id="signupLogo"/></a></div>
 	<form method="post" action="/member/memberOk" id="memberFrm" onsubmit="return memberCheck()">

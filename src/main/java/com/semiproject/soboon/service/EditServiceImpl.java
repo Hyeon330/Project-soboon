@@ -9,6 +9,9 @@ import org.springframework.stereotype.Service;
 import com.semiproject.soboon.dao.EditDAO;
 import com.semiproject.soboon.vo.BoardVO;
 import com.semiproject.soboon.vo.MemberVO;
+import com.semiproject.soboon.vo.MyPageVO;
+import com.semiproject.soboon.vo.PickVO;
+import com.semiproject.soboon.vo.ReplyVO;
 import com.semiproject.soboon.vo.myPagingVO;
 
 @Service
@@ -61,5 +64,34 @@ public class EditServiceImpl implements EditService {
 		return dao.mypostMultiDelete(vo);
 	}
 
+	@Override
+	public int mypickCount(String userid) {
+		return dao.mypickCount(userid);
+	}
+
+	@Override
+	public MemberVO myInfo(String userid) {
+		return dao.myInfo(userid);
+	}
+
+	@Override
+	public List<ReplyVO> myReplyList(String userid, myPagingVO pVO) {
+		return dao.myReplyList(userid, pVO);
+	}
+
+	@Override
+	public int mycommentMultiDelete(ReplyVO rVO) {
+		return dao.mycommentMultiDelete(rVO);
+	}
+
+	@Override
+	public List<MyPageVO> myPickList(String userid, myPagingVO pVO) {
+		return dao.myPickList(userid, pVO);
+	}
+
+	@Override
+	public int mypickMultiDelete(PickVO kVO) {
+		return dao.mypickMultiDelete(kVO);
+	}
 	
 }

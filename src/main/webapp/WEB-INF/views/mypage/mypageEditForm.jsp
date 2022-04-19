@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <link rel="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
-<link rel="stylesheet" href="/css/mypage.css" type="text/css"/>
-<script src="/js/memberEdit.js"></script>
+<link rel="stylesheet" href="/css/mypage/mypage.css" type="text/css"/>
+<script src="/js/mypage/memberEdit.js"></script>
+
 <div id="mypageContainer">
 	<!--   사이드 메뉴 (include) -->
 	<%@ include file="/WEB-INF/views/inc/mypageSideBar.jsp"%>
