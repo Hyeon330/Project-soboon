@@ -23,7 +23,7 @@
 <script src="https://kit.fontawesome.com/76aefe2b67.js" crossorigin="anonymous"></script>
 <!-- Board checkeditors cdn -->
 <script src="//cdn.ckeditor.com/4.17.2/full/ckeditor.js"></script>
-<script src="/js/addrDialog.js"></script>
+<script src="/js/top.js"></script>
 </head>
 <body>
 <nav>
@@ -44,22 +44,6 @@
 						    <button id="iconBtn"><i class="bi bi-search" id="searchIcon"></i></button>
 						</div>
 					</form>
-					<script>
-						$('#searchFrm').submit(function(e) {
-							e.preventDefault();
-							var data = $('#searchFrm').serialize();
-							var category = data.split('&')[0].split('=')[1]
-							if(category == 'share'){
-								location.href="/board/shareBoardList?"+data;
-							}else if(category == 'rent'){
-								location.href="/board/rentBoardList?"+data;
-							}else if(category == 'sale'){
-								location.href="/board/saleBoardList?"+data;
-							}else {
-								location.href="/board/reqBoardList?"+data;
-							}
-						});
-					</script>
 				</div>
 				<div id="gridBtn">
 					<c:if test="${logStatus!='Y'}">
@@ -84,10 +68,11 @@
 	<hr/>
 	<div class="topMenu">
 		<div class="row">
-			<div class="col-lg-3" id="sharetag"><a href="/board/shareBoardList">나눔</a></div>
-			<div class="col-lg-3" id="renttag"><a href="/board/rentBoardList">대여</a></div>
-			<div class="col-lg-3" id="saletag"><a href="/board/saleBoardList">판매</a></div>
-			<div class="col-lg-3" id="requesttag"><a href="/board/reqBoardList">요청</a></div>
+			<div class="col-lg-3 topTagBtn" id="sharetag" title="share">나눔</div>
+			<div class="col-lg-3 topTagBtn" id="renttag" title="rent">대여</div>
+			<div class="col-lg-3 topTagBtn" id="saletag" title="sale">판매</div>
+			<div class="col-lg-3 topTagBtn" id="requesttag" title="req">요청</div>
 		</div>
 	</div>
 </nav>
+

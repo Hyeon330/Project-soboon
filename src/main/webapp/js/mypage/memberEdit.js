@@ -50,7 +50,35 @@ $(() => {
 			}
 		}
 	});
-
+	
+	//이메일 중복검사
+	$("#email").keyup(function() {
+		var email = $("#email").val();
+		if (email != '') {
+			var url = "/member/memberEmailCheck";
+			$.ajax({
+				url: url,
+				data: "email=" + email,
+				type: "post",
+				success: function(res) {
+					if (res > 0) {
+						$("#echk").html("X");
+						$("#emailChk").val('N');
+						$("#echk").css("color", "red");
+					} else {
+						$("#echk").html("O");
+						$("#emailChk").val('Y');
+						$("#echk").css("color", "green");
+					}
+				}
+			});
+		} else {
+			$("#echk").html("X");
+			$("#emailChk").val('N');
+			$("#echk").css("color", "red");
+		}
+	});
+	
 	$('#editFrm').submit(() => {
 		//선언부
 		var reg1 = /^[0-9]{2,3}$/;
@@ -111,5 +139,53 @@ $(() => {
 		}*/
 
 		return true;
+	});
+	//눈 아이콘 눌러서 비밀번호 확인하기
+	$(".pwd_control i").on('click',function(){
+		$("input").toggleClass('active');
+		if($("input").hasClass('active')){
+			$(this).attr('class',"fa fa-eye fa-md").prev('input').attr('type','text');
+		} else{
+			$(this).attr('class',"fa fa-eye-slash fa-md").prev('input').attr('type',"password");
+		}
+	});
+});
+// SMS문자 인증 ---------------------------------------------------
+$(document).on('click','#sms-btn1',function(){ //sms인증 버튼 클릭했을 때
+	let tel = $("#tel1").val() + $("#tel2").val() + $("#tel3").val(); //사용자가 입력한 번호
+	var authCode = $("#authCode");
+
+	//사용자가 입력한 전화번호가 공백이 아니고, 11자리 이상일 경우
+	if(tel != '' && tel.length>10){
+		$.ajax({
+			url:'/member/memberTelCheck',
+			method:'get',
+			data:{'tel':tel},
+			success:function(res){
+				authCode.attr('value', res);
+				$(".sms").css("display","block");
+				$("#smsCode").attr("disabled", false);
+				
+				alert('인증번호가 발송 되었습니다.\n휴대폰에서 인증번호 확인을 해주십시오.');
+				$(".edit-tel").attr("readonly",true);
+				$("#sms-btn1").attr("disabled",true);
+			}, error:function(){
+				alert('인증번호 발송에 실패하였습니다.\n잠시 후 다시 시도해주시기 바랍니다.');
+			}
+		});
+	}else{
+		alert("휴대폰 번호를 입력해 주세요");
+	}
+	
+	// 인증번호 확인
+	$("#sms-btn2").click(function() {
+		if ($("#smsCode").val() == $("#authCode").val()) {
+			$("#smsCode").attr("disabled", true);
+			alert("인증 완료되었습니다.");
+			$("#sms-btn2").attr("disabled",true);
+		} else {
+			alert("인증번호가 일치하지 않습니다. 다시 확인해주시기 바랍니다.");
+			$("#smsCode").attr("autofocus", true);
+		}
 	});
 });

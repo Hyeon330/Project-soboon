@@ -23,6 +23,9 @@ import org.springframework.web.servlet.ModelAndView;
 import com.semiproject.soboon.service.EditService;
 import com.semiproject.soboon.vo.BoardVO;
 import com.semiproject.soboon.vo.MemberVO;
+import com.semiproject.soboon.vo.MyPageVO;
+import com.semiproject.soboon.vo.PickVO;
+import com.semiproject.soboon.vo.ReplyVO;
 import com.semiproject.soboon.vo.myPagingVO;
 
 
@@ -91,11 +94,7 @@ public class mypageController {
 		try {	
 //				BoardVO fileVO = service.getFileName(no);
 				int result = service.delMember(userid);
-				if(result>0) {//회원 삭제 완료
-//					RelateUploadFile.fileDelete(path, fileVO.getThumbnailImg());
-//					RelateUploadFile.fileDelete(path, fileVO.getImg1());
-//					RelateUploadFile.fileDelete(path, fileVO.getImg2());
-//					RelateUploadFile.fileDelete(path, fileVO.getImg3());					
+				if(result>0) {//회원 삭제 완료				
 					session.invalidate();
 					String msg = "<script>alert('회원 삭제를 성공했습니다.\\n홈페이지로 이동합니다.');location.href='/';</script>";
 					entity = new ResponseEntity<String>(msg, headers, HttpStatus.OK);
@@ -115,7 +114,11 @@ public class mypageController {
 		String userid = (String) session.getAttribute("logId");
 		int pCnt = service.mypostCount(userid);
 		int rCnt = service.myreplyCount(userid);
+		int kCnt = service.mypickCount(userid);
+		MemberVO vo = service.myInfo(userid);
 		ModelAndView mav = new ModelAndView();
+		mav.addObject("vo", vo);
+		mav.addObject("mkCnt", kCnt);
 		mav.addObject("mpCnt", pCnt);
 		mav.addObject("mrCnt", rCnt);
 		mav.setViewName("mypage/mypageView");
@@ -124,13 +127,13 @@ public class mypageController {
 	@GetMapping("mypost")
 	@ResponseBody
 	public Map<String, Object> mypost(myPagingVO pVO, HttpSession session) {
+		// 세션에 저장된 로그인 아이디 정보 가져오기
 		String userid = (String) session.getAttribute("logId");
-		System.out.println("pVO.onePageRecord ---->" + pVO.getOnePageRecord());
+		// 맵 생성
 		Map<String, Object> map = new HashMap<String, Object>();
 		// 현재 로그인된 아이디가 쓴 게시글 수 가져오기
 		pVO.setTotalRecord(service.mypostCount(userid));
-		System.out.println("pVO.totalReocrd--->"+pVO.getTotalRecord());
-		
+		System.out.println("pVO.totalReocrd--->"+pVO.getTotalRecord());		
 		// 페이지에 해당하는 로그인된 회원이 쓴 게시글 목록
 		List<BoardVO> list = service.mypostList(userid, pVO);
 		map.put("pVO", pVO);
@@ -140,10 +143,46 @@ public class mypageController {
 	
 	@PostMapping("multiDel")
 	@ResponseBody
-	public int mypostMultiDelete(BoardVO vo, HttpSession session) {
+	public int mypostMultiDelete(BoardVO vo, HttpSession session, ReplyVO rVO, PickVO kVO, int index) {
+		int result = 0;
+		
 		vo.setUserid((String)session.getAttribute("logId"));
-		int result = service.mypostMultiDelete(vo);
+		rVO.setUserid((String)session.getAttribute("logId"));
+		kVO.setUserid((String)session.getAttribute("logId"));
+		
+		if(index==1) {
+			result = service.mypostMultiDelete(vo);
+		}else if(index==2) {
+			result = service.mycommentMultiDelete(rVO);
+		}else if(index==3) {
+			result = service.mypickMultiDelete(kVO);
+		}
+		System.out.println(result);
 		return  result;
+	}
+	@GetMapping("mycomment")
+	@ResponseBody
+	public Map<String,Object> showMyComment(myPagingVO pVO, HttpSession session) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		String userid = (String)session.getAttribute("logId");
+		pVO.setTotalRecord(service.myreplyCount(userid));
+		// 댓글 coment, 글 no, replyno, title, createdate 가져오기
+		List<ReplyVO> rlist = service.myReplyList(userid, pVO); 
+		map.put("rlist", rlist);
+		map.put("pVO", pVO);
+		return map;
+	}
+	@GetMapping("mypick")
+	@ResponseBody
+	public Map<String,Object> showMyPick(myPagingVO pVO, HttpSession session) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		String userid = (String)session.getAttribute("logId");
+		pVO.setTotalRecord(service.mypickCount(userid));
+		// pickno, no, title, nickname, b.userid writer, createdate 가져오기
+		List<MyPageVO> klist = service.myPickList(userid, pVO);
+		map.put("klist", klist);
+		map.put("pVO", pVO);
+		return map;
 	}
 }//controller
 

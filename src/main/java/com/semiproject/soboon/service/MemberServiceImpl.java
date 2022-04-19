@@ -108,5 +108,11 @@ public class MemberServiceImpl implements MemberService{
 	public int updatePwd(MemberVO vo) {
 		return dao.updatePwd(vo);
 	}
+
+	@Override
+	public int memberMultiDelete(MemberVO vo) {
+		return dao.memberMultiDelete(vo);
+		
+	}
 	
 }

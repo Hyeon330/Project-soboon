@@ -2,7 +2,7 @@ package com.semiproject.soboon.service;
 
 import java.util.List;
 
-
+import com.semiproject.soboon.vo.BoardVO;
 import com.semiproject.soboon.vo.MemberVO;
 import com.semiproject.soboon.vo.PagingVO;
 
@@ -23,4 +23,5 @@ public interface MemberService {
 	public String searchid_email(String username,String email);
 	//임시비밀번호
 	public int updatePwd(MemberVO vo); //비밀번호업데이트
+	public int memberMultiDelete(MemberVO vo);
 }

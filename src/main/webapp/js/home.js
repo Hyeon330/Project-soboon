@@ -56,8 +56,6 @@ function selectMyAccessToken(){
 		contentType:"application/json; charset=UTF-8",
 		success:function(){
 			location.href="/mypage/editForm"; //연동 성공시 마이페이지로 이동
-		},error:function(){
-			location.href="/";
 		}
 	})
 }
@@ -68,7 +66,7 @@ $(function(){
 	code = codeURL.searchParams.get('code');
 	if(code != null){
 		selectMyAccessToken();
-		alert("처음 카카오톡 로그인시, 마이페이지에서 회원정보를 수정해주세요!");
+		alert("처음 카카오톡 로그인시, 마이페이지에서 회원정보를 수정해주세요!\n기본 비밀번호는 '0000' 입니다.");
 	}else{
 		//console.log("코드 존재하지 않음");
 	}
