@@ -12,13 +12,12 @@
 	<select id="ReportList" resultType="ReportVO">
 		select reporter, suspect, report_content, board_no from report order by no limit ${recordPerPage} offset ${offsetIndex}
 	</select>
-	<delete id="reportMultiDelete">
-		delete from board
+	<delete id="ReportMultiDelete">
+		delete from report
          <where>
-            <foreach item="item" collection="noList" open="no in (" separator=", " close=")">
+            <foreach item="item" collection="noList" open="board_no in (" separator=", " close=")">
                 #{item}
             </foreach>
-            and userid=#{userid}
          </where>
 	</delete>
  </mapper>

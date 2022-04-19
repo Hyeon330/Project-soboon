@@ -8,7 +8,6 @@ public class ReportVO {
 	private String suspect;
 	private String report_content;
 	private int board_no;
-	
 	private List<Integer> noList;
 	
 	public List<Integer> getNoList() {

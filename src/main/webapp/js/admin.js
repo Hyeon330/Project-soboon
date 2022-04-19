@@ -67,7 +67,7 @@ $(function() {
 			
 		})
 		str+="</ul>";
-		let onePageRecord=1;	//totalrecord/onepagerecord=페이지수계산 ex) 5개일때 출력되는 페이지수계산
+		let onePageRecord=5;	//totalrecord/onepagerecord=페이지수계산 ex) 5개일때 출력되는 페이지수계산
 		let totalCount=Number(dataArr.cnt)	//총 인원수 integer로 가져옴
 		/*let totalCount=Number(dataArr.pVO.get)	//총 인원수 integer로 가져옴*/
 		
@@ -126,15 +126,17 @@ $(function() {
 	
 		$.each(dataArr.reportList, function(i, data){
 			//DB에서 가져올 데이터들
-			str +="<li><input type='checkbox' name='noList'></li>"
+			str +="<li><input type='checkbox' name='noList' value='"+data.board_no+"'></li>"
 			str+="<li>"+data.reporter+"</li>"
 			str+="<li>"+data.suspect+"</li>"
 			str+="<li>"+"<a href='http://localhost:9000/board/shareBoardView?no="+data.board_no+"'>"+data.board_no+"</a>"+ "번 " +data.report_content+"</li>"
-			str+="<li>"+"<div><button type='button' class='btn btn-outline-danger' style=float:center;>허위신고</button></div>"+"</li>"
+			str+="<li>"+""+"</li>"
 			
 			
 		})
 		str+="</ul>";
+		
+		
 		let onePageRecord=10;	//한 페이지당 10명 기준 ex)14개기준으로 5를하면 3페이지가나옴
 		let totalCount=Number(dataArr.cnt)	//총 인원수 integer로 가져옴
 		/*let totalCount=Number(dataArr.pVO.get)	//총 인원수 integer로 가져옴*/

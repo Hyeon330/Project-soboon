@@ -39,7 +39,7 @@ public class AdminController {
 	
 	@GetMapping("admin/memberMgr")
 	public Map<String, Object> adminMgr(PagingVO pVO) {
-		pVO.setRecordPerPage(1); // 출력수 jsp랑 동일하게 설정 리스트출력담당
+		pVO.setRecordPerPage(5); // 출력수 jsp랑 동일하게 설정 리스트출력담당
 		pVO.calc(); //페이지 연산 처리
 		Map<String, Object> map=new HashMap<>();
 		//전체 회원수 가져오기
@@ -71,14 +71,17 @@ public class AdminController {
 		return map;
 	}
 	
-	@PostMapping("multiDel")
-	public ModelAndView multiDelete(MemberVO vo, HttpSession session) {
-		vo.setUserid((String)session.getAttribute("logId"));
-		
+	@PostMapping("admin/multiDel")
+	public ModelAndView ReportMultiDelete(ReportVO vo, HttpSession session) {
+		for(Integer i:vo.getNoList()) {
+			System.out.println(i);
+		};
+		/* vo.setReporter((String)session.getAttribute("logId")); */
+		System.out.println(vo.getReporter());
 		ModelAndView mav = new ModelAndView();
-		service.memberMultiDelete(vo);
+		reportservice.ReportMultiDelete(vo);
 		
-		mav.setViewName("redirect:admin");
+		mav.setViewName("redirect:/admin");
 		return mav;
 	}
 }
