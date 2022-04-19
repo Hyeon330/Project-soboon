@@ -15,12 +15,12 @@
 /*---------------------------------사이드메뉴--------------------------*/
 /*----------------------------------------------------------------------------*/
 /*사이드메뉴*/
-
 #emptySpace{
 	width:3%;
 	height:100%;
 }
-#sideMenuFrm {
+
+#sideMenuFrm{
 	background-color:rgba(255, 255, 255, 80%);
 	border-radius:20px;
 	width:22%;
@@ -56,7 +56,6 @@
 }
 /*---------------------------내가 쓴 글 보기-----------------------------------*/
 /*----------------------------------------------------------------------------*/
-
 #mypageContainer {
 	height: 500px;
 	margin-top: 50px;
@@ -66,10 +65,6 @@
 	float: left;
 }
 
-#button_overlapCheck, .btn-last {
-	background: rgb(239, 136, 105) !important;
-	border-style: none !important;
-}
 .viewPage-mypage{
 	height:90% !important;
 	background-color:rgba(255, 255, 255, 80%);
@@ -148,19 +143,15 @@
 #image-mypage {
 	margin-top: -4px;
 }
-
 #info-topMenu {
 	margin-top: -5px;
 }
-
 .resultFrm>li {
 	float: left;
 }
-
 .resultFrm li {
 	float: left;
 }
-
 .resultFrm ul:first-of-type {
 	border-top: 2px solid #ddd;
 	height: 50px;
@@ -168,27 +159,19 @@
 	margin-top: 10px;
 	border-bottom: 1px solid #ddd;
 }
-
 .resultFrm ul {
 	border-bottom: 1px solid #ddd;
 	height: 30px;
 }
-
 #info-topMenu>div>div {
 	margin-bottom: 7px;
 }
-
 .resultFrm>ul>li {
 	width: 20%;
 	text-align: center;
 }
-
 .tabs>li {
 	cursor: pointer;
-}
-
-.active {
-	/*tab클릭시 해당 메뉴 하이라이트 css*/	
 }
 .tab-content{
 	padding-left:30px;
@@ -199,11 +182,17 @@
 /*개인정보수정*/
 
 #editView{
+	float:center;
 	height:90% !important;
 	background-color:rgba(255, 255, 255, 80%);
 	border-radius:3%;
 	padding:15px;
 	filter : drop-shadow(0px 0px 10px rgb(144, 163, 140));
+}
+#editArea{
+	width:90%; 
+	height:80%;
+	display:block;
 }
 #editView>h3{
 	font-weight:700;
@@ -215,52 +204,62 @@
 	background: #ddd;
 	border-style: none;
 }
-
-#editView>form>div>ul>li>div {
-	margin-bottom: 13px;
-}
-
-#editView input {
+#editFrm input {
+	width:120px;
+	text-align:center;
 	border-style: none;
 	background-color: transparent;
 	border-bottom: 2px solid #ddd;
 }
+.edit-tel{
+	width:50px !important;
+}
 #editFrm{
-	padding-left:30px;
-	font-size:1.1em;
+	width:800px;
+	margin-left:50px;
+	margin-top:30px;
+}
+#editFrm li{
+	height:55px;
+	padding-bottom:17px;
+}
+#editFrm li:nth-child(2n+1){
+	font-size:1.2em;
 	font-weight:700;
-	display:flex; 
-	align-items:flex-start;
-	flex-direction:column;
-	flex-wrap:nowrap; 
-	float: none;
+	float:left;
+	width:20%;
 }
-
-
-#editView>form>div:last-of-type {
-	display: flex;
-	justify-content: center;
-	align-items: center;
+#editFrm li:nth-child(2n){
+	float:left;
+	width:80%;
 }
-
-#button_editSubmit {
-	margin-bottom: 13px;
+#smsCode{
+	width:200px !important;
 }
-
-#button_overlapCheck {
-	font-size: small !important;
+#mypageEmail{
+	width:300px !important;
 }
-
-#VO_nickname_hidden {
-	display: none;
-}
-
-/*myDelMember.jsp ---> 회원 탈퇴 */
-#button_overlapCheck, #button_editSubmit {
-	background: rgba(72, 97, 86, 80%) !important;
+/*edit의 버튼들*/
+#editFrm .btn{
+	width:90px;
+	height:35px;
+	background: rgba(72, 97, 86, 50%);
 	color:white;
-	border-style: none !important;
+	margin-left:15px;
 }
+#mypageeditSubmit{
+	width:800px;
+	
+}
+#editSubmit{
+	margin-left:0 !important;
+	margin-top:15px;
+	background: rgb(72, 97, 86) !important;
+}
+/*---------------------------------회원탈퇴--------------------------*/
+/*----------------------------------------------------------------------------*/
+/*회원탈퇴*/
+/*myDelMember.jsp ---> 회원 탈퇴 */
 
 .viewPage-mypage>hr {
 	height: 5px;
@@ -279,9 +278,6 @@
 }
 #passwordCSS,#passowrdCheckCSS {
 	 width:100%;
-}
-#passwordCSS>div, #passowrdCheckCSS>div {
-	/*비빌번호 비밀번호 체크 div*/
 }
 #passwordCSS>div:first-child, #passowrdCheckCSS>div:first-child {
 	margin-right: 5%;
@@ -381,7 +377,6 @@
 }
 .innerTab {
 	margin-top:10px;
-	
 }
 .tabTopMenu {
 	display: flex; align-items: center; text-align: center;

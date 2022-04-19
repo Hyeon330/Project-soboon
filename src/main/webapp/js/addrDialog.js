@@ -82,6 +82,7 @@ $(function() {
 				$('#mediumAddrSelect').attr('default', $('#mediumAddrSelect').val());
 				$('#smallAddrSelect').attr('default', $('#smallAddrSelect').val());
 				myAddrReset();
+				location.reload();
 			},
 			초기화 : function(){
 				  myAddrReset();

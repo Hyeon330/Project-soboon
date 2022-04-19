@@ -2,6 +2,14 @@
 #loginContainer{
 	min-height:800px;
 }
+#logoBox{
+	padding:30px;
+	padding-top:80px;
+	text-align:center;
+}
+#loginLogo{
+	width:30%;
+}
 #login {
 	width: 500px;
 	margin: 0 auto;
@@ -17,9 +25,19 @@
 #userpwd{
 	margin-bottom:10px;
 }
-.login-id,
-.login-pwd{
+.login-id{
 	width:70%;
+	border:none;
+	border-bottom:2px solid #adadad;
+	outline:none;
+	color:#636e72;
+	font-size:16px;
+	height:25px;
+	background:none;
+	margin-top:40px;
+}
+.login-pwd{
+	width:65%;
 	border:none;
 	border-bottom:2px solid #adadad;
 	outline:none;

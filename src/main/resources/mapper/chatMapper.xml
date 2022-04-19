@@ -9,25 +9,24 @@
 		where sender=#{param1} or receiver=#{param1}
 		group by sender, receiver) b
 		on a.chatno=b.chatno
-		order by chatno desc;
+		<if test="param2 != null">
+			where a.sender like '%${param2}%' or receiver like '%${param2}%'
+		</if>
+		order by chatno desc
 	</select>
 	<select id="getAllMessage" resultType="ChatVO">
 		select * from chat
-		where (sender=#{param1} and receiver=#{param2})
-		or (sender=#{param2} and receiver=#{param1})
+		where ((sender=#{param1} and receiver=#{param2})
+		or (receiver=#{param1} and sender=#{param2}))
+		and chatno > ifnull((
+			select max(chatno) from chat
+			where (sender=#{param1} and receiver=#{param2})
+			and chat_read='end'
+		), 0)
 		order by chatno;
 	</select>
 	<update id="updateChatRead">
 		update chat set chat_read='y'
 		where receiver=#{param1} and chat_read='n'
 	</update>
-	<select id="searchNickname" resultType="ChatVO">
-		select a.* from chat a join
-		(select max(chatno) chatno from chat
-		where sender=#{param1} or receiver=#{param1}
-		group by sender, receiver) b
-		on a.chatno=b.chatno
-		where a.sender like '%${param2}%' or receiver like '%${param2}%'
-		order by chatno desc;
-	</select>
 </mapper>

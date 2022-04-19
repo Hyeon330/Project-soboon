@@ -4,20 +4,23 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.semiproject.soboon.dao.BoardDAO">
 	<insert id="boardInsert">
-		insert into board(userid, nickname, title, content, thumbnailImg, img1, img2, img3, img4, category, large, medium, small)
-		value(#{userid}, #{nickname},#{title},#{content}, #{thumbnailImg}, #{img1}, #{img2}, #{img3}, #{img4}, #{category}, #{large}, #{medium}, #{small})
+		insert into board(userid, nickname, title, content, price,
+		img1, img2, img3, img4, category, large, medium, small)
+		value(#{userid}, #{nickname},#{title},#{content},#{price}, 
+		#{img1}, #{img2}, #{img3}, #{img4}, #{category}, #{large}, #{medium}, #{small})
 	</insert>
 	<select id="selectList" resultType="BoardVO">
-		select no, thumbnailImg, img1, pick, nickname, title,
+		select no, thumbnailImg, img1, pick, nickname, title, price,
 		views, small, category, date_format(createdate, "%m/%d %H:%i")createdate
 		from board where category = #{param2.category} and small = #{param2.small} 
 		order by no desc limit ${param1.recordPerPage} offset ${param1.offsetIndex}
 	</select>
 	<select id="selectTotalRecord" resultType="int">
-		select count(no) count from board
+		select count(no) count from board where category = #{param2.category} and small = #{param2.small} 
 	</select>
 	<select id="selectView" resultType="BoardVO">
-		select b.no, m.nickname, m.userid, b.category, b.title, b.views, date_format(b.createdate, "%m/%d %H:%i")createdate,
+		select b.no, m.nickname, m.userid, b.category, b.title, b.views, 
+		date_format(b.createdate, "%m/%d %H:%i")createdate, b.small,
 		b.thumbnailImg, b.img1, b.img2, b.img3, b.img4, b.price, b.content 
 		from board b join member m on b.userid=m.userid
 		where no=${no} order by b.no desc;
@@ -26,11 +29,11 @@
 		update board set views=views+1 where no=#{param1}
 	</update>
 	<select id="selectEditView" resultType="BoardVO">
-		select no, category, title, content, thumbnailImg, img1, img2, img3 
+		select no, category, title, content, price, img1, img2, img3, img4 
 		from board where no=#{param1} 
 	</select>
 	<update id="updateEditView">
-		update board set title=#{title}, content=#{content}, 
+		update board set title=#{title}, content=#{content}, price=#{price},
 		img1=#{img1}, img2=#{img2}, img3=#{img3}, img4=#{img4}
 		where no=${no} and userid=#{userid}
 	</update>

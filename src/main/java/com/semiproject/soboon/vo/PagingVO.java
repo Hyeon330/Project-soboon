@@ -3,6 +3,7 @@ package com.semiproject.soboon.vo;
 public class PagingVO {
 	private int currentPage = 1;    // 현재페이지
 	private int startPage = 1;      // 시작페이지
+	private int endPage;			// 마지막페이지
 	private int recordPerPage = 12; // 한 페이지당 표시할 DB 레코드 수(글 개수)
 	private int memberPerPage = 10; // 한 페이지에 10명 레코드sj
 	private int onePageCount = 5;   // 하단에 한 번에 표시할 페이지 수
@@ -86,6 +87,15 @@ public class PagingVO {
 	}
 	public void setOffsetIndex(int offsetIndex) {
 		this.offsetIndex = offsetIndex;
-	}    
+	}
+
+	public int getEndPage() {
+		return endPage;
+	}
+
+	public void setEndPage(int endPage) {
+		this.endPage = (int)Math.ceil(this.currentPage*0.1)*10;
+	} 
+	
 	
 }

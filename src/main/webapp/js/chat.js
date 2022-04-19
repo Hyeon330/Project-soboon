@@ -158,42 +158,46 @@ $(() => {
 	var prevPosition = '';
 	var prevDate = '';
 	const setMessage = (data) => {
-		if((myNickname == data.sender && $('#oppNickName').text() == data.receiver)||
-			(myNickname == data.receiver && $('#oppNickName').text() == data.sender)){
-			var msgDateArr = data.chat_datetime.split(' ')[0].split('-');
-			var msgDate = msgDateArr[0]+'년 '+msgDateArr[1]+'월 '+msgDateArr[2]+'일';
-			if(prevDate != msgDate){
-				$('.msg-lists').append('<li><div class="msg-date-line">'+msgDate+'</div></li>');
-				prevDate = msgDate;
-			}
-			var msg = '<li class="msg-list">';
-			
-			var position = '';
-			if(data.sender == myNickname){
-				position = 'right';
-			} else {
-				position = 'left';
-			}
-			
-			msg += '<div class="msg-box '+position+'">';
-			var msgDateTimeArr = data.chat_datetime.split(' ')[1].split(':');
-			var nowTime = Number(msgDateTimeArr[0])+':'+Number(msgDateTimeArr[1]);
-			if(prevTime != nowTime || prevPosition != position){
-				msg += '<div class="msg-info">';
-				if(position=='right'){
-					msg += '<span class="msg-time">'+nowTime+'</span>';
-					msg += '·<span class="msg-nickname">'+data.sender+'</span>';
-				}else {
-					msg += '<span class="msg-nickname">'+data.sender+'</span>';
-					msg += '·<span class="msg-time">'+nowTime+'</span>';
+		if(data.receiver==myNickname && data.chat_read=='end'){
+			$('.msg-lists').append('<li><div class="msg-date-line">'+data.msg+'</div></li>');
+		}else {
+			if((myNickname == data.sender && $('#oppNickName').text() == data.receiver)||
+				(myNickname == data.receiver && $('#oppNickName').text() == data.sender)){
+				var msgDateArr = data.chat_datetime.split(' ')[0].split('-');
+				var msgDate = msgDateArr[0]+'년 '+msgDateArr[1]+'월 '+msgDateArr[2]+'일';
+				if(prevDate != msgDate){
+					$('.msg-lists').append('<li><div class="msg-date-line">'+msgDate+'</div></li>');
+					prevDate = msgDate;
 				}
-				msg += '</div>';
-				prevTime = nowTime;
-				prevPosition = position;
+				var msg = '<li class="msg-list">';
+				
+				var position = '';
+				if(data.sender == myNickname){
+					position = 'right';
+				} else {
+					position = 'left';
+				}
+				
+				msg += '<div class="msg-box '+position+'">';
+				var msgDateTimeArr = data.chat_datetime.split(' ')[1].split(':');
+				var nowTime = Number(msgDateTimeArr[0])+':'+Number(msgDateTimeArr[1]);
+				if(prevTime != nowTime || prevPosition != position){
+					msg += '<div class="msg-info">';
+					if(position=='right'){
+						msg += '<span class="msg-time">'+nowTime+'</span>';
+						msg += '·<span class="msg-nickname">'+data.sender+'</span>';
+					}else {
+						msg += '<span class="msg-nickname">'+data.sender+'</span>';
+						msg += '·<span class="msg-time">'+nowTime+'</span>';
+					}
+					msg += '</div>';
+					prevTime = nowTime;
+					prevPosition = position;
+				}
+				msg += '<div class="msg-text '+position+'"><span>'+data.msg+'</span></div></div></li>';
+				
+				$('.msg-lists').append(msg);
 			}
-			msg += '<div class="msg-text '+position+'"><span>'+data.msg+'</span></div></div></li>';
-			
-			$('.msg-lists').append(msg);
 			$('.msg-lists').scrollTop($('.msg-lists')[0].scrollHeight);
 		}
 	}
@@ -227,7 +231,7 @@ $(() => {
 		sessionStorage.removeItem('msgPopup');
 	});
 	const openMsgPopupReload = () => {
-		$('.chat-list').on('click', function(){
+		$('.chat-list').on('click', function(e){
 			let oppNickname = $(this).find('.chat-name').text();
 			if(oppNickname!=$('#oppNickName').text()){
 				$('.msg-textarea').val('');
@@ -237,31 +241,56 @@ $(() => {
 			openMsgPopupReload();
 			sessionStorage.setItem('msgPopup', 1);
 			sessionStorage.setItem('oppNickname', oppNickname);
+			
+		});
+		// 메시지 리스트 오른쪽 클릭 삭제 이벤트
+		$('.chat-list').on('contextmenu', function(e) {
+			var x = e.clientX;
+			var y = e.clientY;
+			chatRightClickOppNickname= $(this).find('.chat-name').text();
+			$('#chatRightClick').css('top', (y+2)+'px').css('left', (x+2)+'px').css('display', 'block');
+			return false;
 		});
 	}
 	openMsgPopupReload();
+	
+	// 리스트 삭제
+	var chatRightClickOppNickname = '';
+	$('.chat-remove').click(function() {
+		var data = {
+			sender: myNickname,
+			receiver: chatRightClickOppNickname,
+			msg: '상대방이 채팅을 종료하였습니다',
+			chat_read: 'end'
+		};
+		socket.emit('send-msg', data);
+		$('#msgPopup').css('display', 'none');
+		sessionStorage.removeItem('msgPopup');
+		sessionStorage.removeItem('oppNickname');
+		chatListsReload();
+		openMsgPopupReload();
+	});
+	$(document).click(function() {
+		$('#chatRightClick').css('display', 'none');
+	});
+	
 	// 페이지 이동시 msg팝업 상태유지
 	if(sessionStorage.getItem('msgPopup')!=null){
 		$('#msgPopup').css('display', 'block');
 		msgLoad(sessionStorage.getItem('oppNickname'));
 	}
 	
-	// 메시지 데이터 소켓 서버로 보내기
-	const sendMessage = (msg) => {
-		var data = {
-			sender: myNickname,
-			receiver: $('#oppNickName').text(),
-			msg: msg
-		};
-		socket.emit('send-msg', data);
-	}
-	
-	var message = '';
 	// 보내기 버튼 클릭시 sendMessage함수 실행
 	$('.msg-send-btn').click(() => {
-		message = $('.msg-textarea').val().replace(/\n/g, '<br>');
+		var message = $('.msg-textarea').val().replace(/\n/g, '<br>');
 		if(!message.startsWith('<br>') && message!=''){
-			sendMessage(message);
+			var data = {
+				sender: myNickname,
+				receiver: $('#oppNickName').text(),
+				msg: message
+			};
+			// 메시지 데이터 소켓 서버로 보내기
+			socket.emit('send-msg', data);
 		}
 		$('.msg-textarea').val('');
 	});
@@ -286,7 +315,7 @@ $(() => {
 				type: 'post',
 				async: false
 			});
-		}else if($('#msgPopup').css('display')=='none' && data.receiver==myNickname && localStorage.getItem('notice-off')==null) {
+		}else if($('#msgPopup').css('display')=='none' && data.receiver==myNickname && localStorage.getItem('notice-off')==null && data.chat_read!='end') {
 			audio.pause();
 			audio.currentTime = 0.5;
 			audio.play();
@@ -314,10 +343,10 @@ $(() => {
 		console.log('휠 : '+wheel);
 	});*/
     
-    setInterval(() => {
+    /*setInterval(() => {
 		if($('#chatSearch').val()==''){
 			chatListsReload();
 			openMsgPopupReload();
 		}
-	}, 2000);
+	}, 2000);*/
 });

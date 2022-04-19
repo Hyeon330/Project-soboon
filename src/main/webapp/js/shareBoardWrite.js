@@ -13,8 +13,8 @@ $(function(){
 		};
 	});
 	
-	$("#shareReqForm").submit(function(){
-		if($("#shareAndReqTitle").val()==''){
+	$("#shareForm").submit(function(){
+		if($("#shareBoardTitle").val()==''){
 			alert("🚫 제목을 입력해주세요");
 			return false;
 		}
@@ -23,4 +23,12 @@ $(function(){
 			return false;
 		}
 	});
+	
+	$("#resetBtn").on('click', function(){
+		CKEDITOR.instances.writeContent.setData("");
+	});
+	
+	$("#backList").click(function(){
+		location.href="/board/shareBoardList";
+	})
 });

@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <link rel="stylesheet" href="/css/shareBoardView.css" type="text/css"/>
-<script src="/js/shareBoardViewReply.js"></script>
-<script src="/js/shareBoardView.js"></script>
+<script src="/js/boardViewReply.js"></script>
+<script src="/js/rentBoardView.js"></script>
 <script>
 	let nickname = "${nickName}";
 
@@ -169,7 +169,7 @@
 				<div><i class="fa fa-user fa-5x"></i></div>
 				<div id="userinfoInner">
 					<div id="viewNickname">${viewVo.nickname}</div>
-					<div>address</div>
+					<div>${viewVo.small}</div>
 				</div>
 			</div>
 			<hr/>
