@@ -17,9 +17,6 @@ spring:
   devtools: # 코드 수정시 서버 자동 재시작
     livereload:
       enabled: true
-      
-  session:
-    store-type: redis  #session을 redis로 설정
     
   mail:
      host: smtp.gmail.com
