@@ -3,8 +3,8 @@
 <script src="/js/addrDialog.js"></script>
 <div id="addrSelectDialog">
 	<form id="addrSelectBox">
-		<select id="largeAddrSelect" name="large" default="${addrLarge}"></select>
-		<select id="mediumAddrSelect" name="medium" default="${addrMedium}"></select>
+		<select id="largeAddrSelect" name="large" default="${addrLarge}"></select><br />
+		<select id="mediumAddrSelect" name="medium" default="${addrMedium}"></select><br />
 		<select id="smallAddrSelect" name="small" default="${addrSmall}"></select>
 	</form>
 </div>

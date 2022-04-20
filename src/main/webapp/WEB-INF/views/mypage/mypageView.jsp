@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <link rel="stylesheet" href="/css/mypage/mypage.css" type="text/css" />
 <script src="/js/mypage/mypageView.js"></script>
 
@@ -50,12 +49,15 @@
 		<!-- ------------------------------------------------------------------------------------------------------------------------------------------ -->
 		<!-- 탭메뉴 영역 -->
 		<ul class="tabs nav nav-tabs">
-			<li id="t1" class="nav-item"><a class="nav-link active"
-				data-toggle="tab" href="#tab1">작성글</a></li>
-			<li id="t2" class="nav-item"><a class="nav-link"
-				data-toggle="tab" href="#tab2">댓글</a></li>
-			<li id="t3" class="nav-item"><a class="nav-link"
-				data-toggle="tab" href="#tab3">찜한 글</a></li>
+			<li id="t1" class="nav-item">
+				<a class="nav-link active" data-toggle="tab" href="#tab1">작성글</a>
+			</li>
+			<li id="t2" class="nav-item">
+				<a class="nav-link" data-toggle="tab" href="#tab2">댓글</a>
+			</li>
+			<li id="t3" class="nav-item">
+				<a class="nav-link" data-toggle="tab" href="#tab3">찜한 글</a>
+			</li>
 		</ul>
 		<!-- ------------------------------------------------------------------------------------------------------------------------------------------ -->
 		<div class="tab-content">
@@ -122,11 +124,11 @@
 				</div>
 				<!-- innerTab -->
 			</div>
-		<!-- tab2 -->
-		<!-- --------------------------------------------------------------------------------------- -->
-		<!-- -----------------------------tab3-------------------------------------------------- -->
-		<!-- tab3 -->
-		<div id="tab3" class="tab-pane fade">
+			<!-- tab2 -->
+			<!-- --------------------------------------------------------------------------------------- -->
+			<!-- -----------------------------tab3-------------------------------------------------- -->
+			<!-- tab3 -->
+			<div id="tab3" class="tab-pane fade">
 				<div class="innerTab">
 					<!-- -------------------------- 메뉴 ---------------------------------------------- -->
 					<div class="tabTopMenu">
@@ -153,10 +155,12 @@
 					</div>
 				</div>
 				<!-- innerTab -->
-			</div><!-- tab3 -->		
-	</div><!-- tab content -->
-	<!-- resultView-mypageView" -->
-</div>
-<!-- viewpage-mypage  -->
+			</div>
+			<!-- tab3 -->
+		</div>
+		<!-- tab content -->
+		<!-- resultView-mypageView" -->
+	</div>
+	<!-- viewpage-mypage  -->
 </div>
 <!-- container -->
