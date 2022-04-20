@@ -2,9 +2,9 @@
 
 /*공통부분*/
 #mypageContainer {
-	width: 1200px;
-	min-height: 717px;
-	margin: 0px auto;
+	width:1200px;
+	min-height:717px;
+	margin:0px auto;
 	height: 500px;
 	margin-top: 50px;
 }
@@ -15,66 +15,59 @@
 /*---------------------------------사이드메뉴--------------------------*/
 /*----------------------------------------------------------------------------*/
 /*사이드메뉴*/
-#emptySpace {
-	width: 3%;
-	height: 100%;
+#emptySpace{
+	width:3%;
+	height:100%;
 }
 
-#sideMenuFrm {
-	background-color: rgba(255, 255, 255, 80%);
-	border-radius: 20px;
-	width: 22%;
-	height: 90%;
-	filter: drop-shadow(0px 0px 10px rgb(144, 163, 140));
-	position: relative;
+#sideMenuFrm{
+	background-color:rgba(255, 255, 255, 80%);
+	border-radius:20px;
+	width:22%;
+	height:90%;
+	filter : drop-shadow(0px 0px 10px rgb(144, 163, 140));
+	position:relative;	
 }
 
-#sideMenuFrm>hr {
+#sideMenuFrm>hr{
 	height: 5px;
 	background: #ddd;
 	border-style: none;
-	margin: 5px;
+	margin:5px;
 }
 
-#sideMenuFrm>h3 {
-	font-weight: 700;
-	padding-top: 20px;
-	padding-left: 15px;
-	padding-bottom: 8px;
+#sideMenuFrm>h3{
+	font-weight:700;
+	padding-top:20px;
+	padding-left:15px;
+	padding-bottom:8px;
 }
 
-#sideMenu>li {
-	background-color: transparent;
-	color: white !important;
+#sideMenu>li{
+	background-color:transparent;
+	color:white !important;
 }
 
 .active_sub {
 	font-size: 1.5em;
 	background-color: rgba(72, 97, 86, 80%) !important;
 	border-style: none !important;
+	
 }
 /*---------------------------내가 쓴 글 보기-----------------------------------*/
 /*----------------------------------------------------------------------------*/
-.viewPage-mypage {
-	height: 90% !important;
-	background-color: rgba(255, 255, 255, 80%);
-	border-radius: 3%;
-	padding: 15px;
-	filter: drop-shadow(0px 0px 10px rgb(144, 163, 140));
+.viewPage-mypage{
+	height:90% !important;
+	background-color:rgba(255, 255, 255, 80%);
+	border-radius:3%;
+	padding:15px;
+	filter : drop-shadow(0px 0px 10px rgb(144, 163, 140));
 }
-
-.viewPage-mypage>h3 {
-	font-weight: 700;
-	padding-top: 3px;
-	padding-left: 15px;
-}
-
 .viewPage-mypage>hr {
 	height: 5px;
 	background: #ddd;
 	border-style: none;
 }
-
 .topMemu-mypageView>div {
 	float: left;
 	display: flex;
@@ -82,12 +75,9 @@
 	align-items: center;
 	height: 100%;
 }
-
 #postPoint {
-	width: 50%;
-	height: 100%;
+	width:50%; height: 100%;
 }
-
 #postPoint>div {
 	width: 30%;
 	height: 80%;
@@ -95,7 +85,6 @@
 	justify-content: center;
 	align-items: center;
 }
-
 #postPoint>div>div>div {
 	text-align: center;
 	font-size: 18px;
@@ -112,115 +101,99 @@
 	font-weight: bold;
 	color: white;
 }
-
 #image-mypage {
 	margin-top: -4px;
 }
-
 #info-topMenu {
 	margin-top: -5px;
 }
-
 #info-topMenu>div>div {
 	margin-bottom: 7px;
 }
-
 .tabs>li {
 	cursor: pointer;
 }
-
-.tab-content {
-	padding-left: 30px;
+.tab-content{
+	padding-left:30px;
 }
 
 /*---------------------------------개인 정보 수정--------------------------*/
 /*----------------------------------------------------------------------------*/
 /*개인정보수정*/
-#editView {
-	float: center;
-	height: 90% !important;
-	background-color: rgba(255, 255, 255, 80%);
-	border-radius: 3%;
-	padding: 15px;
-	filter: drop-shadow(0px 0px 10px rgb(144, 163, 140));
-}
 
-#editArea {
-	width: 90%;
-	height: 80%;
-	display: block;
+#editView{
+	float:center;
+	height:90% !important;
+	background-color:rgba(255, 255, 255, 80%);
+	border-radius:3%;
+	padding:15px;
+	filter : drop-shadow(0px 0px 10px rgb(144, 163, 140));
 }
-
-#editView>h3 {
-	font-weight: 700;
-	padding-top: 3px;
-	padding-left: 15px;
+#editArea{
+	width:90%; 
+	height:80%;
+	display:block;
 }
-
+#editView>h3{
+	font-weight:700;
+	padding-top:3px;
+	padding-left:15px;
+}
 #editView>hr {
 	height: 5px;
 	background: #ddd;
 	border-style: none;
 }
-
 #editFrm input {
-	width: 120px;
-	text-align: center;
+	width:120px;
+	text-align:center;
 	border-style: none;
 	background-color: transparent;
 	border-bottom: 2px solid #ddd;
 }
-
-.edit-tel {
-	width: 50px !important;
+.edit-tel{
+	width:50px !important;
 }
-
-#editFrm {
-	width: 800px;
-	margin-left: 50px;
-	margin-top: 30px;
+#editFrm{
+	width:800px;
+	margin-left:50px;
+	margin-top:30px;
 }
-
-#editFrm li {
-	height: 55px;
-	padding-bottom: 17px;
+#editFrm li{
+	height:55px;
+	padding-bottom:17px;
 }
-
-#editFrm li:nth-child(2n+1) {
-	font-size: 1.2em;
-	font-weight: 700;
-	float: left;
-	width: 20%;
+#editFrm li:nth-child(2n+1){
+	font-size:1.2em;
+	font-weight:700;
+	float:left;
+	width:20%;
 }
-
-#editFrm li:nth-child(2n) {
-	float: left;
-	width: 80%;
+#editFrm li:nth-child(2n){
+	float:left;
+	width:80%;
 }
-
-#smsCode {
-	width: 200px !important;
+#smsCode{
+	width:200px !important;
 }
-
-#mypageEmail {
-	width: 300px !important;
+#mypageEmail{
+	width:300px !important;
 }
 /*edit의 버튼들*/
-#editFrm .btn {
-	width: 90px;
-	height: 35px;
+#editFrm .btn{
+	width:90px;
+	height:35px;
 	background: rgba(72, 97, 86, 50%);
-	color: white;
-	margin-left: 15px;
+	color:white;
+	margin-left:15px;
 }
-
-#mypageeditSubmit {
-	width: 800px;
+#mypageeditSubmit{
+	width:800px;
+	
 }
-
-#editSubmit {
-	margin-left: 0 !important;
-	margin-top: 15px;
+#editSubmit{
+	margin-left:0 !important;
+	margin-top:15px;
 	background: rgb(72, 97, 86) !important;
 }
 /*---------------------------------회원탈퇴--------------------------*/
@@ -240,162 +213,96 @@
 	border-style: none;
 	border-bottom: 2px solid #ddd;
 }
-
-#passwordCSS, #passowrdCheckCSS {
-	width: 100%;
+#passwordCSS,#passowrdCheckCSS {
+	 width:100%;
 }
-
 #passwordCSS>div:first-child, #passowrdCheckCSS>div:first-child {
 	margin-right: 5%;
 }
-
-#delMemberView>h3 {
-	font-weight: 700;
-	padding-top: 5px;
-	padding-left: 15px;
+#delMemberView>h3{
+	font-weight:700;
+	padding-top:5px;
+	padding-left:15px;
 }
-
-#delFrm {
-	padding-left: 30px;
+#delFrm{
+	padding-left:30px;
 }
-
 #delFrm span {
 	font-size: 1.2em;
-	font-weight: 400;;
+	font-weight:400;;
 }
 
 #delFrm ul {
 	margin-bottom: 30px;
 }
 
-#delMemberView {
-	height: 90% !important;
-	background-color: rgba(255, 255, 255, 80%);
-	border-radius: 3%;
-	padding: 15px;
-	filter: drop-shadow(0px 0px 10px rgb(144, 163, 140));
+#delMemberView{
+	height:90% !important;
+	background-color:rgba(255, 255, 255, 80%);
+	border-radius:3%;
+	padding:15px;
+	filter : drop-shadow(0px 0px 10px rgb(144, 163, 140));
 }
 
-#btn_delMember {
-	background-color: rgba(72, 97, 86, 80%);
-	color: white;
+#btn_delMember{
+	background-color:rgba(72, 97, 86, 80%);
+	color:white;
 }
-
 #VO_nickname_hidden {
 	display: none;
 }
 /*--------------------tab 출력문 공통--------------------------------------------*/
 .buttonDel {
-	display: flex;
-	justify-content: flex-end;
+	display: flex; 
+	justify-content: flex-end; 
 }
-
-#delPick {
-	background-color: rgb(72, 97, 86) !important;
-}
-
 .pagebox {
-	display: flex;
-	justify-content: center;
+	display: flex; justify-content: center;
 }
-
 .bottom-myView {
-	margin-top: 20px;
-}
-
-.page-item i {
-	background-color: none;
-}
-
-#prevBtn, #nextBtn {
-	background-color: rgb(72, 97, 86) !important;
-}
-
-#prevBtn i, #nextBtn i {
-	color: white;
-}
-
-#pageNum {
-	background-color: white;
-	border: none;
-	color: rgb(72, 97, 86);
-}
-
-#delPost, #delComment, #delPick {
-	width: 90px;
-	height: 35px;
-	background-color: rgb(72, 97, 86) !important;
-	border: none;
-	border-radius: 5px;
-	color: white;
-}
-
-#mypostSelect, #mycommentSelect, #mypickSelect {
-	text-align: center;
-	width: 70px;
-	height: 30px;
-	border: none;
-	border-radius: 5px;
+	margin-top:15px;
 }
 /*------------------------tab 내 쓴 글 보기 리스트---------------------------*/
 #printFrm1 ul {
-	display: flex;
-	border-bottom: 1px solid #ddd;
+	display: flex; border-bottom: 1px solid #ddd;
 }
-
 #printFrm1 ul:first-child {
 	background-color: #ddd;
 }
-
 #printFrm1 li {
-	float: left;
-	width: 25%;
-	text-align: center;
-	height: 20px;
-	overflow: hidden;
-	text-overflow: ellipsis;
+	float:left;  
+	width:25%; 
+	text-align: center; 
+	height:20px; 
+	overflow: hidden; 
+	text-overflow: ellipsis; 
 	white-space: nowrap;
 }
-
-#printFrm1 li:nth-child(1), #printFrm1 li:nth-child(3) {
-	width: 10%;
+#printFrm1 li:nth-child(1) ,#printFrm1 li:nth-child(3) {
+	width:10%;
 }
-
 #printFrm1 li:nth-child(2) {
-	width: 55%;
+	width:55%;
 }
-
 .innerTab {
-	margin-top: 10px;
+	margin-top:10px;
 }
-
 .tabTopMenu {
-	display: flex;
-	align-items: center;
-	text-align: center;
-	justify-content: flex-end;
-	margin-bottom: 8px;
+	display: flex; align-items: center; text-align: center;
+	justify-content: flex-end; margin-bottom: 8px;
 }
 /*---------------------------tab 댓글 쓴 글 보기 리스트 / tab 내가 찜한 글 보기 리스트 -------------------------*/
 #printFrm2 ul, #printFrm3 ul {
-	display: flex;
-	border-bottom: 1px solid #ddd;
+	display: flex; border-bottom: 1px solid #ddd;
 }
-
 #printFrm2 ul:first-child, #printFrm3 ul:first-child {
 	background-color: #ddd;
 }
-
-#printFrm2 li, #printFrm3 li {
-	float: left;
-	width: 30%;
-	text-align: center;
-	height: 20px;
-	overflow: hidden;
-	text-overflow: ellipsis;
+#printFrm2 li, #printFrm3 li  {
+	float:left;  
+	width:25%; text-align: center; 
+	height:20px; 
+	overflow: hidden; 
+	text-overflow: ellipsis; 
 	white-space: nowrap;
-}
-
-#printFrm2 li:nth-child(1), #printFrm3 li:nth-child(1) {
-	width: 10%;
 }
