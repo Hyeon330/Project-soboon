@@ -8,14 +8,12 @@ import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.semiproject.soboon.service.MemberService;
 import com.semiproject.soboon.service.ReportService;
-import com.semiproject.soboon.vo.BoardVO;
 import com.semiproject.soboon.vo.MemberVO;
 import com.semiproject.soboon.vo.PagingVO;
 import com.semiproject.soboon.vo.ReportVO;
@@ -71,16 +69,24 @@ public class AdminController {
 		return map;
 	}
 	
-	@PostMapping("admin/multiDel")
-	public ModelAndView ReportMultiDelete(ReportVO vo, HttpSession session) {
+	@GetMapping("admin/multiDel")
+	public ModelAndView ReportMultiDelete(ReportVO vo,boolean fake, HttpSession session) {
 		for(Integer i:vo.getNoList()) {
 			System.out.println(i);
 		};
 		/* vo.setReporter((String)session.getAttribute("logId")); */
 		System.out.println(vo.getReporter());
-		ModelAndView mav = new ModelAndView();
-		reportservice.ReportMultiDelete(vo);
 		
+		List<Integer> board_nos=reportservice.getBoardNoList(vo);
+		System.out.println(board_nos);
+		
+		if(fake) { 
+			reportservice.ReportMultiDelete(vo); 
+		}else { //board목록 삭제
+			reportservice.delreport(board_nos); 
+		}
+
+		ModelAndView mav = new ModelAndView();
 		mav.setViewName("redirect:/admin");
 		return mav;
 	}

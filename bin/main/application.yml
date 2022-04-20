@@ -1,5 +1,8 @@
 server:
   port: 9000
+  servlet:
+    session:
+      timeout: 43220m
   
 # 뷰 페이지
 spring:

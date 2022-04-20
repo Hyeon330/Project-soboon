@@ -10,14 +10,33 @@
 		select count(reporter) cnt from report
 	</select>
 	<select id="ReportList" resultType="ReportVO">
-		select reporter, suspect, report_content, board_no from report order by no limit ${recordPerPage} offset ${offsetIndex}
+		select no, reporter, suspect, report_content, board_no from report order by no limit ${recordPerPage} offset ${offsetIndex}
 	</select>
 	<delete id="ReportMultiDelete">
 		delete from report
          <where>
-            <foreach item="item" collection="noList" open="board_no in (" separator=", " close=")">
+            <foreach item="item" collection="noList" open="no in (" separator=", " close=")">
                 #{item}
             </foreach>
          </where>
 	</delete>
+	<select id="getBoardNoList" resultType="int">
+		select board_no from report
+		<where>
+			<foreach item="item" collection="noList" open="no in (" separator=", " close=")">
+                #{item}
+            </foreach>
+		</where>
+	</select>
+	<delete id="delreport">
+		delete from board
+         <where>
+            <foreach item="item" collection="list" open="no in (" separator=", " close=")">
+                #{item}
+            </foreach>
+         </where>
+	</delete>
+	<insert id="insertReportContent">
+		insert into report (reporter,suspect,report_content,board_no) values(#{reporter},(select userid from member where nickname=#{suspect}),#{report_content},#{board_no})
+	</insert>
  </mapper>

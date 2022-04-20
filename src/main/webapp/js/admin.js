@@ -100,6 +100,7 @@ $(function() {
 			dataType:'json',
 			success:function(dataArr){
 				showMember(dataArr, 'tab1')
+				
 			}			
 		})
 	}
@@ -107,14 +108,24 @@ $(function() {
 	 /*=================신고관리=================*/ 
 	function showReport(dataArr, tab){ //showReport로 변경했음.
 	/*alert(JSON.stringify(dataArr))*/
-		$("#reportcnt").html("리폿 갯수 :" +dataArr.cnt +"명")
-		$(function(){
-			$("#multiDel").click(function() {
+		$("#reportcnt").html("리폿 갯수 :" +dataArr.cnt +"개")
+			$(".report-process").on('click',function() {
+				var reportBtnId = $(this).attr("Id");
 				if($("input[name=noList]:checked").length==0) return false;
 				if(!confirm("선택한 레코드를 삭제하시겠습니까?")) return false;
-				$("#checkFrm").submit();
+				console.log(reportBtnId)
+				
+				$("#checkFrm").submit(function(e){
+					console.log("aab");
+					if(reportBtnId=="fake"){
+						e.preventDefault();					
+						var data = $("#checkFrm").serialize()+"&fake=true";
+						console.log(data);
+						location.href="/admin/multiDel?"+data;
+					}
+				}); 
 			});
-		});
+
 		/* alert('총회원수: '+dataArr.cnt) */
 		//헤더 
 		var str ="<br/><ul id='reportManage'>"
@@ -122,23 +133,20 @@ $(function() {
 		str +="<li>신고한사람</li>"
 		str +="<li>신고당한사람</li>"
 		str +="<li>신고사유</li>"
-		str +="<li>처분</li>"
-	
+			
 		$.each(dataArr.reportList, function(i, data){
 			//DB에서 가져올 데이터들
-			str +="<li><input type='checkbox' name='noList' value='"+data.board_no+"'></li>"
+			str +="<li><input type='checkbox' name='noList' value='"+data.no+"'></li>"
 			str+="<li>"+data.reporter+"</li>"
 			str+="<li>"+data.suspect+"</li>"
-			str+="<li>"+"<a href='http://localhost:9000/board/shareBoardView?no="+data.board_no+"'>"+data.board_no+"</a>"+ "번 " +data.report_content+"</li>"
-			str+="<li>"+""+"</li>"
-			
+			str+="<li>"+"<a href='/board/shareBoardView?no="+data.board_no+"'>"+data.board_no+"</a>"+ "번 " +data.report_content+"</li>"			
 			
 		})
 		str+="</ul>";
 		
 		
-		let onePageRecord=10;	//한 페이지당 10명 기준 ex)14개기준으로 5를하면 3페이지가나옴
-		let totalCount=Number(dataArr.cnt)	//총 인원수 integer로 가져옴
+		let onePageRecord=10;	//한 페이지당 10명 기준 ex)14개기준으로 5를하면 3페이지가나옴------------------------빽
+		let totalCount=Number(dataArr.cnt)	//총 인원수 integer로 가져옴 ---------------------------빼기
 		/*let totalCount=Number(dataArr.pVO.get)	//총 인원수 integer로 가져옴*/
 		
 		//페이지수 구하기 pageCount ==> 연산하는 로직 보면서 구하기
@@ -173,6 +181,8 @@ $(function() {
 			}			
 		})
 	}
+
+
 	/* $.ajax({ 
 		type: "GET", 
 							url: url, 

@@ -53,10 +53,10 @@
 	white-space: nowrap; /*줄안바꿈*/
 	overflow: hidden; /*넘친 내용 숨기기*/
 }
-#reportManage>li:nth-child(5n+4){
-	width:50%;
+#reportManage>li:nth-child(4n){
+	width:65%;
 }
-#reportManage>li:nth-child(5n+1) { 
+#reportManage>li:nth-child(4n+1) { 
 	width: 5%;
 }
 
