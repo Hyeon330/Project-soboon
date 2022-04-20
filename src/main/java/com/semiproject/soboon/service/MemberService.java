@@ -14,7 +14,6 @@ public interface MemberService {
 	public void telCheck(String tel, String ckNum);
 	public MemberVO loginCheck(MemberVO vo);
 	public int totalRecord(PagingVO pVO);
-	public List<MemberVO> memberList(PagingVO pVO);
 	public int getMembercnt();
 	public void updateMyAddr(MemberVO vo);
 	//아이디찾기
@@ -23,4 +22,6 @@ public interface MemberService {
 	//임시비밀번호
 	public int updatePwd(MemberVO vo); //비밀번호업데이트
 	public int memberMultiDelete(MemberVO vo);
+	public List<MemberVO> memberList(PagingVO pVO);
+
 }

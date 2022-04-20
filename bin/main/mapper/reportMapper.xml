@@ -15,7 +15,7 @@
 	<delete id="ReportMultiDelete">
 		delete from report
          <where>
-            <foreach item="item" collection="noList" open="board_no in (" separator=", " close=")">
+            <foreach item="item" collection="noList" open="no in (" separator=", " close=")">
                 #{item}
             </foreach>
          </where>
@@ -24,7 +24,7 @@
 		select board_no from report
 		<where>
 			<foreach item="item" collection="noList" open="no in (" separator=", " close=")">
-                #{item} 
+                #{item}
             </foreach>
 		</where>
 	</select>

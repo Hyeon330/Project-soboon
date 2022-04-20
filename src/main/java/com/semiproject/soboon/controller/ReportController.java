@@ -16,6 +16,7 @@ public class ReportController {
 
 	@Inject
 	ReportService service;
+	
 	@PostMapping("insertReportContent")
 	public int insertReportContent(ReportVO vo, HttpSession session) {
 		System.out.println(vo.getReport_content());
