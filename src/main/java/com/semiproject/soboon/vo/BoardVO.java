@@ -1,6 +1,5 @@
 package com.semiproject.soboon.vo;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class BoardVO {
@@ -42,11 +41,7 @@ public class BoardVO {
 //				+ getNickname() + ", getLarge()=" + getLarge() + ", getMedium()=" + getMedium() + ", getSmall()="
 //				+ getSmall() + ", getNoList()=" + getNoList() + "]";
 //	}
-	
 
-	
-
-	
 	public int getNo() {
 		return no;
 	}
