@@ -122,8 +122,6 @@ public class RelateUploadFile {
 				}
 			}
 		}
-		//////////////
-		System.out.println("f size="+fileList.size());
 		// fileList에 있는 DB에 등록할 파일을 vo에 담기
 		for (int fl = 0; fl < fileList.size(); fl++) {
 			if(vo!=null) {
