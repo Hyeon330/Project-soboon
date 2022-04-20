@@ -37,13 +37,14 @@ public class AdminController {
 	
 	@GetMapping("admin/memberMgr")
 	public Map<String, Object> adminMgr(PagingVO pVO) {
+		
 		pVO.setRecordPerPage(12); // 한번에 출력할 리스트수
 		Map<String, Object> map=new HashMap<>();
 		//전체 회원수 가져오기
 		int cnt = service.getMembercnt();
 		pVO.setTotalRecord(cnt);
 		//페이지에 해당하는 회원 목록
-		List<MemberVO> list=service.memberList(pVO);
+		List<MemberVO> list=service.memberList(pVO);		
 		
 		map.put("cnt", cnt);
 		/* map.put("pVO", pVO); */
@@ -54,6 +55,7 @@ public class AdminController {
 	
 	@GetMapping("admin/reportMgr")
 	public Map<String, Object> reportMgr(PagingVO pVO) {
+
 		pVO.setRecordPerPage(12); // 한번에 출력할 리스트수
 		Map<String, Object> map=new HashMap<>();
 		//전체 리포트 가져오기
@@ -71,20 +73,20 @@ public class AdminController {
 	}
 	
 	@GetMapping("admin/multiDel")
-	public ModelAndView ReportMultiDelete(ReportVO vo,boolean fake, HttpSession session) {
-		for(Integer i:vo.getNoList()) {
-			System.out.println(i);
-		};
-		/* vo.setReporter((String)session.getAttribute("logId")); */
-		System.out.println(vo.getReporter());
+	public ModelAndView ReportMultiDelete(ReportVO vo, boolean fake, HttpSession session) {
 		
-		List<Integer> board_nos=reportservice.getBoardNoList(vo);
-		System.out.println(board_nos);
+
+		/* vo.setReporter((String)session.getAttribute("logId")); */
+		/* System.out.println(vo.getReporter()); */
+	System.out.println(vo.getNoList().size());
 		
 		if(fake) { 
 			reportservice.ReportMultiDelete(vo); 
 		}else { //board목록 삭제
-			reportservice.delreport(board_nos); 
+			//신고횟수 증가
+			service.updateWarn(vo);
+			//레코드 지우기
+			reportservice.delreport(vo); 
 		}
 
 		ModelAndView mav = new ModelAndView();

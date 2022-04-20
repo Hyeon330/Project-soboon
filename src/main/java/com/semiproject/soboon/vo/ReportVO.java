@@ -9,6 +9,7 @@ public class ReportVO {
 	private String report_content;
 	private int board_no;
 	private List<Integer> noList;
+	private List<String> suspectList ;
 	private String category;
 	
 	public List<Integer> getNoList() {
@@ -46,6 +47,12 @@ public class ReportVO {
 	}
 	public void setBoard_no(int board_no) {
 		this.board_no = board_no;
+	}
+	public List<String> getSuspectList() {
+		return suspectList;
+	}
+	public void setSuspectList(List<String> suspectList) {
+		this.suspectList = suspectList;
 	}
 	public String getCategory() {
 		return category;

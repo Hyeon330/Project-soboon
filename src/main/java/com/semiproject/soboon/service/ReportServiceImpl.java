@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.semiproject.soboon.dao.ReportDAO;
+import com.semiproject.soboon.vo.MemberVO;
 import com.semiproject.soboon.vo.PagingVO;
 import com.semiproject.soboon.vo.ReportVO;
 
@@ -33,8 +34,8 @@ public class ReportServiceImpl implements ReportService {
 		return dao.getBoardNoList(vo);
 	}
 	@Override
-	public void delreport(List<Integer> board_nos) {
-		dao.delreport(board_nos);	
+	public void delreport(ReportVO vo) {
+		dao.delreport(vo);	
 	}
 	@Override
 	public int insertReportContent(ReportVO vo) {

@@ -36,7 +36,7 @@ public class BoardController {
 	// 나눔게시판 리스트
 	@GetMapping("shareBoardList")
 	public ModelAndView shareListForm(PagingVO pvo, BoardVO vo, String keyword, HttpSession session) {
-		System.out.println("share 컨트롤러 " + keyword);
+		/* System.out.println("share 컨트롤러 " + keyword); */
 		
 		vo.setCategory("share");
 		vo.setSmall((String)session.getAttribute("addrSmall"));
@@ -55,7 +55,7 @@ public class BoardController {
 	@GetMapping("rentBoardList")
 	public ModelAndView rentListForm(PagingVO pvo, BoardVO vo, String keyword, HttpSession session) {
 
-		System.out.println("rent 컨트롤러 " + keyword);
+		/* System.out.println("rent 컨트롤러 " + keyword); */
 		
 		vo.setCategory("rent");
 		vo.setSmall((String)session.getAttribute("addrSmall"));
@@ -74,7 +74,7 @@ public class BoardController {
 	@GetMapping("saleBoardList")
 	public ModelAndView saleListForm(PagingVO pvo, BoardVO vo, String keyword, HttpSession session) {
 
-		System.out.println("sale 컨트롤러 " + keyword);
+		/* System.out.println("sale 컨트롤러 " + keyword); */
 		
 		vo.setCategory("sale");
 		vo.setSmall((String)session.getAttribute("addrSmall"));
@@ -93,7 +93,7 @@ public class BoardController {
 	@GetMapping("reqBoardList")
 	public ModelAndView reqListForm(PagingVO pvo, BoardVO vo, String keyword, HttpSession session) {
 
-		System.out.println("request 컨트롤러 " + keyword);
+		/* System.out.println("request 컨트롤러 " + keyword); */
 		
 		vo.setCategory("request");
 		vo.setSmall((String)session.getAttribute("addrSmall"));
