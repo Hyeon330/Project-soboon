@@ -17,5 +17,10 @@ $(function(){
 			location.href="/board/reqBoardList?"+data;
 		}
 	});
+	
+	$(".logout").click(function() {
+		sessionStorage.clear();
+		localStorage.clear();
+	});
 });
 	

@@ -53,12 +53,12 @@
 					<c:if test="${logStatus=='Y'}">
 						<c:if test="${logAdmin==9}">
 							<a href="/admin" class="btn sign">관리자모드</a>&nbsp;&nbsp;&nbsp;
-							<a href="/member/logout" class="btn sign">로그아웃</a>
+							<a href="/member/logout" class="btn sign logout">로그아웃</a>
 						</c:if>
 						<c:if test="${logAdmin!=9}">
 							<button id="addrSelectDialogOpen" class="btn sign">지역선택</button>&nbsp;&nbsp;&nbsp;
 							<a href="/mypage/showView?pageName=showView" class="btn sign">마이페이지</a>&nbsp;&nbsp;&nbsp;
-							<a href="/member/logout" class="btn sign">로그아웃</a>
+							<a href="/member/logout" class="btn sign logout">로그아웃</a>
 							<%@ include file="/WEB-INF/views/inc/addrSelectDialog.jsp" %>
 						</c:if>
 					</c:if>
