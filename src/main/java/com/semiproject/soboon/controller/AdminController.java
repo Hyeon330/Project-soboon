@@ -37,35 +37,36 @@ public class AdminController {
 	
 	@GetMapping("admin/memberMgr")
 	public Map<String, Object> adminMgr(PagingVO pVO) {
-		pVO.setRecordPerPage(5); // 출력수 jsp랑 동일하게 설정 리스트출력담당
-		pVO.calc(); //페이지 연산 처리
+		pVO.setRecordPerPage(12); // 한번에 출력할 리스트수
 		Map<String, Object> map=new HashMap<>();
 		//전체 회원수 가져오기
 		int cnt = service.getMembercnt();
+		pVO.setTotalRecord(cnt);
 		//페이지에 해당하는 회원 목록
 		List<MemberVO> list=service.memberList(pVO);
 		
 		map.put("cnt", cnt);
 		/* map.put("pVO", pVO); */
 		map.put("userList", list);
-		
+		map.put("paging", pVO);
 		return map;
 	}
 	
 	@GetMapping("admin/reportMgr")
 	public Map<String, Object> reportMgr(PagingVO pVO) {
-		pVO.setRecordPerPage(10); // 출력수 jsp랑 동일하게 설정
-		pVO.calc(); //페이지 연산 처리
+		pVO.setRecordPerPage(12); // 한번에 출력할 리스트수
 		Map<String, Object> map=new HashMap<>();
 		//전체 리포트 가져오기
 		int cnt = reportservice.getReportcnt();
+		/* System.out.println(cnt); */
+		pVO.setTotalRecord(cnt);
 		//리포트에 해당하는 리포트 목록
 		List<ReportVO> list=reportservice.ReportList(pVO);
 		
 		map.put("cnt", cnt);
 		/* map.put("pVO", pVO); */
 		map.put("reportList", list);
-		
+		map.put("paging", pVO);
 		return map;
 	}
 	

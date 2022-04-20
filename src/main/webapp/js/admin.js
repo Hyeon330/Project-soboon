@@ -67,26 +67,48 @@ $(function() {
 			
 		})
 		str+="</ul>";
-		let onePageRecord=5;	//totalrecord/onepagerecord=페이지수계산 ex) 5개일때 출력되는 페이지수계산
-		let totalCount=Number(dataArr.cnt)	//총 인원수 integer로 가져옴
-		/*let totalCount=Number(dataArr.pVO.get)	//총 인원수 integer로 가져옴*/
+		
+		let pVo = dataArr.paging;
+		console.log(pVo);
+		//let onePageRecord=dataArr.paging.onePageRecord;	//totalrecord/onepagerecord=페이지수계산 ex) 5개일때 출력되는 페이지수계산
 		
 		//페이지수 구하기 pageCount ==> 연산하는 로직 보면서 구하기
-		if(totalCount%onePageRecord == 0){
+		/*if(totalCount%onePageRecord == 0){
 			pageCount = totalCount/onePageRecord;
 		}else {
 			pageCount = totalCount/onePageRecord+1;
 		}
-		pageCount = Math.floor(pageCount);
+		pageCount = Math.floor(pageCount);*/
 			/* alert(pageCount) */
 		//페이지 네비게이션 문자열 만들기
 		let pageStr='<br/><ul class="pagination justify-content-center" id="paging">';
-			pageStr += '<li class="page-item disabled"><a class="page-link" id="prevBtn"><i class="fa fa-angle-left"></i></a></li>'
-			for(var p=1; p <= pageCount; p++){
-				pageStr += '<li class="page-item"><a class="page-link"href="javascript:void(0);" onclick="ml('+p+')">' + p + '</a></li>'
+			//prev
+			if(pVo.currentPage==1){
+			pageStr += '<li class="page-item disabled"><a class="page-link" id="prevBtn"><i class="fa fa-angle-left"></i></a></li>';
+			}else{
+				pageStr += '<li class="page-item"><a class="page-link" id="prevBtn" href="javascript:void(0);" onclick="ml('+(pVo.currentPage-1)+')"><i class="fa fa-angle-left"></i></a></li>';
 			}
-			pageStr += '<li class="page-item"><a class="page-link" id="nextBtn"><i class="fa fa-angle-right"></i></a></li>'
+			
+			//current page
+			for(var p=pVo.startPage; p <= pVo.startPage+pVo.onePageCount-1; p++){  //   11       11+10
+		 		if(p<=pVo.totalPage){
+					if(p==pVo.currentPage){
+		 				pageStr += '<li class="page-item disabled"><a class="page-link">' + p + '</a></li>';
+		 			}else{
+						pageStr += '<li class="page-item"><a class="page-link" href="javascript:void(0);" onclick="ml('+p+')">' + p + '</a></li>';
+					}
+		 		}
+			}
+			
+			//next
+			if(pVo.currentPage==pVo.totalPage){
+				pageStr += '<li class="page-item disabled"><a class="page-link" id="nextBtn"><i class="fa fa-angle-right"></i></a></li>'
+			}else{
+				pageStr += '<li class="page-item"><a class="page-link" id="nextBtn" href="javascript:void(0);" onclick="ml('+(pVo.currentPage+1)+')"><i class="fa fa-angle-right"></i></a></li>';
+			}
+
 			/*pageStr += '<li class="page-item"><a class="page-link" id="nextBtn" onclick=nexttpg('+(dataArr.pVO.currentPage+1)+')>Next</a></li>'*/
+			
 		pageStr +='</ul>';
 		/* alert(pageStr) */
 		$('.clientList').html(str);
@@ -94,7 +116,7 @@ $(function() {
 	}
 	function ml(p){ // ml = member list
 		//alert(p)
-		var url="/admin/memberMgr?currentPage="+p+"&recordPerPage=10"
+		var url="/admin/memberMgr?currentPage="+p+"&recordPerPage=12"
 		$.ajax({
 			url:url,
 			dataType:'json',
@@ -143,28 +165,47 @@ $(function() {
 			
 		})
 		str+="</ul>";
-		
-		
-		let onePageRecord=10;	//한 페이지당 10명 기준 ex)14개기준으로 5를하면 3페이지가나옴------------------------빽
-		let totalCount=Number(dataArr.cnt)	//총 인원수 integer로 가져옴 ---------------------------빼기
-		/*let totalCount=Number(dataArr.pVO.get)	//총 인원수 integer로 가져옴*/
+				
+		let pVo = dataArr.paging;
+		console.log(pVo);
+		//let onePageRecord=dataArr.paging.onePageRecord;	//totalrecord/onepagerecord=페이지수계산 ex) 5개일때 출력되는 페이지수계산
 		
 		//페이지수 구하기 pageCount ==> 연산하는 로직 보면서 구하기
-		if(totalCount%onePageRecord == 0){
+		/*if(totalCount%onePageRecord == 0){
 			pageCount = totalCount/onePageRecord;
 		}else {
 			pageCount = totalCount/onePageRecord+1;
 		}
-		pageCount = Math.floor(pageCount);
+		pageCount = Math.floor(pageCount);*/
 			/* alert(pageCount) */
 		//페이지 네비게이션 문자열 만들기
 		let pageStr='<br/><ul class="pagination justify-content-center" id="paging">';
-			pageStr += '<li class="page-item disabled"><a class="page-link" id="prevBtn"><i class="fa fa-angle-left"></i></a></li>'
-			for(var p=1; p <= pageCount; p++){
-				pageStr += '<li class="page-item"><a class="page-link"href="javascript:void(0);" onclick="ml2('+p+')">' + p + '</a></li>'
+			//prev
+			if(pVo.currentPage==1){
+			pageStr += '<li class="page-item disabled"><a class="page-link" id="prevBtn"><i class="fa fa-angle-left"></i></a></li>';
+			}else{
+				pageStr += '<li class="page-item"><a class="page-link" id="prevBtn" href="javascript:void(0);" onclick="ml2('+(pVo.currentPage-1)+')"><i class="fa fa-angle-left"></i></a></li>';
+			}		
+			//current page
+			for(var p=pVo.startPage; p <= pVo.startPage+pVo.onePageCount-1; p++){  //   11       11+10
+		 		if(p<=pVo.totalPage){
+					if(p==pVo.currentPage){
+		 				pageStr += '<li class="page-item" disabled><a class="page-link">' + p + '</a></li>';
+		 			}else{
+						pageStr += '<li class="page-item"><a class="page-link" href="javascript:void(0);" onclick="ml2('+p+')">' + p + '</a></li>';
+					}
+		 		}
 			}
-			pageStr += '<li class="page-item"><a class="page-link" id="nextBtn"><i class="fa fa-angle-right"></i></a></li>'
+			
+			//next
+			if(pVo.currentPage==pVo.totalPage){
+				pageStr += '<li class="page-item disabled"><a class="page-link" id="nextBtn"><i class="fa fa-angle-right"></i></a></li>'
+			}else{
+				pageStr += '<li class="page-item"><a class="page-link" id="nextBtn" href="javascript:void(0);" onclick="ml2('+(pVo.currentPage+1)+')"><i class="fa fa-angle-right"></i></a></li>';
+			}
+
 			/*pageStr += '<li class="page-item"><a class="page-link" id="nextBtn" onclick=nexttpg('+(dataArr.pVO.currentPage+1)+')>Next</a></li>'*/
+			
 		pageStr +='</ul>';
 		/* alert(pageStr) */
 		$('.reportList').html(str);
@@ -172,12 +213,12 @@ $(function() {
 	}
 	function ml2(p){ // ml = member list
 		//alert(p)
-		var url="/admin/reportMgr?currentPage="+p+"&recordPerPage=10"
+		var url="/admin/reportMgr?currentPage="+p+"&recordPerPage=12"
 		$.ajax({
 			url:url,
 			dataType:'json',
 			success:function(dataArr){
-				reportMember(dataArr, 'tab2')
+				showReport(dataArr, 'tab2')
 			}			
 		})
 	}
