@@ -41,7 +41,7 @@
 					<li>	
 						<input type="text" id="nickname" name="nickname" value="${VO.nickname }" />
 						<button class="btn" id='button_overlapCheck'>중복확인</button>
-						<input type="hidden" id="#VO_nickname_hidden" value="${VO.nickname }"/>
+						<input type="hidden" id="VO_nickname_hidden" value="${VO.nickname }"/>
 						<input type="hidden" id="nicknameCheck"/>
 					</li>
 					
