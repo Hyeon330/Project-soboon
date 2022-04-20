@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<link rel="stylesheet" href="/css/rentBoardWrite.css" type="text/css"/>
-<script src="/js/rentBoardWrite.js"></script>
-<script src="/js/boardaddrDialog.js"></script>
+<link rel="stylesheet" href="/css/board/rentBoardWrite.css" type="text/css"/>
+<script src="/js/board/rentBoardWrite.js"></script>
+<script src="/js/board/boardaddrDialog.js"></script>
 <div class="container">
 	<br/>
 	<form class="form-group" method="post" action="/board/rentBoardWriteOk?category=rent" id="rentForm" enctype="multipart/form-data">

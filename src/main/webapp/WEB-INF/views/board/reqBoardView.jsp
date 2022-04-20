@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<link rel="stylesheet" href="/css/reqBoardView.css" type="text/css"/>
-<script src="/js/boardViewReply.js"></script>
-<script src="/js/reqBoardView.js"></script>
+<link rel="stylesheet" href="/css/board/reqBoardView.css" type="text/css"/>
+<link rel="stylesheet" href="/css/board/boardViewReply.css" type="text/css"/>
+<script src="/js/board/boardViewReply.js"></script>
+<script src="/js/board/boardViewPick.js"></script>
 <script>
 	let nickname = "${nickName}";
 
@@ -12,6 +13,13 @@
 				location.href="/board/reqBoardDel?no=${viewVo.no}";
 			}	
 		});
+		
+		// 이미 글에 찜한 유저 구하기
+		if('${alrPick.no}'!=''){
+			$("#pick1").addClass("pick2");
+		}else{
+			$("#pick1").removeClass("pick2");
+		}
 		
 	});
 </script>
@@ -121,7 +129,7 @@
 			  								<c:otherwise>
 			  									<div class="carousel-inner">
 							  					 	<div class="carousel-item active">
-														<img src="/img/request.jpg">
+														<img src="/img/thumbnail_req.jpg">
 													</div>
 						  					 </div>
 			  								</c:otherwise>
@@ -145,14 +153,7 @@
 			<hr/>
 			<div id="productIcon">
 			<c:if test="${logId!=viewVo.userid}">
-				<div id="pickDiv">
-					<c:if test="${alrPick.userid==null}">
-						<input type="button" class="btn" id="pick1" value="찜하기"/>
-					</c:if>
-					<c:if test="${alrPick.userid==logId}">
-						<input type="button" class="btn" id="pick2" value="찜하기"/>
-					</c:if>
-				</div>
+				<input type="button" class="btn pick1" id="pick1" value="찜하기"/>
 			</c:if>
 			<c:if test="${logId==viewVo.userid}">
 				<div class="proIcon"><i class="fa fa-heart fa-lg"></i><span class="iconValue">${viewVo.pick}</span></div>
@@ -186,11 +187,11 @@
 					</div>
 				</c:if>
 			</div>
-			<!-- 글내용 -->
-			<div class="reqBrdContent">
-				<hr/>
-				<div>${viewVo.content}</div>
-			</div>
+		</div>
+		<!-- 글내용 -->
+		<div class="col-12 reqContent">
+			<hr/>
+			<div>${viewVo.content}</div>
 		</div>
 		
 		<!-- 댓글 -->

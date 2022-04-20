@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<link rel="stylesheet" href="/css/saleBoardList.css" type="text/css"/>
-<script src="/js/saleBoardList.js"></script>
+<link rel="stylesheet" href="/css/board/saleBoardList.css" type="text/css"/>
+<script src="/js/board/saleBoardList.js"></script>
 <div class="container">
 	<br/>
 		<h1 id="saleBrd">판매 게시판</h1>
@@ -15,7 +15,7 @@
 	    			<div class="embed-responsive embed-responsive-4by3">
      					<a href="/board/saleBoardView?no=${listVo.no}">
      							<c:if test="${listVo.thumbnailImg==null}">
-     								<img src="/img/sale.jpg" class="embed-responsive-item">
+     								<img src="/img/thumbnail_sale.jpg" class="embed-responsive-item">
      							</c:if>
      							<c:if test="${listVo.img1!=null}">
      								<img src="/upload/${listVo.img1}" class="embed-responsive-item">

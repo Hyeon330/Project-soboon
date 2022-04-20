@@ -13,6 +13,17 @@ $(function(){
 		totalFile--;
 	});
 	
+	// 첨부파일 선택 갯수
+	if($("#bvoImg1").val()!=""){
+		totalFile++;
+	}else if($("#bvoImg2").val()!=''){
+		totalFile++;
+	}else if($("#bvoImg3").val()!=''){
+		totalFile++;
+	}else if($("#bvoImg4").val()!=''){
+		totalFile++;
+	}
+	
 	$("#shareEditForm").submit(function(){
 		if($("#shareAndReqTitle").val()==''){
 			alert("🚫 제목을 입력해주세요");
@@ -23,6 +34,9 @@ $(function(){
 			return false;
 		}
 	});
+	
+
+	
 	
 	$("#backList").click(function(){
 		location.href="/board/shareBoardList";
