@@ -80,7 +80,7 @@ public class RelateUploadFile {
 
 		// 새로 업로드된 MultipartFile 객체를 얻어 오기(shareAndReqEdit에서의 name)
 		List<MultipartFile> files = mp.getFiles("fileImg");
-		System.out.println(files.size());
+
 		if (files != null) {
 
 			for (int i = 0; i < files.size(); i++) { // 업로드할 파일만큼 for문 실행
@@ -110,16 +110,18 @@ public class RelateUploadFile {
 						}
 					}
 					try {
-						System.out.println(f.getName());
+						//System.out.println(f.getName());
 						// 파일 업로드
 						mpf.transferTo(f); // 업로드!!
-					}catch(Exception e) {e.printStackTrace();}
+						
+						//newFileList.add(newUploadFileName); // 새로운 업로드 목록 추가
 						fileList.add(newUploadFileName); // DB에 등록
-						newFileList.add(newUploadFileName); // 새로운 업로드 목록 추가
+					}catch(Exception e) {e.printStackTrace();}
+						
+						
 				}
 			}
 		}
-
 		// fileList에 있는 DB에 등록할 파일을 vo에 담기
 		for (int fl = 0; fl < fileList.size(); fl++) {
 			if(vo!=null) {

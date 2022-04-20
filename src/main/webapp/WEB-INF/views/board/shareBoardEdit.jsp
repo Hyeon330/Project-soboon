@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<link rel="stylesheet" href="/css/shareBoardEdit.css" type="text/css"/>
-<script src="/js/shareBoardEdit.js"></script>
+<link rel="stylesheet" href="/css/board/shareBoardEdit.css" type="text/css"/>
+<script src="/js/board/shareBoardEdit.js"></script>
 <div class="container">
 	<br/>
 	<form class="form-group" method="post" action="/board/shareBoardEditOk?no=${bvo.no}" id="shareEditForm" enctype="multipart/form-data">

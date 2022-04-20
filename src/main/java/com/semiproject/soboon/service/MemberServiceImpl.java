@@ -113,6 +113,5 @@ public class MemberServiceImpl implements MemberService{
 	public int memberMultiDelete(MemberVO vo) {
 		return dao.memberMultiDelete(vo);
 		
-	}
-	
+	}	
 }

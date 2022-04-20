@@ -27,12 +27,11 @@
 					<!-- 신고관리 -->
 					<div class="tab-pane fade" id="reportMgr">
 					<div style="float: left" id="reportcnt"></div>
-					<div><button type="button" class="btn btn-success" style=float:right;>허위신고</button></div>
-					<div><button type="button" class="btn btn-danger" id="multiDel" style="float:right;margin-right: 7px;">게시물 삭제</button></div>
-					
-					<br/>
-					<form method="post" action="admin/multiDel" id="checkFrm">
-						<ul class="reportList">
+					<form method="GET" action="admin/multiDel" id="checkFrm">
+					<div><button class="btn btn-success report-process" id="fake" style=float:right;>허위신고</button></div>
+					<div><button class="btn btn-danger report-process" id="multiDel" style="float:right; margin-right: 7px;">게시물 삭제</button></div>
+					<br/>	
+					<ul class="reportList">
 						<!-- <li><input type="checkbox" id="checkAll"></li>
 							<li>아이디</li>
 							<li>누적신고</li>

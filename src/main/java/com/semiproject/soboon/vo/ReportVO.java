@@ -10,6 +10,7 @@ public class ReportVO {
 	private int board_no;
 	private List<Integer> noList;
 	
+	
 	public List<Integer> getNoList() {
 		return noList;
 	}

@@ -11,8 +11,17 @@ $(function() {
 		modal: true,
 		buttons: {
 			등록: function() {
-				alert('등록');
-				$("#reportSubmit").submit();
+				$.ajax({
+					url:"/report/insertReportContent",
+					data:"report_content="+$("#reportContent").val() + "&suspect="+$("#viewNickname").text() + "&board_no="+$("#reportReason").attr("no"),
+					type:"POST",
+					success:function(result){
+						if(result>0){
+							alert("신고가 접수되었습니다.");
+						}
+					}
+				});
+				$("#reportReason").dialog('close');
 			},
 			취소: function() {
 				$("#reportReason").dialog('close');
@@ -21,11 +30,11 @@ $(function() {
 	});
 });
 </script>
-<div id="reportReason">
+<div id="reportReason" no="${viewVo.no}">
 	<form id="reportSubmit">
 		<ul>
 			<li>신고내용</li>
-			<li><textarea cols="30" rows="3" maxlength="30"; placeholder="30자 내외로 입력하세요"  "id="reportContent" name="reportContent"></textarea></li>
+			<li><textarea cols="30" rows="3" maxlength="30"; placeholder="30자 내외로 입력하세요" id="reportContent" name="reportContent"></textarea></li>
 		</ul>
 	</form>
 </div>

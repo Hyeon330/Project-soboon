@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<link rel="stylesheet" href="/css/saleBoardWrite.css" type="text/css"/>
-<script src="/js/saleBoardWrite.js"></script>
-<script src="/js/boardaddrDialog.js"></script>
+<link rel="stylesheet" href="/css/board/saleBoardWrite.css" type="text/css"/>
+<script src="/js/board/saleBoardWrite.js"></script>
+<script src="/js/board/boardaddrDialog.js"></script>
 <div class="container">
 	<br/>
 	<form class="form-group" method="post" action="/board/saleBoardWriteOk?category=sale" id="saleForm" enctype="multipart/form-data">

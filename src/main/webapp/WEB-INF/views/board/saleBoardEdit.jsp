@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<link rel="stylesheet" href="/css/saleBoardEdit.css" type="text/css"/>
-<script src="/js/saleBoardEdit.js"></script>
+<link rel="stylesheet" href="/css/board/saleBoardEdit.css" type="text/css"/>
+<script src="/js/board/saleBoardEdit.js"></script>
 <div class="container">
 	<br/>
 	<form class="form-group" method="post" action="/board/saleBoardEditOk?no=${bvo.no}" id="saleEditForm" enctype="multipart/form-data">

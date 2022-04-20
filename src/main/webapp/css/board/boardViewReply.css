@@ -1,0 +1,38 @@
+@charset "UTF-8";
+/*댓글*/
+#commentLine {
+	display:flex;
+	position:relative;
+}
+
+#replyInsert{
+	background-color: rgb(72, 97, 86);
+	color:white;
+	margin-top:100px;
+}
+
+#replyList {
+	background-color:#FAF6F3;
+	margin:20px 20px 0 0;
+	border-radius:5px;
+	padding: 15px;
+	padding-top:25px;
+	padding-left:25px;
+}
+
+#replyList textarea{
+	padding: 12px;
+	border: none;
+	border-radius:10px;
+	outline:none;
+	resize:none;
+	font-size: 16px;
+	background-color:rgb(213, 218, 212);
+	margin:20px 20px 0 0;
+	width:500px; height:100px;
+}
+
+#replyList input[value='수정하기']{
+ 	background-color: rgb(72, 97, 86);
+	color:white;
+}

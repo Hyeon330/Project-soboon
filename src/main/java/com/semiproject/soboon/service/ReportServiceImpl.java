@@ -28,4 +28,16 @@ public class ReportServiceImpl implements ReportService {
 	public int ReportMultiDelete(ReportVO vo) {
 		return dao.ReportMultiDelete(vo);
 	}
+	@Override
+	public List<Integer> getBoardNoList(ReportVO vo) {
+		return dao.getBoardNoList(vo);
+	}
+	@Override
+	public void delreport(List<Integer> board_nos) {
+		dao.delreport(board_nos);	
+	}
+	@Override
+	public int insertReportContent(ReportVO vo) {
+		return dao.insertReportContent(vo);
+	}
 }
