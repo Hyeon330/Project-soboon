@@ -154,6 +154,7 @@ $(function() {
 		str +="<li>  </li>"
 		str +="<li>신고한사람</li>"
 		str +="<li>신고당한사람</li>"
+		str +="<li>카테고리</li>"
 		str +="<li>신고사유</li>"
 			
 		$.each(dataArr.reportList, function(i, data){
@@ -161,8 +162,8 @@ $(function() {
 			str +="<li><input type='checkbox' name='noList' value='"+data.no+"'></li>"
 			str+="<li>"+data.reporter+"</li>"
 			str+="<li>"+data.suspect+"</li>"
-			str+="<li>"+"<a href='/board/shareBoardView?no="+data.board_no+"'>"+data.board_no+"</a>"+ "번 " +data.report_content+"</li>"			
-			
+			str+="<li>"+data.category+"</li>"
+			str+="<li>"+"<a href='/board/"+data.category+"BoardView?no="+data.board_no+"'>"+data.board_no+"</a>"+ "번 " +data.report_content+"</li>"	
 		})
 		str+="</ul>";
 				

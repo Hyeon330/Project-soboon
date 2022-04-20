@@ -9,7 +9,7 @@ public class ReportVO {
 	private String report_content;
 	private int board_no;
 	private List<Integer> noList;
-	
+	private String category;
 	
 	public List<Integer> getNoList() {
 		return noList;
@@ -46,6 +46,12 @@ public class ReportVO {
 	}
 	public void setBoard_no(int board_no) {
 		this.board_no = board_no;
+	}
+	public String getCategory() {
+		return category;
+	}
+	public void setCategory(String category) {
+		this.category = category;
 	}
 	@Override
 	public String toString() {

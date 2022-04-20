@@ -10,7 +10,7 @@
 		select count(reporter) cnt from report
 	</select>
 	<select id="ReportList" resultType="ReportVO">
-		select no, reporter, suspect, report_content, board_no from report order by no limit ${recordPerPage} offset ${offsetIndex}
+		select r.no, reporter, suspect, report_content, board_no, b.category from report r join board b on r.board_no=b.no order by no limit ${recordPerPage} offset ${offsetIndex}
 	</select>
 	<delete id="ReportMultiDelete">
 		delete from report
