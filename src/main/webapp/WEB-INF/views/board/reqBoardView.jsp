@@ -129,7 +129,7 @@
 			  								<c:otherwise>
 			  									<div class="carousel-inner">
 							  					 	<div class="carousel-item active">
-														<img src="/img/thumbnail_req.jpg">
+														<img src="/img/thumbnail_request.jpg">
 													</div>
 						  					 	</div>
 			  								</c:otherwise>

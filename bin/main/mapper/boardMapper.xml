@@ -6,7 +6,7 @@
 	<insert id="boardInsert">
 		insert into board(userid, nickname, title, content, price,
 		img1, img2, img3, img4, category, large, medium, small)
-		value(#{userid}, #{nickname},#{title},#{content},#{price}, 
+		values(#{userid}, #{nickname},#{title},#{content},#{price}, 
 		#{img1}, #{img2}, #{img3}, #{img4}, #{category}, #{large}, #{medium}, #{small})
 	</insert>
 	<select id="selectList" resultType="BoardVO">

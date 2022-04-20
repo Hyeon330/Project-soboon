@@ -1,10 +1,14 @@
-$(() => {
+$(function() {
 	//닉네임 중복검사 (클릭시)
-	$('#button_overlapCheck').click((event) => {
+	$('#button_overlapCheck').click(function(){
 		event.preventDefault();
-		var nickname = $('#nickname').val();
-		var exNickname = $('#VO_nickname_hidden').text();
+		let nickname = $('#nickname').val();
+		let exNickname = $('#VO_nickname_hidden').val();
+		console.log('>>>>>>>>>',nickname);
+		console.log('>>>>>>>>>',exNickname);
 		if (nickname === exNickname) {
+			console.log(nickname);
+			console.log(exNickname);
 			$('#nicknameCheck').val("Y");
 			alert('기존 닉네임과 일치합니다.');
 		} else {

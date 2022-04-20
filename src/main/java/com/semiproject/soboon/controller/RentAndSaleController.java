@@ -262,6 +262,8 @@ public class RentAndSaleController {
 		// 현재 session에 있는 ID와 카테고리
 		vo.setUserid((String)request.getSession().getAttribute("logId")); 
 		vo.setNickname((String)request.getSession().getAttribute("nickName")); 
+		
+		System.out.println(vo.getUserid() +", "+ vo.getNickname());
 		vo.setCategory("sale");
 		
 		// 파일을 업로드할 폴더 절대경로
