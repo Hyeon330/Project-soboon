@@ -52,15 +52,13 @@
 						<div class="card">
 							<div class="embed-responsive embed-responsive-4by3">
 								<a href="/board/${listVo.category}View?no=${listVo.no}&category=${listVo.category}">
-									<c:if test="${listVo.img1}">
-										<div class="imgFilm">
-											<img src="/img/1.jpg" class="embed-responsive-item">
-										</div>
-									</c:if>
-									<c:if test="${listVo.img1!=null}">
-										<img src="/upload/${listVo.img1}" class="embed-responsive-item">
-									</c:if>
-									<span id="heart" class="card-img-overlay"><i class="fa fa-heart fa-lg"></i>&nbsp;${listVo.pick}</span>
+									<c:if test="${listVo.thumbnailImg==null}">
+     									<img src="/img/thumbnail_${listVo.category}.jpg" class="embed-responsive-item">
+     								</c:if>
+     								<c:if test="${listVo.img1!=null}">
+     									<img src="/upload/${listVo.img1}" class="embed-responsive-item">
+     								</c:if>
+     								<span id="heart" class="card-img-overlay"><i class="fa fa-heart fa-lg"></i>&nbsp;${listVo.pick}</span>
 								</a>
 							</div>
 							<div class="card-body cb">
@@ -68,7 +66,7 @@
 									<c:if test="${listVo.category == 'share'}">
 										<li style="font-size: 1.5em; font-weight: 900">나눔</li>
 									</c:if>
-									<c:if test="${listVo.category == 'lent'}">
+									<c:if test="${listVo.category == 'rent'}">
 										<li style="font-size: 1.5em; font-weight: 900">대여</li>
 									</c:if>
 									<c:if test="${listVo.category == 'sale'}">

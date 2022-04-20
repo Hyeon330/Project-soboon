@@ -133,6 +133,9 @@
 	padding-bottom: 10px;
 	font-size: 1.2em;
 	font-weight: 700;
+	overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
 }
 
 .card-body>ul>li:nth-child(5) {
