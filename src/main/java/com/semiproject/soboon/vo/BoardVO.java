@@ -29,18 +29,7 @@ public class BoardVO {
 	
 	// 여러 개 체크박스를 담을 변수
 	private List<Integer> noList;
-	
-//	@Override
-//	public String toString() {
-//		return "BoardVO [getNo()=" + getNo() + ", getUserid()=" + getUserid() + ", getTitle()=" + getTitle()
-//				+ ", getContent()=" + getContent() + ", getViews()=" + getViews() + ", getPick()=" + getPick()
-//				+ ", getWarn()=" + getWarn() + ", getCreatedate()=" + getCreatedate() + ", getThumbnailImg()="
-//				+ getThumbnailImg() + ", getImg1()=" + getImg1() + ", getImg2()=" + getImg2() + ", getImg3()="
-//				+ getImg3() + ", getImg4()=" + getImg4() + ", getCategory()=" + getCategory() + ", getPrice()="
-//				+ getPrice() + ", getDeleteFile()=" + Arrays.toString(getDeleteFile()) + ", getNickname()="
-//				+ getNickname() + ", getLarge()=" + getLarge() + ", getMedium()=" + getMedium() + ", getSmall()="
-//				+ getSmall() + ", getNoList()=" + getNoList() + "]";
-//	}
+
 	public int getNo() {
 		return no;
 	}
