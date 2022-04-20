@@ -25,11 +25,6 @@ public class BoardVO {
 	private int price;
 	private String nickname;
 	
-	// 여러 개 체크박스를 담을 변수
-	private List<Integer> noList;
-	// 삭제할 파일을 담을 변수
-	private String deleteFile[];
-	
 //	@Override
 //	public String toString() {
 //		return "BoardVO [getNo()=" + getNo() + ", getUserid()=" + getUserid() + ", getTitle()=" + getTitle()
@@ -41,7 +36,13 @@ public class BoardVO {
 //				+ getNickname() + ", getLarge()=" + getLarge() + ", getMedium()=" + getMedium() + ", getSmall()="
 //				+ getSmall() + ", getNoList()=" + getNoList() + "]";
 //	}
-
+	
+	// 삭제할 파일을 담을 변수
+	private String deleteFile[];
+	
+	// 여러 개 체크박스를 담을 변수
+	private List<Integer> noList;
+	
 	public int getNo() {
 		return no;
 	}
