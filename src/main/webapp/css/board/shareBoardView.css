@@ -39,7 +39,8 @@
 
 #titleInner{
 	font-weight:bold;
-	margin-left:20px;
+	margin-left:40px;
+	padding-left:40px;
 }
 
 #productIcon{
@@ -112,6 +113,11 @@
 
 .pb{
 	margin:20px;
+}
+
+.shareContent{
+	font-size:1.3em;
+	font-weight:700px;
 }
 
 .shareBoardComent{

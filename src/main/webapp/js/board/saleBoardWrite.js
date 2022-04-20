@@ -22,6 +22,10 @@ $(function(){
 			alert("🚫 내용을 입력해주세요");
 			return false;
 		}
+		if($("#price").val()==''){
+			alert("🚫 가격을 입력해주세요");
+			return false;
+		}
 	});
 	
 	$("#resetBtn").on('click', function(){
@@ -31,4 +35,6 @@ $(function(){
 	$("#backList").click(function(){
 		location.href="/board/saleBoardList";
 	})
+	
+
 });

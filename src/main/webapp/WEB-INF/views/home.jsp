@@ -60,7 +60,7 @@
 								<div class="card-body cb">
 									<ul>
 										<c:if test="${listVo.category == 'share'}"><li style="font-size:1.5em; font-weight:900">나눔</li></c:if>
-										<c:if test="${listVo.category == 'lent'}"><li style="font-size:1.5em; font-weight:900">대여</li></c:if>
+										<c:if test="${listVo.category == 'rent'}"><li style="font-size:1.5em; font-weight:900">대여</li></c:if>
 										<c:if test="${listVo.category == 'sale'}"><li style="font-size:1.5em; font-weight:900">판매</li></c:if>
 										<c:if test="${listVo.category == 'request'}"><li style="font-size:1.5em; font-weight:900">요청</li></c:if>
 										<li>${listVo.nickname}</li>

@@ -23,7 +23,7 @@
 				</tr>
 				<tr>
 					<td id="tbBody">
-						<input type="text" class="form-control" id="shareBoardTitle" placeholder="글 제목을 입력하세요."  name="title" maxlength="16"/>
+						<input type="text" class="form-control" id="shareBoardTitle" placeholder="글 제목을 입력하세요." name="title"/>
 					</td>
 				</tr>
 				<tr>

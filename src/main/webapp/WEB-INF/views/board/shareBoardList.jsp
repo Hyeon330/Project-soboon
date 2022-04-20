@@ -20,7 +20,7 @@
      							<c:if test="${listVo.img1!=null}">
      								<img src="/upload/${listVo.img1}" class="embed-responsive-item">
      							</c:if>
-    						<span id="heart" class="card-img-overlay"><i class="fa fa-heart fa-lg"></i><span class="iconValue">${listVo.pick}</span></span>
+    						<span id="heart" class="card-img-overlay"><i class="fa fa-heart fa-lg icon"></i><span class="iconValue">${listVo.pick}</span></span>
     					</a>
 	    			</div>
 					<div class="card-body cb">

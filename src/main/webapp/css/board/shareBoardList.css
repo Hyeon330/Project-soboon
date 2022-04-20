@@ -36,6 +36,10 @@
 	float:right;
 }
 
+.icon{
+	color:rgb(72, 97, 86);
+}
+
 #shareBoardTitle{
 	font-size:1.4em;
 	font-weight:bold;

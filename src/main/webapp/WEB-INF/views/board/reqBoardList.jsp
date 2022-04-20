@@ -15,12 +15,12 @@
 	    			<div class="embed-responsive embed-responsive-4by3">
      					<a href="/board/reqBoardView?no=${listVo.no}">
      							<c:if test="${listVo.thumbnailImg==null}">
-     								<img src="/img/thumbnail_req.jpg" class="embed-responsive-item">
+     								<img src="/img/thumbnail_request.jpg" class="embed-responsive-item">
      							</c:if>
      							<c:if test="${listVo.img1!=null}">
      								<img src="/upload/${listVo.img1}" class="embed-responsive-item">
      							</c:if>
-    						<span id="heart" class="card-img-overlay"><i class="fa fa-heart fa-lg"></i><span class="iconValue">${listVo.pick}</span></span>
+    						<span id="heart" class="card-img-overlay"><i class="fa fa-heart fa-lg icon"></i><span class="iconValue">${listVo.pick}</span></span>
     					</a>
 	    			</div>
 					<div class="card-body cb">
@@ -28,7 +28,7 @@
 							<li>${listVo.nickname}</li>
 							<li id="reqBoardTitle"><a href="/board/reqBoardView?no=${listVo.no}">${listVo.title}</a></li>
 							<li><i class="fa fa-location-arrow fa-lg"></i><span class="iconValue">${listVo.small}</span></li>
-							<li>${listVo.createdate}<span id="views"><i class="fa fa-eye fa-lg"></i><span class="iconValue">${listVo.views}</span></span></li>
+							<li>${listVo.createdate}<span id="views"><i class="fa fa-eye fa-lg icon"></i><span class="iconValue">${listVo.views}</span></span></li>
 						</ul>
 					</div>
 				</div>

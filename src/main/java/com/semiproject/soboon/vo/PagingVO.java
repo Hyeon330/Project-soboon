@@ -5,7 +5,7 @@ public class PagingVO {
 	private int startPage = 1;      // 시작페이지
 	private int endPage;			// 마지막페이지
 	private int recordPerPage = 12; // 한 페이지당 표시할 DB 레코드 수(글 개수)
-	private int memberPerPage = 10; // 한 페이지에 10명 레코드sj
+	private int memberPerPage = 10; // 한 페이지에 10명 레코드
 	private int onePageCount = 5;   // 하단에 한 번에 표시할 페이지 수
 	private int totalRecord;        // 게시글 총 개수(DB)
 	private int totalMember;		// 총 인원수
