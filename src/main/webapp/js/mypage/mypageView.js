@@ -132,7 +132,7 @@
 				if (p === dataArr.pVO.pageNum) {
 					pageStr += '<li class="page-item active"><a class="page-link"  href="javascript:void(0)" onclick="ml2('+ p + ', ' + num + ', ' + idx +')">' + p + '</a></li>';
 				} else {
-					pageStr += '<li class="page-item"><a class="page-link currentPage" href="javascript:void(0)" onclick="ml2('+ p + ', ' + num + ', ' + idx +')">' + p + '</a></li>';
+					pageStr += '<li class="page-item"><a class="page-link " href="javascript:void(0)" onclick="ml2('+ p + ', ' + num + ', ' + idx +')">' + p + '</a></li>';
 				}//if~else2	
 			}//if1
 		}//for
