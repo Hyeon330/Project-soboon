@@ -6,7 +6,7 @@
 <div class="container">
 	<div id="signupBox"><a href="/"><img src="/img/로고6.png" id="signupLogo"/></a></div>
 	<form method="post" action="/member/memberOk" id="memberFrm" onsubmit="return memberCheck()">
-		<ul>
+		<ul class="user-info">
 			<li>아이디</li>
 			<li>
 				<input type="text" class="signup-id" name="userid" id="userid" placeholder="아이디" />
@@ -60,7 +60,7 @@
 					<option value="">선택안함</option>
 				</select>
 			</li>
-			<li><input type="submit" class="btn signup-btn" id="signSub" value="가입하기" /></li>
+			<li class="regi-btn"><input type="submit" class="btn signup-btn" id="signSub" value="가입하기" /></li>
 		</ul>
 	</form>
 </div>
