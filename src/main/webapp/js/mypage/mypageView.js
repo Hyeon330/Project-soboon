@@ -132,9 +132,9 @@
 		pageStr += '<ul class="pagination" id="paging-mp">';
 		// 이전 페이지
 		if (dataArr.pVO.pageNum <= 1) {
-			pageStr += '<li class="page-item disabled"><a class="page-link" id="prevBtn" href="javascript:void(0)">&lsaquo;</a></li>';
+			pageStr += '<li class="page-item disabled"><a class="page-link" id="prevBtn" href="javascript:void(0)"><i class="fa fa-angle-left"></a></li>';
 		} else {
-			pageStr += '<li class="page-item"><a class="page-link" href="javascript:void(0)" id="prevBtn" onclick="ml2(' + (dataArr.pVO.pageNum - 1) + ', ' + num + ', ' + idx +')">&lsaquo;</a></li>';
+			pageStr += '<li class="page-item"><a class="page-link" href="javascript:void(0)" id="prevBtn" onclick="ml2(' + (dataArr.pVO.pageNum - 1) + ', ' + num + ', ' + idx +')"><i class="fa fa-angle-left"></a></li>';
 		}
 		//페이지
 		for (var p = dataArr.pVO.startPage; p < dataArr.pVO.onePageCount; p++) {
@@ -150,9 +150,9 @@
 
 		//다음 페이지
 		if (dataArr.pVO.pageNum >= dataArr.pVO.totalPage) {
-			pageStr += '<li class="page-item disabled"><a class="page-link" id="nextBtn" href="javascript:void(0)">&rsaquo;</a></li>';
+			pageStr += '<li class="page-item disabled"><a class="page-link" id="nextBtn" href="javascript:void(0)"><i class="fa fa-angle-right"></a></li>';
 		} else {
-			pageStr += '<li class="page-item"><a class="page-link" id="nextBtn" href="javascript:void(0)" onclick="ml2(' + (dataArr.pVO.pageNum + 1) + ', ' + num + ', ' + idx +')">&rsaquo;</a></li>';
+			pageStr += '<li class="page-item"><a class="page-link" id="nextBtn" href="javascript:void(0)" onclick="ml2(' + (dataArr.pVO.pageNum + 1) + ', ' + num + ', ' + idx +')"><i class="fa fa-angle-right"></a></li>';
 		}
 		pageStr += '</ul>';
 
@@ -200,9 +200,9 @@
 		pageStr += '<ul class="pagination" id="paging-mp">';
 		// 이전 페이지
 		if (dataArr.pVO.pageNum <= 1) {
-			pageStr += '<li class="page-item disabled"><a class="page-link" id="prevBtn" href="javascript:void(0)">&lsaquo;</a></li>';
+			pageStr += '<li class="page-item disabled"><a class="page-link" id="prevBtn" href="javascript:void(0)"><i class="fa fa-angle-left"></a></li>';
 		} else {
-			pageStr += '<li class="page-item"><a class="page-link" href="javascript:void(0)" id="prevBtn" onclick="ml2(' + (dataArr.pVO.pageNum - 1) + ', ' + num + ', ' + idx +')">&lsaquo;</a></li>';
+			pageStr += '<li class="page-item"><a class="page-link" href="javascript:void(0)" id="prevBtn" onclick="ml2(' + (dataArr.pVO.pageNum - 1) + ', ' + num + ', ' + idx +')"><i class="fa fa-angle-left"></a></li>';
 		}
 		//페이지
 		for (var p = dataArr.pVO.startPage; p < dataArr.pVO.onePageCount; p++) {
@@ -218,9 +218,9 @@
 
 		//다음 페이지
 		if (dataArr.pVO.pageNum >= dataArr.pVO.totalPage) {
-			pageStr += '<li class="page-item disabled"><a class="page-link" id="nextBtn" href="javascript:void(0)" >&rsaquo;</a></li>';
+			pageStr += '<li class="page-item disabled"><a class="page-link" id="nextBtn" href="javascript:void(0)" ><i class="fa fa-angle-right"></a></li>';
 		} else {
-			pageStr += '<li class="page-item"><a class="page-link" id="nextBtn" href="javascript:void(0)" onclick="ml2(' + (dataArr.pVO.pageNum + 1) + ', ' + num + ', ' + idx +')">&rsaquo;</a></li>';
+			pageStr += '<li class="page-item"><a class="page-link" id="nextBtn" href="javascript:void(0)" onclick="ml2(' + (dataArr.pVO.pageNum + 1) + ', ' + num + ', ' + idx +')"><i class="fa fa-angle-right"></a></li>';
 		}
 		pageStr += '</ul>';
 		/*-----------------------출력(print)----------------------------------------------------*/
@@ -266,9 +266,9 @@
 		pageStr += '<ul class="pagination" id="paging-mp">';
 		// 이전 페이지
 		if (dataArr.pVO.pageNum <= 1) {
-			pageStr += '<li class="page-item disabled"><a class="page-link" id="prevBtn" href="javascript:void(0)">&lsaquo;</a></li>';
+			pageStr += '<li class="page-item disabled"><a class="page-link" id="prevBtn" href="javascript:void(0)"><i class="fa fa-angle-left"></a></li>';
 		} else {
-			pageStr += '<li class="page-item"><a class="page-link" href="javascript:void(0)" id="prevBtn" onclick="ml2(' + (dataArr.pVO.pageNum - 1) + ', ' + num + ', ' + idx +')">&lsaquo;</a></li>';
+			pageStr += '<li class="page-item"><a class="page-link" href="javascript:void(0)" id="prevBtn" onclick="ml2(' + (dataArr.pVO.pageNum - 1) + ', ' + num + ', ' + idx +')"><i class="fa fa-angle-left"></a></li>';
 		}
 		//페이지
 		for (var p = dataArr.pVO.startPage; p < dataArr.pVO.onePageCount; p++) {
@@ -284,9 +284,9 @@
 
 		//다음 페이지
 		if (dataArr.pVO.pageNum >= dataArr.pVO.totalPage) {
-			pageStr += '<li class="page-item disabled"><a class="page-link" id="nextBtn" href="javascript:void(0)" >&rsaquo;</a></li>';
+			pageStr += '<li class="page-item disabled"><a class="page-link" id="nextBtn" href="javascript:void(0)" ><i class="fa fa-angle-right"></a></li>';
 		} else {
-			pageStr += '<li class="page-item"><a class="page-link" id="nextBtn" href="javascript:void(0)" onclick="ml2(' + (dataArr.pVO.pageNum + 1) + ', ' + num + ', ' + idx +')">&rsaquo;</a></li>';
+			pageStr += '<li class="page-item"><a class="page-link" id="nextBtn" href="javascript:void(0)" onclick="ml2(' + (dataArr.pVO.pageNum + 1) + ', ' + num + ', ' + idx +')"><i class="fa fa-angle-right"></a></li>';
 		}
 		pageStr += '</ul>';
 		/*-----------------------출력(print)----------------------------------------------------*/
