@@ -210,6 +210,7 @@
 			pageStr += '<li class="page-item"><a class="page-link" id="nextBtn" href="javascript:void(0)" onclick="ml2(' + (dataArr.pVO.pageNum + 1) + ', ' + num + ', ' + idx +')"><i class="fa fa-angle-right"></i></a></li>';
 		}
 		pageStr += '</ul>';
+		console.log(pageStr);
 		/*-----------------------출력(print)----------------------------------------------------*/
 		$('#myReplyCnt').html(dataArr.pVO.totalRecord);
 		$('#printFrm2').html(str);
@@ -276,6 +277,7 @@
 			pageStr += '<li class="page-item"><a class="page-link" id="nextBtn" href="javascript:void(0)" onclick="ml2(' + (dataArr.pVO.pageNum + 1) + ', ' + num + ', ' + idx +')"><i class="fa fa-angle-right"></i></a></li>';
 		}
 		pageStr += '</ul>';
+		console.log(pageStr);
 		/*-----------------------출력(print)----------------------------------------------------*/
 		$('#myPickCnt').html(dataArr.pVO.totalRecord);
 		$('#printFrm3').html(str);
