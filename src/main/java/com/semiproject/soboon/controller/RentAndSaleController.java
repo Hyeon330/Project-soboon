@@ -151,11 +151,14 @@ public class RentAndSaleController {
 				if(fileVO.getImg1()!=null || fileVO.getImg1()!="") {
 					fileVO = service.getFileName(vo.getNo());
 					fileList.add(fileVO.getImg1());
-				}else if(fileVO.getImg2()!=null || fileVO.getImg2()!="") {
+				}
+				if(fileVO.getImg2()!=null || fileVO.getImg2()!="") {
 					fileList.add(fileVO.getImg2());
-				}else if(fileVO.getImg3()!=null || fileVO.getImg3()!="") {
+				}
+				if(fileVO.getImg3()!=null || fileVO.getImg3()!="") {
 					fileList.add(fileVO.getImg3());
-				}else if(fileVO.getImg4()!=null || fileVO.getImg4()!="") {
+				}
+				if(fileVO.getImg4()!=null || fileVO.getImg4()!="") {
 					fileList.add(fileVO.getImg4());
 				}
 			}
@@ -349,11 +352,14 @@ public class RentAndSaleController {
 				if(fileVO.getImg1()!=null || fileVO.getImg1()!="") {
 					fileVO = service.getFileName(vo.getNo());
 					fileList.add(fileVO.getImg1());
-				}else if(fileVO.getImg2()!=null || fileVO.getImg2()!="") {
+				}
+				if(fileVO.getImg2()!=null || fileVO.getImg2()!="") {
 					fileList.add(fileVO.getImg2());
-				}else if(fileVO.getImg3()!=null || fileVO.getImg3()!="") {
+				}
+				if(fileVO.getImg3()!=null || fileVO.getImg3()!="") {
 					fileList.add(fileVO.getImg3());
-				}else if(fileVO.getImg4()!=null || fileVO.getImg4()!="") {
+				}
+				if(fileVO.getImg4()!=null || fileVO.getImg4()!="") {
 					fileList.add(fileVO.getImg4());
 				}
 			}

@@ -26,12 +26,12 @@ import com.semiproject.soboon.vo.MemberVO;
 import com.semiproject.soboon.vo.MyPageVO;
 import com.semiproject.soboon.vo.PickVO;
 import com.semiproject.soboon.vo.ReplyVO;
-import com.semiproject.soboon.vo.myPagingVO;
+import com.semiproject.soboon.vo.MyPagingVO;
 
 
 @RequestMapping("/mypage/")
 @Controller
-public class mypageController {
+public class MypageController {
 	@Inject
 	EditService service;
 	
@@ -43,7 +43,6 @@ public class mypageController {
 		
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("VO", vo);
-		System.out.println("param.pageName--->"+request.getParameter("pageName"));
 		mav.setViewName("mypage/mypageEditForm");
 		return mav;
 	}
@@ -69,7 +68,6 @@ public class mypageController {
 				entity = new ResponseEntity<String>(msg, headers, HttpStatus.BAD_REQUEST);
 			}
 		} catch (Exception e) {//수정오류
-			System.out.println("회원 정보 수정 중에 오류 발쌩!!!");
 			String msg = "<script>alert('회원정보수정중 오류발생하였습니다.'); history.back();</script>";
 			entity = new ResponseEntity<String>(msg, headers, HttpStatus.BAD_REQUEST);
 		}
@@ -126,14 +124,13 @@ public class mypageController {
 	}
 	@GetMapping("mypost")
 	@ResponseBody
-	public Map<String, Object> mypost(myPagingVO pVO, HttpSession session) {
+	public Map<String, Object> mypost(MyPagingVO pVO, HttpSession session) {
 		// 세션에 저장된 로그인 아이디 정보 가져오기
 		String userid = (String) session.getAttribute("logId");
 		// 맵 생성
 		Map<String, Object> map = new HashMap<String, Object>();
 		// 현재 로그인된 아이디가 쓴 게시글 수 가져오기
 		pVO.setTotalRecord(service.mypostCount(userid));
-		System.out.println("pVO.totalReocrd--->"+pVO.getTotalRecord());		
 		// 페이지에 해당하는 로그인된 회원이 쓴 게시글 목록
 		List<BoardVO> list = service.mypostList(userid, pVO);
 		map.put("pVO", pVO);
@@ -157,12 +154,11 @@ public class mypageController {
 		}else if(index==3) {
 			result = service.mypickMultiDelete(kVO);
 		}
-		System.out.println(result);
 		return  result;
 	}
 	@GetMapping("mycomment")
 	@ResponseBody
-	public Map<String,Object> showMyComment(myPagingVO pVO, HttpSession session) {
+	public Map<String,Object> showMyComment(MyPagingVO pVO, HttpSession session) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		String userid = (String)session.getAttribute("logId");
 		pVO.setTotalRecord(service.myreplyCount(userid));
@@ -174,7 +170,7 @@ public class mypageController {
 	}
 	@GetMapping("mypick")
 	@ResponseBody
-	public Map<String,Object> showMyPick(myPagingVO pVO, HttpSession session) {
+	public Map<String,Object> showMyPick(MyPagingVO pVO, HttpSession session) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		String userid = (String)session.getAttribute("logId");
 		pVO.setTotalRecord(service.mypickCount(userid));

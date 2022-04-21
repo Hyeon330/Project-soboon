@@ -5,7 +5,7 @@
 }
 
 .rbi img{
-   width:440px;
+   width:520px;
    height:330px;
 }
 
@@ -14,12 +14,12 @@
 }
   
 .carouselslide{
-   width:440px;
+   width:520px;
    height:330px;
    margin:0 auto;
 }
 .carousel-item.active{
-   width:440px;
+   width:520px;
    height:330px;
    margin:0 auto;
 }

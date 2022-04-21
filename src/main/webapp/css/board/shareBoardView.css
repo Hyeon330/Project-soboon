@@ -5,7 +5,7 @@
 }
 
 .sbi img{
-   width:440px;
+   width:520px;
    height:330px;
 }
 
@@ -14,12 +14,12 @@
 }
   
 .carouselslide{
-   width:4800px;
+   width:520px;
    height:330px;
    margin:0 auto;
 }
 .carousel-item.active{
-   width:480px;
+   width:520px;
    height:330px;
    margin:0 auto;
 }
