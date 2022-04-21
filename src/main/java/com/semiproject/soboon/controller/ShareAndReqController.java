@@ -169,11 +169,14 @@ public class ShareAndReqController {
 				if(fileVO.getImg1()!=null && fileVO.getImg1()!="") {
 					fileVO = service.getFileName(vo.getNo());
 					fileList.add(fileVO.getImg1());
-				}else if(fileVO.getImg2()!=null && fileVO.getImg2()!="") {
+				}
+				if(fileVO.getImg2()!=null && fileVO.getImg2()!="") {
 					fileList.add(fileVO.getImg2());
-				}else if(fileVO.getImg3()!=null && fileVO.getImg3()!="") {
+				}
+				if(fileVO.getImg3()!=null && fileVO.getImg3()!="") {
 					fileList.add(fileVO.getImg3());
-				}else if(fileVO.getImg4()!=null && fileVO.getImg4()!="") {
+				}
+				if(fileVO.getImg4()!=null && fileVO.getImg4()!="") {
 					fileList.add(fileVO.getImg4());
 				}
 			}
@@ -185,7 +188,6 @@ public class ShareAndReqController {
 			}
 			// rename하고 기존 파일 수정하기
 			RelateUploadFile.fileRenameAndUpdate(vo, path, fileList, newFileList, request);
-			System.out.println(vo.getImg1()+"#"+vo.getImg2()+"#"+vo.getImg3()+"#"+vo.getImg4());
 			// DB 업데이트
 			int cnt = service.updateEditView(vo);
 			
@@ -367,11 +369,14 @@ public class ShareAndReqController {
 				if(fileVO.getImg1()!=null || fileVO.getImg1()!="") {
 					fileVO = service.getFileName(vo.getNo());
 					fileList.add(fileVO.getImg1());
-				}else if(fileVO.getImg2()!=null || fileVO.getImg2()!="") {
+				}
+				if(fileVO.getImg2()!=null || fileVO.getImg2()!="") {
 					fileList.add(fileVO.getImg2());
-				}else if(fileVO.getImg3()!=null || fileVO.getImg3()!="") {
+				}
+				if(fileVO.getImg3()!=null || fileVO.getImg3()!="") {
 					fileList.add(fileVO.getImg3());
-				}else if(fileVO.getImg4()!=null || fileVO.getImg4()!="") {
+				}
+				if(fileVO.getImg4()!=null || fileVO.getImg4()!="") {
 					fileList.add(fileVO.getImg4());
 				}
 			}

@@ -63,18 +63,18 @@
 	width: 5%;
 }
 #fake{
-	border:1px solid green;
-	background:#D5DAD4;
 	height:30px;
+	border: 1px solid green;
 	border-radius:4px;
+	background:#D5DAD4;
 	color:green;
 }
 #multiDel{
-	border:1px solid red;
-	background:#D5DAD4;
 	height:30px;
+	border: 1px solid red;
 	border-radius:4px;
-	color:red;
+	background:#D5DAD4;
+	color:red;	
 }
 
 #prevBtn, #nextBtn{

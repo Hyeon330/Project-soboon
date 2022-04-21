@@ -21,6 +21,9 @@ nav>hr{
 	line-height:50px;
 	text-align:center;
 }
+.topTagBtn:hover{
+	cursor: pointer;
+}
 
 /*!!!!!!!!!!로고!!!!!!!!!!*/
 #logoImg{

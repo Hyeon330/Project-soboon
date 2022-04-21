@@ -41,6 +41,7 @@
 	display: inline-block;
 	position: relative;
 	width: 49%;
+	float: right;
 }
 
 .slide>ul>li>img {
