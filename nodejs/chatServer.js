@@ -53,10 +53,6 @@ io.sockets.on('connection', (socket) => {
             conn.execute(insertMsgSql, [data.sender, data.receiver, data.msg], () => {});
         }
         
-        // var selectMsgSql = 'select * from chat ';
-        // selectMsgSql += 'where chatno=( ';
-        // selectMsgSql += 'select max(chatno) from chat ';
-        // selectMsgSql += 'where (sender=? and receiver=?))';
         var selectMsgSql = 'select * from chat ';
         selectMsgSql += 'where sender=? and receiver=? ';
         selectMsgSql += 'order by chatno desc limit 1';

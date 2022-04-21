@@ -103,7 +103,7 @@
 		// 프로필 카운터(mypost-board)
 		//헤더
 		str += "<ul>";
-		str += "<li><input type='checkbox' id='allCheck'/>&nbsp;전체선택</li>";
+		str += "<li><input type='checkbox' id='allCheck'/></li>";
 		str += "<li>제목</li>";
 		str += "<li>조회수</li>";
 		str += "<li>작성일</li>";
@@ -134,10 +134,10 @@
 		if (dataArr.pVO.pageNum <= 1) {
 			pageStr += '<li class="page-item disabled"><a class="page-link" id="prevBtn" href="javascript:void(0)">&lsaquo;</a></li>';
 		} else {
-			pageStr += '<li class="page-item"><a class="page-link" href="javascript:void(0)" id="prevBtn" onclick="ml2(' + (dataArr.pVO.pageNum - 1) + ', ' + num + ', ' + idx +')">&lsaquo;</a></li>';
+			pageStr += '<li class="page-item"><a class="page-link" href="javascript:void(0)" id="prevBtn" onclick="prev(' + (dataArr.pVO.pageNum - 1) + ', ' + num + ', ' + idx +')">&lsaquo;</a></li>';
 		}
 		//페이지
-		for (var p = dataArr.pVO.startPage; p < dataArr.pVO.onePageCount; p++) {
+		for (var p = dataArr.pVO.startPage; p < dataArr.pVO.startPage+dataArr.pVO.onePageCount-1; p++) {
 			// 총 페이지수보다 출력할 페이지 번호가 작을 때
 			if (p <= dataArr.pVO.totalPage) {
 				if (p === dataArr.pVO.pageNum) {
@@ -152,7 +152,7 @@
 		if (dataArr.pVO.pageNum >= dataArr.pVO.totalPage) {
 			pageStr += '<li class="page-item disabled"><a class="page-link" id="nextBtn" href="javascript:void(0)">&rsaquo;</a></li>';
 		} else {
-			pageStr += '<li class="page-item"><a class="page-link" id="nextBtn" href="javascript:void(0)" onclick="ml2(' + (dataArr.pVO.pageNum + 1) + ', ' + num + ', ' + idx +')">&rsaquo;</a></li>';
+			pageStr += '<li class="page-item"><a class="page-link" id="nextBtn" href="javascript:void(0)" onclick="next(' + (dataArr.pVO.pageNum + 1) + ', ' + num + ', ' + idx +')">&rsaquo;</a></li>';
 		}
 		pageStr += '</ul>';
 
@@ -175,7 +175,7 @@
 		// 프로필 카운터(mypost-board)
 		//헤더
 		str += "<ul>";
-		str += "<li><input type='checkbox' id='allCheck2'/>&nbsp;전체선택</li>";
+		str += "<li><input type='checkbox' id='allCheck2'/></li>";
 		str += "<li>댓글</li>";
 		str += "<li>제목</li>";
 		str += "<li>작성일</li>";
@@ -202,10 +202,10 @@
 		if (dataArr.pVO.pageNum <= 1) {
 			pageStr += '<li class="page-item disabled"><a class="page-link" id="prevBtn" href="javascript:void(0)">&lsaquo;</a></li>';
 		} else {
-			pageStr += '<li class="page-item"><a class="page-link" href="javascript:void(0)" id="prevBtn" onclick="ml2(' + (dataArr.pVO.pageNum - 1) + ', ' + num + ', ' + idx +')">&lsaquo;</a></li>';
+			pageStr += '<li class="page-item"><a class="page-link" href="javascript:void(0)" id="prevBtn" onclick="prev(' + (dataArr.pVO.pageNum - 1) + ', ' + num + ', ' + idx +')">&lsaquo;</a></li>';
 		}
 		//페이지
-		for (var p = dataArr.pVO.startPage; p < dataArr.pVO.onePageCount; p++) {
+		for (var p = dataArr.pVO.startPage; p < dataArr.pVO.startPage+dataArr.pVO.onePageCount-1; p++) {
 			// 총 페이지수보다 출력할 페이지 번호가 작을 때
 			if (p <= dataArr.pVO.totalPage) {
 				if (p === dataArr.pVO.pageNum) {
@@ -220,7 +220,7 @@
 		if (dataArr.pVO.pageNum >= dataArr.pVO.totalPage) {
 			pageStr += '<li class="page-item disabled"><a class="page-link" id="nextBtn" href="javascript:void(0)" >&rsaquo;</a></li>';
 		} else {
-			pageStr += '<li class="page-item"><a class="page-link" id="nextBtn" href="javascript:void(0)" onclick="ml2(' + (dataArr.pVO.pageNum + 1) + ', ' + num + ', ' + idx +')">&rsaquo;</a></li>';
+			pageStr += '<li class="page-item"><a class="page-link" id="nextBtn" href="javascript:void(0)" onclick="next(' + (dataArr.pVO.pageNum + 1) + ', ' + num + ', ' + idx +')">&rsaquo;</a></li>';
 		}
 		pageStr += '</ul>';
 		/*-----------------------출력(print)----------------------------------------------------*/
@@ -242,7 +242,7 @@
 		// 프로필 카운터(mypost-board)
 		//헤더
 		str += "<ul>";
-		str += "<li><input type='checkbox' id='allCheck3'/>&nbsp;전체선택</li>";
+		str += "<li><input type='checkbox' id='allCheck3'/></li>";
 		str += "<li>제목</li>";
 		str += "<li>닉네임</li>";
 		str += "<li>작성일</li>";
@@ -268,10 +268,10 @@
 		if (dataArr.pVO.pageNum <= 1) {
 			pageStr += '<li class="page-item disabled"><a class="page-link" id="prevBtn" href="javascript:void(0)">&lsaquo;</a></li>';
 		} else {
-			pageStr += '<li class="page-item"><a class="page-link" href="javascript:void(0)" id="prevBtn" onclick="ml2(' + (dataArr.pVO.pageNum - 1) + ', ' + num + ', ' + idx +')">&lsaquo;</a></li>';
+			pageStr += '<li class="page-item"><a class="page-link" href="javascript:void(0)" id="prevBtn" onclick="prev(' + (dataArr.pVO.pageNum - 1) + ', ' + num + ', ' + idx +')">&lsaquo;</a></li>';
 		}
 		//페이지
-		for (var p = dataArr.pVO.startPage; p < dataArr.pVO.onePageCount; p++) {
+		for (var p = dataArr.pVO.startPage; p < dataArr.pVO.startPage+dataArr.pVO.onePageCount-1; p++) {
 			// 총 페이지수보다 출력할 페이지 번호가 작을 때
 			if (p <= dataArr.pVO.totalPage) {
 				if (p === dataArr.pVO.pageNum) {
@@ -286,7 +286,7 @@
 		if (dataArr.pVO.pageNum >= dataArr.pVO.totalPage) {
 			pageStr += '<li class="page-item disabled"><a class="page-link" id="nextBtn" href="javascript:void(0)" >&rsaquo;</a></li>';
 		} else {
-			pageStr += '<li class="page-item"><a class="page-link" id="nextBtn" href="javascript:void(0)" onclick="ml2(' + (dataArr.pVO.pageNum + 1) + ', ' + num + ', ' + idx +')">&rsaquo;</a></li>';
+			pageStr += '<li class="page-item"><a class="page-link" id="nextBtn" href="javascript:void(0)" onclick="next(' + (dataArr.pVO.pageNum + 1) + ', ' + num + ', ' + idx +')">&rsaquo;</a></li>';
 		}
 		pageStr += '</ul>';
 		/*-----------------------출력(print)----------------------------------------------------*/
@@ -314,7 +314,82 @@
 			onePageRecord : num
 		}
 		console.log("data.onePageRecord", data.onePageRecord);
-
+		$.ajax({
+			url : url,
+			dateType : 'json',
+			data : data,
+			success : function(dataArr) {
+				if(idx===1) {
+					showMyPost(dataArr, num);
+				}else if(idx===2) {
+					showMyComment(dataArr, num);
+				}else {
+					showMyPick(dataArr, num);
+				}
+			}
+		});
+	}
+	
+	function prev(p, num, idx) {
+		let url = "";
+		if(idx===1) {
+			url = "/mypage/mypost";
+		}else if(idx===2) {
+			url = "/mypage/mycomment";
+		}else {
+			url = "/mypage/mypick";
+		}
+		console.log(url);
+		if(dataArr.pVO.pageNum===dataArr.pVO.startPage) {
+			data = {
+			pageNum : p,
+			onePageRecord : num,
+			startPage : dataArr.pVO.pageNum - dataArr.pVO.onePageCount
+			}
+		}else {
+			data = {
+			pageNum : p,
+			onePageRecord : num
+			}
+		}
+		$.ajax({
+			url : url,
+			dateType : 'json',
+			data : data,
+			success : function(dataArr) {
+				if(idx===1) {
+					showMyPost(dataArr, num);
+				}else if(idx===2) {
+					showMyComment(dataArr, num);
+				}else {
+					showMyPick(dataArr, num);
+				}
+			}
+		});
+	}
+	
+	function next(p, num, idx) {
+		let url = "";
+		if(idx===1) {
+			url = "/mypage/mypost";
+		}else if(idx===2) {
+			url = "/mypage/mycomment";
+		}else {
+			url = "/mypage/mypick";
+		}
+		console.log(url);
+		if(dataArr.pVO.pageNum%dataArr.pVO.onePageCount===0){
+			data = {
+			pageNum : p,
+			onePageRecord : num,
+			startPage : p
+			}
+		}else {
+			data = {
+			pageNum : p,
+			onePageRecord : num
+			}
+		}
 		$.ajax({
 			url : url,
 			dateType : 'json',

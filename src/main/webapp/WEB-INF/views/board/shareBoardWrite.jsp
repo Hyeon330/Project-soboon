@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<link rel="stylesheet" href="/css/shareBoardWrite.css" type="text/css"/>
-<script src="/js/shareBoardWrite.js"></script>
-<script src="/js/boardaddrDialog.js"></script>
+<link rel="stylesheet" href="/css/board/shareBoardWrite.css" type="text/css"/>
+<script src="/js/board/shareBoardWrite.js"></script>
+<script src="/js/board/boardaddrDialog.js"></script>
 <div class="container">
 	<br/>
 	<form class="form-group" method="post" action="/board/shareBoardWriteOk?category=share" id="shareForm" enctype="multipart/form-data">
@@ -23,7 +23,7 @@
 				</tr>
 				<tr>
 					<td id="tbBody">
-						<input type="text" class="form-control" id="shareBoardTitle" placeholder="글 제목을 입력하세요."  name="title" maxlength="16"/>
+						<input type="text" class="form-control" id="shareBoardTitle" placeholder="글 제목을 입력하세요." name="title"/>
 					</td>
 				</tr>
 				<tr>

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<link rel="stylesheet" href="/css/shareBoardList.css" type="text/css"/>
-<script src="/js/shareBoardList.js"></script>
+<link rel="stylesheet" href="/css/board/shareBoardList.css" type="text/css"/>
+<script src="/js/board/shareBoardList.js"></script>
 <div class="container">
 	<br/>
 		<h1 id="shareBrd">나눔 게시판</h1>
@@ -15,12 +15,12 @@
 	    			<div class="embed-responsive embed-responsive-4by3">
      					<a href="/board/shareBoardView?no=${listVo.no}">
      							<c:if test="${listVo.thumbnailImg==null}">
-     								<img src="/img/share.jpg" class="embed-responsive-item">
+     								<img src="/img/thumbnail_share.jpg" class="embed-responsive-item">
      							</c:if>
      							<c:if test="${listVo.img1!=null}">
      								<img src="/upload/${listVo.img1}" class="embed-responsive-item">
      							</c:if>
-    						<span id="heart" class="card-img-overlay"><i class="fa fa-heart fa-lg"></i><span class="iconValue">${listVo.pick}</span></span>
+    						<span id="heart" class="card-img-overlay"><i class="fa fa-heart fa-lg icon"></i><span class="iconValue">${listVo.pick}</span></span>
     					</a>
 	    			</div>
 					<div class="card-body cb">

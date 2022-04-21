@@ -6,11 +6,11 @@
 	<insert id="boardInsert">
 		insert into board(userid, nickname, title, content, price,
 		img1, img2, img3, img4, category, large, medium, small)
-		value(#{userid}, #{nickname},#{title},#{content},#{price}, 
+		values(#{userid}, #{nickname},#{title},#{content},#{price}, 
 		#{img1}, #{img2}, #{img3}, #{img4}, #{category}, #{large}, #{medium}, #{small})
 	</insert>
 	<select id="selectList" resultType="BoardVO">
-		select no, thumbnailImg, img1, pick, nickname, title, pick,
+		select no, thumbnailImg, img1, pick, nickname, title, pick, price,
 		views, small, category, date_format(createdate,"%m/%d %H:%i") createdate
 		from board where category = #{param2.category} and small = #{param2.small}
 		<if test="param3!=null">
@@ -44,7 +44,7 @@
 		where no=${no} and userid=#{userid}
 	</update>
 	<select id="getFileName" resultType="BoardVO">
-		select thumbnailImg, img1, img2, img3 from board where no=${param1}
+		select thumbnailImg, img1, img2, img3, img4 from board where no=${param1}
 	</select>
 	<delete id="deleteView">
 		delete from board where no=#{param1} and userid=#{param2}

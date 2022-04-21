@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<link rel="stylesheet" href="/css/saleBoardEdit.css" type="text/css"/>
-<script src="/js/saleBoardEdit.js"></script>
+<link rel="stylesheet" href="/css/board/saleBoardEdit.css" type="text/css"/>
+<script src="/js/board/saleBoardEdit.js"></script>
 <div class="container">
 	<br/>
 	<form class="form-group" method="post" action="/board/saleBoardEditOk?no=${bvo.no}" id="saleEditForm" enctype="multipart/form-data">
@@ -14,7 +14,7 @@
 			<tbody>
 				<tr>
 					<td id="tbBody">
-						<input type="text" class="form-control col-7" id="saleBoardTitle" placeholder="글 제목을 입력하세요."  name="title" maxlength="16" value="${bvo.title}"/>
+						<input type="text" class="form-control col-7" id="saleBoardTitle" placeholder="글 제목을 입력하세요."  name="title" value="${bvo.title}"/>
 						<span class="form-control col-2">금&nbsp;&nbsp;액</span>
 						<input type="number" class="form-control col-3" name="price" placeholder="금액을 입력하세요." value="${bvo.price}"/>
 					</td>

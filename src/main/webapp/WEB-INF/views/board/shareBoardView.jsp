@@ -1,17 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<link rel="stylesheet" href="/css/shareBoardView.css" type="text/css"/>
-<script src="/js/boardViewReply.js"></script>
-<script src="/js/rentBoardView.js"></script>
+<link rel="stylesheet" href="/css/board/shareBoardView.css" type="text/css"/>
+<link rel="stylesheet" href="/css/board/boardViewReply.css" type="text/css"/>
+<script src="/js/board/boardViewReply.js"></script>
+<script src="/js/board/boardViewPick.js"></script>
 <script>
 	let nickname = "${nickName}";
 
 	$(function(){
+		
 		$("#shareBoardDel").click(function(){
 			if(confirm("삭제하시겠어요?")){
 				location.href="/board/shareBoardDel?no=${viewVo.no}";
 			}	
 		});
+		
+		// 이미 글에 찜한 유저 구하기
+		if('${alrPick.no}'!=''){
+			$("#pick1").addClass("pick2");
+		}else{
+			$("#pick1").removeClass("pick2");
+		}
 		
 	});
 </script>
@@ -78,10 +87,10 @@
 						   		</div>
 								<!-- Left and right controls -->
 								<a class="carousel-control-prev" href="#demo" data-slide="prev">
-									  <span class="carousel-control-prev-icon"></span>
+									 <span class="carousel-control-prev-icon"></span>
 								</a>
 								<a class="carousel-control-next" href="#demo" data-slide="next">
-									  <span class="carousel-control-next-icon"></span>
+									 <span class="carousel-control-next-icon"></span>
 								</a>
 			  				</c:when>
 			  				<c:otherwise>
@@ -121,9 +130,9 @@
 			  								<c:otherwise>
 			  									<div class="carousel-inner">
 							  					 	<div class="carousel-item active">
-														<img src="/img/share.jpg">
+														<img src="/img/thumbnail_share.jpg">
 													</div>
-						  					 </div>
+						  					 	</div>
 			  								</c:otherwise>
 			  							</c:choose>
 			  						</c:otherwise>
@@ -140,19 +149,12 @@
 		<div class="col-6 sb">
 			<div id="productTitle">
 				<span id="category" title="${viewVo.no}">나눔</span>
-				<h2><span id="titleInner">${viewVo.title}</span></h2>
+				<h2 id="titleInner">${viewVo.title}</h2>
 			</div>
 			<hr/>
 			<div id="productIcon">
 			<c:if test="${logId!=viewVo.userid}">
-				<div id="pickDiv">
-					<c:if test="${alrPick.userid==null}">
-						<input type="button" class="btn" id="pick1" value="찜하기"/>
-					</c:if>
-					<c:if test="${alrPick.userid==logId}">
-						<input type="button" class="btn" id="pick2" value="찜하기"/>
-					</c:if>
-				</div>
+				<input type="button" class="btn pick1" id="pick1" value="찜하기"/>
 			</c:if>
 			<c:if test="${logId==viewVo.userid}">
 				<div class="proIcon"><i class="fa fa-heart fa-lg"></i><span class="iconValue">${viewVo.pick}</span></div>
@@ -186,13 +188,12 @@
 					</div>
 				</c:if>
 			</div>
-			<!-- 글내용 -->
-			<div class="shareBrdContent">
-				<hr/>
-				<div>${viewVo.content}</div>
-			</div>
 		</div>
-		
+		<!-- 글내용 -->
+		<div class="col-12 shareContent">
+			<hr/>
+			<div>${viewVo.content}</div>
+		</div>
 		<!-- 댓글 -->
 		<div class="col-12 rp">
 			<hr/>

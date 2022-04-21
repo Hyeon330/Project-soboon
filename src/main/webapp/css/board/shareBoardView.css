@@ -1,0 +1,161 @@
+@charset "UTF-8";
+/*이미지*/
+.sbi{
+   padding-top:130px;
+}
+
+.sbi img{
+   width:440px;
+   height:330px;
+}
+
+.sb{
+   margin-top:100px;   
+}
+  
+.carouselslide{
+   width:440px;
+   height:330px;
+   margin:0 auto;
+}
+.carousel-item.active{
+   width:440px;
+   height:330px;
+   margin:0 auto;
+}
+/*상세페이지*/
+#category{
+	float:left;
+	border: 4px solid rgb(72, 97, 86);
+	background : rgb(72, 97, 86);
+	padding : 6px 10px;
+	color : white;
+	border-radius:4px;
+}
+/*제목*/
+#productTitle{
+	margin:10px 0;
+}
+
+#titleInner{
+	font-weight:bold;
+	margin-left:40px;
+	padding-left:40px;
+}
+
+#productIcon{
+	display:flex;
+	justify-content:space-around;
+	margin:20px 10px;
+}
+
+.proIcon{
+	margin-top:10px;
+}
+
+.pick1{
+ 	background-color: transparent;
+	border:4px solid rgb(72, 97, 86);
+}
+
+.pick2{
+	background:rgb(72, 97, 86);
+	color:white;
+}
+
+#proWarn{
+	background-color: gray;
+	color:white;
+}
+ 
+.iconValue{
+	margin-left:10px;
+}
+
+/*유저 정보*/
+#userInfo{
+	display:flex;
+	margin:20px 0;
+}
+
+#userInfo>div:nth-child(1){
+	margin-left:10px;	
+}
+ 
+#userinfoInner{
+ 	font-size:1.2em;
+ 	margin:10px;
+ 	font-weight:bold;
+ 	margin: 0 auto;
+ 	margin-top:10px;
+}
+
+#userinfoInner>div:nth-child(n+1){
+	margin:0 0 10px 20px;
+}
+
+/*버튼*/
+#joinChat, #shareBoardEdit{
+	background-color: rgb(72, 97, 86);
+	color:white;
+	padding:10px 30px;
+}
+
+#shareBoardDel{
+	background-color: gray;
+	color:white;
+	padding:10px 30px;
+}
+
+#btnSpace{
+	margin:20px;
+}
+
+.pb{
+	margin:20px;
+}
+
+.shareContent{
+	font-size:1.3em;
+	font-weight:700px;
+}
+
+.shareBoardComent{
+	padding: 12px;
+	border: none;
+	border-radius:10px;
+	outline:none;
+	resize:none;
+	font-size: 16px;
+	background-color:#FAF6F3;
+	margin:20px 20px 0 0;
+}
+
+/*top효과*/
+#shareBoard{
+	border-top-left-radius:10px;
+	border-top-right-radius:10px;
+	background-color:rgb(213, 218, 212);
+	color:rgb(72, 97, 86);
+	margin-top:5px;
+}
+
+#sharetag{
+	background:rgb(213, 218, 212);
+	color:rgb(72, 97, 86);
+	border-top-left-radius:20px;
+	border-top-right-radius:20px;
+	margin-top:5px;
+}
+#renttag, #saletag, #requesttag{
+	height:50px;
+}
+#renttag:hover, #saletag:hover, #requesttag:hover{
+	background:rgb(142, 158, 139) !important;
+	color:rgb(72, 97, 86);
+	border-top-left-radius:20px;
+	border-top-right-radius:20px;
+	height:45px;
+	margin-top:5px;
+	cursor:pointer;
+}

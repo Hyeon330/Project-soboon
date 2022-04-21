@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<link rel="stylesheet" href="/css/saleBoardWrite.css" type="text/css"/>
-<script src="/js/saleBoardWrite.js"></script>
-<script src="/js/boardaddrDialog.js"></script>
+<link rel="stylesheet" href="/css/board/saleBoardWrite.css" type="text/css"/>
+<script src="/js/board/saleBoardWrite.js"></script>
+<script src="/js/board/boardaddrDialog.js"></script>
 <div class="container">
 	<br/>
 	<form class="form-group" method="post" action="/board/saleBoardWriteOk?category=sale" id="saleForm" enctype="multipart/form-data">
@@ -23,9 +23,9 @@
 				</tr>
 				<tr>
 					<td id="tbBody">
-						<input type="text" class="form-control" id="saleBoardTitle" placeholder="글 제목을 입력하세요."  name="title" maxlength="16"/>
+						<input type="text" class="form-control" id="saleBoardTitle" placeholder="글 제목을 입력하세요."  name="title"/>
 						<span class="form-control col-2">금&nbsp;&nbsp;액</span>	
-						<input type="number" class="form-control col-3" name="price" placeholder="금액을 입력하세요."/>
+						<input type="number" class="form-control col-3" name="price" id="price" placeholder="금액을 입력하세요."/>
 					</td>
 				</tr>
 				<tr>

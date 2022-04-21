@@ -111,8 +111,6 @@
 
 #chatRightClick{
 	position: fixed;
-	top: 0px;
-	left: 0px;
 	display: none;
 	background: #fff;
 	border: 1px solid black;

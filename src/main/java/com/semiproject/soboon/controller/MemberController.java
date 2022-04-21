@@ -114,11 +114,11 @@ public class MemberController {
 //		// 클라이언트의 이메일이 존재할 때 세션에 해당 이메일과 토큰 등록
 //		System.out.println(kakao.getUserInfo("email"));
 		if(userInfo.get("email") != null) {
-			
 			session.setAttribute("logId", userInfo.get("email"));
 			session.setAttribute("access_Token", access_Token);
 			session.setAttribute("logStatus", "Y");
 			session.setAttribute("userInfo", userInfo);
+			session.setAttribute("nickName", userInfo.get("nickname"));
 		}
 		attr.addFlashAttribute("code",access_Token);
 		
@@ -132,6 +132,7 @@ public class MemberController {
 		kakao.kakaoLogout((String)session.getAttribute("access_Token"));
 		session.removeAttribute("access_Token");
 		session.removeAttribute("logId");
+		session.removeAttribute("nickName");
 		session.removeAttribute("logStatus");
 
 		return "redirect:/";
@@ -171,6 +172,7 @@ public class MemberController {
 		}
 		
 		session.setAttribute("logId", kakao_email);
+		session.setAttribute("nickName", kakao_nickname);
 		
 		return "redirect:/";
 	}

@@ -22,7 +22,7 @@
 	<c:if test="${vo.category=='request'}">
 		<script>
 			alert('🟢 글이 수정되었습니다.');
-			location.href="/board/saleBoardView?no="+${vo.no}+"";
+			location.href="/board/reqBoardView?no="+${vo.no}+"";
 		</script>
 	</c:if>
 </c:if>
