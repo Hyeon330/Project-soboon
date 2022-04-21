@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<link rel="stylesheet" href="/css/report.css" type="text/css" />
+<link rel="stylesheet" href="/css/report.css" type="text/css"/>
 <script src="/js/report.js"></script>
-<div id="reportReason">
+<div id="reportReason" no="${viewVo.no}">
 	<form id="reportSubmit">
 		<ul>
 			<li>신고내용</li>
