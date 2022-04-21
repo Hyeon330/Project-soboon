@@ -6,25 +6,37 @@
 <div class="container">
 	<div id="signupBox"><a href="/"><img src="/img/로고6.png" id="signupLogo"/></a></div>
 	<form method="post" action="/member/memberOk" id="memberFrm" onsubmit="return memberCheck()">
+	<c:if test="${kakao=='Y' }">
+		<script>
+			sessionStorage.setItem('kakao', 'Y');
+		</script>
+	</c:if>
+	<c:if test="${kakao!='Y' }">
+		<script>
+			sessionStorage.setItem('kakao', 'N');
+		</script>
+	</c:if>
 		<ul class="user-info">
-			<li>아이디</li>
-			<li>
-				<input type="text" class="signup-id" name="userid" id="userid" placeholder="아이디" />
-				<span id="chk"></span> 
-				<input type="hidden" id="idChk" value="N" />
-			</li>
-			<li>비밀번호</li>
-			<li class="pwd_control">
-				<input type="password" class="signup-pwd" name="userpwd" id="userpwd" placeholder="비밀번호">
-				 <i class="fa fa-eye fa-lg"></i>
-			</li>
-			<li>비밀번호확인</li>
-			<li class="pwd_control">
-				<input type="password" class="signup-pwd" name="userpwd2" id="userpwd2" placeholder="비밀번호확인" />
-				<i class="fa fa-eye fa-lg"></i>
-			</li>
-			<li>이름</li>
-			<li><input type="text" class="signup-name" name="username" id="username" placeholder="이름" /></li>
+			<c:if test="${kakao!='Y' }">
+				<li>아이디</li>
+				<li>
+					<input type="text" class="signup-id" name="userid" id="userid" placeholder="아이디" />
+					<span id="chk"></span> 
+					<input type="hidden" id="idChk" value="N" />
+				</li>
+				<li>비밀번호</li>
+				<li class="pwd_control">
+					<input type="password" class="signup-pwd" name="userpwd" id="userpwd" placeholder="비밀번호">
+					 <i class="fa fa-eye fa-lg"></i>
+				</li>
+				<li>비밀번호확인</li>
+				<li class="pwd_control">
+					<input type="password" class="signup-pwd" name="userpwd2" id="userpwd2" placeholder="비밀번호확인" />
+					<i class="fa fa-eye fa-lg"></i>
+				</li>
+				<li>이름</li>
+				<li><input type="text" class="signup-name" name="username" id="username" placeholder="이름" /></li>
+			</c:if>
 			<li>닉네임</li>
 			<li>
 				<input type="text" class="signup-nickname" name="nickname" id="nickname" placeholder="닉네임" />
@@ -46,7 +58,7 @@
 			</li>
 			<li>이메일</li>
 			<li>
-				<input type="text" class="signup-email" name="email" id="email" placeholder="example@naver.com"/>
+				<input type="text" class="signup-email" name="email" id="email" placeholder="example@naver.com" value="${logId}"/>
 				<span id="echk"></span> 
 				<input type="hidden" id="emailChk" value="N" />
 			</li>

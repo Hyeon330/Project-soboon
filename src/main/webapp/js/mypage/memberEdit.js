@@ -96,23 +96,25 @@ $(function() {
 			$('#username').focus();
 			return false;
 		}
-
-		// 비밀번호(userpwd1)
-		if ($('#userpwd1').val() === '') {
-			alert('비밀번호를 입력하세요..');
-			$('#userpwd1').focus();
-			return false;
-		}
-		if (!pwdReg.test($('#userpwd1').val())) {
-			alert("비밀번호를 잘못 입력하였습니다.\n비밀번호는 8~20자의 영문 소대문자, 숫자와 특수기호 '~!@#^*_'만 사용 가능합니다.");
-			$("#userpwd1").focus();
-			return false;
-		}
-		// 비밀번호 일치(userpwd2)	
-		if ($('#userpwd1').val() !== $('#userpwd2').val()) {
-			alert('비밀번호가 일치하지 않습니다.');
-			$('#userpwd2').focus();
-			return false;
+		
+		if(sessionStorage.getItem('kakao') != 'Y'){
+			// 비밀번호(userpwd1)
+			if ($('#userpwd1').val() === '') {
+				alert('비밀번호를 입력하세요..');
+				$('#userpwd1').focus();
+				return false;
+			}
+			if (!pwdReg.test($('#userpwd1').val())) {
+				alert("비밀번호를 잘못 입력하였습니다.\n비밀번호는 8~20자의 영문 소대문자, 숫자와 특수기호 '~!@#^*_'만 사용 가능합니다.");
+				$("#userpwd1").focus();
+				return false;
+			}
+			// 비밀번호 일치(userpwd2)	
+			if ($('#userpwd1').val() !== $('#userpwd2').val()) {
+				alert('비밀번호가 일치하지 않습니다.');
+				$('#userpwd2').focus();
+				return false;
+			}
 		}
 
 		// nickname
