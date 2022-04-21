@@ -31,7 +31,7 @@ import com.semiproject.soboon.vo.myPagingVO;
 
 @RequestMapping("/mypage/")
 @Controller
-public class mypageController {
+public class MypageController {
 	@Inject
 	EditService service;
 	
@@ -69,7 +69,6 @@ public class mypageController {
 				entity = new ResponseEntity<String>(msg, headers, HttpStatus.BAD_REQUEST);
 			}
 		} catch (Exception e) {//수정오류
-			System.out.println("회원 정보 수정 중에 오류 발쌩!!!");
 			String msg = "<script>alert('회원정보수정중 오류발생하였습니다.'); history.back();</script>";
 			entity = new ResponseEntity<String>(msg, headers, HttpStatus.BAD_REQUEST);
 		}
