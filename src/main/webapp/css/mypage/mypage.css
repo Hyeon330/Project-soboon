@@ -270,6 +270,9 @@
 .bottom-myView {
 	margin-top:20px;
 }
+.currentPage{
+	background-color:white !important;
+}
 .page-link{
 	background-color:rgb(72, 97, 86) !important;
 	color:white;
@@ -279,6 +282,7 @@
 	background-color:none;
 	color:white;
 }
+
 #prevBtn, #nextBtn{
 	background-color:rgb(72, 97, 86) !important;
 }
