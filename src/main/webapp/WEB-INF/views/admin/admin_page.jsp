@@ -25,8 +25,8 @@
 					<!-- 신고관리 -->
 					<div class="tab-pane fade" id="reportMgr">
 						<div style="float: left" id="reportcnt"></div>
-						<div><button id="fake" style='float:right;'>허위신고</button></div>
-						<div><button  id="multiDel" style="float:right; margin-right: 7px;">게시물 삭제</button></div> <!-- 31,32구분방법 -->
+						<div><button id="fake" class="report-process" style='float:right;'>허위신고</button></div>
+						<div><button id="multiDel" class="report-process" style="float:right; margin-right: 7px;">게시물 삭제</button></div> <!-- 31,32구분방법 -->
 						<br/>
 						<form method="GET" action="" id="checkFrm">
 					

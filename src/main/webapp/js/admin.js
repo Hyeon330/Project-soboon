@@ -9,7 +9,7 @@ $(function(){
 		if($(this).attr("id")=="fake"){//허위신
 			data += "&fake=true";
 		}
-		alert(data)
+		/*alert(data)*/
 		location.href="/admin/multiDel?"+data;
 	});
 
@@ -146,11 +146,11 @@ function ml(p){ // ml = member list
  /*=================신고관리=================*/ 
 function showReport(dataArr, tab){ //showReport로 변경했음.
 /*alert(JSON.stringify(dataArr))*/
-	$("#reportcnt").html("리폿 갯수 :" +dataArr.cnt +"개");
+	$("#reportcnt").html("신고 갯수 :" +dataArr.cnt +"개");
 	$(".report-process").on('click',function() {
 			var reportBtnId = $(this).attr("Id");
 			if($("input[name=noList]:checked").length==0) return false;
-			if(!confirm("선택한 레코드를 삭제하시겠습니까?")) return false;
+			if(!confirm("신고 처리를 하시겠습니까?")) return false;
 			console.log(reportBtnId)
 			/*
 			$("#checkFrm").submit(function(e){
