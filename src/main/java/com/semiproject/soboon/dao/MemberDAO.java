@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import com.semiproject.soboon.vo.MemberVO;
 import com.semiproject.soboon.vo.PagingVO;
+import com.semiproject.soboon.vo.ReportVO;
 
 @Mapper
 @Repository
@@ -28,4 +29,5 @@ public interface MemberDAO {
 	public void updateMyAddr(MemberVO vo);
 	public int updatePwd(MemberVO vo);
 	public int memberMultiDelete(MemberVO vo);
+	public void updateWarn(ReportVO rVO);
 }

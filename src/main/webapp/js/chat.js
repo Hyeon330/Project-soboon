@@ -1,5 +1,5 @@
 
-$(() => {
+$(function() {
 	// 채팅 리스트 나타내고 없어지는 애니메이션
 	var chatPopupMaxHeightMinus = 250;
 	$('#chatBtn').click(function() {

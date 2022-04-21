@@ -132,7 +132,7 @@
 							  					 	<div class="carousel-item active">
 														<img src="/img/thumbnail_sale.jpg">
 													</div>
-						  					 </div>
+						  					 	</div>
 			  								</c:otherwise>
 			  							</c:choose>
 			  						</c:otherwise>
@@ -149,12 +149,12 @@
 		<div class="col-6 sab">
 			<div id="productTitle">
 				<span id="category" title="${viewVo.no}">대여</span>
-				<h2><span id="titleInner">${viewVo.title}</span></h2>
+				<h2 id="titleInner">${viewVo.title}</h2>
 			</div>
 			<hr/>
 			<div id="productIcon">
 			<c:if test="${logId!=viewVo.userid}">
-				<input type="button" class="btn" id="pick1" value="찜하기"/>
+				<input type="button" class="btn pick1" id="pick1" value="찜하기"/>
 			</c:if>
 			<c:if test="${logId==viewVo.userid}">
 				<div class="proIcon"><i class="fa fa-heart fa-lg"></i><span class="iconValue">${viewVo.pick}</span></div>

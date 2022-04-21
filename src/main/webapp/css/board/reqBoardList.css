@@ -35,6 +35,10 @@
 	float:right;
 }
 
+.icon{
+	color:rgb(72, 97, 86);
+}
+
 #reqBoardTitle{
 	font-size:1.4em;
 	font-weight:bold;

@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.semiproject.soboon.vo.MemberVO;
 import com.semiproject.soboon.vo.PagingVO;
+import com.semiproject.soboon.vo.ReportVO;
 
 public interface MemberService {
 	public int memberInsert(MemberVO vo);
@@ -23,5 +24,8 @@ public interface MemberService {
 	public int updatePwd(MemberVO vo); //비밀번호업데이트
 	public int memberMultiDelete(MemberVO vo);
 	public List<MemberVO> memberList(PagingVO pVO);
+	
+	//경고회수 증가
+	public void updateWarn(ReportVO rVO);
 
 }

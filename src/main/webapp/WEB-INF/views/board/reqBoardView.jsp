@@ -129,9 +129,9 @@
 			  								<c:otherwise>
 			  									<div class="carousel-inner">
 							  					 	<div class="carousel-item active">
-														<img src="/img/thumbnail_req.jpg">
+														<img src="/img/thumbnail_request.jpg">
 													</div>
-						  					 </div>
+						  					 	</div>
 			  								</c:otherwise>
 			  							</c:choose>
 			  						</c:otherwise>
@@ -148,7 +148,7 @@
 		<div class="col-6 rqb">
 			<div id="productTitle">
 				<span id="category" title="${viewVo.no}">요청</span>
-				<h2><span id="titleInner">${viewVo.title}</span></h2>
+				<h2 id="titleInner">${viewVo.title}</h2>
 			</div>
 			<hr/>
 			<div id="productIcon">
@@ -189,9 +189,9 @@
 			</div>
 		</div>
 		<!-- 글내용 -->
-		<div class="col-12 reqContent">
+		<div class="col-12" >
 			<hr/>
-			<div>${viewVo.content}</div>
+			<div id="reqContent">${viewVo.content}</div>
 		</div>
 		
 		<!-- 댓글 -->

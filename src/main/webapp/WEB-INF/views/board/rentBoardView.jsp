@@ -131,7 +131,7 @@
 							  					 	<div class="carousel-item active">
 														<img src="/img/thumbnail_rent.jpg">
 													</div>
-						  					 </div>
+						  						</div>
 			  								</c:otherwise>
 			  							</c:choose>
 			  						</c:otherwise>
@@ -148,7 +148,7 @@
 		<div class="col-6 rb">
 			<div id="productTitle">
 				<span id="category" title="${viewVo.no}">대여</span>
-				<h2><span id="titleInner">${viewVo.title}</span></h2>
+				<h2 id="titleInner">${viewVo.title}</h2>
 			</div>
 			<hr/>
 			<div id="productIcon">

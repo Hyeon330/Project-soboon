@@ -87,10 +87,10 @@
 						   		</div>
 								<!-- Left and right controls -->
 								<a class="carousel-control-prev" href="#demo" data-slide="prev">
-									  <span class="carousel-control-prev-icon"></span>
+									 <span class="carousel-control-prev-icon"></span>
 								</a>
 								<a class="carousel-control-next" href="#demo" data-slide="next">
-									  <span class="carousel-control-next-icon"></span>
+									 <span class="carousel-control-next-icon"></span>
 								</a>
 			  				</c:when>
 			  				<c:otherwise>
@@ -132,7 +132,7 @@
 							  					 	<div class="carousel-item active">
 														<img src="/img/thumbnail_share.jpg">
 													</div>
-						  					 </div>
+						  					 	</div>
 			  								</c:otherwise>
 			  							</c:choose>
 			  						</c:otherwise>
@@ -149,7 +149,7 @@
 		<div class="col-6 sb">
 			<div id="productTitle">
 				<span id="category" title="${viewVo.no}">나눔</span>
-				<h2><span id="titleInner">${viewVo.title}</span></h2>
+				<h2 id="titleInner">${viewVo.title}</h2>
 			</div>
 			<hr/>
 			<div id="productIcon">

@@ -14,7 +14,7 @@
 			<tbody>
 				<tr>
 					<td id="tbBody">
-						<input type="text" class="form-control" id="reqBoardTitle" placeholder="글 제목을 입력하세요."  name="title" maxlength="16" value="${bvo.title}"/>
+						<input type="text" class="form-control" id="reqBoardTitle" placeholder="글 제목을 입력하세요."  name="title" value="${bvo.title}"/>
 					</td>
 				</tr>
 				<tr>
