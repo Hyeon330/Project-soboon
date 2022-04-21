@@ -49,10 +49,10 @@ $(function(){
 				url :'/reply/writeOk',
 				data : data,
 				type : 'POST',
-				success : function(result){
+				success : function(){
 					$("#coment").val("");
 					selectReplyList();
-				},error : function(e){
+				},error : function(){
 					alert("로그인 후 이용해주세요");
 				}
 			});
