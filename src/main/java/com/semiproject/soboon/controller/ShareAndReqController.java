@@ -107,12 +107,7 @@ public class ShareAndReqController {
 		String userid = ((String)session.getAttribute("logId"));
 		service.insertPick(no, userid);
 		service.plusBoardPick(no);
-		PickVO vo = service.selectAlreadyPick(no, userid);
-		if(vo==null) {
-			vo = new PickVO();
-		}
-		System.out.println(vo.getNo());
-		return vo;
+		return service.selectAlreadyPick(no, userid);
 	}
 	
 	// 찜하기 취소하기
@@ -157,7 +152,7 @@ public class ShareAndReqController {
 		vo.setUserid((String)request.getSession().getAttribute("logId"));
 		vo.setCategory("share");
 		
-		// 파일을 수정하기 위한 경로
+		// 파일을 수정하기 위해서 경로
 		String path = request.getSession().getServletContext().getRealPath("/upload");
 
 		// DB에 업데이트할 파일명을 넣는 리스트
@@ -171,17 +166,14 @@ public class ShareAndReqController {
 			
 			// DB 리스트에 기존 파일명 넣기
 			if(fileVO!=null) {
-				if(fileVO.getImg1()!=null && !fileVO.getImg1().equals("")) {
+				if(fileVO.getImg1()!=null && fileVO.getImg1()!="") {
 					fileVO = service.getFileName(vo.getNo());
 					fileList.add(fileVO.getImg1());
-				}
-				if(fileVO.getImg2()!=null && !fileVO.getImg2().equals("")){
+				}else if(fileVO.getImg2()!=null && fileVO.getImg2()!="") {
 					fileList.add(fileVO.getImg2());
-				}
-				if(fileVO.getImg3()!=null && !fileVO.getImg3().equals("")) {
+				}else if(fileVO.getImg3()!=null && fileVO.getImg3()!="") {
 					fileList.add(fileVO.getImg3());
-				}
-				if(fileVO.getImg4()!=null && !fileVO.getImg4().equals("")) {
+				}else if(fileVO.getImg4()!=null && fileVO.getImg4()!="") {
 					fileList.add(fileVO.getImg4());
 				}
 			}
@@ -193,6 +185,7 @@ public class ShareAndReqController {
 			}
 			// rename하고 기존 파일 수정하기
 			RelateUploadFile.fileRenameAndUpdate(vo, path, fileList, newFileList, request);
+			System.out.println(vo.getImg1()+"#"+vo.getImg2()+"#"+vo.getImg3()+"#"+vo.getImg4());
 			// DB 업데이트
 			int cnt = service.updateEditView(vo);
 			
@@ -205,7 +198,6 @@ public class ShareAndReqController {
 			mav.addObject("cnt", cnt);
 			mav.addObject("vo", vo);
 			mav.setViewName("board/boardEditSuc");
-			
 		}catch(Exception e) {
 			e.printStackTrace();
 			// DB수정 실패(새로 올라간 파일 삭제)
@@ -305,6 +297,7 @@ public class ShareAndReqController {
 			RelateUploadFile.fileDelete(path, vo.getImg3());
 			RelateUploadFile.fileDelete(path, vo.getImg4());
 		}
+		
 		mav.addObject("vo", vo);
 		mav.setViewName("board/boardWriteSuc");
 		return mav;
@@ -371,17 +364,14 @@ public class ShareAndReqController {
 			
 			// DB 리스트에 기존 파일명 넣기
 			if(fileVO!=null) {
-				if(fileVO.getImg1()!=null && !fileVO.getImg1().equals("")) {
+				if(fileVO.getImg1()!=null || fileVO.getImg1()!="") {
 					fileVO = service.getFileName(vo.getNo());
 					fileList.add(fileVO.getImg1());
-				}
-				if(fileVO.getImg2()!=null && !fileVO.getImg2().equals("")){
+				}else if(fileVO.getImg2()!=null || fileVO.getImg2()!="") {
 					fileList.add(fileVO.getImg2());
-				}
-				if(fileVO.getImg3()!=null && !fileVO.getImg3().equals("")) {
+				}else if(fileVO.getImg3()!=null || fileVO.getImg3()!="") {
 					fileList.add(fileVO.getImg3());
-				}
-				if(fileVO.getImg4()!=null && !fileVO.getImg4().equals("")) {
+				}else if(fileVO.getImg4()!=null || fileVO.getImg4()!="") {
 					fileList.add(fileVO.getImg4());
 				}
 			}
@@ -450,7 +440,9 @@ public class ShareAndReqController {
 				entity = new ResponseEntity<String>(failMsg(), headers, HttpStatus.BAD_REQUEST);
 			}
 
-		}catch(Exception e) {e.printStackTrace();}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
 		return entity;
 	}
 

@@ -15,8 +15,9 @@ public interface ReportService {
 
 	public List<Integer> getBoardNoList(ReportVO vo);
 	
-	public void delreport(List<Integer> board_nos);
+	public void delreport(ReportVO vo);
 	
 	public int insertReportContent(ReportVO vo);
+	
 }
 
