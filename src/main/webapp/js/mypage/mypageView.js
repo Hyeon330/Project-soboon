@@ -131,17 +131,17 @@
 		let pageStr = "";
 		pageStr += '<ul class="pagination" id="paging-mp">';
 		// 이전 페이지
-		if (dataArr.pVO.pageNum <= 1) {
-			pageStr += '<li class="page-item disabled"><a class="page-link" id="prevBtn" href="javascript:void(0)">&lsaquo;</a></li>';
+		if (dataArr.pVO.pageNum === 1) {
+			pageStr += '<li class="page-item disabled"><a class="page-link" id="prevBtn" href="javascript:void(0)"><i class="fa fa-angle-left"></i></a></li>';
 		} else {
-			pageStr += '<li class="page-item"><a class="page-link" href="javascript:void(0)" id="prevBtn" onclick="prev(' + (dataArr.pVO.pageNum - 1) + ', ' + num + ', ' + idx +')">&lsaquo;</a></li>';
+			pageStr += '<li class="page-item"><a class="page-link" href="javascript:void(0)" id="prevBtn" onclick="ml2(' + (dataArr.pVO.pageNum - 1) + ', ' + num + ', ' + idx +')"><i class="fa fa-angle-left"></i></a></li>';
 		}
 		//페이지
 		for (var p = dataArr.pVO.startPage; p < dataArr.pVO.startPage+dataArr.pVO.onePageCount-1; p++) {
 			// 총 페이지수보다 출력할 페이지 번호가 작을 때
 			if (p <= dataArr.pVO.totalPage) {
 				if (p === dataArr.pVO.pageNum) {
-					pageStr += '<li class="page-item active"><a class="page-link" href="javascript:void(0)" onclick="ml2('+ p + ', ' + num + ', ' + idx +')">' + p + '</a></li>';
+					pageStr += '<li class="page-item active"><a class="page-link"  href="javascript:void(0)" onclick="ml2('+ p + ', ' + num + ', ' + idx +')">' + p + '</a></li>';
 				} else {
 					pageStr += '<li class="page-item"><a class="page-link" href="javascript:void(0)" onclick="ml2('+ p + ', ' + num + ', ' + idx +')">' + p + '</a></li>';
 				}//if~else2	
@@ -150,12 +150,12 @@
 
 		//다음 페이지
 		if (dataArr.pVO.pageNum >= dataArr.pVO.totalPage) {
-			pageStr += '<li class="page-item disabled"><a class="page-link" id="nextBtn" href="javascript:void(0)">&rsaquo;</a></li>';
+			pageStr += '<li class="page-item disabled"><a class="page-link" href="javascript:void(0)" id="nextBtn"><i class="fa fa-angle-right"></i></a></li>';
 		} else {
-			pageStr += '<li class="page-item"><a class="page-link" id="nextBtn" href="javascript:void(0)" onclick="next(' + (dataArr.pVO.pageNum + 1) + ', ' + num + ', ' + idx +')">&rsaquo;</a></li>';
+			pageStr += '<li class="page-item"><a class="page-link" id="nextBtn" href="javascript:void(0)" id="nextBtn" onclick="ml2(' + (dataArr.pVO.pageNum + 1) + ', ' + num + ', ' + idx +')"><i class="fa fa-angle-right"></i></li>';
 		}
 		pageStr += '</ul>';
-
+		console.log(pageStr);
 		/*-----------------------출력(print)----------------------------------------------------*/
 		$('#myPostCnt').html(dataArr.pVO.totalRecord);
 		$('#printFrm1').html(str);
@@ -191,7 +191,7 @@
 				str += "<li><a href='/board/shareBoardView?no="+ data.no + "'>" + data.title + "</a></li>";
 				str += "<li>" + data.createdate + "</li>";
 				str += "</ul>";
-			});
+		});
 		// form - exit
 		// 한 페이지당 10명 기준
 		console.log(">>>>>>",dataArr.pVO.onePageCount);
@@ -200,9 +200,9 @@
 		pageStr += '<ul class="pagination" id="paging-mp">';
 		// 이전 페이지
 		if (dataArr.pVO.pageNum <= 1) {
-			pageStr += '<li class="page-item disabled"><a class="page-link" id="prevBtn" href="javascript:void(0)">&lsaquo;</a></li>';
+			pageStr += '<li class="page-item disabled"><a class="page-link" id="prevBtn" href="javascript:void(0)"><i class="fa fa-angle-left"></i></a></li>';
 		} else {
-			pageStr += '<li class="page-item"><a class="page-link" href="javascript:void(0)" id="prevBtn" onclick="prev(' + (dataArr.pVO.pageNum - 1) + ', ' + num + ', ' + idx +')">&lsaquo;</a></li>';
+			pageStr += '<li class="page-item"><a class="page-link" href="javascript:void(0)" id="prevBtn" onclick="ml2(' + (dataArr.pVO.pageNum - 1) + ', ' + num + ', ' + idx +')"><i class="fa fa-angle-left"></i></a></li>';
 		}
 		//페이지
 		for (var p = dataArr.pVO.startPage; p < dataArr.pVO.startPage+dataArr.pVO.onePageCount-1; p++) {
@@ -218,11 +218,12 @@
 
 		//다음 페이지
 		if (dataArr.pVO.pageNum >= dataArr.pVO.totalPage) {
-			pageStr += '<li class="page-item disabled"><a class="page-link" id="nextBtn" href="javascript:void(0)" >&rsaquo;</a></li>';
+			pageStr += '<li class="page-item disabled"><a class="page-link" id="nextBtn" href="javascript:void(0)" ><i class="fa fa-angle-right"></i></a></li>';
 		} else {
-			pageStr += '<li class="page-item"><a class="page-link" id="nextBtn" href="javascript:void(0)" onclick="next(' + (dataArr.pVO.pageNum + 1) + ', ' + num + ', ' + idx +')">&rsaquo;</a></li>';
+			pageStr += '<li class="page-item"><a class="page-link" id="nextBtn" href="javascript:void(0)" onclick="ml2(' + (dataArr.pVO.pageNum + 1) + ', ' + num + ', ' + idx +')"><i class="fa fa-angle-right"></i></a></li>';
 		}
 		pageStr += '</ul>';
+		console.log(pageStr);
 		/*-----------------------출력(print)----------------------------------------------------*/
 		$('#myReplyCnt').html(dataArr.pVO.totalRecord);
 		$('#printFrm2').html(str);
@@ -266,9 +267,9 @@
 		pageStr += '<ul class="pagination" id="paging-mp">';
 		// 이전 페이지
 		if (dataArr.pVO.pageNum <= 1) {
-			pageStr += '<li class="page-item disabled"><a class="page-link" id="prevBtn" href="javascript:void(0)">&lsaquo;</a></li>';
+			pageStr += '<li class="page-item disabled"><a class="page-link" id="prevBtn" href="javascript:void(0)"><i class="fa fa-angle-left"></i></a></li>';
 		} else {
-			pageStr += '<li class="page-item"><a class="page-link" href="javascript:void(0)" id="prevBtn" onclick="prev(' + (dataArr.pVO.pageNum - 1) + ', ' + num + ', ' + idx +')">&lsaquo;</a></li>';
+			pageStr += '<li class="page-item"><a class="page-link" href="javascript:void(0)" id="prevBtn" onclick="ml2(' + (dataArr.pVO.pageNum - 1) + ', ' + num + ', ' + idx +')"><i class="fa fa-angle-left"></i></a></li>';
 		}
 		//페이지
 		for (var p = dataArr.pVO.startPage; p < dataArr.pVO.startPage+dataArr.pVO.onePageCount-1; p++) {
@@ -284,11 +285,12 @@
 
 		//다음 페이지
 		if (dataArr.pVO.pageNum >= dataArr.pVO.totalPage) {
-			pageStr += '<li class="page-item disabled"><a class="page-link" id="nextBtn" href="javascript:void(0)" >&rsaquo;</a></li>';
+			pageStr += '<li class="page-item disabled"><a class="page-link" id="nextBtn" href="javascript:void(0)"><i class="fa fa-angle-right"></i></a></li>';
 		} else {
-			pageStr += '<li class="page-item"><a class="page-link" id="nextBtn" href="javascript:void(0)" onclick="next(' + (dataArr.pVO.pageNum + 1) + ', ' + num + ', ' + idx +')">&rsaquo;</a></li>';
+			pageStr += '<li class="page-item"><a class="page-link" id="nextBtn" href="javascript:void(0)" onclick="ml2(' + (dataArr.pVO.pageNum + 1) + ', ' + num + ', ' + idx +')"><i class="fa fa-angle-right"></i></a></li>';
 		}
 		pageStr += '</ul>';
+		console.log(pageStr);
 		/*-----------------------출력(print)----------------------------------------------------*/
 		$('#myPickCnt').html(dataArr.pVO.totalRecord);
 		$('#printFrm3').html(str);
@@ -296,8 +298,6 @@
 	}//showMyPick in sucess in ajax
 	
 	
-	
-
 	/*------------------------function----------------------------------------------------------*/
 	function ml2(p, num, idx) {
 		let url = "";
@@ -329,83 +329,6 @@
 			}
 		});
 	}
-	
-	function prev(p, num, idx) {
-		let url = "";
-		if(idx===1) {
-			url = "/mypage/mypost";
-		}else if(idx===2) {
-			url = "/mypage/mycomment";
-		}else {
-			url = "/mypage/mypick";
-		}
-		console.log(url);
-		if(dataArr.pVO.pageNum===dataArr.pVO.startPage) {
-			data = {
-			pageNum : p,
-			onePageRecord : num,
-			startPage : dataArr.pVO.pageNum - dataArr.pVO.onePageCount
-			}
-		}else {
-			data = {
-			pageNum : p,
-			onePageRecord : num
-			}
-		}
-		$.ajax({
-			url : url,
-			dateType : 'json',
-			data : data,
-			success : function(dataArr) {
-				if(idx===1) {
-					showMyPost(dataArr, num);
-				}else if(idx===2) {
-					showMyComment(dataArr, num);
-				}else {
-					showMyPick(dataArr, num);
-				}
-			}
-		});
-	}
-	
-	function next(p, num, idx) {
-		let url = "";
-		if(idx===1) {
-			url = "/mypage/mypost";
-		}else if(idx===2) {
-			url = "/mypage/mycomment";
-		}else {
-			url = "/mypage/mypick";
-		}
-		console.log(url);
-		if(dataArr.pVO.pageNum%dataArr.pVO.onePageCount===0){
-			data = {
-			pageNum : p,
-			onePageRecord : num,
-			startPage : p
-			}
-		}else {
-			data = {
-			pageNum : p,
-			onePageRecord : num
-			}
-		}
-		$.ajax({
-			url : url,
-			dateType : 'json',
-			data : data,
-			success : function(dataArr) {
-				if(idx===1) {
-					showMyPost(dataArr, num);
-				}else if(idx===2) {
-					showMyComment(dataArr, num);
-				}else {
-					showMyPick(dataArr, num);
-				}
-			}
-		});
-	}
-	
 	$(function() {
 		/*-------------------------------------------------------------------------*/
 		/*tab1 내가 쓴 글 전체선택 체크박스 적용*/	

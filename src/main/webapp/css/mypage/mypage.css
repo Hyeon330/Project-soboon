@@ -63,6 +63,11 @@
 	padding:15px;
 	filter : drop-shadow(0px 0px 10px rgb(144, 163, 140));
 }
+.viewPage-mypage>h3{
+	font-weight:700;
+	padding-top:3px;
+	padding-left:15px;
+}
 .viewPage-mypage>hr {
 	height: 5px;
 	background: #ddd;
@@ -256,11 +261,45 @@
 	display: flex; 
 	justify-content: flex-end; 
 }
+#delPick{
+	background-color:rgb(72, 97, 86) !important;
+}
 .pagebox {
 	display: flex; justify-content: center;
 }
 .bottom-myView {
-	margin-top:15px;
+	margin-top:20px;
+}
+.page-item{
+}
+.page-item i{
+	background-color:none;
+}
+#prevBtn, #nextBtn{
+	background-color:rgb(72, 97, 86) !important;
+}
+#prevBtn i, #nextBtn i{
+	color:white;
+}
+#pageNum{
+	background-color:white;
+	border:none;
+	color:rgb(72, 97, 86);
+}
+#delPost, #delComment, #delPick{
+	width:90px;
+	height:35px;
+	background-color:rgb(72, 97, 86) !important;
+	border:none;
+	border-radius:5px;
+	color:white;
+}
+#mypostSelect, #mycommentSelect, #mypickSelect{
+	text-align:center;
+	width:70px;
+	height:30px;
+	border:none;
+	border-radius:5px;
 }
 /*------------------------tab 내 쓴 글 보기 리스트---------------------------*/
 #printFrm1 ul {
@@ -271,18 +310,17 @@
 }
 #printFrm1 li {
 	float:left;  
-	width:25%; 
-	text-align: center; 
+	width:25%; text-align: center; 
 	height:20px; 
 	overflow: hidden; 
 	text-overflow: ellipsis; 
 	white-space: nowrap;
 }
 #printFrm1 li:nth-child(1) ,#printFrm1 li:nth-child(3) {
-	width:10%;
+    width:10%;
 }
 #printFrm1 li:nth-child(2) {
-	width:55%;
+    width:55%;
 }
 .innerTab {
 	margin-top:10px;
@@ -298,11 +336,15 @@
 #printFrm2 ul:first-child, #printFrm3 ul:first-child {
 	background-color: #ddd;
 }
-#printFrm2 li, #printFrm3 li  {
+
+#printFrm2 li, #printFrm3 li {
 	float:left;  
-	width:25%; text-align: center; 
+	width:30%; text-align: center; 
 	height:20px; 
 	overflow: hidden; 
 	text-overflow: ellipsis; 
 	white-space: nowrap;
+}
+#printFrm2 li:nth-child(1), #printFrm3 li:nth-child(1){
+    width:10%;
 }
