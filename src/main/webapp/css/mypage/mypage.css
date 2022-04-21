@@ -271,11 +271,11 @@
 	margin-top:20px;
 }
 .page-link{
-	background-color:white !important;
-	color:rgb(72, 97, 86) !important;
+	background-color:rgb(72, 97, 86) !important;
+	color:white;
 	border:none;
 }
-.page-item i{
+.page-item{
 	background-color:none;
 	color:white;
 }
