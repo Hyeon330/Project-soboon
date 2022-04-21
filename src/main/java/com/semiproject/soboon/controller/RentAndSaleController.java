@@ -20,6 +20,7 @@ import com.semiproject.soboon.RelateUploadFile;
 import com.semiproject.soboon.service.BoardService;
 import com.semiproject.soboon.vo.BoardVO;
 import com.semiproject.soboon.vo.PagingVO;
+import com.semiproject.soboon.vo.PickVO;
 
 @RequestMapping("/board/")
 @RestController
@@ -147,17 +148,14 @@ public class RentAndSaleController {
 			
 			// DB 리스트에 기존 파일명 넣기
 			if(fileVO!=null) {
-				if(fileVO.getImg1()!=null && !fileVO.getImg1().equals("")) {
+				if(fileVO.getImg1()!=null || fileVO.getImg1()!="") {
 					fileVO = service.getFileName(vo.getNo());
 					fileList.add(fileVO.getImg1());
-				}
-				if(fileVO.getImg2()!=null && !fileVO.getImg2().equals("")){
+				}else if(fileVO.getImg2()!=null || fileVO.getImg2()!="") {
 					fileList.add(fileVO.getImg2());
-				}
-				if(fileVO.getImg3()!=null && !fileVO.getImg3().equals("")) {
+				}else if(fileVO.getImg3()!=null || fileVO.getImg3()!="") {
 					fileList.add(fileVO.getImg3());
-				}
-				if(fileVO.getImg4()!=null && !fileVO.getImg4().equals("")) {
+				}else if(fileVO.getImg4()!=null || fileVO.getImg4()!="") {
 					fileList.add(fileVO.getImg4());
 				}
 			}
@@ -262,8 +260,6 @@ public class RentAndSaleController {
 		// 현재 session에 있는 ID와 카테고리
 		vo.setUserid((String)request.getSession().getAttribute("logId")); 
 		vo.setNickname((String)request.getSession().getAttribute("nickName")); 
-		
-		System.out.println(vo.getUserid() +", "+ vo.getNickname());
 		vo.setCategory("sale");
 		
 		// 파일을 업로드할 폴더 절대경로
@@ -350,17 +346,14 @@ public class RentAndSaleController {
 			
 			// DB 리스트에 기존 파일명 넣기
 			if(fileVO!=null) {
-				if(fileVO.getImg1()!=null && !fileVO.getImg1().equals("")) {
+				if(fileVO.getImg1()!=null || fileVO.getImg1()!="") {
 					fileVO = service.getFileName(vo.getNo());
 					fileList.add(fileVO.getImg1());
-				}
-				if(fileVO.getImg2()!=null && !fileVO.getImg2().equals("")){
+				}else if(fileVO.getImg2()!=null || fileVO.getImg2()!="") {
 					fileList.add(fileVO.getImg2());
-				}
-				if(fileVO.getImg3()!=null && !fileVO.getImg3().equals("")) {
+				}else if(fileVO.getImg3()!=null || fileVO.getImg3()!="") {
 					fileList.add(fileVO.getImg3());
-				}
-				if(fileVO.getImg4()!=null && !fileVO.getImg4().equals("")) {
+				}else if(fileVO.getImg4()!=null || fileVO.getImg4()!="") {
 					fileList.add(fileVO.getImg4());
 				}
 			}
