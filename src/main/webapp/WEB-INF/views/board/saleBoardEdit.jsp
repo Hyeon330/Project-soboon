@@ -2,6 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <link rel="stylesheet" href="/css/board/saleBoardEdit.css" type="text/css"/>
 <script src="/js/board/saleBoardEdit.js"></script>
+<script src="/js/board/boardaddrDialog.js"></script>
 <div class="container">
 	<br/>
 	<form class="form-group" method="post" action="/board/saleBoardEditOk?no=${bvo.no}" id="saleEditForm" enctype="multipart/form-data">
@@ -13,9 +14,18 @@
 			</thead>
 			<tbody>
 				<tr>
+					<td>
+						<div>
+							<select id="boardlargeAddrSelect" name="large" default="${addrLarge}"></select>
+							<select id="boardmediumAddrSelect" name="medium" default="${addrMedium}"></select>
+							<select id="boardsmallAddrSelect" name="small" default="${addrSmall}"></select>
+						</div>
+					</td>
+				</tr>
+				<tr>
 					<td id="tbBody">
 						<input type="text" class="form-control col-7" id="saleBoardTitle" placeholder="글 제목을 입력하세요."  name="title" value="${bvo.title}"/>
-						<span class="form-control col-2">금&nbsp;&nbsp;액</span>
+						<span class="form-control col-2" id="pricetag">금&nbsp;&nbsp;액</span>
 						<input type="number" class="form-control col-3" name="price" placeholder="금액을 입력하세요." value="${bvo.price}"/>
 					</td>
 				</tr>

@@ -46,13 +46,13 @@
 							<div class="carousel-item active">
 					    		<img src="/upload/${viewVo.img1}">
 					   		</div>
-					   		<div class="carousel-item ">
+					   		<div class="carousel-item">
 					    		<img src="/upload/${viewVo.img2}">
 					   		</div>
-					   		<div class="carousel-item ">
+					   		<div class="carousel-item">
 					    		<img src="/upload/${viewVo.img3}">
 					   		</div>
-					   		<div class="carousel-item ">
+					   		<div class="carousel-item">
 					    		<img src="/upload/${viewVo.img4}">
 					   		</div>
 				   		</div>

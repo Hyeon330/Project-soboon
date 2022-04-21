@@ -14,12 +14,12 @@
 }
   
 .carouselslide{
-   width:440px;
+   width:4800px;
    height:330px;
    margin:0 auto;
 }
 .carousel-item.active{
-   width:440px;
+   width:480px;
    height:330px;
    margin:0 auto;
 }

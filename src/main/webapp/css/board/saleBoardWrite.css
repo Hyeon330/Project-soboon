@@ -2,9 +2,19 @@
 #tbBody{
 	display:flex;	
 }
+
 .table td, .table th{
 	border:none !important;
 }
+
+#boardlargeAddrSelect, #boardmediumAddrSelect, #boardsmallAddrSelect{
+	width:125px;
+	height:30px;
+	text-align:center;
+	border:none;
+	border-radius:5px;
+}
+
 #saleForm h1{
 	text-align:center;
 	font-weight:700;
@@ -13,24 +23,24 @@
 #saleBoardTitle{
 	margin-right:10px;
 }
-#boardlargeAddrSelect, #boardmediumAddrSelect, #boardsmallAddrSelect{
-	width:125px;
-	height:30px;
-	text-align:center;
-	border:none;
-	border-radius:5px;
-}
-#writeBtn, #uploadBtn{
-	background-color: rgb(72, 97, 86);
-	color:white;
-	padding:10px 30px;
-}
 
 #resetBtn, #backList {
 	background-color: gray;
 	color:white;
 	padding:10px 30px;
 }
+
+#writeBtn, #uploadBtn{
+	background-color: rgb(72, 97, 86);
+	color:white;
+	padding:10px 30px;
+}
+
+#pricetag{
+	background-color:rgb(72, 97, 86);
+	color:white;
+}
+
 #innerFiles{
 	display:flex;
 	flex:left;

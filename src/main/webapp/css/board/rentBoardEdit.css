@@ -7,6 +7,14 @@
 	border:none !important;
 }
 
+#boardlargeAddrSelect, #boardmediumAddrSelect, #boardsmallAddrSelect{
+	width:125px;
+	height:30px;
+	text-align:center;
+	border:none;
+	border-radius:5px;
+}
+
 #rentEditForm h1{
 	text-align:center;
 	font-weight:700;
@@ -33,6 +41,11 @@
 
 .xbtn{
 	padding:3px 5px;
+}
+
+#pricetag{
+	background-color:rgb(72, 97, 86);
+	color:white;
 }
 
 #innerFiles{
