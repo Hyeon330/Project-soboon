@@ -19,18 +19,19 @@
 					<li>
 						<input type="text" id="userid" name="userid" value="${VO.userid }" readonly="readonly" />
 					</li>
-					
-					<li id="passwordCSS">비밀번호</li>
-					<li class="pwd_control">
-						<input type="password" id="userpwd1" name="userpwd" />
-						<i class="fa fa-eye-slash fa-md"></i>
-					</li>
-					
-					<li id="passowrdCheckCSS">비밀번호 확인</li>
-					<li class="pwd_control">
-						<input type="password" id="userpwd2" />
-						<i class="fa fa-eye-slash      fa-md"></i>
-					</li>
+					<c:if test="${kakao!='Y' }">
+						<li id="passwordCSS">비밀번호</li>
+						<li class="pwd_control">
+							<input type="password" id="userpwd1" name="userpwd" />
+							<i class="fa fa-eye-slash fa-md"></i>
+						</li>
+						
+						<li id="passowrdCheckCSS">비밀번호 확인</li>
+						<li class="pwd_control">
+							<input type="password" id="userpwd2" />
+							<i class="fa fa-eye-slash      fa-md"></i>
+						</li>
+					</c:if>
 					
 					<li>이름</li>
 					<li>

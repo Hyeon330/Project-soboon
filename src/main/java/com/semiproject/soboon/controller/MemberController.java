@@ -42,13 +42,18 @@ public class MemberController {
 	JavaMailSender javaMailSender;
 	
 	@GetMapping("signup")
-	public String memberForm() {
+	public String memberForm(HttpSession session) {
+		session.invalidate();
 		return "member/signup";
 	}
 	
 	//회원등록
 	@PostMapping("memberOk")
-	public String memberFormOk(MemberVO vo, Model model) {
+	public String memberFormOk(MemberVO vo, Model model, HttpSession session) {
+		if(session.getAttribute("kakao").equals("Y")) {
+			vo.setUserid((String)session.getAttribute("logId"));
+			vo.setUsername((String)session.getAttribute("logName"));
+		}
 		int cnt = service.memberInsert(vo);
 		
 		model.addAttribute("cnt", cnt);
@@ -113,70 +118,35 @@ public class MemberController {
 		
 //		// 클라이언트의 이메일이 존재할 때 세션에 해당 이메일과 토큰 등록
 //		System.out.println(kakao.getUserInfo("email"));
-		if(userInfo.get("email") != null) {
-			session.setAttribute("logId", userInfo.get("email"));
-			session.setAttribute("access_Token", access_Token);
-			session.setAttribute("logStatus", "Y");
-			session.setAttribute("userInfo", userInfo);
-			session.setAttribute("nickName", userInfo.get("nickname"));
-		}
-		attr.addFlashAttribute("code",access_Token);
 		
-//		System.out.println(session.getAttribute("logStatus"));
-		return "redirect:/?code="+access_Token;
+		MemberVO vo = new MemberVO();
+		vo.setUserid((String) userInfo.get("email"));
+		MemberVO loginVO= service.loginCheck(vo);
+		if(loginVO != null) {
+			session.setAttribute("logId", loginVO.getUserid());
+			session.setAttribute("logName", loginVO.getUsername());
+			session.setAttribute("nickName", loginVO.getNickname());
+			session.setAttribute("logAdmin", loginVO.getVerify());
+			session.setAttribute("kakao", "Y");
+			session.setAttribute("logStatus", "Y");
+			setSessionAddr(loginVO, session);
+			return "redirect:/";
+		}else {
+			session.setAttribute("logId", (String) userInfo.get("email"));
+			session.setAttribute("logName", (String) userInfo.get("nickname"));
+			session.setAttribute("kakao", "Y");
+			return "member/signup";
+		}
 	}
 	
 	//카카오톡 로그아웃
 	@RequestMapping(value="logout")
 	public String klogout(HttpSession session) {
 		kakao.kakaoLogout((String)session.getAttribute("access_Token"));
-		session.removeAttribute("access_Token");
-		session.removeAttribute("logId");
-		session.removeAttribute("nickName");
-		session.removeAttribute("logStatus");
+		session.invalidate();
 
 		return "redirect:/";
 	}
-	
-	//카카오톡 연동 정보 조회+DB에 회원 정보 넣기
-	@RequestMapping(value="selectMyAccessToken")
-	public String oauthKakao(@RequestParam(value="code",required=false) String code, HttpServletRequest req) throws Exception{
-//		System.out.println("카카오 정보 조회 들어옴");
-		
-		//발급받은 인가코드를 통해 토큰 발급받기
-//		String access_Token =kakao.getAccessToken(code);
-//		System.out.println("access_Token: " + access_Token);
-		HttpSession session = req.getSession();
-		
-		HashMap<String, Object> userInfo = (HashMap<String,Object>)session.getAttribute("userInfo");
-		MemberVO kakaoVO = new MemberVO();
-		String kakao_email = (String)userInfo.get("email");
-		String kakao_nickname = (String)userInfo.get("nickname");
-		
-//		System.out.println("nickname= " + kakao_nickname);
-		
-//		int cnt = service.emailCheck(kakao_email);
-//		System.out.println(cnt);
-		if(service.emailCheck(kakao_email)<=0) {
-//			System.out.println("유저 회원가입");
-			kakaoVO.setUserid(kakao_email);
-			kakaoVO.setUserpwd("0000");
-			kakaoVO.setUsername(kakao_nickname);
-			kakaoVO.setNickname(kakao_nickname);
-			kakaoVO.setLarge("");
-			kakaoVO.setMedium("");
-			kakaoVO.setSmall("");
-			kakaoVO.setTel("010-0000-0000");
-			kakaoVO.setEmail(kakao_email);
-			service.memberInsert(kakaoVO);
-		}
-		
-		session.setAttribute("logId", kakao_email);
-		session.setAttribute("nickName", kakao_nickname);
-		
-		return "redirect:/";
-	}
-	//=========================================================================
 	
 	//SMS인증번호
 	@GetMapping("memberTelCheck")
