@@ -150,7 +150,7 @@
 							<div class="pagingwrap3"></div>
 						</div>
 						<div class="buttonDel">
-							<button id="delPick">삭제하기</button>
+							<button id="delPick" class="btn">삭제하기</button>
 						</div>
 					</div>
 				</div>
