@@ -8,8 +8,11 @@ $(function(){
 		if(data==''){alert('체크박스 체크해주세요');return false;}
 		if($(this).attr("id")=="fake"){//허위신
 			data += "&fake=true";
+			alert("허위신고 삭제하시겠습니까?");
+		}else{
+			alert("게시글 삭제하시겠습니까?");
 		}
-		alert(data)
+		/*alert(data)*/
 		location.href="/admin/multiDel?"+data;
 	});
 
