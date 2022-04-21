@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.semiproject.soboon.dao.MemberDAO;
 import com.semiproject.soboon.vo.MemberVO;
 import com.semiproject.soboon.vo.PagingVO;
+import com.semiproject.soboon.vo.ReportVO;
 
 import net.nurigo.java_sdk.api.Message;
 import net.nurigo.java_sdk.exceptions.CoolsmsException;
@@ -113,5 +114,9 @@ public class MemberServiceImpl implements MemberService{
 	public int memberMultiDelete(MemberVO vo) {
 		return dao.memberMultiDelete(vo);
 		
-	}	
+	}
+	@Override
+	public void updateWarn(ReportVO rVO) {
+		dao.updateWarn(rVO);
+	}
 }
