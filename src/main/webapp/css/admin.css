@@ -53,11 +53,28 @@
 	white-space: nowrap; /*줄안바꿈*/
 	overflow: hidden; /*넘친 내용 숨기기*/
 }
-#reportManage>li:nth-child(4n){
-	width:65%;
+#reportManage>li:nth-child(5n){
+	width:58%;
 }
-#reportManage>li:nth-child(4n+1) { 
+#reportManage>li:nth-child(5n+4){
+	width: 7%;
+}
+#reportManage>li:nth-child(5n+1) { 
 	width: 5%;
+}
+#fake{
+	height:30px;
+	border: 1px solid green;
+	border-radius:4px;
+	background:#D5DAD4;
+	color:green;
+}
+#multiDel{
+	height:30px;
+	border: 1px solid red;
+	border-radius:4px;
+	background:#D5DAD4;
+	color:red;	
 }
 
 #prevBtn, #nextBtn{

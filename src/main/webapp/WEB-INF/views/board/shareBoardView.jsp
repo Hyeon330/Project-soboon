@@ -46,13 +46,13 @@
 							<div class="carousel-item active">
 					    		<img src="/upload/${viewVo.img1}">
 					   		</div>
-					   		<div class="carousel-item ">
+					   		<div class="carousel-item">
 					    		<img src="/upload/${viewVo.img2}">
 					   		</div>
-					   		<div class="carousel-item ">
+					   		<div class="carousel-item">
 					    		<img src="/upload/${viewVo.img3}">
 					   		</div>
-					   		<div class="carousel-item ">
+					   		<div class="carousel-item">
 					    		<img src="/upload/${viewVo.img4}">
 					   		</div>
 				   		</div>
@@ -149,7 +149,7 @@
 		<div class="col-6 sb">
 			<div id="productTitle">
 				<span id="category" title="${viewVo.no}">나눔</span>
-				<h2><span id="titleInner">${viewVo.title}</span></h2>
+				<h2 id="titleInner">${viewVo.title}</h2>
 			</div>
 			<hr/>
 			<div id="productIcon">

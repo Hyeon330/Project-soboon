@@ -20,6 +20,7 @@ import com.semiproject.soboon.RelateUploadFile;
 import com.semiproject.soboon.service.BoardService;
 import com.semiproject.soboon.vo.BoardVO;
 import com.semiproject.soboon.vo.PagingVO;
+import com.semiproject.soboon.vo.PickVO;
 
 @RequestMapping("/board/")
 @RestController
@@ -147,17 +148,17 @@ public class RentAndSaleController {
 			
 			// DB 리스트에 기존 파일명 넣기
 			if(fileVO!=null) {
-				if(fileVO.getImg1()!=null && !fileVO.getImg1().equals("")) {
+				if(fileVO.getImg1()!=null || fileVO.getImg1()!="") {
 					fileVO = service.getFileName(vo.getNo());
 					fileList.add(fileVO.getImg1());
 				}
-				if(fileVO.getImg2()!=null && !fileVO.getImg2().equals("")){
+				if(fileVO.getImg2()!=null || fileVO.getImg2()!="") {
 					fileList.add(fileVO.getImg2());
 				}
-				if(fileVO.getImg3()!=null && !fileVO.getImg3().equals("")) {
+				if(fileVO.getImg3()!=null || fileVO.getImg3()!="") {
 					fileList.add(fileVO.getImg3());
 				}
-				if(fileVO.getImg4()!=null && !fileVO.getImg4().equals("")) {
+				if(fileVO.getImg4()!=null || fileVO.getImg4()!="") {
 					fileList.add(fileVO.getImg4());
 				}
 			}
@@ -348,17 +349,17 @@ public class RentAndSaleController {
 			
 			// DB 리스트에 기존 파일명 넣기
 			if(fileVO!=null) {
-				if(fileVO.getImg1()!=null && !fileVO.getImg1().equals("")) {
+				if(fileVO.getImg1()!=null || fileVO.getImg1()!="") {
 					fileVO = service.getFileName(vo.getNo());
 					fileList.add(fileVO.getImg1());
 				}
-				if(fileVO.getImg2()!=null && !fileVO.getImg2().equals("")){
+				if(fileVO.getImg2()!=null || fileVO.getImg2()!="") {
 					fileList.add(fileVO.getImg2());
 				}
-				if(fileVO.getImg3()!=null && !fileVO.getImg3().equals("")) {
+				if(fileVO.getImg3()!=null || fileVO.getImg3()!="") {
 					fileList.add(fileVO.getImg3());
 				}
-				if(fileVO.getImg4()!=null && !fileVO.getImg4().equals("")) {
+				if(fileVO.getImg4()!=null || fileVO.getImg4()!="") {
 					fileList.add(fileVO.getImg4());
 				}
 			}

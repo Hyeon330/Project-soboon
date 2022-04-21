@@ -12,7 +12,7 @@ import com.semiproject.soboon.vo.MemberVO;
 import com.semiproject.soboon.vo.MyPageVO;
 import com.semiproject.soboon.vo.PickVO;
 import com.semiproject.soboon.vo.ReplyVO;
-import com.semiproject.soboon.vo.myPagingVO;
+import com.semiproject.soboon.vo.MyPagingVO;
 
 @Service
 public class EditServiceImpl implements EditService {
@@ -40,7 +40,7 @@ public class EditServiceImpl implements EditService {
 	}
 
 	@Override
-	public List<BoardVO> mypostList(String userid, myPagingVO pVO) {
+	public List<BoardVO> mypostList(String userid, MyPagingVO pVO) {
 		return dao.mypostList(userid, pVO);
 	}
 
@@ -75,7 +75,7 @@ public class EditServiceImpl implements EditService {
 	}
 
 	@Override
-	public List<ReplyVO> myReplyList(String userid, myPagingVO pVO) {
+	public List<ReplyVO> myReplyList(String userid, MyPagingVO pVO) {
 		return dao.myReplyList(userid, pVO);
 	}
 
@@ -85,7 +85,7 @@ public class EditServiceImpl implements EditService {
 	}
 
 	@Override
-	public List<MyPageVO> myPickList(String userid, myPagingVO pVO) {
+	public List<MyPageVO> myPickList(String userid, MyPagingVO pVO) {
 		return dao.myPickList(userid, pVO);
 	}
 

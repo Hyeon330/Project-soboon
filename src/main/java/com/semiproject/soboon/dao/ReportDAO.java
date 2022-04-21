@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
+import com.semiproject.soboon.vo.MemberVO;
 import com.semiproject.soboon.vo.PagingVO;
 import com.semiproject.soboon.vo.ReportVO;
 
@@ -20,7 +21,8 @@ public interface ReportDAO {
 
 	public List<Integer> getBoardNoList(ReportVO vo);
 	
-	public void delreport(List<Integer> board_nos);
+	public void delreport(ReportVO vo);
 	
 	public int insertReportContent(ReportVO vo);
+	
 }

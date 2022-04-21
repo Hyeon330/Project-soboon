@@ -49,6 +49,7 @@
 			<div class="row">
 				<c:forEach var="listVo" items="${list}">
 					<div class="col-sm-3 sr">
+
 						<div class="card">
 							<div class="embed-responsive embed-responsive-4by3">
 								<a href="/board/${listVo.category}View?no=${listVo.no}&category=${listVo.category}">

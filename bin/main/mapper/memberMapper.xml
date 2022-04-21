@@ -48,4 +48,15 @@
 		set large=#{large}, medium=#{medium}, small=#{small}
 		where userid=#{userid}
 	</update>
+	<update id="updateWarn">
+		update member set warn=warn+1
+		where userid in (select suspect from report 
+								<where>
+									<foreach item="item" collection="noList" open="no in (" separator=", " close=")">
+						                #{item}
+						            </foreach>
+								</where>
+		)
+
+	</update>
 </mapper>

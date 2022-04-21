@@ -3,6 +3,7 @@ package com.semiproject.soboon.vo;
 import java.util.List;
 
 public class BoardVO {
+
 	private int no;
 	private String userid;
 	private String title;
@@ -157,5 +158,5 @@ public class BoardVO {
 	public void setNoList(List<Integer> noList) {
 		this.noList = noList;
 	}
-	
+
 }
