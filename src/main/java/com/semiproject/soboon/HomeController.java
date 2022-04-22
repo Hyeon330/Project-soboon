@@ -20,10 +20,15 @@ public class HomeController {
 	public ModelAndView home(BoardVO vo, HttpSession session, HttpServletRequest req) {
 		ModelAndView mav = new ModelAndView();
 		
+		// 쿠키가 있으면 세션에 값을 넣어줌
 		Cookie[] c = req.getCookies();
 		if(c != null) {
 			for (Cookie cookie : c) {
-				session.setAttribute(cookie.getName(), cookie.getValue());
+				if(cookie.getName().equals("logAdmin")) {
+					session.setAttribute(cookie.getName(), Integer.parseInt(cookie.getValue()));
+				} else {
+					session.setAttribute(cookie.getName(), cookie.getValue());
+				}
 			}
 		}
 		

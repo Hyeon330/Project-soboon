@@ -135,6 +135,7 @@ public class MemberController {
 		
 		MemberVO vo = new MemberVO();
 		vo.setUserid((String) userInfo.get("email"));
+		System.out.println((String) userInfo.get("email"));
 		MemberVO loginVO= service.loginCheck(vo);
 		if(loginVO != null) {
 			session.setAttribute("logId", loginVO.getUserid());
@@ -152,7 +153,6 @@ public class MemberController {
 			session.setAttribute("kakao", "Y");
 			return "member/signup";
 		}
-		
 	}
 	
 	//카카오톡 로그아웃
@@ -280,6 +280,7 @@ public class MemberController {
 		session.setAttribute("addrSmall", vo.getSmall());
 	}
 	
+	// 쿠키 생성
 	void setCookie(HttpServletResponse res, HttpSession session) {
 		Iterator<String> it = session.getAttributeNames().asIterator();
 		while(it.hasNext()) {

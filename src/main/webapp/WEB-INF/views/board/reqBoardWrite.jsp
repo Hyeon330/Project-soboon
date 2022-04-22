@@ -4,7 +4,7 @@
 <script src="/js/board/boardaddrDialog.js"></script>
 <div class="container">
 	<br/>
-	<form class="form-group" method="post" action="/board/reqBoardWriteOk?category=request" id="reqForm" enctype="multipart/form-data">
+	<form class="form-group" method="post" action="/board/reqBoardWriteOk?category=req" id="reqForm" enctype="multipart/form-data">
 		<table class="table table-striped" style="text-align:center">
 			<thead>
 				<tr>

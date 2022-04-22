@@ -7,7 +7,6 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.semiproject.soboon.dao.ReportDAO;
-import com.semiproject.soboon.vo.MemberVO;
 import com.semiproject.soboon.vo.PagingVO;
 import com.semiproject.soboon.vo.ReportVO;
 
