@@ -53,11 +53,14 @@ public class MemberController {
 	//회원등록
 	@PostMapping("memberOk")
 	public String memberFormOk(MemberVO vo, Model model, HttpSession session) {
-		if(session.getAttribute("kakao").equals("Y")) {
+		int cnt = 0;
+		if(session.getAttribute("kakao")==null) {
+			cnt = service.memberInsert(vo);
+		}else {
 			vo.setUserid((String)session.getAttribute("logId"));
 			vo.setUsername((String)session.getAttribute("logName"));
+			cnt = service.memberInsert(vo);
 		}
-		int cnt = service.memberInsert(vo);
 		
 		model.addAttribute("cnt", cnt);
 		
