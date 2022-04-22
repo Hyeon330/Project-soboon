@@ -53,11 +53,14 @@ public class MemberController {
 	//회원등록
 	@PostMapping("memberOk")
 	public String memberFormOk(MemberVO vo, Model model, HttpSession session) {
-		if(session.getAttribute("kakao").equals("Y")) {
+		int cnt = 0;
+		if(session.getAttribute("kakao")==null) {
+			cnt = service.memberInsert(vo);
+		}else {
 			vo.setUserid((String)session.getAttribute("logId"));
 			vo.setUsername((String)session.getAttribute("logName"));
+			cnt = service.memberInsert(vo);
 		}
-		int cnt = service.memberInsert(vo);
 		
 		model.addAttribute("cnt", cnt);
 		
@@ -105,14 +108,7 @@ public class MemberController {
 	public ModelAndView logout(HttpSession session, HttpServletRequest req, HttpServletResponse res) {
 		session.invalidate();
 		
-		Cookie[] cookies = req.getCookies();
-		if(cookies != null) {
-			for (Cookie cookie : cookies) {
-				cookie.setMaxAge(0);
-				cookie.setPath("/");
-				res.addCookie(cookie);
-			}
-		}
+		delCookies(session, req, res);
 		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("redirect:/");
@@ -157,9 +153,10 @@ public class MemberController {
 	
 	//카카오톡 로그아웃
 	@RequestMapping(value="logout")
-	public String klogout(HttpSession session) {
+	public String klogout(HttpSession session, HttpServletRequest req, HttpServletResponse res) {
 		kakao.kakaoLogout((String)session.getAttribute("access_Token"));
 		session.invalidate();
+		delCookies(session, req, res);
 
 		return "redirect:/";
 	}
@@ -267,10 +264,11 @@ public class MemberController {
 	
 	@PostMapping("updateMyAddr")
 	@ResponseBody
-	public void updateMyAddr(MemberVO vo, HttpSession session) {
+	public void updateMyAddr(MemberVO vo, HttpSession session, HttpServletResponse res) {
 		vo.setUserid((String)session.getAttribute("logId"));
 		setSessionAddr(vo, session);
 		service.updateMyAddr(vo);
+		setCookie(res, session);
 	}
 	
 	// 세션에 주소를 넣어주는 함수
@@ -294,6 +292,17 @@ public class MemberController {
 			c.setMaxAge(60*60*24*30);
 			c.setPath("/");
 			res.addCookie(c);
+		}
+	}
+	
+	void delCookies(HttpSession session, HttpServletRequest req, HttpServletResponse res) {
+		Cookie[] cookies = req.getCookies();
+		if(cookies != null) {
+			for (Cookie cookie : cookies) {
+				cookie.setMaxAge(0);
+				cookie.setPath("/");
+				res.addCookie(cookie);
+			}
 		}
 	}
 }
