@@ -11,11 +11,6 @@
 			sessionStorage.setItem('kakao', 'Y');
 		</script>
 	</c:if>
-	<c:if test="${kakao!='Y' }">
-		<script>
-			sessionStorage.setItem('kakao', 'N');
-		</script>
-	</c:if>
 		<ul class="user-info">
 			<c:if test="${kakao!='Y' }">
 				<li>아이디</li>

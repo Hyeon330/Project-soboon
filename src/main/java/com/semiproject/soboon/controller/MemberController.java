@@ -1,10 +1,13 @@
 package com.semiproject.soboon.controller;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Random;
 
 import javax.inject.Inject;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,7 +72,7 @@ public class MemberController {
 	
 	//로그인
 	@PostMapping("loginOk")
-	public ResponseEntity<String> loginOk(MemberVO vo, HttpSession session) {
+	public ResponseEntity<String> loginOk(MemberVO vo, HttpSession session, HttpServletResponse res) {
 		ResponseEntity<String> entity = null;
 		
 		HttpHeaders headers = new HttpHeaders();
@@ -83,8 +86,10 @@ public class MemberController {
 			session.setAttribute("logAdmin", vo2.getVerify());
 			session.setAttribute("logStatus", "Y");
 			setSessionAddr(vo2, session);
-			String msg = "<script>location.href='/';</script>";
 			
+			setCookie(res, session);
+			
+			String msg = "<script>location.href='/';</script>";
 			entity = new ResponseEntity<String>(msg, headers, HttpStatus.OK);
 			
 		} else {
@@ -97,8 +102,17 @@ public class MemberController {
 
 	//로그아웃
 	@GetMapping("logout")
-	public ModelAndView logout(HttpSession session) {
+	public ModelAndView logout(HttpSession session, HttpServletRequest req, HttpServletResponse res) {
 		session.invalidate();
+		
+		Cookie[] cookies = req.getCookies();
+		if(cookies != null) {
+			for (Cookie cookie : cookies) {
+				cookie.setMaxAge(0);
+				cookie.setPath("/");
+				res.addCookie(cookie);
+			}
+		}
 		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("redirect:/");
@@ -109,7 +123,7 @@ public class MemberController {
 	//카카오톡관련
 	//카카오톡 로그인
 	@RequestMapping(value="kakao/klogin")
-	public String login(@RequestParam("code") String code, HttpSession session, RedirectAttributes attr) {
+	public String login(@RequestParam("code") String code, HttpSession session, RedirectAttributes attr, HttpServletResponse res) {
 		
 		String access_Token = kakao.getAccessToken(code);
 //		System.out.println("controller access_token:" + access_Token);
@@ -130,6 +144,7 @@ public class MemberController {
 			session.setAttribute("kakao", "Y");
 			session.setAttribute("logStatus", "Y");
 			setSessionAddr(loginVO, session);
+			setCookie(res, session);
 			return "redirect:/";
 		}else {
 			session.setAttribute("logId", (String) userInfo.get("email"));
@@ -137,6 +152,7 @@ public class MemberController {
 			session.setAttribute("kakao", "Y");
 			return "member/signup";
 		}
+		
 	}
 	
 	//카카오톡 로그아웃
@@ -262,5 +278,21 @@ public class MemberController {
 		session.setAttribute("addrLarge", vo.getLarge());
 		session.setAttribute("addrMedium", vo.getMedium());
 		session.setAttribute("addrSmall", vo.getSmall());
+	}
+	
+	void setCookie(HttpServletResponse res, HttpSession session) {
+		Iterator<String> it = session.getAttributeNames().asIterator();
+		while(it.hasNext()) {
+			String sessionAttributeName = it.next();
+			Cookie c = null;
+			if(sessionAttributeName.equals("logAdmin")) {
+				c = new Cookie(sessionAttributeName, ((Integer) session.getAttribute(sessionAttributeName)).toString());
+			}else {
+				c = new Cookie(sessionAttributeName, (String) session.getAttribute(sessionAttributeName));
+			}
+			c.setMaxAge(60*60*24*30);
+			c.setPath("/");
+			res.addCookie(c);
+		}
 	}
 }
