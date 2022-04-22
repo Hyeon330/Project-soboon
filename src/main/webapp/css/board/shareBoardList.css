@@ -62,9 +62,9 @@
 	color:white;
 }
 .page-link{
+	background-color:rgba(72, 97, 86, 20%) !important;
 	color:rgb(72, 97, 86);
 }
-
 /*top 효과*/
 #shareBoard{
 	border-top-left-radius:10px;
