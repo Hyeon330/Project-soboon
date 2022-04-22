@@ -19,7 +19,6 @@ public class ReportController {
 	
 	@PostMapping("insertReportContent")
 	public int insertReportContent(ReportVO vo, HttpSession session) {
-		System.out.println(vo.getReport_content());
 		vo.setReporter((String)session.getAttribute("logId"));
 		return service.insertReportContent(vo);
 	}
