@@ -60,6 +60,7 @@ public class MypageController {
 		headers.add("Content-Type", "text/html;charset=utf-8");
 		try {
 			int result = service.editUpdate(vo);
+			session.setAttribute("nickName", vo.getNickname());
 			if(result>0) {//수정성공
 				String msg = "<script>alert('회원정보수정이 성공하였습니다.'); history.back();</script>";
 				entity = new ResponseEntity<String>(msg, headers, HttpStatus.OK);
