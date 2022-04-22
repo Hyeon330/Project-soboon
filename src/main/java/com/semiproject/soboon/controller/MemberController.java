@@ -105,14 +105,7 @@ public class MemberController {
 	public ModelAndView logout(HttpSession session, HttpServletRequest req, HttpServletResponse res) {
 		session.invalidate();
 		
-		Cookie[] cookies = req.getCookies();
-		if(cookies != null) {
-			for (Cookie cookie : cookies) {
-				cookie.setMaxAge(0);
-				cookie.setPath("/");
-				res.addCookie(cookie);
-			}
-		}
+		delCookies(session, req, res);
 		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("redirect:/");
@@ -157,9 +150,10 @@ public class MemberController {
 	
 	//카카오톡 로그아웃
 	@RequestMapping(value="logout")
-	public String klogout(HttpSession session) {
+	public String klogout(HttpSession session, HttpServletRequest req, HttpServletResponse res) {
 		kakao.kakaoLogout((String)session.getAttribute("access_Token"));
 		session.invalidate();
+		delCookies(session, req, res);
 
 		return "redirect:/";
 	}
@@ -295,6 +289,17 @@ public class MemberController {
 			c.setMaxAge(60*60*24*30);
 			c.setPath("/");
 			res.addCookie(c);
+		}
+	}
+	
+	void delCookies(HttpSession session, HttpServletRequest req, HttpServletResponse res) {
+		Cookie[] cookies = req.getCookies();
+		if(cookies != null) {
+			for (Cookie cookie : cookies) {
+				cookie.setMaxAge(0);
+				cookie.setPath("/");
+				res.addCookie(cookie);
+			}
 		}
 	}
 }
