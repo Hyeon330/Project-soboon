@@ -126,7 +126,7 @@
 			pageStr += '<li class="page-item"><a class="page-link" href="javascript:void(0)" id="prevBtn" onclick="ml2(' + (dataArr.pVO.pageNum - 1) + ', ' + num + ', ' + idx +')"><i class="fa fa-angle-left"></i></a></li>';
 		}
 		//페이지
-		for (var p = dataArr.pVO.startPage; p < dataArr.pVO.startPage+dataArr.pVO.onePageCount-1; p++) {
+		for (var p = dataArr.pVO.startPage; p <= dataArr.pVO.startPage+dataArr.pVO.onePageCount-1; p++) {
 			// 총 페이지수보다 출력할 페이지 번호가 작을 때
 			if (p <= dataArr.pVO.totalPage) {
 				if (p === dataArr.pVO.pageNum) {
@@ -192,7 +192,7 @@
 			pageStr += '<li class="page-item"><a class="page-link" href="javascript:void(0)" id="prevBtn" onclick="ml2(' + (dataArr.pVO.pageNum - 1) + ', ' + num + ', ' + idx +')"><i class="fa fa-angle-left"></i></a></li>';
 		}
 		//페이지
-		for (var p = dataArr.pVO.startPage; p < dataArr.pVO.startPage+dataArr.pVO.onePageCount-1; p++) {
+		for (var p = dataArr.pVO.startPage; p <= dataArr.pVO.startPage+dataArr.pVO.onePageCount-1; p++) {
 			// 총 페이지수보다 출력할 페이지 번호가 작을 때
 			if (p <= dataArr.pVO.totalPage) {
 				if (p === dataArr.pVO.pageNum) {
@@ -259,7 +259,7 @@
 			pageStr += '<li class="page-item"><a class="page-link" href="javascript:void(0)" id="prevBtn" onclick="ml2(' + (dataArr.pVO.pageNum - 1) + ', ' + num + ', ' + idx +')"><i class="fa fa-angle-left"></i></a></li>';
 		}
 		//페이지
-		for (var p = dataArr.pVO.startPage; p < dataArr.pVO.startPage+dataArr.pVO.onePageCount-1; p++) {
+		for (var p = dataArr.pVO.startPage; p <= dataArr.pVO.startPage+dataArr.pVO.onePageCount-1; p++) {
 			// 총 페이지수보다 출력할 페이지 번호가 작을 때
 			if (p <= dataArr.pVO.totalPage) {
 				if (p === dataArr.pVO.pageNum) {
