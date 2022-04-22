@@ -267,10 +267,11 @@ public class MemberController {
 	
 	@PostMapping("updateMyAddr")
 	@ResponseBody
-	public void updateMyAddr(MemberVO vo, HttpSession session) {
+	public void updateMyAddr(MemberVO vo, HttpSession session, HttpServletResponse res) {
 		vo.setUserid((String)session.getAttribute("logId"));
 		setSessionAddr(vo, session);
 		service.updateMyAddr(vo);
+		setCookie(res, session);
 	}
 	
 	// 세션에 주소를 넣어주는 함수
