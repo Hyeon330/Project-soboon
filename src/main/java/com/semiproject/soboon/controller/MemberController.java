@@ -122,16 +122,12 @@ public class MemberController {
 	public String login(@RequestParam("code") String code, HttpSession session, RedirectAttributes attr, HttpServletResponse res) {
 		
 		String access_Token = kakao.getAccessToken(code);
-//		System.out.println("controller access_token:" + access_Token);
 		HashMap<String, Object> userInfo = kakao.getUserInfo(access_Token);
-//		System.out.println("login Controller: " + userInfo);
 		
 //		// 클라이언트의 이메일이 존재할 때 세션에 해당 이메일과 토큰 등록
-//		System.out.println(kakao.getUserInfo("email"));
 		
 		MemberVO vo = new MemberVO();
 		vo.setUserid((String) userInfo.get("email"));
-		System.out.println((String) userInfo.get("email"));
 		MemberVO loginVO= service.loginCheck(vo);
 		if(loginVO != null) {
 			session.setAttribute("logId", loginVO.getUserid());

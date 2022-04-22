@@ -60,7 +60,6 @@ public class AdminController {
 		Map<String, Object> map=new HashMap<>();
 		//전체 리포트 가져오기
 		int cnt = reportservice.getReportcnt();
-		/* System.out.println(cnt); */
 		pVO.setTotalRecord(cnt);
 		//리포트에 해당하는 리포트 목록
 		List<ReportVO> list=reportservice.ReportList(pVO);
@@ -74,11 +73,6 @@ public class AdminController {
 	
 	@GetMapping("admin/multiDel")
 	public ModelAndView ReportMultiDelete(ReportVO vo, boolean fake, HttpSession session) {
-		
-
-		/* vo.setReporter((String)session.getAttribute("logId")); */
-		/* System.out.println(vo.getReporter()); */
-	System.out.println(vo.getNoList().size());
 		
 		if(fake) { 
 			reportservice.ReportMultiDelete(vo); 
