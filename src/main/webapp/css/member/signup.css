@@ -12,6 +12,9 @@
 #signupLogo{
 	width:22%;
 }
+.user-info{
+	height: 540px;
+}
 #memberFrm li{
 	float:left;
 	height:50px;

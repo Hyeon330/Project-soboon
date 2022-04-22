@@ -20,7 +20,6 @@ import com.semiproject.soboon.RelateUploadFile;
 import com.semiproject.soboon.service.BoardService;
 import com.semiproject.soboon.vo.BoardVO;
 import com.semiproject.soboon.vo.PagingVO;
-import com.semiproject.soboon.vo.PickVO;
 
 @RequestMapping("/board/")
 @RestController
@@ -131,9 +130,10 @@ public class RentAndSaleController {
 	
 	// 대여 글 수정 DB연결
 	@PostMapping("rentBoardEditOk")
-	public ModelAndView rentBoardEditOk(BoardVO vo, HttpServletRequest request){
+	public ModelAndView rentEditOk(BoardVO vo, HttpServletRequest request){
 		vo.setUserid((String)request.getSession().getAttribute("logId"));
 		vo.setCategory("rent");
+		
 		// 파일을 수정하기 위해서 경로
 		String path = request.getSession().getServletContext().getRealPath("/upload");
 
@@ -148,17 +148,17 @@ public class RentAndSaleController {
 			
 			// DB 리스트에 기존 파일명 넣기
 			if(fileVO!=null) {
-				if(fileVO.getImg1()!=null || fileVO.getImg1()!="") {
+				if(fileVO.getImg1()!=null && fileVO.getImg1()!="") {
 					fileVO = service.getFileName(vo.getNo());
 					fileList.add(fileVO.getImg1());
 				}
-				if(fileVO.getImg2()!=null || fileVO.getImg2()!="") {
+				if(fileVO.getImg2()!=null && fileVO.getImg2()!="") {
 					fileList.add(fileVO.getImg2());
 				}
-				if(fileVO.getImg3()!=null || fileVO.getImg3()!="") {
+				if(fileVO.getImg3()!=null && fileVO.getImg3()!="") {
 					fileList.add(fileVO.getImg3());
 				}
-				if(fileVO.getImg4()!=null || fileVO.getImg4()!="") {
+				if(fileVO.getImg4()!=null && fileVO.getImg4()!="") {
 					fileList.add(fileVO.getImg4());
 				}
 			}
@@ -170,7 +170,6 @@ public class RentAndSaleController {
 			}
 			// rename하고 기존 파일 수정하기
 			RelateUploadFile.fileRenameAndUpdate(vo, path, fileList, newFileList, request);
-			
 			// DB 업데이트
 			int cnt = service.updateEditView(vo);
 			
@@ -330,11 +329,12 @@ public class RentAndSaleController {
 		return mav;
 	}
 	
-	// 판매 글 수정 DB연결
+	// 대여 글 수정 DB연결
 	@PostMapping("saleBoardEditOk")
 	public ModelAndView saleEditOk(BoardVO vo, HttpServletRequest request){
 		vo.setUserid((String)request.getSession().getAttribute("logId"));
 		vo.setCategory("sale");
+		
 		// 파일을 수정하기 위해서 경로
 		String path = request.getSession().getServletContext().getRealPath("/upload");
 
@@ -349,17 +349,17 @@ public class RentAndSaleController {
 			
 			// DB 리스트에 기존 파일명 넣기
 			if(fileVO!=null) {
-				if(fileVO.getImg1()!=null || fileVO.getImg1()!="") {
+				if(fileVO.getImg1()!=null && fileVO.getImg1()!="") {
 					fileVO = service.getFileName(vo.getNo());
 					fileList.add(fileVO.getImg1());
 				}
-				if(fileVO.getImg2()!=null || fileVO.getImg2()!="") {
+				if(fileVO.getImg2()!=null && fileVO.getImg2()!="") {
 					fileList.add(fileVO.getImg2());
 				}
-				if(fileVO.getImg3()!=null || fileVO.getImg3()!="") {
+				if(fileVO.getImg3()!=null && fileVO.getImg3()!="") {
 					fileList.add(fileVO.getImg3());
 				}
-				if(fileVO.getImg4()!=null || fileVO.getImg4()!="") {
+				if(fileVO.getImg4()!=null && fileVO.getImg4()!="") {
 					fileList.add(fileVO.getImg4());
 				}
 			}
@@ -371,7 +371,6 @@ public class RentAndSaleController {
 			}
 			// rename하고 기존 파일 수정하기
 			RelateUploadFile.fileRenameAndUpdate(vo, path, fileList, newFileList, request);
-			
 			// DB 업데이트
 			int cnt = service.updateEditView(vo);
 			
