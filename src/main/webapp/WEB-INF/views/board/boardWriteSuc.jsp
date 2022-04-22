@@ -19,7 +19,7 @@
 			location.href='/board/saleBoardList';
 		</script>
 	</c:if>
-	<c:if test="${vo.category=='request'}">
+	<c:if test="${vo.category=='req'}">
 		<script>
 			alert('🟢 글이 등록되었습니다.');
 			location.href='/board/reqBoardList';

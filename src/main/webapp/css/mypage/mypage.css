@@ -270,15 +270,28 @@
 .bottom-myView {
 	margin-top:20px;
 }
-.page-link{
-	background-color:rgb(72, 97, 86) !important;
-	color:white;
-	border:none;
+.currentPage{
+	background-color:white !important;
 }
+
+.page-link{
+	background-color:rgb(256, 256, 256) !important;
+	color:rgb(72, 97, 86) !important;
+	border-style: none;
+}
+.page-link:hover {    
+	z-index: 2 !important;    
+	color: #0056b3 !important;    
+	text-decoration: none !important;    
+	background-color: #e9ecef !important;    
+	border-color: #dee2e6 !important;
+}
+
 .page-item{
 	background-color:none;
 	color:white;
 }
+
 #prevBtn, #nextBtn{
 	background-color:rgb(72, 97, 86) !important;
 }

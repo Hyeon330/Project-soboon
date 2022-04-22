@@ -20,7 +20,6 @@ import com.semiproject.soboon.RelateUploadFile;
 import com.semiproject.soboon.service.BoardService;
 import com.semiproject.soboon.vo.BoardVO;
 import com.semiproject.soboon.vo.PagingVO;
-import com.semiproject.soboon.vo.PickVO;
 
 @RequestMapping("/board/")
 @RestController

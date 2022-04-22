@@ -18,19 +18,16 @@
 
 		$('#mypostSelect').change(function() {
 			areaNum1 = Number($(this).val());
-			console.log('areaNum--->', areaNum1);
 			ajaxSend_mp(idx, areaNum1);
 		});
 		
 		$('#mycommentSelect').change(function() {
 			areaNum2 = Number($(this).val());
-			console.log('areaNum2--->', areaNum2);
 			ajaxSend_mp(idx, areaNum2);
 		});
 		
 		$('#mypickSelect').change(function() {
 			areaNum3 = Number($(this).val());
-			console.log('areaNum3--->', areaNum3);
 			ajaxSend_mp(idx, areaNum3);
 		});
 	});
@@ -51,7 +48,6 @@
 		} else {
 			url += '/mypick';
 		}
-		console.log('ajax돌입', num);
 		$.ajax({
 			url : url,
 			type : 'GET',
@@ -60,7 +56,6 @@
 			},
 			success : function(dataArr) {
 				if (idx === 1) {
-					console.log('######### idx=1 통과######');
 					showMyPost(dataArr, num);
 				} else if (idx === 2) {
 					showMyComment(dataArr, num);
@@ -71,7 +66,6 @@
 			},
 			error : function(e) {
 				alert('데이터 받는 도중에 에러발생!');
-				console.log('데이터 받는 도중에 에러!!!');
 			}
 
 		});//$.ajax
@@ -121,29 +115,24 @@
 				str += "<li>" + data.createdate + "</li>";
 				str += "</ul>";
 			});
-		// form - exit
-		// 한 페이지당 10명 기준
-
-		console.log('totalRecord--->' + dataArr.pVO.totalRecord);
-		console.log('totalPage----->' + dataArr.pVO.totalPage);
 
 		//페이지 네비게이션 문자열 만들기
 		let pageStr = "";
 		pageStr += '<ul class="pagination" id="paging-mp">';
 		// 이전 페이지
-		if (dataArr.pVO.pageNum === 1) {
+		if (dataArr.pVO.pageNum <= 1) {
 			pageStr += '<li class="page-item disabled"><a class="page-link" id="prevBtn" href="javascript:void(0)"><i class="fa fa-angle-left"></i></a></li>';
 		} else {
 			pageStr += '<li class="page-item"><a class="page-link" href="javascript:void(0)" id="prevBtn" onclick="ml2(' + (dataArr.pVO.pageNum - 1) + ', ' + num + ', ' + idx +')"><i class="fa fa-angle-left"></i></a></li>';
 		}
 		//페이지
-		for (var p = dataArr.pVO.startPage; p < dataArr.pVO.startPage+dataArr.pVO.onePageCount-1; p++) {
+		for (var p = dataArr.pVO.startPage; p <= dataArr.pVO.startPage+dataArr.pVO.onePageCount-1; p++) {
 			// 총 페이지수보다 출력할 페이지 번호가 작을 때
 			if (p <= dataArr.pVO.totalPage) {
 				if (p === dataArr.pVO.pageNum) {
 					pageStr += '<li class="page-item active"><a class="page-link"  href="javascript:void(0)" onclick="ml2('+ p + ', ' + num + ', ' + idx +')">' + p + '</a></li>';
 				} else {
-					pageStr += '<li class="page-item"><a class="page-link" href="javascript:void(0)" onclick="ml2('+ p + ', ' + num + ', ' + idx +')">' + p + '</a></li>';
+					pageStr += '<li class="page-item"><a class="page-link " href="javascript:void(0)" onclick="ml2('+ p + ', ' + num + ', ' + idx +')">' + p + '</a></li>';
 				}//if~else2	
 			}//if1
 		}//for
@@ -155,7 +144,6 @@
 			pageStr += '<li class="page-item"><a class="page-link" id="nextBtn" href="javascript:void(0)" id="nextBtn" onclick="ml2(' + (dataArr.pVO.pageNum + 1) + ', ' + num + ', ' + idx +')"><i class="fa fa-angle-right"></i></li>';
 		}
 		pageStr += '</ul>';
-		console.log(pageStr);
 		/*-----------------------출력(print)----------------------------------------------------*/
 		$('#myPostCnt').html(dataArr.pVO.totalRecord);
 		$('#printFrm1').html(str);
@@ -194,7 +182,6 @@
 		});
 		// form - exit
 		// 한 페이지당 10명 기준
-		console.log(">>>>>>",dataArr.pVO.onePageCount);
 		//페이지 네비게이션 문자열 만들기
 		let pageStr = "";
 		pageStr += '<ul class="pagination" id="paging-mp">';
@@ -205,7 +192,7 @@
 			pageStr += '<li class="page-item"><a class="page-link" href="javascript:void(0)" id="prevBtn" onclick="ml2(' + (dataArr.pVO.pageNum - 1) + ', ' + num + ', ' + idx +')"><i class="fa fa-angle-left"></i></a></li>';
 		}
 		//페이지
-		for (var p = dataArr.pVO.startPage; p < dataArr.pVO.startPage+dataArr.pVO.onePageCount-1; p++) {
+		for (var p = dataArr.pVO.startPage; p <= dataArr.pVO.startPage+dataArr.pVO.onePageCount-1; p++) {
 			// 총 페이지수보다 출력할 페이지 번호가 작을 때
 			if (p <= dataArr.pVO.totalPage) {
 				if (p === dataArr.pVO.pageNum) {
@@ -272,7 +259,7 @@
 			pageStr += '<li class="page-item"><a class="page-link" href="javascript:void(0)" id="prevBtn" onclick="ml2(' + (dataArr.pVO.pageNum - 1) + ', ' + num + ', ' + idx +')"><i class="fa fa-angle-left"></i></a></li>';
 		}
 		//페이지
-		for (var p = dataArr.pVO.startPage; p < dataArr.pVO.startPage+dataArr.pVO.onePageCount-1; p++) {
+		for (var p = dataArr.pVO.startPage; p <= dataArr.pVO.startPage+dataArr.pVO.onePageCount-1; p++) {
 			// 총 페이지수보다 출력할 페이지 번호가 작을 때
 			if (p <= dataArr.pVO.totalPage) {
 				if (p === dataArr.pVO.pageNum) {
@@ -308,12 +295,10 @@
 		}else {
 			url = "/mypage/mypick";
 		}
-		console.log(url);
 		data = {
 			pageNum : p,
 			onePageRecord : num
 		}
-		console.log("data.onePageRecord", data.onePageRecord);
 		$.ajax({
 			url : url,
 			dateType : 'json',
@@ -367,14 +352,12 @@
 					url : url,
 					success : function(result) {
 						if (result <= 0) {
-							console.log('데이터 목록 삭제를 실패하였습니다.');
 							alert("데이터 목록 삭제를 실패하였습니다.");
 						} else {
 							ajaxSend_mp(idx, areaNum1);
 						}
 					},
 					error : function(e) {
-						console.log(e);
 						alert('데이터 교환 중 오류발생');
 					}
 
@@ -402,16 +385,12 @@
 					url : url,
 					success : function(result) {
 						if (result <= 0) {
-							console.log('데이터 목록 삭제를 실패하였습니다.');
 							alert("데이터 목록 삭제를 실패하였습니다.");
 						} else {
-							console.log("result값--->",result);
-							console.log("idx값--->",idx);
 							ajaxSend_mp(idx, areaNum2);
 						}
 					},
 					error : function(e) {
-						console.log(e);
 						alert('데이터 교환 중 오류발생');
 					}
 
@@ -440,16 +419,12 @@
 					success : function(result) {
 						console.log('>>>>>>', result);
 						if (result <= 0) {
-							console.log('데이터 목록 삭제를 실패하였습니다.');
 							alert("데이터 목록 삭제를 실패하였습니다.");
 						} else {
-							console.log("result값--->",result);
-							console.log("idx값--->",idx);
 							ajaxSend_mp(idx, areaNum3);
 						}
 					},
 					error : function(e) {
-						console.log(e);
 						alert('데이터 교환 중 오류발생');
 					}
 

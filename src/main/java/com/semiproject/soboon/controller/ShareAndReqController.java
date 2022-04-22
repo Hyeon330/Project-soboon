@@ -254,7 +254,7 @@ public class ShareAndReqController {
 	@GetMapping("reqBoardList")
 	public ModelAndView reqListForm(PagingVO pvo, BoardVO vo, String keyword, HttpSession session) {
 		
-		vo.setCategory("request");
+		vo.setCategory("req");
 		vo.setSmall((String)session.getAttribute("addrSmall"));
 		
 		// 게시판 글 DB연결해서 보이기
@@ -280,7 +280,7 @@ public class ShareAndReqController {
 		// 현재 session에 있는 ID와 카테고리
 		vo.setUserid((String)request.getSession().getAttribute("logId")); 
 		vo.setNickname((String)request.getSession().getAttribute("nickName")); 
-		vo.setCategory("request");
+		vo.setCategory("req");
 		
 		// 파일을 업로드할 폴더 절대경로
 		String path = request.getSession().getServletContext().getRealPath("/upload");
@@ -351,7 +351,7 @@ public class ShareAndReqController {
 	@PostMapping("reqBoardEditOk")
 	public ModelAndView reqEditOk(BoardVO vo, HttpServletRequest request){
 		vo.setUserid((String)request.getSession().getAttribute("logId"));
-		vo.setCategory("request");
+		vo.setCategory("req");
 		
 		// 파일을 수정하기 위해서 경로
 		String path = request.getSession().getServletContext().getRealPath("/upload");
@@ -439,7 +439,7 @@ public class ShareAndReqController {
 				}
 				
 				String msg ="<script>alert('글이 삭제되었습니다.');";
-				msg +="location.href='/board/saleBoardList';</script>";
+				msg +="location.href='/board/reqBoardList';</script>";
 				entity = new ResponseEntity<String>(msg, headers, HttpStatus.OK);
 			}else {
 				entity = new ResponseEntity<String>(failMsg(), headers, HttpStatus.BAD_REQUEST);
