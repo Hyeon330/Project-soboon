@@ -87,7 +87,7 @@ public class MemberController {
 			session.setAttribute("logStatus", "Y");
 			setSessionAddr(vo2, session);
 			
-			setCookie(res, session);
+//			setCookie(res, session);
 			
 			String msg = "<script>location.href='/';</script>";
 			entity = new ResponseEntity<String>(msg, headers, HttpStatus.OK);
@@ -145,7 +145,7 @@ public class MemberController {
 			session.setAttribute("kakao", "Y");
 			session.setAttribute("logStatus", "Y");
 			setSessionAddr(loginVO, session);
-			setCookie(res, session);
+//			setCookie(res, session);
 			return "redirect:/";
 		}else {
 			session.setAttribute("logId", (String) userInfo.get("email"));
