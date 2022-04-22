@@ -52,7 +52,7 @@
 
 						<div class="card">
 							<div class="embed-responsive embed-responsive-4by3">
-								<a href="/board/${listVo.category}View?no=${listVo.no}&category=${listVo.category}">
+								<a href="/board/${listVo.category}BoardView?no=${listVo.no}&category=${listVo.category}">
 									<c:if test="${listVo.thumbnailImg==null}">
      									<img src="/img/thumbnail_${listVo.category}.jpg" class="embed-responsive-item">
      								</c:if>

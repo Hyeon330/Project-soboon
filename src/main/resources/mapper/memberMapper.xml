@@ -9,7 +9,10 @@
 	</insert>
 	<select id="loginCheck" resultType="MemberVO">
 		select userid, username, verify, nickname, large, medium, small from member
-		where userid=#{userid} and userpwd=#{userpwd}
+		where userid=#{userid}
+		<if test="userpwd!=null">
+			and userpwd=#{userpwd}
+		</if>
 	</select>
 	<select id="idCheck" resultType="int">
 		select count(userid) cnt from member where userid=#{param1}
