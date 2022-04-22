@@ -87,7 +87,7 @@ public class MemberController {
 			session.setAttribute("logStatus", "Y");
 			setSessionAddr(vo2, session);
 			
-//			setCookie(res, session);
+			setCookie(res, session);
 			
 			String msg = "<script>location.href='/';</script>";
 			entity = new ResponseEntity<String>(msg, headers, HttpStatus.OK);
@@ -105,14 +105,7 @@ public class MemberController {
 	public ModelAndView logout(HttpSession session, HttpServletRequest req, HttpServletResponse res) {
 		session.invalidate();
 		
-		Cookie[] cookies = req.getCookies();
-		if(cookies != null) {
-			for (Cookie cookie : cookies) {
-				cookie.setMaxAge(0);
-				cookie.setPath("/");
-				res.addCookie(cookie);
-			}
-		}
+		delCookies(session, req, res);
 		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("redirect:/");
@@ -145,7 +138,7 @@ public class MemberController {
 			session.setAttribute("kakao", "Y");
 			session.setAttribute("logStatus", "Y");
 			setSessionAddr(loginVO, session);
-//			setCookie(res, session);
+			setCookie(res, session);
 			return "redirect:/";
 		}else {
 			session.setAttribute("logId", (String) userInfo.get("email"));
@@ -157,8 +150,10 @@ public class MemberController {
 	
 	//카카오톡 로그아웃
 	@RequestMapping(value="logout")
-	public String klogout(HttpSession session) {
+	public String klogout(HttpSession session, HttpServletRequest req, HttpServletResponse res) {
 		kakao.kakaoLogout((String)session.getAttribute("access_Token"));
+		session.invalidate();
+		delCookies(session, req, res);
 
 		return "redirect:/";
 	}
@@ -266,10 +261,11 @@ public class MemberController {
 	
 	@PostMapping("updateMyAddr")
 	@ResponseBody
-	public void updateMyAddr(MemberVO vo, HttpSession session) {
+	public void updateMyAddr(MemberVO vo, HttpSession session, HttpServletResponse res) {
 		vo.setUserid((String)session.getAttribute("logId"));
 		setSessionAddr(vo, session);
 		service.updateMyAddr(vo);
+		setCookie(res, session);
 	}
 	
 	// 세션에 주소를 넣어주는 함수
@@ -293,6 +289,17 @@ public class MemberController {
 			c.setMaxAge(60*60*24*30);
 			c.setPath("/");
 			res.addCookie(c);
+		}
+	}
+	
+	void delCookies(HttpSession session, HttpServletRequest req, HttpServletResponse res) {
+		Cookie[] cookies = req.getCookies();
+		if(cookies != null) {
+			for (Cookie cookie : cookies) {
+				cookie.setMaxAge(0);
+				cookie.setPath("/");
+				res.addCookie(cookie);
+			}
 		}
 	}
 }
