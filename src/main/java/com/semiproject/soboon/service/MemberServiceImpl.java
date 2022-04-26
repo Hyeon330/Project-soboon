@@ -24,7 +24,6 @@ public class MemberServiceImpl implements MemberService{
 	
 	@Override
 	public int memberInsert(MemberVO vo) {
-		System.out.println("vo="+vo);
 		return dao.memberInsert(vo);
 	}
 	
@@ -83,7 +82,6 @@ public class MemberServiceImpl implements MemberService{
 		
 		try {
 			JSONObject obj = (JSONObject)coolsms.send(params);
-			/* System.out.println(obj.toString()); */
 		} catch(CoolsmsException e) {
 			System.out.println(e.getMessage());
 			System.out.println(e.getCode());
