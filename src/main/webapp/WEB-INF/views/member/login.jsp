@@ -17,7 +17,7 @@
 				<li><input type="submit" class="btn login-btn" value="로그인">
 				<a href="/member/signup"><input type="button" class="btn login-btn1" id="signupBtn" value="회원가입"></a></li>
 				<br/>
-				<li><a href="https://kauth.kakao.com/oauth/authorize?client_id=4f0872694d90dd12a1b5d2f2045a544b&redirect_uri=http://localhost:8080/member/kakao&response_type=code"><img src="/img/kakao_login_button.png" class="kakaoBtn"/></a></li>
+				<li><a href="https://kauth.kakao.com/oauth/authorize?client_id=4f0872694d90dd12a1b5d2f2045a544b&redirect_uri=http://118.67.135.234:8080/member/kakao&response_type=code"><img src="/img/kakao_login_button.png" class="kakaoBtn"/></a></li>
 				<li><a href="/member/search_info"><input type="button" class="btn login-btn2" id="FindInfoBtn" value="아이디/비밀번호찾기"/></a></li>
 			</ul>
 		</form>
