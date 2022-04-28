@@ -1,11 +1,11 @@
-var app = require('express')();
-var server = require('http').createServer(app);
-var io = require('socket.io').listen(server);
-var mysql = require('mysql2');
+const app = require('express')();
+const server = require('http').createServer(app);
+const io = require("socket.io")(server);
+const mysql = require('mysql2');
 
 var conn = mysql.createConnection({
-    host : "1.246.60.149",
-    port : 5000,
+    host : "database-1.cxqevdecz202.ap-northeast-2.rds.amazonaws.com",
+    port : 3306,
     user : 'a3b3',
     password: '1234',
     database : 'soboon'
@@ -66,6 +66,6 @@ io.sockets.on('connection', (socket) => {
     });
 });
 
-server.listen(9001, () => {
-    console.log('Server Start => http://localhost:9001/');
+server.listen(8090, () => {
+    console.log('Server Start => http://localhost:8090/');
 });
