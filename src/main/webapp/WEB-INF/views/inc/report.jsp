@@ -5,7 +5,7 @@
 	<form id="reportSubmit">
 		<ul>
 			<li>신고내용</li>
-			<li><textarea cols="40" rows="2" placeholder="50자 내외로 입력하세요" id="reportContent" name="reportContent"></textarea></li>
+			<li><textarea cols="50" rows="2" placeholder="50자 내외로 입력하세요" id="reportContent" name="reportContent"></textarea></li>
 		</ul>
 	</form>
 </div>
