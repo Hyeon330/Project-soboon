@@ -49,10 +49,12 @@ io.sockets.on('connection', (socket) => {
                 }
             });
         }else {
+            // DB에 메시지 data insert
             var insertMsgSql = 'insert into chat(sender, receiver, msg) values (?, ?, ?)';
             conn.execute(insertMsgSql, [data.sender, data.receiver, data.msg], () => {});
         }
 
+        // 방금 DB넣은 메시지의 전체 데이터를 가져와서 다시 Main Server로 보냄
         var selectMsgSql = 'select * from chat ';
         selectMsgSql += 'where sender=? and receiver=? ';
         selectMsgSql += 'order by chatno desc limit 1';
