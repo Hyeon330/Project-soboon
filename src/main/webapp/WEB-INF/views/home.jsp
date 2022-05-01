@@ -34,7 +34,7 @@
 		<a href="/board/saleBoardList">
 			<img src="/img/inform3.png" class="functionImage" />
 		</a>
-		<a href="/board/requestBoardList">
+		<a href="/board/reqBoardList">
 			<img src="/img/inform4.png" class="functionImage" />
 		</a>
 	</div>

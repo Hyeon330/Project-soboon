@@ -181,7 +181,7 @@ $(function() {
 				
 				msg += '<div class="msg-box '+position+'">';
 				var msgDateTimeArr = data.chat_datetime.split(' ')[1].split(':');
-				var nowTime = Number(msgDateTimeArr[0])+':'+Number(msgDateTimeArr[1]);
+				var nowTime = msgDateTimeArr[0]+':'+msgDateTimeArr[1];
 				if(prevTime != nowTime || prevPosition != position){
 					msg += '<div class="msg-info">';
 					if(position=='right'){
@@ -203,7 +203,7 @@ $(function() {
 		}
 	}
 	
-	var socket = io("http://1.246.60.149:9001");
+	var socket = io("http://ec2-3-35-208-207.ap-northeast-2.compute.amazonaws.com:8090");
 	
 	
 	// 닉네임에 맞는 메시지 가져오는 함수
