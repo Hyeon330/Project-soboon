@@ -118,7 +118,7 @@ public class MemberController {
 	//=========================================================================
 	//카카오톡관련
 	//카카오톡 로그인
-	@GetMapping("kakao/klogin")
+	@GetMapping("kakao")
 	public String login(@RequestParam("code") String code, HttpSession session, RedirectAttributes attr, HttpServletResponse res) {
 		
 		String access_Token = kakao.getAccessToken(code);

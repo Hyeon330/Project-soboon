@@ -13,7 +13,7 @@ spring:
 
   datasource: # 마이바티스 dataSource객체 세팅
     driver-class-name: 
-    url: jdbc:mysql://http://1.246.60.149:5000/soboon?characterEncoding=utf-8
+    url: jdbc:mysql://database-1.cxqevdecz202.ap-northeast-2.rds.amazonaws.com:3306/soboon?characterEncoding=utf-8
     username: a3b3
     password: 1234
     
