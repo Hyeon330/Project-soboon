@@ -181,7 +181,7 @@ $(function() {
 				
 				msg += '<div class="msg-box '+position+'">';
 				var msgDateTimeArr = data.chat_datetime.split(' ')[1].split(':');
-				var nowTime = Number(msgDateTimeArr[0])+':'+Number(msgDateTimeArr[1]);
+				var nowTime = msgDateTimeArr[0]+':'+msgDateTimeArr[1];
 				if(prevTime != nowTime || prevPosition != position){
 					msg += '<div class="msg-info">';
 					if(position=='right'){

@@ -52,14 +52,25 @@ io.sockets.on('connection', (socket) => {
             var insertMsgSql = 'insert into chat(sender, receiver, msg) values (?, ?, ?)';
             conn.execute(insertMsgSql, [data.sender, data.receiver, data.msg], () => {});
         }
-        
+
         var selectMsgSql = 'select * from chat ';
         selectMsgSql += 'where sender=? and receiver=? ';
         selectMsgSql += 'order by chatno desc limit 1';
         await conn.execute(selectMsgSql, [data.sender, data.receiver], (err, result) => {
             if(result.chat_read != 'end'){
                 var chatDateTimeArr = String(result[0].chat_datetime).split(' ');
-                result[0].chat_datetime = chatDateTimeArr[3]+'-0'+(result[0].chat_datetime.getMonth()+1)+'-'+result[0].chat_datetime.getDate()+' '+chatDateTimeArr[4];
+                var nowDateTime = '';
+                if(result[0].chat_datetime.getMonth()+1 < 10) {
+                        nowDateTime = chatDateTimeArr[3]+'-0'+(result[0].chat_datetime.getMonth()+1);
+                }else {
+                        nowDateTime = chatDateTimeArr[3]+'-'+(result[0].chat_datetime.getMonth()+1);
+                }
+                if(result[0].chat_datetime.getDate() < 10) {
+                        nowDateTime += '-0'+result[0].chat_datetime.getDate()+' '+chatDateTimeArr[4];
+                }else {
+                        nowDateTime += '-'+result[0].chat_datetime.getDate()+' '+chatDateTimeArr[4];
+                }
+                result[0].chat_datetime = nowDateTime
                 io.emit('receive-msg', result[0]);
             }
         });
