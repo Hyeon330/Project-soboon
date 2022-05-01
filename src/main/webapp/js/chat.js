@@ -74,7 +74,6 @@ $(function() {
 	var todayTime = new Date();
 	var notRead = 0;
 	// 채팅 리스트 리로드
-	
 	const setChatLists = function(result){
 		$('#chatLists').empty();
 		notRead = 0;
