@@ -36,6 +36,3 @@ spring:
 mybatis:
   type-aliases-package: com.semiproject.soboon.vo
   mapper-locations: mapper/*Mapper.xml
-
-  
-  

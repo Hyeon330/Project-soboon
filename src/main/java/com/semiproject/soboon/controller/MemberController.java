@@ -108,7 +108,7 @@ public class MemberController {
 	public ModelAndView logout(HttpSession session, HttpServletRequest req, HttpServletResponse res) {
 		session.invalidate();
 		
-		delCookies(session, req, res);
+		delCookies(req, res);
 		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("redirect:/");
@@ -120,7 +120,6 @@ public class MemberController {
 	//카카오톡 로그인
 	@GetMapping("kakao")
 	public String login(@RequestParam("code") String code, HttpSession session, RedirectAttributes attr, HttpServletResponse res) {
-		
 		String access_Token = kakao.getAccessToken(code);
 		HashMap<String, Object> userInfo = kakao.getUserInfo(access_Token);
 		
@@ -152,7 +151,7 @@ public class MemberController {
 	public String klogout(HttpSession session, HttpServletRequest req, HttpServletResponse res) {
 		kakao.kakaoLogout((String)session.getAttribute("access_Token"));
 		session.invalidate();
-		delCookies(session, req, res);
+		delCookies(req, res);
 
 		return "redirect:/";
 	}
@@ -291,7 +290,8 @@ public class MemberController {
 		}
 	}
 	
-	void delCookies(HttpSession session, HttpServletRequest req, HttpServletResponse res) {
+	// 쿠키 삭제
+	void delCookies(HttpServletRequest req, HttpServletResponse res) {
 		Cookie[] cookies = req.getCookies();
 		if(cookies != null) {
 			for (Cookie cookie : cookies) {
